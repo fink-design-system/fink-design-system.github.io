@@ -1,0 +1,29 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--fink-space-3);
+	min-height: 4rem;
+	padding: var(--fink-space-3);
+}
+
+.end {
+	margin: 0;
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}

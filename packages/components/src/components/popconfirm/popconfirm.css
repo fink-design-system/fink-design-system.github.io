@@ -1,0 +1,49 @@
+:host {
+	display: inline-block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.confirm {
+	--kol-surface: var(--fink-color-overlay);
+	display: grid;
+	gap: var(--fink-space-2);
+	width: min(20rem, calc(100vw - 2rem));
+	padding: var(--fink-space-4);
+	border: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-md);
+	background: var(--fink-color-overlay);
+	box-shadow: var(--fink-elevation-2);
+}
+
+.question {
+	display: flex;
+	gap: var(--fink-space-2);
+	margin: 0;
+	font-weight: var(--fink-font-weight-bold);
+}
+
+.icon {
+	flex: none;
+	color: var(--fink-color-warning);
+}
+
+.description {
+	margin: 0;
+	padding-inline-start: calc(1rem + var(--fink-space-2));
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: var(--fink-space-2);
+	margin-top: var(--fink-space-1);
+}

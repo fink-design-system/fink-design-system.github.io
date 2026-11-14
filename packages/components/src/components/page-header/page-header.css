@@ -1,0 +1,62 @@
+:host {
+	display: block;
+	margin-bottom: var(--fink-space-6);
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+.breadcrumb:has(slot:empty) {
+	display: none;
+}
+
+.breadcrumb {
+	margin-bottom: var(--fink-space-3);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: var(--fink-space-4);
+}
+
+.text {
+	display: grid;
+	gap: var(--fink-space-2);
+	min-width: min(100%, 20rem);
+	flex: 1 1 28rem;
+}
+
+.heading {
+	font-size: var(--fink-type-scale-2xl);
+	letter-spacing: -0.02em;
+}
+
+.description {
+	margin: 0;
+	max-width: 65ch;
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-md);
+	line-height: 1.5;
+}
+
+.meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--fink-space-2);
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--fink-space-2);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}

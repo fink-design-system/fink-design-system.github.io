@@ -1,0 +1,68 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.panel {
+	display: block;
+	height: 100%;
+}
+
+.body {
+	--kol-surface: var(--fink-color-light);
+	display: grid;
+	gap: var(--fink-space-4);
+}
+
+.head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--fink-space-3);
+}
+
+.head:not(:has(.description)):has(.actions slot:empty) {
+	display: none;
+}
+
+.description {
+	margin: 0;
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--fink-space-2);
+	margin-inline-start: auto;
+}
+
+.actions:has(slot:empty) {
+	display: none;
+}
+
+.panel--flush .content {
+	/* Hebt den Innenabstand von kol-card (4 Spacing-Einheiten) für randlose Tabellen auf. */
+	margin-inline: calc(-4 * var(--fink-space-base));
+	margin-bottom: calc(-4 * var(--fink-space-base));
+}
+
+.footer {
+	padding-top: var(--fink-space-3);
+	border-top: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.footer:has(slot:empty) {
+	display: none;
+}

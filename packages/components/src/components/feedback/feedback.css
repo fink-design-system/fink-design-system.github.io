@@ -1,0 +1,50 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.feedback {
+	--kol-surface: var(--fink-color-mute);
+	padding: var(--fink-space-4) var(--fink-space-5);
+	border-radius: var(--fink-radius-lg);
+	background: var(--fink-color-mute);
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--fink-space-3);
+}
+
+.question {
+	font-weight: var(--fink-font-weight-bold);
+}
+
+.buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--fink-space-2);
+}
+
+.comment {
+	display: grid;
+	gap: var(--fink-space-3);
+}
+
+.thanks {
+	display: flex;
+	align-items: center;
+	gap: var(--fink-space-2);
+	margin: 0;
+	color: var(--fink-color-success);
+	font-weight: var(--fink-font-weight-bold);
+}

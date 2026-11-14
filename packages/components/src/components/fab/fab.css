@@ -1,0 +1,85 @@
+:host {
+	display: inline-block;
+	font-family: var(--fink-font-family);
+}
+
+:host([_position='bottom-end']),
+:host([_position='bottom-start']) {
+	position: fixed;
+	bottom: max(var(--fink-space-5), env(safe-area-inset-bottom));
+	z-index: 40;
+}
+
+:host([_position='bottom-end']) {
+	right: max(var(--fink-space-5), env(safe-area-inset-right));
+}
+
+:host([_position='bottom-start']) {
+	left: max(var(--fink-space-5), env(safe-area-inset-left));
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.fab {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: var(--fink-space-3);
+}
+
+:host([_position='bottom-start']) .fab {
+	align-items: flex-start;
+}
+
+/* kol-button übernimmt Radius und Schrift über seine Hooks; Größe und Schatten liefert der FAB. */
+.main {
+	--border-radius: var(--fink-radius-lg);
+	border-radius: var(--fink-radius-lg);
+	box-shadow: var(--fink-elevation-3);
+	font-size: 1.25rem;
+	transition: transform var(--fink-motion-duration-fast) var(--fink-motion-easing);
+}
+
+.fab--extended .main {
+	font-size: var(--fink-type-scale-md);
+}
+
+.fab--open .main {
+	transform: rotate(0deg);
+}
+
+.actions {
+	display: flex;
+	flex-direction: column;
+	align-items: inherit;
+	gap: var(--fink-space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	animation: dial var(--fink-motion-duration-base) var(--fink-motion-easing);
+}
+
+.action {
+	--border-radius: var(--fink-radius-pill);
+	border-radius: var(--fink-radius-pill);
+	box-shadow: var(--fink-elevation-2);
+}
+
+@keyframes dial {
+	from {
+		opacity: 0;
+		transform: translateY(8px) scale(0.96);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.actions,
+	.main {
+		animation: none;
+		transition: none;
+	}
+}

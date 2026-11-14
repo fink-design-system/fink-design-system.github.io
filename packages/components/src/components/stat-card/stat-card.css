@@ -1,0 +1,121 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+.card {
+	display: grid;
+	gap: var(--fink-space-2);
+	height: 100%;
+	padding: var(--fink-space-5);
+	border: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-lg);
+	background: var(--fink-color-light);
+	--kol-surface: var(--fink-color-light);
+	box-shadow: var(--fink-elevation-1);
+}
+
+.head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--fink-space-3);
+}
+
+.label {
+	min-width: 0;
+	margin: 0;
+	color: var(--fink-color-subtle);
+	overflow-wrap: anywhere;
+	hyphens: auto;
+	font-size: var(--fink-type-scale-sm);
+	font-weight: var(--fink-font-weight-medium);
+}
+
+.icon {
+	display: inline-grid;
+	flex: none;
+	place-items: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: var(--fink-radius-md);
+	font-size: 1.25rem;
+}
+
+.tone--brand { background: var(--fink-color-secondary); color: var(--fink-color-primary); }
+.tone--info { background: color-mix(in srgb, var(--fink-color-info) 14%, transparent); color: var(--fink-color-info); }
+.tone--success { background: color-mix(in srgb, var(--fink-color-success) 14%, transparent); color: var(--fink-color-success); }
+.tone--warning { background: color-mix(in srgb, var(--fink-color-warning) 14%, transparent); color: var(--fink-color-warning); }
+.tone--danger { background: color-mix(in srgb, var(--fink-color-danger) 14%, transparent); color: var(--fink-color-danger); }
+.tone--neutral { background: var(--fink-color-mute); color: var(--fink-color-subtle); }
+
+.value {
+	margin: 0;
+	font-size: var(--fink-type-scale-2xl);
+	font-weight: var(--fink-font-weight-bold);
+	font-variant-numeric: tabular-nums;
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+}
+
+.trend {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--fink-space-1);
+	margin: 0;
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+	font-weight: var(--fink-font-weight-medium);
+}
+
+.trend--good { color: var(--fink-color-success); }
+.trend--bad { color: var(--fink-color-danger); }
+
+.trend-label {
+	color: var(--fink-color-subtle);
+	font-weight: var(--fink-font-weight-regular);
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Schmale Kachel, z. B. zweispaltig auf dem Smartphone: weniger Innenabstand, kleinerer Wert. */
+:host {
+	container-type: inline-size;
+}
+
+@container (max-width: 15rem) {
+	.card {
+		padding: var(--fink-space-4);
+	}
+
+	.head {
+		align-items: flex-start;
+		gap: var(--fink-space-2);
+	}
+
+	.icon {
+		width: 2rem;
+		height: 2rem;
+		font-size: 1rem;
+	}
+
+	.value {
+		font-size: var(--fink-type-scale-xl);
+		overflow-wrap: anywhere;
+	}
+}

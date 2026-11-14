@@ -1,0 +1,36 @@
+{
+  "name": "@fink/theme",
+  "version": "0.1.0",
+  "description": "Fink-Theme f\u00fcr KoliBri (erweitert @public-ui/theme-default) und Bootstrap-Helfer.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@fink/tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "@public-ui/components": "4.5.0",
+    "@public-ui/theme-default": "4.5.0"
+  },
+  "devDependencies": {
+    "@public-ui/components": "4.5.0",
+    "@public-ui/theme-default": "4.5.0",
+    "typescript": "5.9.3"
+  },
+  "bin": {
+    "fink-sync-icons": "./bin/sync-icon-fonts.mjs"
+  }
+}

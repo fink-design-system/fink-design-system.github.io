@@ -1,0 +1,10 @@
+:host {
+	display: grid;
+	min-width: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}

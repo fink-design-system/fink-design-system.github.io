@@ -1,0 +1,178 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.upload {
+	display: grid;
+	gap: var(--fink-space-2);
+}
+
+.label {
+	font-weight: var(--fink-font-weight-medium);
+}
+
+.hint {
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.error {
+	display: flex;
+	align-items: center;
+	gap: var(--fink-space-2);
+	color: var(--fink-color-danger);
+	font-weight: var(--fink-font-weight-bold);
+}
+
+.upload--error {
+	padding-inline-start: var(--fink-space-4);
+	border-inline-start: 4px solid var(--fink-color-danger);
+}
+
+.zone {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: var(--fink-space-2) var(--fink-space-3);
+	padding: var(--fink-space-6) var(--fink-space-4);
+	border: 2px dashed var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-lg);
+	background: var(--fink-color-light);
+	text-align: center;
+	transition: border-color var(--fink-motion-duration-fast) var(--fink-motion-easing), background-color var(--fink-motion-duration-fast) var(--fink-motion-easing);
+}
+
+.zone--active {
+	border-color: var(--fink-color-primary);
+	background: var(--fink-color-secondary);
+}
+
+.zone--disabled {
+	opacity: 0.55;
+}
+
+.zone-icon {
+	display: block;
+	width: 100%;
+	color: var(--fink-color-primary);
+	font-size: 2rem;
+}
+
+.zone-text {
+	color: var(--fink-color-subtle);
+}
+
+/* kol-input-file bringt Rahmen, Schaltfläche und Fokus selbst mit; hier nur die Breite in der Zone. */
+.pick {
+	flex: 1 1 18rem;
+	min-width: 0;
+	max-width: 28rem;
+	text-align: start;
+}
+
+.file-remove:focus-visible {
+	outline: 3px solid var(--fink-color-primary);
+	outline-offset: 2px;
+}
+
+.native {
+	display: none;
+}
+
+.files {
+	display: grid;
+	gap: var(--fink-space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.file {
+	display: flex;
+	align-items: center;
+	gap: var(--fink-space-3);
+	padding: var(--fink-space-2) var(--fink-space-2) var(--fink-space-2) var(--fink-space-3);
+	border: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-md);
+	background: var(--fink-color-light);
+}
+
+.file--error {
+	border-color: var(--fink-color-danger);
+}
+
+.file-icon {
+	color: var(--fink-color-primary);
+}
+
+.file--error .file-icon,
+.file--error .file-meta {
+	color: var(--fink-color-danger);
+}
+
+.file-text {
+	display: grid;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.file-name {
+	overflow: clip;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.file-meta {
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+:host {
+	container-type: inline-size;
+}
+
+@container (max-width: 30rem) {
+	.zone {
+		padding: var(--fink-space-5) var(--fink-space-3);
+	}
+
+	.pick {
+		flex-basis: 100%;
+		max-width: none;
+	}
+}
+
+.file-remove {
+	display: inline-grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border: 0;
+	border-radius: var(--fink-radius-md);
+	background: transparent;
+	color: var(--fink-color-subtle);
+	cursor: pointer;
+}
+
+.file-remove:hover {
+	background: var(--fink-color-mute);
+	color: var(--fink-color-danger);
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}

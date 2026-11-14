@@ -1,0 +1,51 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+.empty {
+	display: grid;
+	justify-items: center;
+	gap: var(--fink-space-3);
+	padding: var(--fink-space-7) var(--fink-space-5);
+	border: 2px dashed var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-lg);
+	text-align: center;
+}
+
+.icon {
+	display: inline-grid;
+	place-items: center;
+	width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 50%;
+	background: var(--fink-color-secondary);
+	color: var(--fink-color-primary);
+	font-size: 1.75rem;
+}
+
+.heading {
+	font-size: var(--fink-type-scale-lg);
+}
+
+.description {
+	max-width: 48ch;
+	margin: 0;
+	color: var(--fink-color-subtle);
+	line-height: 1.5;
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--fink-space-2);
+	margin-top: var(--fink-space-2);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}

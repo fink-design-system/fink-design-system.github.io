@@ -1,0 +1,42 @@
+:host {
+	display: inline-block;
+	--fink-avatar-size: 2.5rem;
+	font-family: var(--fink-font-family);
+}
+
+:host([_size='small']) {
+	--fink-avatar-size: 2rem;
+}
+
+:host([_size='large']) {
+	--fink-avatar-size: 3.25rem;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.group {
+	display: inline-flex;
+	align-items: center;
+	padding-inline-start: calc(var(--fink-avatar-size) * 0.2);
+}
+
+.avatar {
+	width: var(--fink-avatar-size);
+	height: var(--fink-avatar-size);
+	margin-inline-start: calc(var(--fink-avatar-size) * -0.2);
+	border-radius: 50%;
+	box-shadow: 0 0 0 2px var(--kol-surface, var(--fink-color-light));
+}
+
+.more {
+	display: inline-grid;
+	place-items: center;
+	background: var(--fink-color-mute);
+	color: var(--fink-color-text);
+	font-size: calc(var(--fink-avatar-size) * 0.36);
+	font-weight: var(--fink-font-weight-bold);
+}

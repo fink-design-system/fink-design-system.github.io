@@ -1,0 +1,64 @@
+:host {
+	display: block;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.lines {
+	display: grid;
+	gap: var(--fink-space-2);
+}
+
+.bone {
+	display: block;
+	border-radius: var(--fink-radius-sm);
+	background: linear-gradient(
+			90deg,
+			transparent 0%,
+			color-mix(in srgb, var(--fink-color-light) 60%, transparent) 50%,
+			transparent 100%
+		)
+		var(--fink-color-mute);
+	background-size: 200% 100%;
+	animation: shimmer 1.4s linear infinite;
+}
+
+.bone--text {
+	height: 0.875rem;
+}
+
+.bone--rect {
+	border-radius: var(--fink-radius-md);
+}
+
+.bone--circle {
+	border-radius: 50%;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+@keyframes shimmer {
+	from {
+		background-position: 150% 0;
+	}
+	to {
+		background-position: -50% 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.bone {
+		animation: none;
+	}
+}

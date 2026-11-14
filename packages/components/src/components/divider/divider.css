@@ -1,0 +1,72 @@
+:host {
+	display: block;
+	--fink-divider-color: var(--fink-color-mute-variant);
+	color: var(--fink-color-subtle);
+	font-family: var(--fink-font-family);
+	font-size: var(--fink-type-scale-sm);
+}
+
+:host([_orientation='vertical']) {
+	display: inline-block;
+	align-self: stretch;
+	min-height: 1.5rem;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.divider {
+	display: flex;
+	align-items: center;
+	gap: var(--fink-space-3);
+	width: 100%;
+}
+
+.divider::before,
+.divider::after {
+	content: '';
+	flex: 1 1 0;
+	border-top: var(--fink-border-width) solid var(--fink-divider-color);
+}
+
+.divider:not(.divider--labelled)::after {
+	display: none;
+}
+
+.divider--start::before,
+.divider--end::after {
+	flex: 0 0 var(--fink-space-4);
+}
+
+.divider--inset {
+	padding-inline-start: 4.5rem;
+}
+
+.divider--middle {
+	padding-inline: var(--fink-space-4);
+}
+
+.divider--vertical {
+	flex-direction: column;
+	width: auto;
+	height: 100%;
+}
+
+.divider--vertical::before,
+.divider--vertical::after {
+	border-top: 0;
+	border-inline-start: var(--fink-border-width) solid var(--fink-divider-color);
+}
+
+.divider--vertical.divider--middle {
+	padding-inline: 0;
+	padding-block: var(--fink-space-2);
+}
+
+.label {
+	flex: none;
+	white-space: nowrap;
+}

@@ -1,0 +1,55 @@
+{
+  "name": "@fink/components",
+  "version": "0.1.0",
+  "description": "Fink-Komposita als Web Components (Stencil), aufgebaut aus KoliBri-Atomen.",
+  "type": "module",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "collection": "./dist/collection/collection-manifest.json",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./loader": {
+      "types": "./loader/index.d.ts",
+      "import": "./loader/index.js",
+      "require": "./loader/index.cjs.js"
+    },
+    "./i18n": {
+      "types": "./dist/types/i18n/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "import": "./dist/components/*.js"
+    },
+    "./docs.json": "./dist/docs.json",
+    "./dist/components": {
+      "types": "./dist/types/components.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./dist/*": "./dist/*"
+  },
+  "files": [
+    "dist",
+    "loader"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "dev": "stencil build --watch"
+  },
+  "peerDependencies": {
+    "@public-ui/components": "4.5.0"
+  },
+  "devDependencies": {
+    "@public-ui/components": "4.5.0",
+    "@stencil/core": "4.45.3",
+    "@stencil/react-output-target": "1.8.1"
+  },
+  "dependencies": {
+    "i18next": "25.10.10"
+  }
+}

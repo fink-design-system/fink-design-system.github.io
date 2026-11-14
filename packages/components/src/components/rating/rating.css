@@ -1,0 +1,72 @@
+:host {
+	display: inline-block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.rating {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.legend {
+	margin-bottom: var(--fink-space-2);
+	padding: 0;
+	font-weight: var(--fink-font-weight-medium);
+}
+
+.stars {
+	display: flex;
+	align-items: center;
+	gap: var(--fink-space-1);
+}
+
+.star {
+	display: inline-grid;
+	place-items: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: var(--fink-radius-md);
+	color: var(--fink-color-mute-variant);
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+.rating--readonly .star {
+	width: auto;
+	height: auto;
+	font-size: 1.125rem;
+	cursor: default;
+}
+
+.star--on {
+	color: var(--fink-color-warning);
+}
+
+.star:has(input:focus-visible) {
+	outline: 3px solid var(--fink-color-primary);
+	outline-offset: 1px;
+}
+
+.value {
+	margin-inline-start: var(--fink-space-2);
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+	font-variant-numeric: tabular-nums;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}

@@ -1,0 +1,32 @@
+:host {
+	display: inline-block;
+	vertical-align: baseline;
+	font-family: var(--fink-font-family-mono);
+	font-size: 0.8125em;
+	color: var(--fink-color-text);
+}
+
+.combo {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25em;
+	font: inherit;
+}
+
+.key {
+	display: inline-grid;
+	place-items: center;
+	min-width: 1.75em;
+	padding: 0.1em 0.45em;
+	border: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	border-bottom-width: 2px;
+	border-radius: var(--fink-radius-sm);
+	background: var(--fink-color-light);
+	font: inherit;
+	line-height: 1.4;
+	box-shadow: 0 1px 0 var(--fink-color-mute-variant);
+}
+
+.plus {
+	color: var(--fink-color-subtle);
+}

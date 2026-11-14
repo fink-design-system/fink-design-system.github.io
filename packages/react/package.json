@@ -1,0 +1,38 @@
+{
+  "name": "@fink/react",
+  "version": "0.1.0",
+  "description": "React-Paket des Fink Design Systems: Fink-Komposita, KoliBri-Atome und Provider aus einer Hand.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@fink/components": "workspace:*",
+    "@fink/theme": "workspace:*",
+    "@fink/tokens": "workspace:*",
+    "@public-ui/react-v19": "4.5.0",
+    "@stencil/react-output-target": "1.8.1"
+  },
+  "peerDependencies": {
+    "@public-ui/components": "4.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@public-ui/components": "4.5.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "typescript": "5.9.3"
+  }
+}

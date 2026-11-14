@@ -1,0 +1,20 @@
+{
+  "name": "@fink/tokens",
+  "version": "0.1.0",
+  "description": "Design Tokens des Fink Design Systems (Single Source of Truth).",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.json": "./src/tokens.json"
+  },
+  "files": ["dist", "src/tokens.json"],
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  }
+}

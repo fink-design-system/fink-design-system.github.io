@@ -1,0 +1,38 @@
+:host {
+	display: contents;
+	font-family: var(--fink-font-family);
+}
+
+:host([_position='inline']) {
+	display: block;
+}
+
+.wrap[hidden] {
+	display: none;
+}
+
+:host(:not([_position='inline'])) .wrap {
+	position: fixed;
+	right: max(var(--fink-space-5), env(safe-area-inset-right));
+	bottom: max(var(--fink-space-5), env(safe-area-inset-bottom));
+	z-index: 40;
+	animation: rise var(--fink-motion-duration-base) var(--fink-motion-easing);
+}
+
+.button {
+	border-radius: var(--fink-radius-pill);
+	box-shadow: var(--fink-elevation-2);
+}
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wrap {
+		animation: none;
+	}
+}

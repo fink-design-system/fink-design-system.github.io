@@ -1,0 +1,179 @@
+:host {
+	display: block;
+	min-height: var(--fink-app-shell-min-height, 100dvh);
+	background: var(--fink-color-surface);
+	--kol-surface: var(--fink-color-surface);
+	color: var(--fink-color-text);
+	font-family: var(--fink-font-family);
+	--fink-app-shell-nav-width: 17rem;
+	--fink-app-shell-header-height: 4rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.skip-link {
+	position: absolute;
+	left: var(--fink-space-4);
+	top: -100px;
+	z-index: 100;
+	padding: var(--fink-space-2) var(--fink-space-4);
+	border-radius: var(--fink-radius-md);
+	background: var(--fink-color-primary);
+	color: var(--fink-color-light);
+	font-weight: var(--fink-font-weight-medium);
+}
+
+.skip-link:focus {
+	top: var(--fink-space-2);
+}
+
+.header {
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	display: flex;
+	align-items: center;
+	gap: var(--fink-space-3);
+	height: var(--fink-app-shell-header-height);
+	padding-inline: max(var(--fink-space-4), env(safe-area-inset-left)) max(var(--fink-space-4), env(safe-area-inset-right));
+	background: var(--fink-color-light);
+	--kol-surface: var(--fink-color-light);
+	border-bottom: var(--fink-border-width) solid var(--fink-color-mute-variant);
+}
+
+.brand {
+	display: flex;
+	flex: 1 1 auto;
+	align-items: center;
+	gap: var(--fink-space-2);
+	min-width: 0;
+	font-size: var(--fink-type-scale-lg);
+	font-weight: var(--fink-font-weight-bold);
+	letter-spacing: -0.01em;
+}
+
+::slotted([slot='brand']) {
+	flex: none;
+}
+
+.label {
+	min-width: 0;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: clip;
+}
+
+/* Aktionen behalten ihre Breite; bei Platzmangel kürzt sich der Anwendungsname. */
+.actions {
+	display: flex;
+	flex: none;
+	align-items: center;
+	gap: var(--fink-space-2);
+	margin-inline-start: auto;
+}
+
+.body {
+	display: grid;
+	grid-template-columns: var(--fink-app-shell-nav-width) minmax(0, 1fr);
+}
+
+.nav {
+	position: sticky;
+	top: var(--fink-app-shell-header-height);
+	height: calc(var(--fink-app-shell-min-height, 100dvh) - var(--fink-app-shell-header-height));
+	overflow-y: auto;
+	padding: var(--fink-space-4) var(--fink-space-3);
+	background: var(--fink-color-light);
+	--kol-surface: var(--fink-color-light);
+	border-inline-end: var(--fink-border-width) solid var(--fink-color-mute-variant);
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	min-height: calc(var(--fink-app-shell-min-height, 100dvh) - var(--fink-app-shell-header-height));
+	padding: var(--fink-space-6) clamp(var(--fink-space-4), 3vw, var(--fink-space-7)) max(var(--fink-space-6), env(safe-area-inset-bottom));
+	padding-inline: max(clamp(var(--fink-space-4), 3vw, var(--fink-space-7)), env(safe-area-inset-left)) max(clamp(var(--fink-space-4), 3vw, var(--fink-space-7)), env(safe-area-inset-right));
+	outline: none;
+}
+
+.footer {
+	margin-top: auto;
+	padding-top: var(--fink-space-6);
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.menu-toggle,
+.backdrop {
+	display: none;
+}
+
+@media (max-width: 959px) {
+	.menu-toggle {
+		display: inline-flex;
+	}
+
+	.body {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.nav {
+		position: fixed;
+		inset: var(--fink-app-shell-header-height) auto 0 0;
+		z-index: 30;
+		width: min(85vw, var(--fink-app-shell-nav-width));
+		height: auto;
+		padding-bottom: max(var(--fink-space-4), env(safe-area-inset-bottom));
+		overscroll-behavior: contain;
+		box-shadow: var(--fink-elevation-3);
+		transform: translateX(-105%);
+		transition: transform var(--fink-motion-duration-base) var(--fink-motion-easing);
+		visibility: hidden;
+	}
+
+	.nav--open {
+		transform: none;
+		visibility: visible;
+	}
+
+	.backdrop {
+		position: fixed;
+		inset: var(--fink-app-shell-header-height) 0 0 0;
+		z-index: 25;
+		display: block;
+		background: var(--fink-color-backdrop);
+	}
+}
+
+@media (max-width: 599px) {
+	:host {
+		--fink-app-shell-header-height: 3.5rem;
+	}
+
+	.header {
+		gap: var(--fink-space-2);
+		padding-inline: max(var(--fink-space-2), env(safe-area-inset-left)) max(var(--fink-space-3), env(safe-area-inset-right));
+	}
+
+	.brand {
+		font-size: var(--fink-type-scale-md);
+	}
+
+	.actions {
+		gap: var(--fink-space-1);
+	}
+
+	.main {
+		padding-top: var(--fink-space-5);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.nav {
+		transition: none;
+	}
+}

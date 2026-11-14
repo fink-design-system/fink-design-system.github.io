@@ -1,0 +1,89 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+	container-type: inline-size;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.splitter {
+	display: grid;
+	grid-template-columns: var(--split) 0.75rem minmax(0, 1fr);
+	border: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-lg);
+	background: var(--fink-color-light);
+	overflow: clip;
+}
+
+.splitter--vertical {
+	grid-template-columns: minmax(0, 1fr);
+	grid-template-rows: var(--split) 0.75rem minmax(0, 1fr);
+}
+
+.pane {
+	min-width: 0;
+	min-height: 0;
+	overflow: auto;
+}
+
+.handle {
+	position: relative;
+	display: grid;
+	place-items: center;
+	background: var(--fink-color-mute);
+	cursor: col-resize;
+	touch-action: none;
+}
+
+.splitter--vertical .handle {
+	cursor: row-resize;
+}
+
+.handle:hover,
+.splitter--dragging .handle {
+	background: var(--fink-color-secondary);
+}
+
+.handle:focus-visible {
+	outline: 3px solid var(--fink-color-primary);
+	outline-offset: -3px;
+}
+
+.grip {
+	width: 0.25rem;
+	height: 2rem;
+	border-radius: var(--fink-radius-pill);
+	background: var(--fink-color-subtle);
+}
+
+.splitter--vertical .grip {
+	width: 2rem;
+	height: 0.25rem;
+}
+
+.splitter--dragging {
+	user-select: none;
+}
+
+/* Schmal: untereinander, Trennlinie entfällt. */
+@container (max-width: 34rem) {
+	.splitter,
+	.splitter--vertical {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: auto auto;
+		height: auto !important;
+	}
+
+	.handle {
+		display: none;
+	}
+
+	.pane + .pane {
+		border-top: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	}
+}

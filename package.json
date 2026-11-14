@@ -1,0 +1,11 @@
+{
+  "name": "fink-design-system",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter @fink/showcase dev",
+    "icons:sync": "pnpm --filter @fink/showcase icons:sync",
+    "icons:check": "pnpm --filter @fink/showcase icons:check"
+  }
+}

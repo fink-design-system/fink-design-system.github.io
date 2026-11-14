@@ -1,0 +1,34 @@
+{
+  "name": "@fink/showcase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "icons:sync": "fink-sync-icons public/assets/icon-fonts",
+    "icons:check": "fink-sync-icons public/assets/icon-fonts --check",
+    "predev": "pnpm icons:sync",
+    "dev": "vite",
+    "prebuild": "pnpm icons:sync",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fink/components": "workspace:*",
+    "@fink/react": "workspace:*",
+    "@fink/theme": "workspace:*",
+    "@fink/tokens": "workspace:*",
+    "@public-ui/components": "4.5.0",
+    "@public-ui/theme-default": "4.5.0",
+    "i18next": "25.10.10",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-i18next": "15.7.4"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.2.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.8"
+  }
+}

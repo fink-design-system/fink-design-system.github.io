@@ -1,0 +1,117 @@
+:host {
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.tour {
+	position: fixed;
+	inset: 0;
+	z-index: 1100;
+	pointer-events: none;
+}
+
+/* Abdunkelung als riesiger Schatten um das hervorgehobene Element. */
+.spotlight {
+	position: fixed;
+	border-radius: var(--fink-radius-md);
+	box-shadow:
+		0 0 0 3px var(--fink-color-primary),
+		0 0 0 9999px var(--fink-color-backdrop);
+	transition: all var(--fink-motion-duration-base) var(--fink-motion-easing);
+}
+
+.backdrop {
+	position: fixed;
+	inset: 0;
+	background: var(--fink-color-backdrop);
+}
+
+.card {
+	--kol-surface: var(--fink-color-overlay);
+	position: fixed;
+	display: grid;
+	gap: var(--fink-space-2);
+	width: min(25rem, calc(100vw - 1.5rem));
+	padding: var(--fink-space-4);
+	border: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-lg);
+	background: var(--fink-color-overlay);
+	box-shadow: var(--fink-elevation-3);
+	pointer-events: auto;
+	outline: none;
+	animation: pop var(--fink-motion-duration-base) var(--fink-motion-easing);
+}
+
+.card:focus-visible {
+	box-shadow: var(--fink-elevation-3), 0 0 0 3px var(--fink-color-primary);
+}
+
+.progress {
+	margin: 0;
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-xs);
+	font-weight: var(--fink-font-weight-bold);
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+}
+
+.title {
+	margin: 0;
+	font-size: var(--fink-type-scale-lg);
+}
+
+.text {
+	margin: 0;
+	color: var(--fink-color-subtle);
+	line-height: 1.5;
+}
+
+.dots {
+	display: flex;
+	gap: var(--fink-space-1);
+}
+
+.dot {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: var(--fink-radius-pill);
+	background: var(--fink-color-mute-variant);
+}
+
+.dot--active {
+	width: 1.25rem;
+	background: var(--fink-color-primary);
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--fink-space-2);
+	margin-top: var(--fink-space-1);
+}
+
+.spacer {
+	flex: 1 1 auto;
+}
+
+@keyframes pop {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.spotlight,
+	.card {
+		transition: none;
+		animation: none;
+	}
+}

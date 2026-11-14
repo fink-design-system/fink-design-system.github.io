@@ -1,0 +1,166 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	--code-bg: #16152a;
+	--code-fg: #e6e4f5;
+	--code-muted: #9c99b8;
+	--code-line: #2a2846;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.block {
+	--kol-surface: var(--code-bg);
+	border-radius: var(--fink-radius-md);
+	background: var(--code-bg);
+	color: var(--code-fg);
+	overflow: clip;
+}
+
+.bar {
+	display: flex;
+	align-items: center;
+	gap: var(--fink-space-3);
+	min-height: 2.75rem;
+	padding: 0 var(--fink-space-2) 0 var(--fink-space-3);
+	border-bottom: 1px solid var(--code-line);
+}
+
+/* Auf schmalen Flächen scrollen die Tabs waagerecht statt umzubrechen. */
+.tabs {
+	display: flex;
+	align-self: stretch;
+	gap: var(--fink-space-1);
+	min-width: 0;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+	display: none;
+}
+
+.tab {
+	position: relative;
+	padding: 0 var(--fink-space-3);
+	border: 0;
+	background: none;
+	color: var(--code-muted);
+	font: inherit;
+	font-size: var(--fink-type-scale-sm);
+	font-weight: var(--fink-font-weight-medium);
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.tab:hover {
+	color: var(--code-fg);
+}
+
+.tab--active {
+	color: var(--code-fg);
+}
+
+.tab--active::after {
+	content: '';
+	position: absolute;
+	inset: auto var(--fink-space-2) 0;
+	height: 2px;
+	border-radius: 2px;
+	background: #b7b0ff;
+}
+
+.filename {
+	color: var(--code-muted);
+	font-family: var(--fink-font-family-mono);
+	font-size: var(--fink-type-scale-xs);
+}
+
+.filename--secondary {
+	margin-inline-start: var(--fink-space-2);
+}
+
+.copy {
+	flex: none;
+	margin-inline-start: auto;
+	/* kol-button liest seine Farben aus den KoliBri-Hooks; auf der dunklen Codefläche hell. */
+	--kolibri-color-primary: #b7b0ff;
+	--kolibri-color-primary-variant: #d6d2ff;
+	--kolibri-color-light: var(--code-bg);
+	--kolibri-color-text: var(--code-fg);
+	color-scheme: dark;
+}
+
+.tab:focus-visible,
+.pre:focus-visible {
+	outline: 2px solid #b7b0ff;
+	outline-offset: -2px;
+}
+
+.pre {
+	display: flex;
+	margin: 0;
+	padding: var(--fink-space-4) 0;
+	overflow: auto;
+	font-family: var(--fink-font-family-mono);
+	font-size: 0.8125rem;
+	line-height: 1.65;
+	tab-size: 2;
+}
+
+code {
+	flex: 1 0 auto;
+	padding: 0 var(--fink-space-5);
+	font: inherit;
+	white-space: pre;
+}
+
+.numbers {
+	display: grid;
+	flex: none;
+	padding: 0 var(--fink-space-3) 0 var(--fink-space-4);
+	border-inline-end: 1px solid var(--code-line);
+	color: #5f5c80;
+	text-align: end;
+	user-select: none;
+}
+
+:host {
+	container-type: inline-size;
+}
+
+@container (max-width: 30rem) {
+	.filename--secondary {
+		display: none;
+	}
+
+	.tab {
+		padding-inline: var(--fink-space-2);
+	}
+
+	code {
+		padding-inline: var(--fink-space-4);
+	}
+}
+
+.tok-comment { color: #8d8aa8; font-style: italic; }
+.tok-string { color: #a5e3b7; }
+.tok-keyword { color: #c9a7ff; }
+.tok-tag { color: #8cc4ff; }
+.tok-attr { color: #ffd58a; }
+.tok-type { color: #7fe3e0; }
+.tok-number { color: #ffab91; }
+.tok-function { color: #9fb7ff; }
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}

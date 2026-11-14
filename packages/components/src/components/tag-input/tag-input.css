@@ -1,0 +1,34 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.tag-input {
+	display: grid;
+	gap: var(--fink-space-2);
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--fink-space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}

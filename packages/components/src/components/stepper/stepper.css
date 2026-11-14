@@ -1,0 +1,137 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+.stepper {
+	display: flex;
+	gap: var(--fink-space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: step;
+}
+
+.step {
+	display: flex;
+	flex: 1 1 0;
+	align-items: center;
+	gap: var(--fink-space-2);
+	min-width: 0;
+}
+
+.step:not(:last-child)::after {
+	content: '';
+	flex: 1 1 auto;
+	min-width: var(--fink-space-4);
+	height: 2px;
+	border-radius: 1px;
+	background: var(--fink-color-mute-variant);
+}
+
+.step--done:not(:last-child)::after {
+	background: var(--fink-color-primary);
+}
+
+.step-inner,
+.step-button {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--fink-space-2);
+	min-width: 0;
+	min-height: 44px;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-align: start;
+}
+
+.step-button {
+	padding-inline-end: var(--fink-space-2);
+	border-radius: var(--fink-radius-pill);
+	cursor: pointer;
+}
+
+.step-button:hover .label {
+	text-decoration: underline;
+}
+
+.step-button:focus-visible {
+	outline: 3px solid var(--fink-color-primary);
+	outline-offset: 2px;
+}
+
+.marker {
+	display: inline-grid;
+	flex: none;
+	place-items: center;
+	width: 2rem;
+	height: 2rem;
+	border: 2px solid var(--fink-color-mute-variant);
+	border-radius: 50%;
+	background: var(--fink-color-light);
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+	font-weight: var(--fink-font-weight-bold);
+}
+
+.step--current .marker {
+	border-color: var(--fink-color-primary);
+	color: var(--fink-color-primary);
+	box-shadow: 0 0 0 4px var(--fink-color-secondary);
+}
+
+.step--done .marker {
+	border-color: var(--fink-color-primary);
+	background: var(--fink-color-primary);
+	color: var(--fink-color-light);
+}
+
+.text {
+	min-width: 0;
+}
+
+.label {
+	display: block;
+	overflow: clip;
+	font-size: var(--fink-type-scale-sm);
+	font-weight: var(--fink-font-weight-medium);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.step--todo .label {
+	color: var(--fink-color-subtle);
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+:host {
+	container-type: inline-size;
+}
+
+@container (max-width: 36rem) {
+	.step:not(.step--current) .label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		clip-path: inset(50%);
+		overflow: hidden;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}

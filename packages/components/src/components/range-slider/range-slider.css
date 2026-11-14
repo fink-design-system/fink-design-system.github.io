@@ -1,0 +1,129 @@
+:host {
+	display: block;
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+	--thumb: 1.375rem;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.range {
+	display: grid;
+	gap: var(--fink-space-2);
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.legend {
+	padding: 0;
+	font-weight: var(--fink-font-weight-medium);
+}
+
+.readout {
+	margin: 0;
+	color: var(--fink-color-primary);
+	font-weight: var(--fink-font-weight-bold);
+	font-variant-numeric: tabular-nums;
+}
+
+.track {
+	position: relative;
+	height: 2.75rem;
+}
+
+.track::before,
+.fill {
+	content: '';
+	position: absolute;
+	top: 50%;
+	height: 0.375rem;
+	border-radius: var(--fink-radius-pill);
+	transform: translateY(-50%);
+}
+
+.track::before {
+	inset-inline: 0;
+	background: var(--fink-color-mute-variant);
+}
+
+.fill {
+	left: calc(var(--from) * (100% - var(--thumb)) + var(--thumb) / 2);
+	right: calc((1 - var(--to)) * (100% - var(--thumb)) + var(--thumb) / 2);
+	background: var(--fink-color-primary);
+}
+
+/* Zwei native Regler auf einer Spur; nur die Griffe nehmen Zeigerereignisse an. */
+.thumb {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: none;
+	pointer-events: none;
+	appearance: none;
+}
+
+.thumb::-webkit-slider-thumb {
+	width: var(--thumb);
+	height: var(--thumb);
+	border: 3px solid var(--fink-color-primary);
+	border-radius: 50%;
+	background: var(--fink-color-light);
+	box-shadow: var(--fink-elevation-1);
+	cursor: grab;
+	pointer-events: auto;
+	appearance: none;
+}
+
+.thumb::-moz-range-thumb {
+	width: var(--thumb);
+	height: var(--thumb);
+	border: 3px solid var(--fink-color-primary);
+	border-radius: 50%;
+	background: var(--fink-color-light);
+	cursor: grab;
+	pointer-events: auto;
+}
+
+.thumb:focus-visible {
+	outline: none;
+}
+
+.thumb:focus-visible::-webkit-slider-thumb {
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--fink-color-primary) 35%, transparent);
+}
+
+.thumb:focus-visible::-moz-range-thumb {
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--fink-color-primary) 35%, transparent);
+}
+
+.scale {
+	display: flex;
+	justify-content: space-between;
+	margin-top: calc(-1 * var(--fink-space-2));
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-xs);
+}
+
+.inputs {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--fink-space-3);
+}
+
+.hint {
+	margin: 0;
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.range--disabled {
+	opacity: 0.55;
+}
