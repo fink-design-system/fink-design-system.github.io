@@ -1,8 +1,12 @@
 name: Barrierefreiheit (ESLint + Playwright/axe-core)
 
+# Pflichtprüfung für jeden Pull Request. Auf main läuft sie nicht erneut: Dorthin gelangt nur,
+# was im PR bereits geprüft wurde. Manuell startbar über workflow_dispatch.
+#
+# Betrifft ein PR keinen Anwendungscode (z. B. nur Doku), wird der Job „a11y“ übersprungen. Bewusst kein
+# paths-Filter am Trigger: Ein nicht gestarteter Pflicht-Check bliebe „ausstehend“ und blockierte den Merge,
+# ein übersprungener Job zählt dagegen als bestanden.
 on:
-  push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -10,7 +14,28 @@ permissions:
   contents: read
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      app: ${{ steps.filter.outputs.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          # Alle Muster müssen zutreffen: Datei liegt im Anwendungscode und ist keine Markdown-Datei.
+          predicate-quantifier: every
+          filters: |
+            app:
+              - '{packages/**,apps/**,e2e/**,eslint-rules/**,eslint.config.js,playwright.config.ts,tsconfig.e2e.json,package.json,pnpm-lock.yaml,pnpm-workspace.yaml,.github/workflows/a11y.yml}'
+              - '!**/*.md'
+
   a11y:
+    needs: changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.changes.outputs.app == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
