@@ -1,4 +1,10 @@
-/** Gemeinsame Beispieldaten für Pattern-Demos. */
+/**
+ * Gemeinsame Beispieldaten für Pattern-Demos.
+ *
+ * Alle Daten sind fiktiv (siehe docs/datenschutz-beispieldaten.md):
+ * E-Mails nur unter der reservierten Domain example.org (RFC 2606),
+ * keine realen Firmen, Behörden oder Personen-Ort-Kombinationen.
+ */
 import { t } from '../i18n';
 export interface Person {
 	id: string;
@@ -18,7 +24,7 @@ const roles: Person['role'][] = ['Sachbearbeitung', 'Sachbearbeitung', 'Lesend',
 export const people: Person[] = first.map((name, i) => ({
 	id: `u-${String(i + 1).padStart(3, '0')}`,
 	name: `${name} ${last[i]}`,
-	email: `${name.toLowerCase()}.${last[i].toLowerCase()}@beispiel.de`,
+	email: `${name.toLowerCase()}.${last[i].toLowerCase()}@example.org`,
 	role: roles[i % roles.length],
 	team: teams[i % teams.length],
 	active: i % 5 !== 3,
