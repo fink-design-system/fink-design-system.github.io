@@ -128,8 +128,8 @@ pnpm test:a11y     # Playwright + axe-core über alle Seiten, Kompositionen und 
 - **KoliBri-Texte mit „...“:** `filename-text` und `action-running` enden auf Auslassungszeichen. Eigene `translations`
   ersetzen in KoliBri alle Standardtexte; `@fink/theme` erzeugt deshalb beim Build den vollständigen Satz aus der
   installierten Version (`scripts/kolibri-locales.mjs`, Prüfung mit `pnpm locales:check`) und entfernt nur die „...“.
-- **KoliBri 4.6 fokussiert die Fehlerliste von `kol-form` nicht mehr automatisch.** Anwendungen rufen nach einem
-  fehlgeschlagenen Absenden `focusErrorList()` auf (Showcase: `useFormErrorFocus`).
+- **Fehlerliste von `kol-form`:** KoliBri fokussiert sie nicht selbst. Anwendungen rufen nach einem fehlgeschlagenen
+  Absenden `focusErrorList()` auf (Showcase: `useFormErrorFocus`).
 
 - **kol-badge und CSS-Variablen:** kol-badge wertet Farben selbst aus und akzeptiert keine `var()`. `fink-status` und
   `fink-chip` lösen Token-Farben deshalb zur Laufzeit in Hex-Werte auf und aktualisieren sie beim Schemawechsel.

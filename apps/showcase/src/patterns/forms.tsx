@@ -300,7 +300,7 @@ export const formPatterns: PatternDefinition[] = [
   _on={{
     onSubmit: () => {
       setSubmitted(true);
-      // Ab KoliBri 4.6 explizit: Fehlerzusammenfassung fokussieren.
+      // KolForm fokussiert die Fehlerzusammenfassung nicht selbst.
       if (errors.length) void formRef.current?.focusErrorList();
     },
   }}
