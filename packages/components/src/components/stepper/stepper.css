@@ -96,11 +96,10 @@
 
 .label {
 	display: block;
-	overflow: clip;
 	font-size: var(--fink-type-scale-sm);
 	font-weight: var(--fink-font-weight-medium);
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	overflow-wrap: anywhere;
+	hyphens: auto;
 }
 
 .step--todo .label {

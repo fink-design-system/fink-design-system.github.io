@@ -3,6 +3,7 @@ import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import { tokenDeclarations } from '@fink/tokens';
 import { overrides } from './overrides.js';
+import { kolibriLocales } from './kolibri-locales.js';
 
 type ThemePatch = Parameters<typeof DEFAULT>[0];
 type ThemeMap = Parameters<ThemePatch>[1];
@@ -56,6 +57,19 @@ export interface RegisterFinkOptions {
 	language?: 'de' | 'en';
 }
 
+/**
+ * KoliBri-Texte für de und en. KoliBri ersetzt mit eigenen `translations` seine Standardtexte vollständig;
+ * Fink gibt deshalb den kompletten, aus der installierten Version erzeugten Satz weiter. Geändert sind nur
+ * Texte, die auf Auslassungszeichen enden („Datei auswählen oder hier ablegen...“): Sie werden vorgelesen
+ * und wirken wie gekürzter Text.
+ */
+export { kolibriLocales as FINK_KOLIBRI_TRANSLATIONS } from './kolibri-locales.js';
+
+type KoliBriTranslations = NonNullable<NonNullable<Parameters<typeof register>[2]>['translations']>;
+type TranslationPatch = (register: (language: 'de' | 'en', resources: Record<string, string>) => unknown) => unknown;
+
+const finkTranslations: TranslationPatch[] = [(t) => t('de', kolibriLocales.de), (t) => t('en', kolibriLocales.en)];
+
 let registration: Promise<unknown> | undefined;
 
 /**
@@ -73,6 +87,7 @@ export const registerFink = (options: RegisterFinkOptions = {}): Promise<unknown
 		environment: 'production',
 		theme: { detect, name: FINK_THEME_NAME },
 		translation: { name: options.language ?? 'de' },
+		translations: new Set(finkTranslations) as unknown as KoliBriTranslations,
 	});
 	return registration;
 };

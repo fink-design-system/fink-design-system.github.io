@@ -36,10 +36,10 @@ export function Overview({ applications, onNew, onOpen }: Props) {
 
 			<FinkStack _gap="6">
 				<FinkGrid _min="9.5rem">
-					<FinkStatCard _label={t('Offene Anträge')} _value={String(open.length)} _trend={12.5} _trendLabel={t('ggü. Vormonat')} _icons="codicon codicon-inbox" />
-					<FinkStatCard _label={t('Bewilligte Mittel')} _value={euroCompact(approvedSum)} _trend={4.2} _trendLabel={t('ggü. Vormonat')} _icons="codicon codicon-pass" _tone="success" />
-					<FinkStatCard _label={t('Offene Rückfragen')} _value={String(queries.length)} _trend={-20} _trendLabel={t('ggü. Vorwoche')} _trendInverted _icons="codicon codicon-comment-discussion" _tone="warning" />
-					<FinkStatCard _label={t('Bewilligungsquote')} _value={`${quote} %`} _icons="codicon codicon-graph" _tone="info" />
+					<FinkStatCard _level={2} _label={t('Offene Anträge')} _value={String(open.length)} _trend={12.5} _trendLabel={t('ggü. Vormonat')} _icons="codicon codicon-inbox" />
+					<FinkStatCard _level={2} _label={t('Bewilligte Mittel')} _value={euroCompact(approvedSum)} _trend={4.2} _trendLabel={t('ggü. Vormonat')} _icons="codicon codicon-pass" _tone="success" />
+					<FinkStatCard _level={2} _label={t('Offene Rückfragen')} _value={String(queries.length)} _trend={-20} _trendLabel={t('ggü. Vorwoche')} _trendInverted _icons="codicon codicon-comment-discussion" _tone="warning" />
+					<FinkStatCard _level={2} _label={t('Bewilligungsquote')} _value={`${quote} %`} _icons="codicon codicon-graph" _tone="info" />
 				</FinkGrid>
 
 				<FinkPanel _heading={t('Neueste Anträge')} _description={t('Die fünf zuletzt eingegangenen Anträge')} _flush>

@@ -18,7 +18,7 @@ export function Demo({ title, children, code, plain, codeOpen = false }: DemoPro
 	return (
 		<section className="demo" aria-label={t('Beispiel: {{title}}', { title })}>
 			<div className="demo-head">
-				<h3>{title}</h3>
+				<h2>{title}</h2>
 				{code && (
 					<KolButton
 						_label={showCode ? t('Code ausblenden') : t('Code anzeigen')}

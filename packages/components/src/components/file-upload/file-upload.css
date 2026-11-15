@@ -126,9 +126,7 @@
 }
 
 .file-name {
-	overflow: clip;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	overflow-wrap: anywhere;
 }
 
 .file-meta {

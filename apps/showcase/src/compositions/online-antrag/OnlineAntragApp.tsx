@@ -34,6 +34,7 @@ import { CompositionShell } from '../CompositionShell';
 import { createStore } from '../createStore';
 import '../composition.css';
 import { t, locale } from '../../i18n';
+import { useFormErrorFocus } from '../../site/useFormErrorFocus';
 
 const BASE = '/compositions/online-antrag';
 
@@ -139,16 +140,19 @@ function PersonPage({ draft, back }: { draft: Draft; back: () => void }) {
 	const set = (key: PersonKey) => (_e: unknown, v: unknown) => store.set((d) => ({ ...d, person: { ...d.person, [key]: String(v ?? '') } }));
 	const msg = (key: PersonKey) => (submitted && errors[key] ? { _type: 'error' as const, _description: errors[key]! } : undefined);
 	const list = (Object.keys(errors) as PersonKey[]).map((key) => ({ message: errors[key]!, selector: `#person-${key}` }));
+	const [formRef, focusErrors] = useFormErrorFocus();
 	return (
 		<>
 			<FinkPageHeader _heading={t('Persönliche Angaben')} _description={t('Wir verwenden die Angaben ausschließlich zur Bearbeitung Ihres Antrags.')} />
 			<KolForm
+				ref={formRef}
 				_requiredText
 				_errorList={submitted ? list : []}
 				_on={{
 					onSubmit: () => {
 						setSubmitted(true);
 						if (list.length === 0) back();
+						else focusErrors();
 					},
 				}}
 			>
@@ -182,16 +186,19 @@ function ProjectPage({ draft, back }: { draft: Draft; back: () => void }) {
 		store.set((d) => ({ ...d, project: { ...d.project, [key]: transform(v) } }));
 	const msg = (key: ProjectKey) => (submitted && errors[key] ? { _type: 'error' as const, _description: errors[key]! } : undefined);
 	const list = (Object.keys(errors) as ProjectKey[]).map((key) => ({ message: errors[key]!, selector: `#project-${key}` }));
+	const [formRef, focusErrors] = useFormErrorFocus();
 	return (
 		<>
 			<FinkPageHeader _heading={t('Vorhaben und Finanzierung')} _description={t('Beschreiben Sie, was Sie mit der Förderung umsetzen möchten.')} />
 			<KolForm
+				ref={formRef}
 				_requiredText
 				_errorList={submitted ? list : []}
 				_on={{
 					onSubmit: () => {
 						setSubmitted(true);
 						if (list.length === 0) back();
+						else focusErrors();
 					},
 				}}
 			>

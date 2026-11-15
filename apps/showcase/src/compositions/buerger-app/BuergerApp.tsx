@@ -213,7 +213,7 @@ function InboxTab() {
 						<li key={m.id}>
 							<KolButton
 								className={m.read ? '' : 'unread'}
-								_label={`${m.read ? '' : '● '}${m.subject} – ${m.from}`}
+								_label={m.read ? `${m.subject} – ${m.from}` : t('{{subject}} – {{from}} (ungelesen)', { subject: m.subject, from: m.from })}
 								_variant="ghost"
 								_on={{
 									onClick: () => {
@@ -252,11 +252,11 @@ export function BuergerApp() {
 	const unread = state.messages.filter((m) => !m.read).length;
 	return (
 		<div className="phone-page">
-			<div className="phone-intro">
+			<aside className="phone-intro" aria-label={t('Über diese Komposition')}>
 				<KolLinkButton _label={t('Alle Kompositionen')} _href="#/compositions" _icons="codicon codicon-arrow-left" _variant="tertiary" />
 				<p className="muted small">{t('Mobile Ansicht im Stil von Material Design 3: Bottom Navigation, Bottom Sheet, Snackbar und Banner.')}</p>
-			</div>
-			<div className="phone" role="region" aria-label={t('Bürger-App (Demo)')}>
+			</aside>
+			<div className="phone">
 				<KolSkipNav
 					_label={t('Sprunglinks')}
 					_links={[

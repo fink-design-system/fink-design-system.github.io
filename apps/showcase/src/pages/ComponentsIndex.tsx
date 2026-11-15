@@ -61,7 +61,7 @@ export function ComponentsIndex() {
 									{entry.category}
 								</span>
 							</span>
-							<h3>{entry.name}</h3>
+							<h2>{entry.name}</h2>
 							<p>{entry.summary}</p>
 							<span className="tag">&lt;{entry.tag}&gt;</span>
 						</a>

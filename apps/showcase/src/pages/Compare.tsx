@@ -30,9 +30,9 @@ export function Compare() {
 				_description={t('Wie viel von dem, was die großen Design-Systeme bieten, deckt Fink ab? Die Zeilen sind nach Verbreitung geordnet – von Bausteinen, die jede Anwendung braucht, bis zu Spezialfällen. KoliBri zuerst, Fink für die Lücken.')}
 			/>
 			<FinkGrid _min="9.5rem">
-				<FinkStatCard _label={t('Fink gesamt')} _value={`${coverageOf('fink')} / ${total}`} _icons="codicon codicon-pass-filled" _tone="brand" />
+				<FinkStatCard _level={2} _label={t('Fink gesamt')} _value={`${coverageOf('fink')} / ${total}`} _icons="codicon codicon-pass-filled" _tone="brand" />
 				{systems.map((system) => (
-					<FinkStatCard key={system.key} _label={system.label} _value={`${coverageOf(system.key)} / ${total}`} _icons="codicon codicon-symbol-class" _tone="neutral" />
+					<FinkStatCard _level={2} key={system.key} _label={system.label} _value={`${coverageOf(system.key)} / ${total}`} _icons="codicon codicon-symbol-class" _tone="neutral" />
 				))}
 			</FinkGrid>
 			<p className="muted small compare-note">
@@ -58,7 +58,7 @@ export function Compare() {
 						const tierRows = rows.filter((row) => row.tier === tier.tier);
 						if (tierRows.length === 0) return null;
 						return (
-							<section key={tier.id} className="section" aria-labelledby={tier.id}>
+							<section key={tier.id} className="section">
 								<h2 id={tier.id}>{t(tier.title)}</h2>
 								<p className="section-intro">{t(tier.intro)}</p>
 								<div className="doc-table-wrap" tabIndex={0} role="region" aria-labelledby={tier.id}>

@@ -60,7 +60,7 @@ export class FinkSegmented {
 				<span class={{ legend: true, 'visually-hidden': !!this._hideLabel }} id="label">
 					{this._label}
 				</span>
-				<div class="segments" role="radiogroup" aria-labelledby="label" onKeyDown={(event) => this.onKeyDown(event, options)}>
+				<div class="segments" role="radiogroup" aria-labelledby="label">
 					{options.map((option) => {
 						const checked = option.value === current;
 						return (
@@ -73,6 +73,7 @@ export class FinkSegmented {
 								title={option.hideLabel ? option.label : undefined}
 								tabindex={checked ? 0 : -1}
 								onClick={() => this.select(option.value)}
+								onKeyDown={(event) => this.onKeyDown(event, options)}
 							>
 								{checked && <kol-icon class="check" _icons="codicon codicon-check" _label=""></kol-icon>}
 								{option.icon && !checked && <kol-icon _icons={option.icon} _label=""></kol-icon>}

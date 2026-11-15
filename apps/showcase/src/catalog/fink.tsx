@@ -75,7 +75,7 @@ export const finkEntries: CatalogEntry[] = [
 				title: t('Rahmen mit Navigation'),
 				plain: true,
 				render: () => (
-					<FinkAppShell _label={t('Bürgerportal')} style={{ '--fink-app-shell-min-height': '24rem', border: '1px solid var(--fink-color-mute-variant)', borderRadius: 'var(--fink-radius-md)', overflow: 'clip' } as CSSProperties}>
+					<FinkAppShell _embedded _label={t('Bürgerportal')} style={{ '--fink-app-shell-min-height': '24rem', border: '1px solid var(--fink-color-mute-variant)', borderRadius: 'var(--fink-radius-md)', overflow: 'clip' } as CSSProperties}>
 						<Logo slot="brand" />
 						<div slot="actions" className="header-tools">
 							<KolButton _label={t('Benachrichtigungen')} _hideLabel _icons="codicon codicon-bell" _variant="ghost" />

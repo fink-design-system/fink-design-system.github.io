@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, State, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Listen, Method, Prop, State, h } from '@stencil/core';
 import { formatBytes } from '../../utils/shared';
 import { getFinkLanguage, onFinkLanguageChange, t } from '../../i18n';
 
@@ -108,6 +108,26 @@ export class FinkFileUpload {
 		if (!this._disabled && event.dataTransfer?.files) this.add(event.dataTransfer.files);
 	};
 
+	/*
+	 * Ziehen und Ablegen ist eine Zusatzfunktion für Zeigegeräte; per Tastatur dient die Dateiauswahl.
+	 * Die Listener hängen am Host, nicht an einem statischen Element (WCAG 2.1.1).
+	 */
+	@Listen('dragover')
+	handleDragOver(event: DragEvent) {
+		event.preventDefault();
+		if (!this._disabled) this.dragging = true;
+	}
+
+	@Listen('dragleave')
+	handleDragLeave() {
+		this.dragging = false;
+	}
+
+	@Listen('drop')
+	handleDrop(event: DragEvent) {
+		this.onDrop(event);
+	}
+
 	render() {
 		return (
 			<div class={{ upload: true, 'upload--error': !!this._error }}>
@@ -124,15 +144,7 @@ export class FinkFileUpload {
 						{this._error}
 					</kol-alert>
 				)}
-				<div
-					class={{ zone: true, 'zone--active': this.dragging, 'zone--disabled': !!this._disabled }}
-					onDragOver={(event) => {
-						event.preventDefault();
-						if (!this._disabled) this.dragging = true;
-					}}
-					onDragLeave={() => (this.dragging = false)}
-					onDrop={this.onDrop}
-				>
+				<div class={{ zone: true, 'zone--active': this.dragging, 'zone--disabled': !!this._disabled }}>
 					<span class="zone-icon">
 						<kol-icon _icons="codicon codicon-cloud-upload" _label=""></kol-icon>
 					</span>

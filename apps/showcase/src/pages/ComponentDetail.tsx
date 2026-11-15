@@ -16,7 +16,7 @@ export function ComponentDetail({ id }: { id: string }) {
 	const entry = findEntry(id);
 	if (!entry) {
 		return (
-			<FinkEmptyState _heading={t('Komponente nicht gefunden')} _description={t('Es gibt keine Komponente mit der Kennung „{{id}}“.', { id })} _icons="codicon codicon-question">
+			<FinkEmptyState _level={1} _heading={t('Komponente nicht gefunden')} _description={t('Es gibt keine Komponente mit der Kennung „{{id}}“.', { id })} _icons="codicon codicon-question">
 				<KolLinkButton _label={t('Zur Übersicht')} _href="#/components" _variant="primary" />
 			</FinkEmptyState>
 		);

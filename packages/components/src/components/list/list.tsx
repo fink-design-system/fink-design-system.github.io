@@ -64,7 +64,10 @@ export class FinkList {
 	/** Trennlinien zwischen den Einträgen. */
 	@Prop() _dividers?: boolean = false;
 
-	/** Maximale Zeilen der Beschreibung (1 oder 2). */
+	/**
+	 * Früher: maximale Zeilen der Beschreibung.
+	 * @deprecated Ohne Wirkung – Beschreibungen werden nie mit „…“ gekürzt, sondern brechen vollständig um (WCAG 1.4.4, 1.4.12).
+	 */
 	@Prop() _lines?: 1 | 2 = 1;
 
 	/** Liefert die ID des gewählten Eintrags. */
@@ -113,9 +116,14 @@ export class FinkList {
 					if (item.href) {
 						return (
 							<li class="row">
-								<a class={cls} href={item.disabled ? undefined : item.href} aria-disabled={item.disabled ? 'true' : undefined} aria-current={selected ? 'page' : undefined} onClick={() => this._selectable && this.select(item)}>
-									{this.renderContent(item, selected)}
-								</a>
+								{item.disabled ? (
+									// Deaktivierter Link: kein Linkziel, daher kein (scheinbar bedienbares) a-Element.
+									<span class={cls}>{this.renderContent(item, selected)}</span>
+								) : (
+									<a class={cls} href={item.href} aria-current={selected ? 'page' : undefined} onClick={() => this._selectable && this.select(item)}>
+										{this.renderContent(item, selected)}
+									</a>
+								)}
 							</li>
 						);
 					}

@@ -1,5 +1,5 @@
 import { Component, Prop, State, h } from '@stencil/core';
-import { getFinkLanguage, onFinkLanguageChange } from '../../i18n';
+import { getFinkLanguage, onFinkLanguageChange, t } from '../../i18n';
 import { parseList } from '../../utils/shared';
 import type { FinkTone } from '../../utils/tone';
 
@@ -39,10 +39,10 @@ export class FinkBarChart {
 	/** Daten als Array oder JSON-String. */
 	@Prop() _data!: FinkBarDatum[] | string;
 
-	/** Spaltenüberschrift der Beschriftungen. */
+	/** Spaltenüberschrift der Beschriftungen (Standard: „Bezeichnung“). */
 	@Prop() _labelHeader?: string;
 
-	/** Spaltenüberschrift der Werte. */
+	/** Spaltenüberschrift der Werte (Standard: „Wert“). */
 	@Prop() _valueHeader?: string;
 
 	/** Einheit der Werte, z. B. „€“. */
@@ -68,8 +68,8 @@ export class FinkBarChart {
 				<caption class="caption">{this._label}</caption>
 				<thead class="visually-hidden">
 					<tr>
-						<th scope="col">{this._labelHeader ?? ''}</th>
-						<th scope="col">{this._valueHeader ?? ''}</th>
+						<th scope="col">{this._labelHeader || t('barChart.labelHeader')}</th>
+						<th scope="col">{this._valueHeader || t('barChart.valueHeader')}</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -117,25 +117,17 @@
 }
 
 .label {
-	overflow: clip;
 	font-weight: var(--fink-font-weight-medium);
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	overflow-wrap: anywhere;
+	hyphens: auto;
 }
 
+/* Texte brechen vollständig um, statt mit „…“ gekürzt zu werden (WCAG 1.4.4, 1.4.10, 1.4.12). */
 .description {
-	display: -webkit-box;
-	overflow: clip;
 	color: var(--fink-color-subtle);
 	font-size: var(--fink-type-scale-sm);
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 1;
-	line-clamp: 1;
-}
-
-.list--two-lines .description {
-	-webkit-line-clamp: 2;
-	line-clamp: 2;
+	overflow-wrap: anywhere;
+	hyphens: auto;
 }
 
 .item--selected .description {

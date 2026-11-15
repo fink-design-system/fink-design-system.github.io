@@ -1,0 +1,48 @@
+name: Barrierefreiheit (ESLint + Playwright/axe-core)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  a11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.34.5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Statische Prüfung: eslint-plugin-jsx-a11y (axe-core-Regeldaten) und Fink-Regeln gegen Ellipsis-Kürzung.
+      - run: pnpm lint
+
+      - run: pnpm build
+
+      # KoliBri-Texte passen zur installierten Version (ohne Auslassungszeichen).
+      - run: pnpm locales:check
+
+      - run: pnpm exec playwright install --with-deps chromium
+
+      # axe-core (WCAG 2.2 AA, EN 301 549 / BITV 2.0, Best Practices) über alle Routen, Sprachen, Farbschemata,
+      # 320 px und interaktive Zustände der Kompositionen.
+      - run: pnpm test:a11y
+
+      - if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 14

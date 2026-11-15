@@ -35,6 +35,7 @@ import { people, type Person } from '../../patterns/sample-data';
 import { CompositionShell } from '../CompositionShell';
 import { createStore } from '../createStore';
 import '../composition.css';
+import { useFormErrorFocus } from '../../site/useFormErrorFocus';
 
 const BASE = '/compositions/benutzer';
 const ROLES: Person['role'][] = ['Admin', 'Sachbearbeitung', 'Lesend'];
@@ -86,14 +87,16 @@ function InviteDialog({ dialogRef }: { dialogRef: React.RefObject<HTMLKolDialogE
 		setSubmitted(false);
 		void dialogRef.current?.closeModal();
 	};
+	const [formRef, focusErrors] = useFormErrorFocus();
 	return (
 		<KolDialog ref={dialogRef} _label={t('Person einladen')} _width="34rem" _variant="card" _on={{ onClose: () => setSubmitted(false) }}>
 			<KolForm
+				ref={formRef}
 				_errorList={submitted ? keys.map((k) => ({ message: errors[k]!, selector: `#invite-${k}` })) : []}
 				_on={{
 					onSubmit: () => {
 						setSubmitted(true);
-						if (keys.length) return;
+						if (keys.length) return focusErrors();
 						const person: Person = {
 							id: `u-${String(store.get().people.length + 1).padStart(3, '0')}`,
 							name: form.name.trim(),

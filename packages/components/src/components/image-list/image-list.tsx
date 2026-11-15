@@ -78,40 +78,45 @@ export class FinkImageList {
 			<div class="gallery">
 				<ul class={{ grid: true, [`grid--${variant}`]: true }} aria-label={this._label} style={{ '--cols': String(this._cols ?? 3) }}>
 					{items.map((item, i) => {
-						const figure = (
-							<figure class="figure">
-								<kol-image class="image" _src={item.src} _alt={this._lightbox ? '' : item.alt} _loading="lazy"></kol-image>
-								{this._captions && item.title && (
-									<figcaption class="caption">
-										<span class="title">{item.title}</span>
-										{item.subtitle && <span class="subtitle">{item.subtitle}</span>}
-									</figcaption>
-								)}
-							</figure>
-						);
+						const image = <kol-image class="image" _src={item.src} _alt={this._lightbox ? '' : item.alt} _loading="lazy"></kol-image>;
+						/*
+						 * Die Bildunterschrift liegt außerhalb der Schaltfläche: Sichtbarer Text muss sonst Teil des
+						 * zugänglichen Namens sein (WCAG 2.5.3), und eine figure ist kein erlaubter Inhalt eines button.
+						 */
 						return (
 							<li class="cell" style={variant === 'quilted' ? { gridColumn: `span ${item.cols ?? 1}`, gridRow: `span ${item.rows ?? 1}` } : undefined}>
-								{this._lightbox ? (
-									<button type="button" class="open" aria-label={t('imageList.open', { alt: item.alt })} onClick={() => this.open(i)}>
-										{figure}
-									</button>
-								) : (
-									figure
-								)}
+								<figure class="figure">
+									{this._lightbox ? (
+										<button type="button" class="open" aria-label={t('imageList.open', { alt: item.alt })} onClick={() => this.open(i)}>
+											{image}
+										</button>
+									) : (
+										image
+									)}
+									{this._captions && item.title && (
+										<figcaption class="caption">
+											<span class="title">{item.title}</span>
+											{item.subtitle && <span class="subtitle">{item.subtitle}</span>}
+										</figcaption>
+									)}
+								</figure>
 							</li>
 						);
 					})}
 				</ul>
 				{this._lightbox && (
-					<kol-dialog ref={(el: HTMLElement | undefined) => (this.dialog = el as Dialog)} _label={current?.title ?? current?.alt ?? this._label} _width="min(64rem, 94vw)" _variant="card">
+					<kol-dialog
+						ref={(el: HTMLElement | undefined) => (this.dialog = el as Dialog)}
+						_label={current?.title ?? current?.alt ?? this._label}
+						_width="min(64rem, 94vw)"
+						_variant="card"
+						onKeyDown={(e: KeyboardEvent) => {
+							if (e.key === 'ArrowRight') this.step(1, items.length);
+							if (e.key === 'ArrowLeft') this.step(-1, items.length);
+						}}
+					>
 						{current && (
-							<div
-								class="lightbox"
-								onKeyDown={(e) => {
-									if (e.key === 'ArrowRight') this.step(1, items.length);
-									if (e.key === 'ArrowLeft') this.step(-1, items.length);
-								}}
-							>
+							<div class="lightbox">
 								<kol-image class="large" _src={current.src} _alt={current.alt}></kol-image>
 								<div class="lightbox-bar">
 									<kol-button _label={t('imageList.prev')} _hideLabel _icons="codicon codicon-chevron-left" _variant="secondary" _on={{ onClick: () => this.step(-1, items.length) }}></kol-button>

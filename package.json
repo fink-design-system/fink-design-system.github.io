@@ -6,6 +6,24 @@
     "build": "pnpm -r build",
     "dev": "pnpm --filter @fink/showcase dev",
     "icons:sync": "pnpm --filter @fink/showcase icons:sync",
-    "icons:check": "pnpm --filter @fink/showcase icons:check"
+    "icons:check": "pnpm --filter @fink/showcase icons:check",
+    "lint": "eslint . && tsc -p tsconfig.e2e.json",
+    "test:a11y": "playwright test",
+    "test:a11y:report": "playwright show-report",
+    "check:a11y": "pnpm lint && pnpm test:a11y",
+    "locales:check": "pnpm --filter @fink/theme locales:check"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@eslint/css": "^2.0.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "^22.20.5",
+    "axe-core": "^4.14.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.72.2"
   }
 }

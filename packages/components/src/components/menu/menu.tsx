@@ -174,7 +174,7 @@ export class FinkMenu {
 				onClick={this.onTriggerClick}
 				onKeyDown={this.onTriggerKey}
 			>
-				<div class="menu" role="menu" aria-label={this._label} ref={(el) => (this.menu = el)} onKeyDown={this.onMenuKey}>
+				<div class="menu" role="menu" aria-label={this._label} tabindex="-1" ref={(el) => (this.menu = el)} onKeyDown={this.onMenuKey}>
 					{items.map((item) => {
 						if (item.type === 'divider') return <div class="divider" role="separator"></div>;
 						if (item.type === 'heading') return <div class="heading" role="presentation">{item.label}</div>;

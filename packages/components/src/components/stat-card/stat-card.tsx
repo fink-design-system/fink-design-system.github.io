@@ -42,6 +42,9 @@ export class FinkStatCard {
 	/** Icon-Klassen der Icon-Fonts, z. B. „codicon codicon-inbox“. */
 	@Prop() _icons?: string;
 
+	/** Überschriftenebene der Bezeichnung (1–6); 0 rendert keine Überschrift. Passend zur Gliederung der Seite wählen. */
+	@Prop() _level?: 0 | 1 | 2 | 3 | 4 | 5 | 6 = 3;
+
 	/** Farbton der Icon-Fläche. */
 	@Prop() _tone?: FinkTone = 'brand';
 
@@ -64,10 +67,12 @@ export class FinkStatCard {
 
 	render() {
 		const tone = normalizeTone(this._tone, 'brand');
+		const level = Number(this._level);
+		const Label = level >= 1 && level <= 6 ? `h${level}` : 'p';
 		return (
 			<article class="card">
 				<div class="head">
-					<h3 class="label">{this._label}</h3>
+					<Label class="label">{this._label}</Label>
 					{this._icons && (
 						<span class={`icon tone--${tone}`}>
 							<kol-icon _icons={this._icons} _label=""></kol-icon>

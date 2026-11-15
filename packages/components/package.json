@@ -42,10 +42,10 @@
     "dev": "stencil build --watch"
   },
   "peerDependencies": {
-    "@public-ui/components": "4.5.0"
+    "@public-ui/components": "4.6.0-rc.2"
   },
   "devDependencies": {
-    "@public-ui/components": "4.5.0",
+    "@public-ui/components": "4.6.0-rc.2",
     "@stencil/core": "4.45.3",
     "@stencil/react-output-target": "1.8.1"
   },

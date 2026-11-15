@@ -167,11 +167,11 @@ function CarouselDemo() {
 	return (
 		<FinkCarousel _label={t('Aktuelle Förderprogramme')} _perView={2} _autoplay={6000}>
 			{SLIDES.map((slide) => (
-				<article key={slide.title} className="slide-card" style={{ '--tone': `var(--fink-color-${slide.tone})` } as CSSProperties}>
+				<div key={slide.title} className="slide-card" style={{ '--tone': `var(--fink-color-${slide.tone})` } as CSSProperties}>
 					<span className={`slide-icon ${slide.icon}`} aria-hidden="true"></span>
 					<h3>{t(slide.title)}</h3>
 					<p>{t(slide.text)}</p>
-				</article>
+				</div>
 			))}
 		</FinkCarousel>
 	);
@@ -237,7 +237,7 @@ function TocDemo() {
 					{ id: 'toc-bescheid', label: t('Nach dem Bescheid') },
 				]}
 			/>
-			<div className="toc-demo-text">
+			<div className="toc-demo-text" tabIndex={0} role="region" aria-label={t('Beispieltext mit Abschnitten')}>
 				{[
 					['toc-voraussetzungen', 'Voraussetzungen'],
 					['toc-unterlagen', 'Unterlagen'],

@@ -101,18 +101,9 @@ export class FinkSplitter {
 				<div class="pane">
 					<slot name="start"></slot>
 				</div>
-				<div
-					class="handle"
-					role="separator"
-					tabindex="0"
-					aria-orientation={vertical ? 'horizontal' : 'vertical'}
-					aria-valuenow={value}
-					aria-valuemin={this._min}
-					aria-valuemax={this._max}
-					aria-label={this._label ?? t('splitter.label')}
-					onPointerDown={this.onPointerDown}
-					onKeyDown={this.onKeyDown}
-				>
+				{/* Fokussierbarer separator ist laut WAI-ARIA 1.2 ein Widget (APG „Window Splitter“); jsx-a11y kennt das nicht. */}
+				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex */}
+				<div class="handle" role="separator" tabindex="0" aria-orientation={vertical ? 'horizontal' : 'vertical'} aria-valuenow={value} aria-valuemin={this._min} aria-valuemax={this._max} aria-label={this._label ?? t('splitter.label')} onPointerDown={this.onPointerDown} onKeyDown={this.onKeyDown}>
 					<span class="grip" aria-hidden="true"></span>
 				</div>
 				<div class="pane">

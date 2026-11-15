@@ -7,7 +7,7 @@ import type * as Adapter from '@public-ui/react-v19';
  * React 19 setzt Properties eines Custom Elements, bevor es in das Dokument eingehängt wird. Damit liegen
  * komplexe Props wie _options, _links oder _suggestions bereits vor, wenn KoliBri die Komponente initialisiert,
  * und kein Watcher läuft vor componentWillLoad. Der KoliBri-Adapter (@public-ui/react-v19) setzt Props erst
- * nach dem Einhängen; bei bereits geladenen Modulen protokolliert KoliBri 4.5 dann TypeErrors.
+ * nach dem Einhängen; bei bereits geladenen Modulen protokolliert KoliBri (ab 4.5) dann TypeErrors.
  * Die Typen stammen unverändert aus dem offiziellen Adapter.
  */
 type AdapterComponents = Omit<typeof Adapter, 'createReactRenderElement' | 'setTagNameTransformer'>;
@@ -57,7 +57,6 @@ export const KolProgress = wrap('kol-progress', 'KolProgress');
 export const KolQuote = wrap('kol-quote', 'KolQuote');
 export const KolSelect = wrap('kol-select', 'KolSelect');
 export const KolSingleSelect = wrap('kol-single-select', 'KolSingleSelect');
-export const KolSkeleton = wrap('kol-skeleton', 'KolSkeleton');
 export const KolSkipNav = wrap('kol-skip-nav', 'KolSkipNav');
 export const KolSpin = wrap('kol-spin', 'KolSpin');
 export const KolSplitButton = wrap('kol-split-button', 'KolSplitButton');
