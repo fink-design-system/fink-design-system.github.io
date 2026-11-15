@@ -80,7 +80,7 @@ function FormDemo() {
 				_msg={touched && name.trim().length < 3 ? { _type: 'error', _description: t('Bitte mindestens 3 Zeichen eingeben.') } : undefined}
 				_on={{ onInput: (_e, value) => setName(String(value ?? '')), onBlur: () => setTouched(true) }}
 			/>
-			<KolInputEmail _label={t('E-Mail-Adresse')} _hint={t('Für Rückfragen zum Antrag')} _placeholder={t('name@beispiel.de')} />
+			<KolInputEmail _label={t('E-Mail-Adresse')} _hint={t('Für Rückfragen zum Antrag')} _placeholder={t('name@example.org')} />
 			<KolSingleSelect
 				_label={t('Bundesland')}
 				_options={STATE_OPTIONS}

@@ -42,7 +42,7 @@ function ListDemo() {
 				_items={[
 					{ id: 'm1', label: t('Rückfrage zu FD-2026-0142'), description: t('Bitte reichen Sie den Kostenvoranschlag als PDF nach, damit wir den Antrag prüfen können.'), avatar: { label: 'Jonas Weber' }, meta: '09:14' },
 					{ id: 'm2', label: t('Bescheid verfügbar'), description: t('Ihr Bescheid zum Förderprogramm Klimaschutz steht zum Download bereit.'), avatar: { label: 'Förderportal' }, meta: t('Gestern') },
-					{ id: 'm3', label: t('Termin bestätigt'), description: t('Wohnsitz anmelden am 21. November, 09:30 Uhr im Bürgeramt Mitte.'), avatar: { label: 'Bürgeramt Mitte' }, meta: '12.11.' },
+					{ id: 'm3', label: t('Termin bestätigt'), description: t('Wohnsitz anmelden am 21. November, 09:30 Uhr im Bürgeramt Musterstadt.'), avatar: { label: 'Bürgeramt Musterstadt' }, meta: '12.11.' },
 				]}
 			/>
 		</div>
@@ -300,7 +300,7 @@ const IMAGES = [
 	{ src: art('#ffd1a8', '#9a4500', '#ffef9e', 500), alt: 'Abendstimmung', title: 'Kulturnacht', subtitle: 'Kultur vor Ort' },
 	{ src: art('#c9a7ff', '#5b2fa8', '#ffe1f0', 760), alt: 'Violette Landschaft', title: 'Innovationszentrum', subtitle: 'Forschung', cols: 2 },
 	{ src: art('#8cc4ff', '#0b5cad', '#e6f4ff', 640), alt: 'Blaue Berge', title: 'Hafen', subtitle: 'Mobilität' },
-	{ src: art('#ffab91', '#b4232c', '#fff0e6', 820), alt: 'Rote Hügel', title: 'Bürgeramt Mitte', subtitle: 'Service' },
+	{ src: art('#ffab91', '#b4232c', '#fff0e6', 820), alt: 'Rote Hügel', title: 'Bürgeramt Musterstadt', subtitle: 'Service' },
 ];
 
 function ImageListDemo() {

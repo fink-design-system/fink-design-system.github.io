@@ -303,7 +303,7 @@ function ContactView() {
 	const [formRef, focusErrors] = useFormErrorFocus();
 	const errors: Partial<Record<keyof typeof form, string>> = {};
 	if (form.name.trim().length < 2) errors.name = t('Geben Sie Ihren Namen ein');
-	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = t('Geben Sie eine E-Mail-Adresse im Format name@beispiel.de ein');
+	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = t('Geben Sie eine E-Mail-Adresse im Format name@example.org ein');
 	if (!form.topic) errors.topic = t('Wählen Sie ein Thema');
 	if (form.message.trim().length < 20) errors.message = t('Beschreiben Sie Ihr Anliegen in mindestens 20 Zeichen');
 	const keys = Object.keys(errors) as Array<keyof typeof form>;

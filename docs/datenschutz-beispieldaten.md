@@ -25,22 +25,23 @@ Behörden, Domains oder Telefonanschlüsse treffen.
   Fantasienamen in Großstädten. Reale Körperschaften wie Gemeinde Waldbrunn, Gemeinde Hohenfels, Amt Seenland und
   Stadtwerke Talheim wurden durch Musternamen ersetzt. Das war besonders wichtig, weil einige davon den Status
   „Abgelehnt“ hatten.
+- In Komponenten, Platzhaltern, Fehlertexten und i18n-Dateien steht `beispiel.de` bzw. `example.com` jetzt einheitlich als
+  `example.org`, die deutschen Übersetzungsschlüssel in `i18n/en/site*.ts` wurden mitgezogen. Nebeneffekt: Die
+  Login-Demo in `patterns/forms.tsx` funktioniert jetzt auch auf Englisch. Vorher zeigte der englische Hinweis
+  `erika@example.com`, geprüft wurde aber `erika@beispiel.de`.
+- Telefonnummer in `compositions/konto/KontoApp.tsx`: `030 1234567` → `030 23125 123`. Das ist der Bereich, den die
+  Bundesnetzagentur für Medienproduktionen reserviert hat („Drama Numbers“, Berlin: 030 23125 000–999, geprüft auf
+  bundesnetzagentur.de).
+- „Bürgeramt Mitte“ (eine reale Berliner Behörde) → „Bürgeramt Musterstadt“ in `BuergerApp.tsx`, `catalog/fink-more.tsx`
+  und den englischen Übersetzungen.
 
-## Offene Funde (bewusst zurückgestellt)
+## Bewusst unverändert
 
-Diese Stellen liegen in Komponenten- oder i18n-Dateien, die gerade für die Barrierefreiheit überarbeitet werden.
-Um Merge-Konflikte zu vermeiden, werden sie erst danach angepasst.
-
-| Fund | Fundstelle | Vorschlag |
-| --- | --- | --- |
-| `beispiel.de` in Sample-Mails | `compositions/konto/KontoApp.tsx` (Profil, Login-Vorbelegung), `compositions/buerger-app/BuergerApp.tsx:238` | `erika.mustermann@example.org` |
-| `beispiel.de` in Platzhaltern und Fehlertexten | `compositions/online-antrag/OnlineAntragApp.tsx:77`, `compositions/hilfe/HilfeApp.tsx:304`, `patterns/forms.tsx`, `catalog/*.tsx` | `name@example.org`. **Die deutschen i18n-Schlüssel in `i18n/en/site*.ts` mitziehen**, sonst fehlt die Übersetzung |
-| `example.com` in englischen Übersetzungen | `i18n/en/site*.ts` | auf `example.org` vereinheitlichen (optional, `example.com` ist ebenfalls reserviert) |
-| Telefonnummer `030 1234567` liegt in einem regulär vergebbaren Berliner Nummernbereich | `compositions/konto/KontoApp.tsx:42` | `030 23125 123` (BNetzA-Medienbereich, vorher prüfen) |
-| „Bürgeramt Mitte“ ist eine reale Berliner Behörde | `compositions/buerger-app/BuergerApp.tsx:62, 90` und die i18n-Schlüssel | „Bürgeramt Musterstadt“ |
-| Sitzungsorte „Berlin“ und „Potsdam“ im Konto | `compositions/konto/KontoApp.tsx` | unkritisch (Großstädte), optional so lassen |
-| Kontaktnamen in Katalog-Demos (Malik Yilmaz, Petra Lang, Klara Vogt) | `catalog/fink-more.tsx:15–18` | unkritisch, weil ohne Organisationsbezug |
-| Firmennamen in Katalog-Demos (Mühlenwerk GmbH, Sonnentau eG, Kranich & Söhne KG, Lindenhof Bäckerei) | `catalog/fink-more.tsx:430–432`, `catalog/kolibri.tsx:102–105`, `KontoApp.tsx:42` | generisch und konsistent mit `foerderportal/data.ts`. Optional später durch Kunstwörter ersetzen |
+| Stelle | Begründung |
+| --- | --- |
+| Sitzungsorte „Berlin“ und „Potsdam“ in `KontoApp.tsx` | Großstädte, ohne Personenbezug |
+| Kontaktnamen in Katalog-Demos (Malik Yilmaz, Petra Lang, Klara Vogt) | häufige Namen ohne Organisationsbezug |
+| Firmennamen Mühlenwerk GmbH, Sonnentau eG, Kranich & Söhne KG, Lindenhof Bäckerei in `catalog/*.tsx` und `KontoApp.tsx` | generisch, nicht mit einem Ort verknüpft und konsistent mit `foerderportal/data.ts` |
 
 ## Geprüft und unkritisch
 

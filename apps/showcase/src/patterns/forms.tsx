@@ -72,7 +72,7 @@ function ValidationDemo() {
 	const toast = useToast();
 	const errors: Partial<Record<Field, string>> = {};
 	if (values.name.trim().length < 2) errors.name = t('Geben Sie Ihren vollständigen Namen ein');
-	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) errors.email = t('Geben Sie eine E-Mail-Adresse im richtigen Format ein, z. B. name@beispiel.de');
+	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) errors.email = t('Geben Sie eine E-Mail-Adresse im richtigen Format ein, z. B. name@example.org');
 	if (!/^DE\d{20}$/.test(values.iban.replace(/\s/g, ''))) errors.iban = t('Geben Sie eine deutsche IBAN mit 22 Zeichen ein, beginnend mit DE');
 	const list = (Object.keys(errors) as Field[]).map((field) => ({ message: errors[field]!, selector: `#field-${field}` }));
 	const msg = (field: Field) => (submitted && errors[field] ? { _type: 'error' as const, _description: errors[field]! } : undefined);
@@ -109,7 +109,7 @@ function LoginDemo() {
 	const [codeError, setCodeError] = useState<string>();
 	const submit = () => {
 		setState('loading');
-		window.setTimeout(() => setState(email === 'erika@beispiel.de' && password === 'fink' ? 'code' : 'error'), 900);
+		window.setTimeout(() => setState(email === 'erika@example.org' && password === 'fink' ? 'code' : 'error'), 900);
 	};
 	if (state === 'code') {
 		return (
@@ -152,7 +152,7 @@ function LoginDemo() {
 						<KolSpin _show={state === 'loading'} _label={t('Anmeldung läuft')} />
 					</FinkStack>
 					<p className="small muted">
-						{t('Demo:')} <code>{t('erika@beispiel.de')}</code> / <code>{t('fink')}</code> · <a href="#/patterns/login">{t('Passwort vergessen?')}</a>
+						{t('Demo:')} <code>{t('erika@example.org')}</code> / <code>{t('fink')}</code> · <a href="#/patterns/login">{t('Passwort vergessen?')}</a>
 					</p>
 				</FinkStack>
 			</KolForm>

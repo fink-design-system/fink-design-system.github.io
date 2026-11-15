@@ -40,7 +40,7 @@ interface Account {
 const initial = (): Account => ({
 	loggedIn: false,
 	deleted: false,
-	profile: { name: 'Erika Mustermann', email: 'erika@beispiel.de', phone: '030 1234567', organisation: 'Mühlenwerk GmbH' },
+	profile: { name: 'Erika Mustermann', email: 'erika@example.org', phone: '030 23125 123', organisation: 'Mühlenwerk GmbH' },
 	prefs: { status: true, deadlines: true, newsletter: false, frequency: 'instant' },
 	twoFactor: false,
 	sessions: [
@@ -53,7 +53,7 @@ const initial = (): Account => ({
 const store = createStore<Account>('konto', initial);
 
 function Login() {
-	const [email, setEmail] = useState('erika@beispiel.de');
+	const [email, setEmail] = useState('erika@example.org');
 	const [password, setPassword] = useState('');
 	const [state, setState] = useState<'idle' | 'loading' | 'error'>('idle');
 	const [attempts, setAttempts] = useState(0);

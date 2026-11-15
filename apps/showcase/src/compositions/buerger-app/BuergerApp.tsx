@@ -59,7 +59,7 @@ const store = createStore<AppState>('buerger-app', () => ({
 	tab: 'home',
 	appointments: [{ id: 1, service: t('Wohnsitz anmelden'), date: '2026-11-21', time: '09:30' }],
 	messages: [
-		{ id: 3, from: t('Bürgeramt Mitte'), subject: t('Terminbestätigung'), body: t('Ihr Termin am 21.11. um 09:30 Uhr ist bestätigt. Bitte bringen Sie Ihren Ausweis mit.'), read: false },
+		{ id: 3, from: t('Bürgeramt Musterstadt'), subject: t('Terminbestätigung'), body: t('Ihr Termin am 21.11. um 09:30 Uhr ist bestätigt. Bitte bringen Sie Ihren Ausweis mit.'), read: false },
 		{ id: 2, from: t('Kfz-Zulassung'), subject: t('Dokument bereit'), body: t('Ihre Zulassungsbescheinigung liegt zur Abholung bereit.'), read: false },
 		{ id: 1, from: t('Servicekonto'), subject: t('Willkommen'), body: t('Ihr Servicekonto ist eingerichtet.'), read: true },
 	],
@@ -87,7 +87,7 @@ function HomeTab() {
 					<FinkStack _gap="2">
 						<strong>{next.service}</strong>
 						<span className="muted small">
-							{dateLabel(next.date)} · {next.time} · {t('Bürgeramt Mitte')}
+							{dateLabel(next.date)} · {next.time} · {t('Bürgeramt Musterstadt')}
 						</span>
 						<KolButton _label={t('Alle Termine')} _variant="secondary" _on={{ onClick: () => set((s) => ({ ...s, tab: 'appointments' })) }} />
 					</FinkStack>
@@ -235,7 +235,7 @@ function ProfileTab() {
 	return (
 		<FinkStack _gap="4">
 			<h1 className="phone-title">{t('Profil')}</h1>
-			<FinkSummaryList _readOnly _items={[{ key: t('Name'), value: 'Erika Mustermann' }, { key: t('E-Mail-Adresse'), value: 'erika@beispiel.de' }]} />
+			<FinkSummaryList _readOnly _items={[{ key: t('Name'), value: 'Erika Mustermann' }, { key: t('E-Mail-Adresse'), value: 'erika@example.org' }]} />
 			<KolInputCheckbox _variant="switch" _label={t('Push-Mitteilungen')} _checked={state.push} _on={{ onChange: (_e, v) => set((s) => ({ ...s, push: Boolean(v) })) }} />
 			<KolInputCheckbox _variant="switch" _label={t('Terminerinnerung am Vortag')} _checked={state.reminder} _on={{ onChange: (_e, v) => set((s) => ({ ...s, reminder: Boolean(v) })) }} />
 			<FinkStack _direction="row" _gap="2">

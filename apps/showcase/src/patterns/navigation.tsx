@@ -31,7 +31,7 @@ function AccountMenu() {
 				<p className="menu-head">
 					<strong>{t('Erika Mustermann')}</strong>
 					<br />
-					<span className="muted small">{t('erika@beispiel.de')}</span>
+					<span className="muted small">{t('erika@example.org')}</span>
 				</p>
 				<KolButton _label={t('Profil')} _icons="codicon codicon-person" _variant="ghost" />
 				<KolButton _label={t('Einstellungen')} _icons="codicon codicon-settings-gear" _variant="ghost" />
