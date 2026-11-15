@@ -44,7 +44,7 @@ function AccountMenu() {
 function AppBarDemo() {
 	return (
 		<div style={frame}>
-			<FinkAppShell _label={t('Bürgerportal')} style={{ '--fink-app-shell-min-height': '22rem' } as CSSProperties}>
+			<FinkAppShell _embedded _label={t('Bürgerportal')} style={{ '--fink-app-shell-min-height': '22rem' } as CSSProperties}>
 				<span slot="brand" className="brand-mark" aria-hidden="true">
 					<span className="codicon codicon-home"></span>
 				</span>

@@ -13,7 +13,8 @@ export interface FinkVirtualItem {
  * Liste mit sehr vielen Einträgen, von denen nur die sichtbaren gerendert werden
  * (Vuetify „v-virtual-scroll“, MUI-Rezept „Virtualized List“, Ant „List virtual“).
  * Jede Zeile trägt aria-setsize und aria-posinset, damit Screenreader die Gesamtlänge kennen;
- * die Liste ist per Tastatur scrollbar, Pos1/Ende springen an Anfang und Ende.
+ * die Liste ist per Tastatur scrollbar (Pfeiltasten, Bild auf/ab, Pos1/Ende).
+ * Zeilen dürfen umbrechen: Ihre Höhe wird gemessen, Text wird nie mit „…“ gekürzt (WCAG 1.4.4, 1.4.12).
  */
 @Component({
 	tag: 'fink-virtual-list',
@@ -41,7 +42,7 @@ export class FinkVirtualList {
 	/** Einträge als Array oder JSON-String. */
 	@Prop() _items!: FinkVirtualItem[] | string;
 
-	/** Feste Zeilenhöhe in Pixeln. */
+	/** Geschätzte Mindesthöhe einer Zeile in Pixeln; die tatsächliche Höhe wird gemessen. */
 	@Prop() _itemHeight?: number = 56;
 
 	/** Sichtbare Höhe der Liste (CSS-Länge). */
@@ -55,9 +56,28 @@ export class FinkVirtualList {
 
 	@State() scrollTop = 0;
 	@State() viewportHeight = 384;
+	/** Erhöht sich, wenn gemessene Zeilenhöhen von der Schätzung abweichen. */
+	@State() measured = 0;
+
+	/** Gemessene Zeilenhöhen nach ID. */
+	private readonly heights = new Map<string, number>();
 
 	componentDidLoad() {
 		if (this.viewport) this.viewportHeight = this.viewport.clientHeight;
+	}
+
+	componentDidRender() {
+		if (!this.viewport) return;
+		let changed = false;
+		this.viewport.querySelectorAll<HTMLElement>('li[data-id]').forEach((row) => {
+			const id = row.dataset.id!;
+			const height = row.offsetHeight;
+			if (height && this.heights.get(id) !== height) {
+				this.heights.set(id, height);
+				changed = true;
+			}
+		});
+		if (changed) this.measured++;
 	}
 
 	private readonly onScroll = () => {
@@ -66,23 +86,26 @@ export class FinkVirtualList {
 		this.viewportHeight = this.viewport.clientHeight;
 	};
 
-	private readonly onKeyDown = (event: KeyboardEvent) => {
-		if (!this.viewport) return;
-		if (event.key === 'Home') {
-			event.preventDefault();
-			this.viewport.scrollTop = 0;
-		} else if (event.key === 'End') {
-			event.preventDefault();
-			this.viewport.scrollTop = this.viewport.scrollHeight;
-		}
-	};
-
 	render() {
 		const items = parseList<FinkVirtualItem>(this._items);
-		const rowHeight = this._itemHeight ?? 56;
+		const estimate = this._itemHeight ?? 56;
 		const overscan = this._overscan ?? 6;
-		const start = Math.max(0, Math.floor(this.scrollTop / rowHeight) - overscan);
-		const end = Math.min(items.length, Math.ceil((this.scrollTop + this.viewportHeight) / rowHeight) + overscan);
+		// Versatz jeder Zeile aus gemessenen (sonst geschätzten) Höhen.
+		const offsets = new Array<number>(items.length + 1);
+		offsets[0] = 0;
+		items.forEach((item, i) => (offsets[i + 1] = offsets[i] + (this.heights.get(item.id) ?? estimate)));
+		const indexAt = (y: number) => {
+			let lo = 0;
+			let hi = items.length;
+			while (lo < hi) {
+				const mid = (lo + hi) >> 1;
+				if (offsets[mid + 1] <= y) lo = mid + 1;
+				else hi = mid;
+			}
+			return lo;
+		};
+		const start = Math.max(0, indexAt(this.scrollTop) - overscan);
+		const end = Math.min(items.length, indexAt(this.scrollTop + this.viewportHeight) + 1 + overscan);
 		const visible = items.slice(start, end);
 		return (
 			<div class="wrap">
@@ -91,12 +114,11 @@ export class FinkVirtualList {
 					style={{ height: this._height ?? '24rem' }}
 					ref={(el) => (this.viewport = el)}
 					onScroll={this.onScroll}
-					onKeyDown={this.onKeyDown}
 					tabindex="0"
 					role="region"
 					aria-label={t('virtualList.region', { label: this._label, count: items.length })}
 				>
-					<ul class="list" role="list" aria-label={this._label} style={{ height: `${items.length * rowHeight}px` }}>
+					<ul class="list" role="list" aria-label={this._label} style={{ height: `${offsets[items.length]}px` }}>
 						{visible.map((item, i) => {
 							const index = start + i;
 							return (
@@ -105,8 +127,9 @@ export class FinkVirtualList {
 									role="listitem"
 									aria-setsize={items.length}
 									aria-posinset={index + 1}
-									style={{ top: `${index * rowHeight}px`, height: `${rowHeight}px` }}
+									style={{ top: `${offsets[index]}px`, minHeight: `${estimate}px` }}
 									key={item.id}
+									data-id={item.id}
 								>
 									<button type="button" class="item" onClick={() => this.finkSelect.emit(item.id)}>
 										<span class="text">

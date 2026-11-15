@@ -109,7 +109,7 @@ export class FinkCodeBlock {
 			<div class="block">
 				<div class="bar">
 					{showTabs ? (
-						<div class="tabs" role="tablist" aria-label={t('codeBlock.variants')} onKeyDown={(event) => this.onTabKey(event, tabs.length)}>
+						<div class="tabs" role="tablist" aria-label={t('codeBlock.variants')}>
 							{tabs.map((t, i) => (
 								<button
 									id={`${this.id}-tab-${i}`}
@@ -120,6 +120,7 @@ export class FinkCodeBlock {
 									aria-controls={`${this.id}-panel`}
 									tabindex={i === index ? 0 : -1}
 									onClick={() => (this.active = i)}
+									onKeyDown={(event) => this.onTabKey(event, tabs.length)}
 								>
 									{t.label}
 								</button>
@@ -144,8 +145,9 @@ export class FinkCodeBlock {
 				<pre
 					id={`${this.id}-panel`}
 					class={{ pre: true, 'pre--numbers': !!this._lineNumbers }}
-					role={showTabs ? 'tabpanel' : undefined}
+					role={showTabs ? 'tabpanel' : 'region'}
 					aria-labelledby={showTabs ? `${this.id}-tab-${index}` : undefined}
+					aria-label={showTabs ? undefined : t('codeBlock.region', { name: tab.filename ?? tab.language })}
 					tabindex="0"
 					style={this._maxHeight ? { maxHeight: this._maxHeight } : undefined}
 				>

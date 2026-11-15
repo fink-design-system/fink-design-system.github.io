@@ -1,4 +1,4 @@
-import { Component, Element, Prop, State, h } from '@stencil/core';
+import { Component, Element, Listen, Prop, State, h } from '@stencil/core';
 import { getFinkLanguage, onFinkLanguageChange, t } from '../../i18n';
 
 /**
@@ -63,7 +63,8 @@ export class FinkCarousel {
 		const slides = this.slides();
 		this.count = slides.length;
 		slides.forEach((slide, i) => {
-			slide.setAttribute('role', 'group');
+			// Generische Elemente werden zur Folie (APG-Karussell); article, li usw. behalten ihre eigene Rolle.
+			if (slide.localName === 'div' || slide.localName === 'span') slide.setAttribute('role', 'group');
 			slide.setAttribute('aria-roledescription', t('carousel.slide'));
 			slide.setAttribute('aria-label', t('carousel.position', { index: i + 1, count: slides.length }));
 		});
@@ -104,6 +105,19 @@ export class FinkCarousel {
 		this.schedule();
 	}
 
+	/** Automatisches Weiterschalten pausiert bei Zeiger oder Fokus im Karussell (WCAG 2.2.2). */
+	@Listen('mouseenter')
+	@Listen('focusin')
+	handlePause() {
+		this.hovered = true;
+	}
+
+	@Listen('mouseleave')
+	@Listen('focusout')
+	handleResume() {
+		this.hovered = false;
+	}
+
 	render() {
 		const perView = Math.max(1, this._perView ?? 1);
 		return (
@@ -112,10 +126,6 @@ export class FinkCarousel {
 				aria-roledescription={t('carousel.carousel')}
 				aria-label={this._label}
 				style={{ '--per-view': String(perView) }}
-				onMouseEnter={() => (this.hovered = true)}
-				onMouseLeave={() => (this.hovered = false)}
-				onFocusin={() => (this.hovered = true)}
-				onFocusout={() => (this.hovered = false)}
 			>
 				<div class="controls">
 					{(this._autoplay ?? 0) > 0 && (
@@ -133,7 +143,8 @@ export class FinkCarousel {
 					<kol-button _label={t('carousel.prev')} _hideLabel _icons="codicon codicon-chevron-left" _variant="secondary" _on={{ onClick: () => this.go(this.index - 1) }}></kol-button>
 					<kol-button _label={t('carousel.next')} _hideLabel _icons="codicon codicon-chevron-right" _variant="secondary" _on={{ onClick: () => this.go(this.index + 1) }}></kol-button>
 				</div>
-				<div class="viewport" ref={(el) => (this.viewport = el)} aria-live={this.playing ? 'off' : 'polite'}>
+				{/* Scrollbarer Bereich: per Tastatur erreichbar und mit Pfeiltasten scrollbar (WCAG 2.1.1). */}
+				<div class="viewport" ref={(el) => (this.viewport = el)} role="region" aria-label={t('carousel.slides')} tabindex="0" aria-live={this.playing ? 'off' : 'polite'}>
 					<slot onSlotchange={this.setupSlides}></slot>
 				</div>
 				{this.count > 1 && (

@@ -35,7 +35,7 @@ function Sample() {
 				<KolButton _label={t('Sekundär')} _variant="secondary" />
 				<KolButton _label={t('Löschen')} _variant="danger" />
 			</FinkStack>
-			<KolInputText _label={t('Aktenzeichen')} _placeholder={t('FD-2026-…')} _hint={t('Steht auf dem Bescheid')} />
+			<KolInputText _label={t('Aktenzeichen')} _placeholder={t('z. B. FD-2026-0142')} _hint={t('Steht auf dem Bescheid')} />
 			<KolSingleSelect _label={t('Programm')} _options={PROGRAM_OPTIONS} _value="dig" />
 			<KolAlert _type="info" _variant="card" _label={t('Hinweis')}>
 				{t('Gleiche Komponenten, anderes Theme.')}

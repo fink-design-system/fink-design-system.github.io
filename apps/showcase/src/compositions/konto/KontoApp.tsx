@@ -24,6 +24,7 @@ import { CompositionShell } from '../CompositionShell';
 import { createStore } from '../createStore';
 import '../composition.css';
 import { t } from '../../i18n';
+import { useFormErrorFocus } from '../../site/useFormErrorFocus';
 
 const BASE = '/compositions/konto';
 
@@ -69,7 +70,7 @@ function Login() {
 	};
 	return (
 		<div className="login-wrap">
-			<FinkPanel _heading={t('Anmelden')} _description={t('Melden Sie sich mit Ihrem Servicekonto an.')}>
+			<FinkPanel _heading={t('Anmelden')} _level={1} _description={t('Melden Sie sich mit Ihrem Servicekonto an.')}>
 				<KolForm _on={{ onSubmit: submit }}>
 					<FinkStack _gap="4">
 						{state === 'error' && (
@@ -206,17 +207,19 @@ function SecurityView({ account }: { account: Account }) {
 	};
 	const list = (Object.entries(errors) as Array<[keyof typeof errors, string | undefined]>).filter(([, m]) => m).map(([k, m]) => ({ message: m!, selector: `#pw-${k}` }));
 	const msg = (k: keyof typeof errors) => (touched && errors[k] ? { _type: 'error' as const, _description: errors[k]! } : undefined);
+	const [formRef, focusErrors] = useFormErrorFocus();
 	return (
 		<>
 			<FinkPageHeader _heading={t('Sicherheit')} _description={t('Passwort, Zwei-Faktor-Anmeldung und aktive Sitzungen.')} />
 			<FinkStack _gap="5">
 				<FinkPanel _heading={t('Passwort ändern')}>
 					<KolForm
+						ref={formRef}
 						_errorList={touched ? list : []}
 						_on={{
 							onSubmit: () => {
 								setTouched(true);
-								if (list.length) return;
+								if (list.length) return focusErrors();
 								setPw({ current: '', next: '', repeat: '' });
 								setTouched(false);
 								toast.show({ type: 'success', label: t('Passwort geändert'), description: t('Andere Sitzungen wurden abgemeldet.') });

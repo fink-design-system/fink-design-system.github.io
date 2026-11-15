@@ -6,3 +6,5 @@ www
 *.log
 .DS_Store
 apps/showcase/public/assets
+test-results
+playwright-report

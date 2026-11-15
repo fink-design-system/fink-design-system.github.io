@@ -17,7 +17,7 @@ export function CompositionsIndex() {
 							<span className={`pattern-icon ${c.icon}`} aria-hidden="true"></span>
 							<span className="source-chip">{c.patterns.length} Patterns</span>
 						</span>
-						<h3>{c.title}</h3>
+						<h2>{c.title}</h2>
 						<p>{c.summary}</p>
 						<span className="chip-row">
 							{c.patterns.map((n) => {

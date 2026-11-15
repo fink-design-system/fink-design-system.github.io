@@ -18,11 +18,11 @@ export function Reuse() {
 				_description={t('Fink ergänzt KoliBri, statt es nachzubauen. Wo KoliBri eine Komponente hat, wird sie direkt oder als Innenleben genutzt. Eigene Fink-Komponenten schließen nur echte Lücken.')}
 			/>
 			<FinkGrid _min="9.5rem">
-				<FinkStatCard _label={t('KoliBri-Komponenten genutzt')} _value={`${usedCount} / ${kolibriTags.length}`} _icons="codicon codicon-pass" _tone="success" />
-				<FinkStatCard _label={t('KoliBri-Komponenten direkt in Patterns')} _value={String(kolUsedInPatterns.size)} _icons="codicon codicon-symbol-misc" _tone="success" />
-				<FinkStatCard _label={t('KoliBri-Komponenten in Fink verbaut')} _value={String(kolInFink.size)} _icons="codicon codicon-references" _tone="info" />
-				<FinkStatCard _label={t('Fink-Komponenten')} _value={String(fink.length)} _icons="codicon codicon-extensions" />
-				<FinkStatCard _label={t('davon in Patterns genutzt')} _value={String(finkUsedInPatterns.size)} _icons="codicon codicon-graph" _tone="warning" />
+				<FinkStatCard _level={2} _label={t('KoliBri-Komponenten genutzt')} _value={`${usedCount} / ${kolibriTags.length}`} _icons="codicon codicon-pass" _tone="success" />
+				<FinkStatCard _level={2} _label={t('KoliBri-Komponenten direkt in Patterns')} _value={String(kolUsedInPatterns.size)} _icons="codicon codicon-symbol-misc" _tone="success" />
+				<FinkStatCard _level={2} _label={t('KoliBri-Komponenten in Fink verbaut')} _value={String(kolInFink.size)} _icons="codicon codicon-references" _tone="info" />
+				<FinkStatCard _level={2} _label={t('Fink-Komponenten')} _value={String(fink.length)} _icons="codicon codicon-extensions" />
+				<FinkStatCard _level={2} _label={t('davon in Patterns genutzt')} _value={String(finkUsedInPatterns.size)} _icons="codicon codicon-graph" _tone="warning" />
 			</FinkGrid>
 
 			<section className="section" aria-labelledby="rules">

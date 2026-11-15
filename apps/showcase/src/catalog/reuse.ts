@@ -26,7 +26,7 @@ const base: Record<string, ReuseInfo> = {
 	'fink-selection-bar': { kind: 'Komposition', buildsOn: ['kol-button'], reason: 'Aktionsleiste für Mehrfachauswahl mit Live-Region.' },
 	'fink-summary-list': { kind: 'Muster-Baustein', buildsOn: ['kol-button-link'], reason: 'Schlüssel-Wert-Liste („Antworten prüfen“) gibt es in KoliBri nicht.' },
 	'fink-timeline': { kind: 'Muster-Baustein', buildsOn: ['kol-icon'], reason: 'Chronologischer Verlauf gibt es in KoliBri nicht.' },
-	'fink-skeleton': { kind: 'Muster-Baustein', buildsOn: [], reason: 'Lade-Platzhalter; kol-skeleton ist eine Demo-Komponente der Komponentenstruktur, kein Ladezustand.' },
+	'fink-skeleton': { kind: 'Muster-Baustein', buildsOn: [], reason: 'Lade-Platzhalter; KoliBri hat keinen Ladezustands-Platzhalter (kol-skeleton war nur eine Strukturvorlage und entfällt ab 4.6).' },
 	'fink-result': { kind: 'Komposition', buildsOn: ['kol-heading', 'kol-icon'], reason: 'Bestätigungs- und Fehlerseiten mit Vorgangsnummer als Muster.' },
 	'fink-footer': { kind: 'Komposition', buildsOn: ['kol-link'], reason: 'Footer-Layout mit Pflichtlinks.' },
 	'fink-file-upload': { kind: 'Muster-Baustein', buildsOn: ['kol-input-file', 'kol-button', 'kol-alert', 'kol-icon'], reason: 'Ergänzt kol-input-file um Drop-Zone, Dateiliste und Typ-/Größenprüfung.' },

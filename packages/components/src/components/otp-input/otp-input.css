@@ -32,11 +32,13 @@
 
 .cells {
 	display: flex;
+	min-width: 0;
 	gap: var(--fink-space-2);
 }
 
+/* Felder schrumpfen auf schmalen Viewports, statt aus dem Bild zu laufen (WCAG 1.4.10). */
 .cell {
-	width: 3rem;
+	width: auto;
 	min-width: 0;
 	height: 3.5rem;
 	flex: 0 1 3rem;

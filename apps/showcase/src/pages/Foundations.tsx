@@ -22,6 +22,38 @@ const contrast = (a?: string, b?: string) => {
 	return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
 };
 
+/** Liest #rrggbb, rgb() und rgba() sowie „transparent“ als [r, g, b, a] (0–255, a 0–1). */
+const parseColor = (value: string): [number, number, number, number] | null => {
+	const v = value.trim().toLowerCase();
+	if (v === 'transparent') return [0, 0, 0, 0];
+	const hex = /^#([0-9a-f]{6})$/.exec(v);
+	if (hex) return [0, 2, 4].map((i) => parseInt(hex[1].slice(i, i + 2), 16)).concat(1) as [number, number, number, number];
+	const rgb = /^rgba?\(([^)]+)\)$/.exec(v);
+	if (!rgb) return null;
+	const [r, g, b, a = '1'] = rgb[1].split(/[\s,/]+/).filter(Boolean);
+	return [Number(r), Number(g), Number(b), Number(a)];
+};
+
+const toHex = (rgb: number[]) => `#${rgb.map((c) => Math.round(c).toString(16).padStart(2, '0')).join('')}`;
+
+/** Sichtbare Farbe eines (ggf. transparenten) Tokens über der Fläche des jeweiligen Schemas. */
+const composite = (value: string | undefined, underlay: string) => {
+	const top = parseColor(value ?? '');
+	const base = parseColor(underlay);
+	if (!top || !base) return underlay;
+	const a = top[3];
+	return toHex([0, 1, 2].map((i) => top[i] * a + base[i] * (1 - a)));
+};
+
+/** Wählt die Schriftfarbe mit dem höheren Kontrast zur sichtbaren Fläche (WCAG 1.4.3). */
+const inkOn = (background: string) => ((contrast(background, '#ffffff') ?? 0) >= (contrast(background, '#1c1b29') ?? 0) ? '#ffffff' : '#1c1b29');
+
+/** Farbfeld: Token über der Fläche seines Schemas, Schrift mit ausreichendem Kontrast. */
+const fieldStyle = (value: string | undefined, underlay: string) => ({
+	background: `linear-gradient(${value}, ${value}), ${underlay}`,
+	color: inkOn(composite(value, underlay)),
+});
+
 const textTokens = new Set(['primary', 'primary-variant', 'success', 'warning', 'danger', 'info', 'text', 'subtle', 'ink', 'visited']);
 
 function Swatch({ path }: { path: TokenPath }) {
@@ -38,8 +70,8 @@ function Swatch({ path }: { path: TokenPath }) {
 	return (
 		<div className="swatch">
 			<div className="swatch-color">
-				<span style={{ background: token.light, color: (luminance(token.light ?? '') ?? 1) > 0.4 ? '#1c1b29' : '#fff' }}>{t('hell')}</span>
-				<span style={{ background: token.dark, color: (luminance(token.dark ?? '') ?? 1) > 0.4 ? '#1c1b29' : '#fff' }}>{t('dunkel')}</span>
+				<span style={fieldStyle(token.light, tokens['color.light'].light ?? '#ffffff')}>{t('hell')}</span>
+				<span style={fieldStyle(token.dark, tokens['color.light'].dark ?? '#1b1a2c')}>{t('dunkel')}</span>
 			</div>
 			<div className="swatch-body">
 				<strong>{token.cssVar}</strong>

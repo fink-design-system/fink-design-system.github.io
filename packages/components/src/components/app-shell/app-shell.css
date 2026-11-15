@@ -36,7 +36,7 @@
 	display: flex;
 	align-items: center;
 	gap: var(--fink-space-3);
-	height: var(--fink-app-shell-header-height);
+	min-height: var(--fink-app-shell-header-height);
 	padding-inline: max(var(--fink-space-4), env(safe-area-inset-left)) max(var(--fink-space-4), env(safe-area-inset-right));
 	background: var(--fink-color-light);
 	--kol-surface: var(--fink-color-light);
@@ -60,12 +60,13 @@
 
 .label {
 	min-width: 0;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: clip;
+	padding-block: var(--fink-space-1);
+	line-height: 1.2;
+	overflow-wrap: anywhere;
+	hyphens: auto;
 }
 
-/* Aktionen behalten ihre Breite; bei Platzmangel kürzt sich der Anwendungsname. */
+/* Aktionen behalten ihre Breite; bei Platzmangel bricht der Anwendungsname um (keine Kürzung mit „…“). */
 .actions {
 	display: flex;
 	flex: none;

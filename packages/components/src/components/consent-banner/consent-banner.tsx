@@ -1,4 +1,5 @@
-import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
+import { setViewportInset } from '../../utils/viewport-inset';
 import { parseList } from '../../utils/shared';
 import { getFinkLanguage, onFinkLanguageChange, t } from '../../i18n';
 
@@ -26,12 +27,35 @@ export class FinkConsentBanner {
 
 	private unsubscribeLanguage?: () => void;
 
+	@Element() host!: HTMLElement;
+
+	private resizeObserver?: ResizeObserver;
+
 	connectedCallback() {
 		this.unsubscribeLanguage = onFinkLanguageChange((lng) => (this.locale = lng));
 	}
 
+	componentDidLoad() {
+		// Das fest angeheftete Banner darf fokussierte Inhalte nicht verdecken (WCAG 2.4.11).
+		if (typeof ResizeObserver !== 'undefined') {
+			this.resizeObserver = new ResizeObserver(() => this.updateInset());
+			this.resizeObserver.observe(this.host);
+		}
+		this.updateInset();
+	}
+
 	disconnectedCallback() {
 		this.unsubscribeLanguage?.();
+		this.resizeObserver?.disconnect();
+		setViewportInset(this, 'bottom');
+	}
+
+	@Watch('_open')
+	@Watch('_position')
+	updateInset() {
+		const fixed = this._open && (this._position ?? 'fixed') === 'fixed';
+		const gap = fixed ? window.innerHeight - this.host.getBoundingClientRect().top : 0;
+		setViewportInset(this, 'bottom', fixed ? gap + 8 : 0);
 	}
 	/** Überschrift. */
 	@Prop() _heading?: string;
@@ -78,7 +102,7 @@ export class FinkConsentBanner {
 		const categories = this.categories;
 		return (
 			<Host hidden={!this._open}>
-				<section class="banner" role="region" aria-label={this._heading ?? t('consent.heading')}>
+				<section class="banner" aria-label={this._heading ?? t('consent.heading')}>
 					<div class="text">
 						<kol-heading class="heading" _label={this._heading ?? t('consent.heading')} _level={2}></kol-heading>
 						<p class="description">{this._description ?? t('consent.description')}</p>

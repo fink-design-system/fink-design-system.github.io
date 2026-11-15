@@ -21,19 +21,17 @@
 	font-weight: var(--fink-font-weight-medium);
 }
 
-/* Passen nicht alle Segmente in die Breite, scrollt die Gruppe waagerecht statt abzuschneiden. */
+/*
+ * Passen nicht alle Segmente in die Breite, brechen sie in eine weitere Zeile um. Kein verstecktes
+ * waagerechtes Scrollen: Alle Optionen bleiben sichtbar (WCAG 1.4.10).
+ */
 .segments {
 	display: inline-flex;
+	flex-wrap: wrap;
 	max-width: 100%;
 	border: var(--fink-border-width) solid var(--fink-color-subtle);
-	border-radius: var(--fink-radius-pill);
-	overflow-x: auto;
-	overscroll-behavior-x: contain;
-	scrollbar-width: none;
-}
-
-.segments::-webkit-scrollbar {
-	display: none;
+	border-radius: 1.375rem;
+	overflow: clip;
 }
 
 .segment {
@@ -41,11 +39,11 @@
 	align-items: center;
 	justify-content: center;
 	gap: var(--fink-space-2);
-	flex: none;
+	flex: 0 1 auto;
 	min-width: 3rem;
 	min-height: 2.75rem;
 	padding: 0 var(--fink-space-4);
-	white-space: nowrap;
+	overflow-wrap: anywhere;
 	border: 0;
 	border-inline-start: var(--fink-border-width) solid var(--fink-color-subtle);
 	background: var(--fink-color-light);

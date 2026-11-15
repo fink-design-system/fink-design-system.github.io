@@ -37,6 +37,7 @@ import { ILLUSTRATION } from '../../catalog/kolibri-more';
 import { CompositionShell } from '../CompositionShell';
 import { createStore } from '../createStore';
 import '../composition.css';
+import { useFormErrorFocus } from '../../site/useFormErrorFocus';
 
 const BASE = '/compositions/hilfe';
 const CATEGORIES: Article['category'][] = ['Antrag', 'Konto', 'Zahlung', 'Technik'];
@@ -299,6 +300,7 @@ function ContactView() {
 	const [form, setForm] = useState({ name: '', email: '', topic: '', message: '' });
 	const [submitted, setSubmitted] = useState(false);
 	const [reference, setReference] = useState<string | null>(null);
+	const [formRef, focusErrors] = useFormErrorFocus();
 	const errors: Partial<Record<keyof typeof form, string>> = {};
 	if (form.name.trim().length < 2) errors.name = t('Geben Sie Ihren Namen ein');
 	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = t('Geben Sie eine E-Mail-Adresse im Format name@beispiel.de ein');
@@ -329,12 +331,14 @@ function ContactView() {
 		<>
 			<FinkPageHeader _heading={t('Kontakt')} _description={t('Nichts gefunden? Schreiben Sie uns.')} />
 			<KolForm
+				ref={formRef}
 				_requiredText
 				_errorList={submitted ? keys.map((k) => ({ message: errors[k]!, selector: `#contact-${k}` })) : []}
 				_on={{
 					onSubmit: () => {
 						setSubmitted(true);
-						if (keys.length === 0) setReference(`SR-${String(Math.floor(Math.random() * 90000) + 10000)}`);
+						if (keys.length) focusErrors();
+						else setReference(`SR-${String(Math.floor(Math.random() * 90000) + 10000)}`);
 					},
 				}}
 			>

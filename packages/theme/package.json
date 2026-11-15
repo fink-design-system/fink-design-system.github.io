@@ -16,18 +16,19 @@
     "bin"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "node scripts/kolibri-locales.mjs && tsc -p tsconfig.json",
+    "locales:check": "node scripts/kolibri-locales.mjs --check"
   },
   "dependencies": {
     "@fink/tokens": "workspace:*"
   },
   "peerDependencies": {
-    "@public-ui/components": "4.5.0",
-    "@public-ui/theme-default": "4.5.0"
+    "@public-ui/components": "4.6.0-rc.2",
+    "@public-ui/theme-default": "4.6.0-rc.2"
   },
   "devDependencies": {
-    "@public-ui/components": "4.5.0",
-    "@public-ui/theme-default": "4.5.0",
+    "@public-ui/components": "4.6.0-rc.2",
+    "@public-ui/theme-default": "4.6.0-rc.2",
     "typescript": "5.9.3"
   },
   "bin": {

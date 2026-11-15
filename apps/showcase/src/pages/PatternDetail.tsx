@@ -17,7 +17,7 @@ export function PatternDetail({ id }: { id: string }) {
 	const pattern = findPattern(id);
 	if (!pattern) {
 		return (
-			<FinkEmptyState _heading={t('Pattern nicht gefunden')} _description={t('Es gibt kein Pattern „{{id}}“.', { id })} _icons="codicon codicon-question">
+			<FinkEmptyState _level={1} _heading={t('Pattern nicht gefunden')} _description={t('Es gibt kein Pattern „{{id}}“.', { id })} _icons="codicon codicon-question">
 				<KolLinkButton _label={t('Alle Patterns')} _href="#/patterns" _variant="primary" />
 			</FinkEmptyState>
 		);

@@ -27,6 +27,7 @@ import {
 } from '@fink/react';
 import type { PatternDefinition } from './types';
 import { t } from '../i18n';
+import { useFormErrorFocus } from '../site/useFormErrorFocus';
 
 const SALUTATIONS = [
 	{ label: t('Keine Angabe'), value: '' },
@@ -76,13 +77,16 @@ function ValidationDemo() {
 	const list = (Object.keys(errors) as Field[]).map((field) => ({ message: errors[field]!, selector: `#field-${field}` }));
 	const msg = (field: Field) => (submitted && errors[field] ? { _type: 'error' as const, _description: errors[field]! } : undefined);
 	const set = (field: Field) => (_e: unknown, v: unknown) => setValues((s) => ({ ...s, [field]: String(v ?? '') }));
+	const [formRef, focusErrors] = useFormErrorFocus();
 	return (
 		<KolForm
+			ref={formRef}
 			_errorList={submitted ? list : []}
 			_on={{
 				onSubmit: () => {
 					setSubmitted(true);
-					if (list.length === 0) toast.show({ type: 'success', label: t('Bankverbindung gespeichert') });
+					if (list.length) focusErrors();
+					else toast.show({ type: 'success', label: t('Bankverbindung gespeichert') });
 				},
 			}}
 		>
@@ -291,8 +295,15 @@ export const formPatterns: PatternDefinition[] = [
 		demo: () => <ValidationDemo />,
 		code: {
 			react: `<KolForm
+  ref={formRef}
   _errorList={submitted ? errors.map((e) => ({ message: e.text, selector: \`#field-\${e.field}\` })) : []}
-  _on={{ onSubmit: () => setSubmitted(true) }}
+  _on={{
+    onSubmit: () => {
+      setSubmitted(true);
+      // Ab KoliBri 4.6 explizit: Fehlerzusammenfassung fokussieren.
+      if (errors.length) void formRef.current?.focusErrorList();
+    },
+  }}
 >
   <KolInputText
     id="field-iban"

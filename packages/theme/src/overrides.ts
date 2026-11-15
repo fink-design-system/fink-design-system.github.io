@@ -103,6 +103,17 @@ export const overrides: Record<string, string> = {
 		--border-radius: var(--fink-radius-lg);
 	}
 }`,
+	/* Dateiname und Hinweis brechen um, statt mit „…“ gekürzt zu werden (WCAG 1.4.4, 1.4.10, 1.4.12). */
+	'KOL-INPUT-FILE': `
+@layer kol-theme-component {
+	.kol-input-container__filename {
+		min-width: 0;
+		overflow: visible;
+		white-space: normal;
+		text-overflow: clip;
+		overflow-wrap: anywhere;
+	}
+}`,
 	'KOL-TABLE-STATELESS': narrowTable,
 	'KOL-TABLE-STATEFUL': narrowTable,
 	'KOL-DRAWER': `

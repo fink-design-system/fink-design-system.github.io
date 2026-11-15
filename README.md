@@ -44,7 +44,7 @@ Reihenfolge: erst die verbreitetsten Lücken, KoliBri immer zuerst.
 
 ## KoliBri-Nachnutzung
 
-Fink baut nur, was KoliBri nicht hat. Alle 50 KoliBri-Komponenten sind im Katalog dokumentiert und werden in Patterns,
+Fink baut nur, was KoliBri nicht hat. Alle 49 KoliBri-Komponenten (KoliBri 4.6, ohne das veraltete kol-modal) sind im Katalog dokumentiert und werden in Patterns,
 Kompositionen, Doku oder als Innenleben von Fink-Komponenten genutzt. Die Seite „KoliBri-Nachnutzung“ ermittelt das zur
 Build-Zeit aus dem Quellcode und begründet jede eigene Fink-Komponente.
 
@@ -99,12 +99,42 @@ pnpm icons:check   # bricht ab, wenn die Fonts nicht zur installierten KoliBri-V
   Registriert sind `fink` und `default`.
 - Container mit eigener Fläche melden sie über `--kol-surface`, damit KoliBri-Hosts dieselbe Fläche malen.
 
+## Barrierefreiheit prüfen (BITV 2.0 / WCAG 2.2)
+
+```bash
+pnpm lint          # ESLint: eslint-plugin-jsx-a11y (strict, Regeldaten von axe-core) + Fink-Regeln
+pnpm build
+pnpm test:a11y     # Playwright + axe-core über alle Seiten, Kompositionen und Zustände
+```
+
+- **ESLint** (`eslint.config.js`): `jsx-a11y/strict` für React- und Stencil-JSX; eigene Regeln in
+  `eslint-rules/fink-a11y.js` verbieten das Kürzen von Text mit Auslassungszeichen – `text-overflow: ellipsis` und
+  `line-clamp` in CSS (über `@eslint/css`) und in Style-Objekten sowie `text.slice(0, n) + '…'`.
+- **Playwright** (`playwright.config.ts`, `e2e/`): `@axe-core/playwright` mit den Tags `wcag2a/aa`, `wcag21a/aa`,
+  `wcag22a/aa`, `EN-301-549` (Grundlage der BITV 2.0) und `best-practice`, inklusive Shadow DOM. Projekte: Deutsch und
+  Englisch je hell und dunkel, 320 CSS-Pixel (Reflow, WCAG 1.4.10) und interaktive Zustände (`states.spec.ts`: Dialoge,
+  Drawer, Bottom Sheet, Fehlerzusammenfassungen, mobiles Menü, Sprunglink). `routes.spec.ts` prüft per Crawl, dass
+  `e2e/routes.ts` alle Seiten enthält.
+- **Zusatzprüfungen** über axe hinaus: keine Ellipsis-Kürzung und kein „…“ in sichtbaren Texten oder Namen, Fokus nicht
+  verdeckt (WCAG 2.4.11), keine rohen KoliBri-Übersetzungsschlüssel, kein horizontales Scrollen bei 320 px.
+- Für KoliBri-Arbeiten liegt der Skill `kolibri-ui` aus [public-ui/agent-skills](https://github.com/public-ui/agent-skills)
+  unter `.claude/skills/kolibri-ui`; `.mcp.json` bindet den KoliBri-MCP-Server ein.
+- Alle Funde werden behoben, nicht unterdrückt. Was außerhalb von Fink liegt, steht unten unter „Bekannte Punkte“.
+
 ## Bekannte Punkte
+
+- **KoliBri 4.6.0-rc.2:** Fink nutzt die Vorabversion, weil sie den unbenannten Aufklapp-Button von `kol-combobox`
+  behebt (axe `button-name`, WCAG 4.1.2). `kol-skeleton` entfällt dort. Vor dem Release auf 4.6.0 stabil wechseln.
+- **KoliBri-Texte mit „...“:** `filename-text` und `action-running` enden auf Auslassungszeichen. Eigene `translations`
+  ersetzen in KoliBri alle Standardtexte; `@fink/theme` erzeugt deshalb beim Build den vollständigen Satz aus der
+  installierten Version (`scripts/kolibri-locales.mjs`, Prüfung mit `pnpm locales:check`) und entfernt nur die „...“.
+- **KoliBri 4.6 fokussiert die Fehlerliste von `kol-form` nicht mehr automatisch.** Anwendungen rufen nach einem
+  fehlgeschlagenen Absenden `focusErrorList()` auf (Showcase: `useFormErrorFocus`).
 
 - **kol-badge und CSS-Variablen:** kol-badge wertet Farben selbst aus und akzeptiert keine `var()`. `fink-status` und
   `fink-chip` lösen Token-Farben deshalb zur Laufzeit in Hex-Werte auf und aktualisieren sie beim Schemawechsel.
 - **KoliBri-React-Adapter und Watcher:** Der Adapter `@public-ui/react-v19` setzt Props erst nach dem Einhängen. Bei
-  bereits geladenen Modulen laufen KoliBri-4.5-Watcher dann vor `componentWillLoad` und protokollieren `TypeError`s.
+  bereits geladenen Modulen laufen KoliBri-Watcher (ab 4.5) dann vor `componentWillLoad` und protokollieren `TypeError`s.
   `@fink/react` exportiert deshalb eigene Wrapper (`packages/react/src/kolibri.ts`), die die native Custom-Element-
   Unterstützung von React 19 nutzen: Props stehen vor dem Einhängen fest. Typen kommen unverändert aus dem Adapter.
   Gemessen über alle 128 Routen (DE und EN): 0 Konsolenmeldungen. Der Adapter-Fehler sollte trotzdem an KoliBri gemeldet werden.

@@ -5,7 +5,7 @@ import { Component, Prop, h } from '@stencil/core';
  *
  * @slot breadcrumb - Brotkrumen-Navigation über der Überschrift, z. B. kol-breadcrumb.
  * @slot actions - Primäre Seitenaktionen rechts neben der Überschrift.
- * @slot meta - Zusatzinformationen unter der Beschreibung (Status, Datum …).
+ * @slot meta - Zusatzinformationen unter der Beschreibung, z. B. Status oder Datum.
  */
 @Component({
 	tag: 'fink-page-header',

@@ -63,11 +63,16 @@ export namespace Components {
      */
     interface FinkAppShell {
         /**
+          * Eingebettete Vorschau innerhalb einer anderen Seite (Doku, Demo): rendert keine Landmarken (banner, navigation, main) und keinen Skip-Link, damit die Seite genau eine Hauptlandmarke behält.
+          * @default false
+         */
+        "_embedded"?: boolean;
+        /**
           * Name der Anwendung, sichtbar in der Kopfzeile.
          */
         "_label": string;
         /**
-          * Barrierefreie Bezeichnung der Navigation.
+          * Bezeichnung des Navigationsbereichs. Die Navigationslandmarke selbst stellt der Slot-Inhalt (z. B. kol-nav mit `_label`).
          */
         "_navLabel"?: string;
         /**
@@ -136,7 +141,7 @@ export namespace Components {
          */
         "_label": string;
         /**
-          * Spaltenüberschrift der Beschriftungen.
+          * Spaltenüberschrift der Beschriftungen (Standard: „Bezeichnung“).
          */
         "_labelHeader"?: string;
         /**
@@ -153,7 +158,7 @@ export namespace Components {
          */
         "_unit"?: string;
         /**
-          * Spaltenüberschrift der Werte.
+          * Spaltenüberschrift der Werte (Standard: „Wert“).
          */
         "_valueHeader"?: string;
     }
@@ -595,7 +600,8 @@ export namespace Components {
          */
         "_label": string;
         /**
-          * Maximale Zeilen der Beschreibung (1 oder 2).
+          * Früher: maximale Zeilen der Beschreibung.
+          * @deprecated Ohne Wirkung – Beschreibungen werden nie mit „…“ gekürzt, sondern brechen vollständig um (WCAG 1.4.4, 1.4.12).
           * @default 1
          */
         "_lines"?: 1 | 2;
@@ -1063,6 +1069,11 @@ export namespace Components {
          */
         "_label": string;
         /**
+          * Überschriftenebene der Bezeichnung (1–6); 0 rendert keine Überschrift. Passend zur Gliederung der Seite wählen.
+          * @default 3
+         */
+        "_level"?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+        /**
           * Farbton der Icon-Fläche.
           * @default 'brand'
          */
@@ -1301,7 +1312,8 @@ export namespace Components {
      * Liste mit sehr vielen Einträgen, von denen nur die sichtbaren gerendert werden
      * (Vuetify „v-virtual-scroll“, MUI-Rezept „Virtualized List“, Ant „List virtual“).
      * Jede Zeile trägt aria-setsize und aria-posinset, damit Screenreader die Gesamtlänge kennen;
-     * die Liste ist per Tastatur scrollbar, Pos1/Ende springen an Anfang und Ende.
+     * die Liste ist per Tastatur scrollbar (Pfeiltasten, Bild auf/ab, Pos1/Ende).
+     * Zeilen dürfen umbrechen: Ihre Höhe wird gemessen, Text wird nie mit „…“ gekürzt (WCAG 1.4.4, 1.4.12).
      */
     interface FinkVirtualList {
         /**
@@ -1310,7 +1322,7 @@ export namespace Components {
          */
         "_height"?: string;
         /**
-          * Feste Zeilenhöhe in Pixeln.
+          * Geschätzte Mindesthöhe einer Zeile in Pixeln; die tatsächliche Höhe wird gemessen.
           * @default 56
          */
         "_itemHeight"?: number;
@@ -2188,7 +2200,8 @@ declare global {
      * Liste mit sehr vielen Einträgen, von denen nur die sichtbaren gerendert werden
      * (Vuetify „v-virtual-scroll“, MUI-Rezept „Virtualized List“, Ant „List virtual“).
      * Jede Zeile trägt aria-setsize und aria-posinset, damit Screenreader die Gesamtlänge kennen;
-     * die Liste ist per Tastatur scrollbar, Pos1/Ende springen an Anfang und Ende.
+     * die Liste ist per Tastatur scrollbar (Pfeiltasten, Bild auf/ab, Pos1/Ende).
+     * Zeilen dürfen umbrechen: Ihre Höhe wird gemessen, Text wird nie mit „…“ gekürzt (WCAG 1.4.4, 1.4.12).
      */
     interface HTMLFinkVirtualListElement extends Components.FinkVirtualList, HTMLStencilElement {
         addEventListener<K extends keyof HTMLFinkVirtualListElementEventMap>(type: K, listener: (this: HTMLFinkVirtualListElement, ev: FinkVirtualListCustomEvent<HTMLFinkVirtualListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2265,11 +2278,16 @@ declare namespace LocalJSX {
      */
     interface FinkAppShell {
         /**
+          * Eingebettete Vorschau innerhalb einer anderen Seite (Doku, Demo): rendert keine Landmarken (banner, navigation, main) und keinen Skip-Link, damit die Seite genau eine Hauptlandmarke behält.
+          * @default false
+         */
+        "_embedded"?: boolean;
+        /**
           * Name der Anwendung, sichtbar in der Kopfzeile.
          */
         "_label": string;
         /**
-          * Barrierefreie Bezeichnung der Navigation.
+          * Bezeichnung des Navigationsbereichs. Die Navigationslandmarke selbst stellt der Slot-Inhalt (z. B. kol-nav mit `_label`).
          */
         "_navLabel"?: string;
         /**
@@ -2342,7 +2360,7 @@ declare namespace LocalJSX {
          */
         "_label": string;
         /**
-          * Spaltenüberschrift der Beschriftungen.
+          * Spaltenüberschrift der Beschriftungen (Standard: „Bezeichnung“).
          */
         "_labelHeader"?: string;
         /**
@@ -2359,7 +2377,7 @@ declare namespace LocalJSX {
          */
         "_unit"?: string;
         /**
-          * Spaltenüberschrift der Werte.
+          * Spaltenüberschrift der Werte (Standard: „Wert“).
          */
         "_valueHeader"?: string;
     }
@@ -2837,7 +2855,8 @@ declare namespace LocalJSX {
          */
         "_label": string;
         /**
-          * Maximale Zeilen der Beschreibung (1 oder 2).
+          * Früher: maximale Zeilen der Beschreibung.
+          * @deprecated Ohne Wirkung – Beschreibungen werden nie mit „…“ gekürzt, sondern brechen vollständig um (WCAG 1.4.4, 1.4.12).
           * @default 1
          */
         "_lines"?: 1 | 2;
@@ -3353,6 +3372,11 @@ declare namespace LocalJSX {
          */
         "_label": string;
         /**
+          * Überschriftenebene der Bezeichnung (1–6); 0 rendert keine Überschrift. Passend zur Gliederung der Seite wählen.
+          * @default 3
+         */
+        "_level"?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+        /**
           * Farbton der Icon-Fläche.
           * @default 'brand'
          */
@@ -3619,7 +3643,8 @@ declare namespace LocalJSX {
      * Liste mit sehr vielen Einträgen, von denen nur die sichtbaren gerendert werden
      * (Vuetify „v-virtual-scroll“, MUI-Rezept „Virtualized List“, Ant „List virtual“).
      * Jede Zeile trägt aria-setsize und aria-posinset, damit Screenreader die Gesamtlänge kennen;
-     * die Liste ist per Tastatur scrollbar, Pos1/Ende springen an Anfang und Ende.
+     * die Liste ist per Tastatur scrollbar (Pfeiltasten, Bild auf/ab, Pos1/Ende).
+     * Zeilen dürfen umbrechen: Ihre Höhe wird gemessen, Text wird nie mit „…“ gekürzt (WCAG 1.4.4, 1.4.12).
      */
     interface FinkVirtualList {
         /**
@@ -3628,7 +3653,7 @@ declare namespace LocalJSX {
          */
         "_height"?: string;
         /**
-          * Feste Zeilenhöhe in Pixeln.
+          * Geschätzte Mindesthöhe einer Zeile in Pixeln; die tatsächliche Höhe wird gemessen.
           * @default 56
          */
         "_itemHeight"?: number;
@@ -3655,6 +3680,7 @@ declare namespace LocalJSX {
         "_label": string;
         "_navLabel": string;
         "_navOpen": boolean;
+        "_embedded": boolean;
     }
     interface FinkAvatarGroupAttributes {
         "_label": string;
@@ -3897,6 +3923,7 @@ declare namespace LocalJSX {
         "_trendLabel": string;
         "_trendInverted": boolean;
         "_icons": string;
+        "_level": 0 | 1 | 2 | 3 | 4 | 5 | 6;
         "_tone": FinkTone;
     }
     interface FinkStatusAttributes {
@@ -4272,7 +4299,8 @@ declare module "@stencil/core" {
              * Liste mit sehr vielen Einträgen, von denen nur die sichtbaren gerendert werden
              * (Vuetify „v-virtual-scroll“, MUI-Rezept „Virtualized List“, Ant „List virtual“).
              * Jede Zeile trägt aria-setsize und aria-posinset, damit Screenreader die Gesamtlänge kennen;
-             * die Liste ist per Tastatur scrollbar, Pos1/Ende springen an Anfang und Ende.
+             * die Liste ist per Tastatur scrollbar (Pfeiltasten, Bild auf/ab, Pos1/Ende).
+             * Zeilen dürfen umbrechen: Ihre Höhe wird gemessen, Text wird nie mit „…“ gekürzt (WCAG 1.4.4, 1.4.12).
              */
             "fink-virtual-list": LocalJSX.IntrinsicElements["fink-virtual-list"] & JSXBase.HTMLAttributes<HTMLFinkVirtualListElement>;
         }

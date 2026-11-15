@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, State, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Listen, Prop, State, h } from '@stencil/core';
 import { getFinkLanguage, onFinkLanguageChange, t } from '../../i18n';
 
 let uid = 0;
@@ -45,6 +45,19 @@ export class FinkRating {
 	/** Liefert den neuen Wert. */
 	@Event() finkChange!: EventEmitter<number>;
 
+	/** Vorschau beim Überfahren mit der Maus (rein visuell; Tastatur und Screenreader nutzen die Radiobuttons). */
+	@Listen('mouseover')
+	handleHover(event: MouseEvent) {
+		if (this._readOnly) return;
+		const label = event.composedPath().find((node): node is HTMLElement => node instanceof HTMLElement && !!node.dataset?.value);
+		this.hover = label ? Number(label.dataset.value) : 0;
+	}
+
+	@Listen('mouseleave')
+	handleLeave() {
+		this.hover = 0;
+	}
+
 	render() {
 		const max = Math.max(1, this._max ?? 5);
 		const value = this._value ?? 0;
@@ -59,13 +72,13 @@ export class FinkRating {
 			);
 		}
 		return (
-			<fieldset class="rating" onMouseLeave={() => (this.hover = 0)}>
+			<fieldset class="rating">
 				<legend class="legend">{this._label}</legend>
 				<div class="stars">
 					{Array.from({ length: max }, (_, i) => {
 						const n = i + 1;
 						return (
-							<label class={{ star: true, 'star--on': n <= shown }} onMouseEnter={() => (this.hover = n)}>
+							<label class={{ star: true, 'star--on': n <= shown }} data-value={n}>
 								<input
 									class="visually-hidden"
 									type="radio"
