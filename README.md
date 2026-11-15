@@ -119,7 +119,8 @@ pnpm test:a11y     # Playwright + axe-core über alle Seiten, Kompositionen und 
   verdeckt (WCAG 2.4.11), keine rohen KoliBri-Übersetzungsschlüssel, kein horizontales Scrollen bei 320 px.
 - Für KoliBri-Arbeiten liegt der Skill `kolibri-ui` aus [public-ui/agent-skills](https://github.com/public-ui/agent-skills)
   unter `.claude/skills/kolibri-ui`; `.mcp.json` bindet den KoliBri-MCP-Server ein.
-- Alle Funde werden behoben, nicht unterdrückt. Was außerhalb von Fink liegt, steht unten unter „Bekannte Punkte“.
+- Alle Funde werden behoben, nicht unterdrückt. Was außerhalb von Fink liegt (KoliBri, Werkzeuge), steht vollständig in
+  [docs/barrierefreiheit-externe-funde.md](docs/barrierefreiheit-externe-funde.md).
 
 ## Bekannte Punkte
 
