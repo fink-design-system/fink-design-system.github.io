@@ -1,8 +1,8 @@
 name: Barrierefreiheit (ESLint + Playwright/axe-core)
 
+# Pflichtprüfung für jeden Pull Request. Auf main läuft sie nicht erneut: Dorthin gelangt nur,
+# was im PR bereits geprüft wurde. Manuell startbar über workflow_dispatch.
 on:
-  push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
 
