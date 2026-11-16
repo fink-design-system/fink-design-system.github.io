@@ -1,0 +1,53 @@
+name: npm Publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.34.5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      # Baut Tokens, Theme, Komponenten und React-Paket in topologischer Reihenfolge
+      # (die Showcase wird nicht gebaut, FINK_BASE ist dafür nicht nötig).
+      - run: pnpm -r --filter './packages/*' build
+
+      # Publisht nur Pakete, deren Version noch nicht im npm-Registry existiert –
+      # Merges ohne Versionsbump sind damit No-Ops statt Fehler.
+      - name: Nach npm publizieren
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+          for manifest in packages/*/package.json; do
+            name=$(node -p "require('./$manifest').name")
+            version=$(node -p "require('./$manifest').version")
+            if npm view "$name@$version" version >/dev/null 2>&1; then
+              echo "⏭️  $name@$version bereits auf npm – übersprungen"
+            else
+              echo "📦 Publishe $name@$version …"
+              pnpm --filter "$name" publish --access public --no-git-checks
+            fi
+          done
