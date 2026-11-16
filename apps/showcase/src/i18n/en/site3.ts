@@ -116,7 +116,7 @@ export const site3: Record<string, string> = {
 	'Ihr Bescheid zum Förderprogramm Klimaschutz steht zum Download bereit.': 'Your decision for the climate protection programme is ready to download.',
 	Gestern: 'Yesterday',
 	'Termin bestätigt': 'Appointment confirmed',
-	'Wohnsitz anmelden am 21. November, 09:30 Uhr im Bürgeramt Mitte.': 'Register your address on 21 November, 9:30 am at Bürgeramt Mitte.',
+	'Wohnsitz anmelden am 21. November, 09:30 Uhr im Bürgeramt Musterstadt.': 'Register your address on 21 November, 9:30 am at Bürgeramt Musterstadt.',
 
 	// Menu
 	'Aktionsmenü mit Gruppen, Trennlinien, Tastenkürzeln, Checkbox-Einträgen und destruktiven Aktionen; Tastatur nach ARIA-Menü-Muster. Vorbild: MUI Menu, Vuetify v-menu, Material 3 Menus.':

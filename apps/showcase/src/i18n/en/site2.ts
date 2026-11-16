@@ -79,7 +79,7 @@ export const site2: Record<string, string> = {
 	"Geben Sie den Beginn an": "Enter the start",
 	"Geben Sie den Ort ein": "Enter the city",
 	"Geben Sie eine deutsche IBAN mit 22 Zeichen ein, beginnend mit DE": "Enter a German IBAN with 22 characters, starting with DE",
-	"Geben Sie eine E-Mail-Adresse im richtigen Format ein, z. B. name@beispiel.de": "Enter an email address in the correct format, e.g. name@example.com",
+	"Geben Sie eine E-Mail-Adresse im richtigen Format ein, z. B. name@example.org": "Enter an email address in the correct format, e.g. name@example.org",
 	"Geben Sie Ihr aktuelles Passwort ein": "Enter your current password",
 	"Geben Sie Ihr Geburtsdatum ein": "Enter your date of birth",
 	"Geben Sie Ihren Nachnamen ein": "Enter your last name",

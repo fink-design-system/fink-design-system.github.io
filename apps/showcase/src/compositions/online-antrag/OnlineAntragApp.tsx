@@ -75,7 +75,7 @@ const personErrors = (p: Draft['person']) => {
 	if (!p.firstName.trim()) e.firstName = t('Geben Sie Ihren Vornamen ein');
 	if (!p.lastName.trim()) e.lastName = t('Geben Sie Ihren Nachnamen ein');
 	if (!p.birth) e.birth = t('Geben Sie Ihr Geburtsdatum ein');
-	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email)) e.email = t('Geben Sie eine E-Mail-Adresse im Format name@beispiel.de ein');
+	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email)) e.email = t('Geben Sie eine E-Mail-Adresse im Format name@example.org ein');
 	if (!p.street.trim()) e.street = t('Geben Sie Straße und Hausnummer ein');
 	if (!/^\d{5}$/.test(p.zip)) e.zip = 'Die Postleitzahl hat 5 Ziffern';
 	if (!p.city.trim()) e.city = t('Geben Sie den Ort ein');

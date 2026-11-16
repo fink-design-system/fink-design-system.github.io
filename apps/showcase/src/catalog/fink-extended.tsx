@@ -226,7 +226,7 @@ export const finkExtendedEntries: CatalogEntry[] = [
 							{ key: t('Name'), value: 'Erika Mustermann', actionLabel: t('Ändern') },
 							{ key: t('Geburtsdatum'), value: '12.03.1984', actionLabel: t('Ändern') },
 							{ key: t('Anschrift'), value: 'Musterweg 4\n10115 Berlin', actionLabel: t('Ändern') },
-							{ key: t('Kontakt'), value: 'erika@beispiel.de' },
+							{ key: t('Kontakt'), value: 'erika@example.org' },
 						]}
 					/>
 				),

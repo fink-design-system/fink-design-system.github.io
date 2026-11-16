@@ -352,7 +352,7 @@ const defs: Def[] = [
 		summary: t('E-Mail-Feld mit Formatprüfung und Autocomplete.'),
 		title: t('E-Mail-Adresse'),
 		doc: 'input-email',
-		render: () => <KolInputEmail _label={t('E-Mail-Adresse')} _autoComplete="email" _placeholder={t('name@beispiel.de')} />,
+		render: () => <KolInputEmail _label={t('E-Mail-Adresse')} _autoComplete="email" _placeholder={t('name@example.org')} />,
 		react: `<KolInputEmail _label="E-Mail-Adresse" _autoComplete="email" />`,
 		html: `<kol-input-email _label="E-Mail-Adresse" _auto-complete="email"></kol-input-email>`,
 	},
