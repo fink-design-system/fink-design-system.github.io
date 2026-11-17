@@ -10,7 +10,8 @@
     "spike:build": "pnpm icons:sync && vite build && KOLIBRI_SLIM=1 vite build",
     "spike:test": "playwright test",
     "spike:measure": "node scripts/measure.mjs",
-    "spike": "pnpm spike:build && pnpm spike:test && pnpm spike:measure"
+    "spike": "pnpm spike:build && pnpm spike:test && pnpm spike:measure",
+    "spike:sourcemap": "pnpm icons:sync && SOURCEMAP=1 vite build && SOURCEMAP=1 KOLIBRI_SLIM=1 vite build && node scripts/sourcemap.mjs"
   },
   "dependencies": {
     "@fink/components": "workspace:*",
@@ -31,6 +32,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@vitejs/plugin-react": "5.2.0",
+    "source-map": "0.7.6",
     "typescript": "5.9.3",
     "vite": "7.3.8"
   }

@@ -101,6 +101,31 @@ beiden Komponenten kleiner. Wie sich der Abstand bei vielen Komponenten entwicke
 - KoliBri: `fink-tag-input` verlässt sich für Vorschläge auf die native `datalist`. Deren Bedienbarkeit hängt vom
   Browser ab.
 
+## Woher die Größe kommt
+
+`pnpm spike:sourcemap` baut alle Varianten mit Source Maps und ordnet jedes beim Seitenaufruf geladene Byte seiner
+Quelle zu. Die vollständige Aufstellung je Komponente steht in [SOURCEMAP.md](SOURCEMAP.md). Für „KoliBri schlank“
+(Skripte, minifiziert):
+
+| Herkunft | minifiziert | Anmerkung |
+| --- | ---: | --- |
+| KoliBri-Theme | 1.164 KB | Stile aller 47 Komponenten, auch der nicht genutzten. Die vier genutzten brauchen rund 84 KB. |
+| KoliBri-Kern | 367 KB | Darin ein Chunk von 343 KB Quelle, davon 341 KB markdown-it mit `entities` und `linkify-it`. Fast jede Komponente importiert ihn über die Beschriftungslogik. |
+| React | 188 KB | wie bei React Aria |
+| Fink-Komponenten | 147 KB | alle 44, weil `@fink/react` jede Komponente registriert. Genutzt werden zwei. |
+| KoliBri-Komponenten | 53 KB | genau die vier genutzten: `kol-input-file`, `kol-input-text`, `kol-badge`, `kol-icon` |
+| Fink-Kern, -Theme, -Tokens | 87 KB | Stencil-Laufzeit von Fink, Texte, Overrides |
+
+Die gzip-Anteile in SOURCEMAP.md sind anteilig je Chunk geschätzt. Wo Theme und React im selben Chunk liegen,
+verschieben sie sich. Die minifizierten Bytes sind exakt.
+
+Daraus ergeben sich vier Hebel, keiner davon ist in Fink umgesetzt:
+
+1. Icon-CSS im Theme nur für genutzte Icons (im Experiment umgesetzt, von 13,1 MB auf 1,2 MB).
+2. Theme-Stile nur für die genutzten Komponenten laden.
+3. markdown-it aus dem gemeinsamen Kern lösen oder nur bei Bedarf laden.
+4. In Fink nur die genutzten Komponenten registrieren statt aller 44.
+
 ## Grenzen
 
 - Aufwand ist nur als Codezeilen gemessen. Arbeitszeit lässt sich nicht vergleichen, alle Varianten sind mit

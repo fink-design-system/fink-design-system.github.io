@@ -2,13 +2,14 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import { kolibriIconPrune } from './scripts/kolibri-icon-prune';
+// @ts-expect-error Skript ohne Typdeklaration
+import { kolibriIconPrune } from './scripts/kolibri-icon-prune.mjs';
 
 /** Mit KOLIBRI_SLIM=1 entsteht die schlanke KoliBri-Variante in dist-slim (nur genutzte Icons im Theme). */
 const slim = process.env.KOLIBRI_SLIM === '1';
 
 /** Alle Codicons, die Fink in seinen Komponenten verwendet. */
-function finkCodicons(): string[] {
+export function finkCodicons(): string[] {
 	const dir = resolve(import.meta.dirname, '../../packages/components/src/components');
 	const names = new Set<string>();
 	for (const entry of readdirSync(dir, { recursive: true, encoding: 'utf8' })) {
@@ -22,6 +23,7 @@ export default defineConfig({
 	plugins: [react(), ...(slim ? [kolibriIconPrune(finkCodicons())] : [])],
 	build: {
 		outDir: slim ? 'dist-slim' : 'dist',
+		sourcemap: process.env.SOURCEMAP === '1',
 		chunkSizeWarningLimit: 20000,
 		rollupOptions: {
 			input: slim
