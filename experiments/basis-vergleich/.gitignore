@@ -1,5 +1,7 @@
 dist
 dist-slim
+dist-analyse
+analyse
 public/assets/icon-fonts
 test-results
 playwright-report

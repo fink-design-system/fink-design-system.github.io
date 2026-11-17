@@ -116,6 +116,11 @@ Quelle zu. Die vollständige Aufstellung je Komponente steht in [SOURCEMAP.md](S
 | KoliBri-Komponenten | 53 KB | genau die vier genutzten: `kol-input-file`, `kol-input-text`, `kol-badge`, `kol-icon` |
 | Fink-Kern, -Theme, -Tokens | 87 KB | Stencil-Laufzeit von Fink, Texte, Overrides |
 
+Als interaktive Treemap: `pnpm spike:treemap` schreibt je Variante eine Karte nach `analyse/` (rollup-plugin-visualizer).
+Für diese Analyse-Builds zerlegt `scripts/kolibri-analyse-split.mjs` das KoliBri-Theme je Komponente in Icon-CSS und
+Gestaltung und den Kern-Chunk nach Bibliotheken. Die Analyse-Builds sind nicht lauffähig. Die Theme-Größen sind exakt,
+die Größen im Kern-Chunk sind eine Näherung (ohne Kommentare und Leerraum).
+
 Die gzip-Anteile in SOURCEMAP.md sind anteilig je Chunk geschätzt. Wo Theme und React im selben Chunk liegen,
 verschieben sie sich. Die minifizierten Bytes sind exakt.
 
