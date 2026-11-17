@@ -34,9 +34,17 @@ const VARIANTS = {
 	},
 	'kolibri-schlank': {
 		name: 'KoliBri schlank',
-		note: 'wie KoliBri, Build mit scripts/kolibri-icon-prune.ts: im Theme nur die genutzten Icons',
+		note: 'wie KoliBri, Build mit scripts/kolibri-icon-prune.mjs: im Theme nur die genutzten Icons',
 		page: 'kolibri',
-		slim: true,
+		dist: 'dist-slim',
+		files: [],
+		locales: [],
+	},
+	'kolibri-lazy': {
+		name: 'KoliBri schlank + lazy markdown',
+		note: 'wie KoliBri schlank, zusätzlich scripts/kolibri-lazy-markdown.mjs: markdown-it nur bei Bedarf',
+		page: 'kolibri',
+		dist: 'dist-lazy',
 		files: [],
 		locales: [],
 	},
@@ -113,48 +121,55 @@ function code() {
 	}
 	// Die schlanke Variante nutzt denselben Fink-Code, nur der Build unterscheidet sich.
 	out['kolibri-schlank'] = { ...out.kolibri, name: VARIANTS['kolibri-schlank'].name };
+	out['kolibri-lazy'] = { ...out.kolibri, name: VARIANTS['kolibri-lazy'].name };
 	return out;
 }
 
+const PORTS = { dist: 4318, 'dist-slim': 4320, 'dist-lazy': 4324 };
+
+/** Lädt eine Seite und summiert Skripte, Stylesheets und Schriften. */
+async function measurePage(browser, url) {
+	const page = await browser.newPage();
+	const bodies = [];
+	page.on('response', async (response) => {
+		const type = response.request().resourceType();
+		if (['script', 'stylesheet', 'font'].includes(type)) {
+			try {
+				bodies.push({ type, body: await response.body() });
+			} catch {
+				/* Antwort ohne Inhalt */
+			}
+		}
+	});
+	await page.goto(url, { waitUntil: 'networkidle' });
+	await page.evaluate(() => document.fonts.ready);
+	await page.waitForTimeout(1500);
+	await page.close();
+	const sum = (filter) => bodies.filter(filter).reduce((n, b) => n + b.body.length, 0);
+	const gz = (filter) => bodies.filter(filter).reduce((n, b) => n + gzipSync(b.body).length, 0);
+	return {
+		requests: bodies.length,
+		scriptBytes: sum((b) => b.type === 'script'),
+		scriptGzip: gz((b) => b.type === 'script'),
+		styleAndFontBytes: sum((b) => b.type !== 'script'),
+		totalGzip: gz(() => true),
+	};
+}
+
 async function loaded() {
-	const server = spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4318', '--strictPort'], { cwd: root, stdio: 'ignore' });
-	const slimServer = spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4320', '--strictPort', '--outDir', 'dist-slim'], { cwd: root, stdio: 'ignore' });
-	await new Promise((r) => setTimeout(r, 2500));
+	const servers = Object.entries(PORTS).map(([dist, port]) => spawn('pnpm', ['exec', 'vite', 'preview', '--port', String(port), '--strictPort', '--outDir', dist], { cwd: root, stdio: 'ignore' }));
+	await new Promise((r) => setTimeout(r, 3000));
 	const browser = await chromium.launch();
 	const out = {};
 	try {
-		for (const id of Object.keys(VARIANTS)) {
-			const page = await browser.newPage();
-			const bodies = [];
-			page.on('response', async (response) => {
-				const type = response.request().resourceType();
-				if (['script', 'stylesheet', 'font'].includes(type)) {
-					try {
-						bodies.push({ type, body: await response.body() });
-					} catch {
-						/* Antwort ohne Inhalt */
-					}
-				}
-			});
-			const v = VARIANTS[id];
-			await page.goto(`http://localhost:${v.slim ? 4320 : 4318}/${v.page ?? id}.html`, { waitUntil: 'networkidle' });
-			await page.evaluate(() => document.fonts.ready);
-			await page.waitForTimeout(1500);
-			const sum = (filter) => bodies.filter(filter).reduce((n, b) => n + b.body.length, 0);
-			const gz = (filter) => bodies.filter(filter).reduce((n, b) => n + gzipSync(b.body).length, 0);
-			out[id] = {
-				requests: bodies.length,
-				scriptBytes: sum((b) => b.type === 'script'),
-				scriptGzip: gz((b) => b.type === 'script'),
-				styleAndFontBytes: sum((b) => b.type !== 'script'),
-				totalGzip: gz(() => true),
-			};
-			await page.close();
+		for (const [id, v] of Object.entries(VARIANTS)) {
+			const port = PORTS[v.dist ?? 'dist'];
+			out[id] = await measurePage(browser, `http://localhost:${port}/${v.page ?? id}.html`);
+			if ((v.page ?? id) === 'kolibri') out[id].noBadge = await measurePage(browser, `http://localhost:${port}/kolibri-no-badge.html`);
 		}
 	} finally {
 		await browser.close();
-		server.kill();
-		slimServer.kill();
+		servers.forEach((s) => s.kill());
 	}
 	return out;
 }
@@ -187,6 +202,7 @@ writeFileSync(resolve(root, 'results/ergebnis.json'), `${JSON.stringify(result, 
 
 const ids = Object.keys(VARIANTS);
 const names = ids.map((id) => VARIANTS[id].name);
+const kolibriIds = ids.filter((id) => result.loaded[id].noBadge);
 const testNames = result.tests[names[0]]?.map((t) => t.test) ?? [];
 const md = [
 	'# Ergebnis des Basisvergleichs',
@@ -214,6 +230,16 @@ const md = [
 	`| Skripte, gzip | ${ids.map((id) => kb(result.loaded[id].scriptGzip)).join(' | ')} |`,
 	`| Stylesheets und Schriften | ${ids.map((id) => kb(result.loaded[id].styleAndFontBytes)).join(' | ')} |`,
 	`| Gesamt, gzip | ${ids.map((id) => kb(result.loaded[id].totalGzip)).join(' | ')} |`,
+	'',
+	'## KoliBri auf einer Seite ohne Badge',
+	'',
+	'Nur `fink-file-upload`, kein `kol-badge`. Hier zeigt sich, was das Nachladen von markdown-it spart.',
+	'',
+	`| | ${kolibriIds.map((id) => VARIANTS[id].name).join(' | ')} |`,
+	`| --- | ${kolibriIds.map(() => '---:').join(' | ')} |`,
+	`| Anfragen | ${kolibriIds.map((id) => result.loaded[id].noBadge.requests).join(' | ')} |`,
+	`| Skripte, gzip | ${kolibriIds.map((id) => kb(result.loaded[id].noBadge.scriptGzip)).join(' | ')} |`,
+	`| Gesamt, gzip | ${kolibriIds.map((id) => kb(result.loaded[id].noBadge.totalGzip)).join(' | ')} |`,
 	'',
 	'## Prüfungen',
 	'',

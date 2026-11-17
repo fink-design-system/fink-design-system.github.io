@@ -21,7 +21,8 @@ Zusammen nutzen sie sieben KoliBri-Bausteine: `kol-input-text`, `kol-badge` und 
 | Variante   | Basis                                                    | Was gezählt wird                                                                    |
 | ---------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | KoliBri    | `@public-ui/components` 4.6.0-rc.2, Fink-Theme           | Fink-Quellen beider Komponenten, `fink-chip`, Hilfsfunktionen, deutsche Texte       |
-| KoliBri schlank | wie KoliBri, Build mit `scripts/kolibri-icon-prune.ts`: im Theme nur die genutzten Icons | wie KoliBri                                  |
+| KoliBri schlank | wie KoliBri, Build mit `scripts/kolibri-icon-prune.mjs`: im Theme nur die genutzten Icons (`KOLIBRI_BUILD=slim`) | wie KoliBri       |
+| KoliBri schlank + lazy markdown | wie KoliBri schlank, zusätzlich `scripts/kolibri-lazy-markdown.mjs`: markdown-it nur bei Bedarf (`KOLIBRI_BUILD=lazy`) | wie KoliBri |
 | React Aria | `react-aria-components` 1.22.1 (ComboBox, TagGroup, DropZone, FileTrigger) | `src/react-aria/*`, `src/shared/texts.ts`                         |
 | Lion       | `@lion/ui` 0.25.0 (lion-combobox, lion-input-file, lion-button) | `src/lion/*`, `src/shared/texts.ts`                                          |
 
@@ -32,7 +33,8 @@ Zusammen nutzen sie sieben KoliBri-Bausteine: `kol-input-text`, `kol-badge` und 
   dafür eigenes CSS mit, einschließlich Fokus und Hochkontrastmodus.
 - Keine Zusatzfunktionen über die Vorgabe hinaus.
 - Gleiche Prüfungen (`tests/basis.spec.ts`): Elemente werden über Rollen und zugängliche Namen gefunden. Nur die
-  Ablagestelle für Ziehen und Ablegen ist je Variante angegeben.
+  Ablagestelle für Ziehen und Ablegen ist je Variante angegeben. `tests/markdown.spec.ts` prüft für die KoliBri-Fassungen
+  zusätzlich, dass Markdown in Badge-Beschriftungen gerendert wird.
 - Prüfstand-Dateien (`src/*/main.*`, `src/shared/config.ts`, `src/shared/page.css`) zählen nicht zum Aufwand.
 
 ## Ausführen
@@ -49,12 +51,13 @@ pnpm dev                         # Varianten im Browser ansehen
 
 Die Zahlen stehen in [ERGEBNIS.md](ERGEBNIS.md). Kurzfassung:
 
-| | KoliBri | KoliBri schlank | React Aria | Lion |
-| --- | ---: | ---: | ---: | ---: |
-| Prüfungen bestanden (von 17) | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 17 |
-| Eigener Code (Zeilen) | 592 | 592 | 455 | 472 |
-| davon Gestaltung (CSS) | 175 | 175 | 225 | 269 |
-| Geladen beim Seitenaufruf (gzip) | 2.174 KB | 460 KB | 155 KB | 67 KB |
+| | KoliBri | KoliBri schlank | KoliBri schlank + lazy markdown | React Aria | Lion |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Prüfungen bestanden (von 17) | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 17 |
+| Eigener Code (Zeilen) | 592 | 592 | 592 | 455 | 472 |
+| davon Gestaltung (CSS) | 175 | 175 | 175 | 225 | 269 |
+| Geladen, Prüfseite (gzip) | 2.174 KB | 460 KB | 461 KB | 155 KB | 67 KB |
+| Geladen, Seite ohne Badge (gzip) | 2.158 KB | 444 KB | 390 KB | – | – |
 
 ## Auswertung
 
@@ -80,12 +83,12 @@ Awesome, Codicons, Kolicons samt `@font-face`), eingebettet in 40 Komponentensti
 Komponenten macht nur 755 KB aus, 55 KB gzip.
 
 Die Variante „KoliBri schlank“ entfernt beim Build alle Icon-Regeln, die weder KoliBri intern noch Fink nutzt
-(`scripts/kolibri-icon-prune.ts`, ein Vite-Plugin mit rund 30 Zeilen). Sie lädt 460 KB gzip, bei pixelgleicher
+(`scripts/kolibri-icon-prune.mjs`, ein Vite-Plugin mit rund 30 Zeilen). Sie lädt 460 KB gzip, bei pixelgleicher
 Darstellung und denselben bestandenen Prüfungen. Davon entfallen rund 70 KB auf global geladene Icon-Schriften,
 darunter Font Awesome, das Fink gar nicht nutzt.
 
 KoliBri lädt Komponenten einzeln nach. Auf der Prüfseite sind es vier (`kol-input-text`, `kol-input-file`,
-`kol-badge`, `kol-icon`), zusammen rund 20 KB. Über alle 52 Komponenten liegt der Median bei 4,3 KB gzip. Der Kern
+`kol-badge`, `kol-icon`), zusammen rund 20 KB. Über alle 52 Komponenten liegt der Median bei 4,3 KB gzip. Der core
 wird einmal geladen, jede weitere Komponente kostet wenig. React Aria (155 KB) und Lion (67 KB) bleiben für diese
 beiden Komponenten kleiner. Wie sich der Abstand bei vielen Komponenten entwickelt, ist nicht gemessen.
 
@@ -109,27 +112,49 @@ Quelle zu. Die vollständige Aufstellung je Komponente steht in [SOURCEMAP.md](S
 
 | Herkunft | minifiziert | Anmerkung |
 | --- | ---: | --- |
-| KoliBri-Theme | 1.164 KB | Stile aller 47 Komponenten, auch der nicht genutzten. Die vier genutzten brauchen rund 84 KB. |
-| KoliBri-Kern | 367 KB | Darin ein Chunk von 343 KB Quelle, davon 341 KB markdown-it mit `entities` und `linkify-it`. Fast jede Komponente importiert ihn über die Beschriftungslogik. |
+| KoliBri theme | 1.164 KB | Stile aller 47 Komponenten, auch der nicht genutzten. Die vier genutzten brauchen rund 84 KB. |
+| KoliBri core | 367 KB | Darin ein Chunk von 343 KB Quelle, davon 341 KB markdown-it mit `entities` und `linkify-it`. Fast jede Komponente importiert ihn über `SpanFC`, die gemeinsame Beschriftung. |
 | React | 188 KB | wie bei React Aria |
-| Fink-Komponenten | 147 KB | alle 44, weil `@fink/react` jede Komponente registriert. Genutzt werden zwei. |
-| KoliBri-Komponenten | 53 KB | genau die vier genutzten: `kol-input-file`, `kol-input-text`, `kol-badge`, `kol-icon` |
-| Fink-Kern, -Theme, -Tokens | 87 KB | Stencil-Laufzeit von Fink, Texte, Overrides |
+| Fink components | 147 KB | alle 44, weil `@fink/react` jede Komponente registriert. Genutzt werden zwei. |
+| KoliBri components | 53 KB | genau die vier genutzten: `kol-input-file`, `kol-input-text`, `kol-badge`, `kol-icon` |
+| Fink core, theme, tokens | 87 KB | Stencil-Laufzeit von Fink, Texte, Overrides |
 
 Als interaktive Treemap: `pnpm spike:treemap` schreibt je Variante eine Karte nach `analyse/` (rollup-plugin-visualizer).
-Für diese Analyse-Builds zerlegt `scripts/kolibri-analyse-split.mjs` das KoliBri-Theme je Komponente in Icon-CSS und
-Gestaltung und den Kern-Chunk nach Bibliotheken. Die Analyse-Builds sind nicht lauffähig. Die Theme-Größen sind exakt,
-die Größen im Kern-Chunk sind eine Näherung (ohne Kommentare und Leerraum).
+Für diese Analyse-Builds zerlegt `scripts/kolibri-analyse-split.mjs` das KoliBri theme je Komponente in `icons` und
+`styles` und den core-Chunk nach Bibliotheken (`analysis/kolibri-core/markdown-chunk`). Die Analyse-Builds sind nicht
+lauffähig. Die Theme-Größen sind exakt, die Größen im core-Chunk sind eine Näherung (ohne Kommentare und Leerraum).
 
 Die gzip-Anteile in SOURCEMAP.md sind anteilig je Chunk geschätzt. Wo Theme und React im selben Chunk liegen,
 verschieben sie sich. Die minifizierten Bytes sind exakt.
 
 Daraus ergeben sich vier Hebel, keiner davon ist in Fink umgesetzt:
 
-1. Icon-CSS im Theme nur für genutzte Icons (im Experiment umgesetzt, von 13,1 MB auf 1,2 MB).
-2. Theme-Stile nur für die genutzten Komponenten laden.
-3. markdown-it aus dem gemeinsamen Kern lösen oder nur bei Bedarf laden.
+1. Icon-CSS im theme nur für genutzte Icons (im Experiment umgesetzt, von 13,1 MB auf 1,2 MB).
+2. theme-Stile nur für die genutzten Komponenten laden.
+3. markdown-it aus dem gemeinsamen core lösen oder nur bei Bedarf laden (im Experiment umgesetzt, siehe unten).
 4. In Fink nur die genutzten Komponenten registrieren statt aller 44.
+
+## markdown-it nur bei Bedarf (Hebel 3)
+
+KoliBri rendert Badge-Beschriftungen als Markdown (`allowMarkdown: true` im Badge-Baustein). Sonst setzt keine
+Komponente `allowMarkdown`, und als Prop gibt es es nicht. Trotzdem legt `SpanFC`, die gemeinsame Beschriftung fast
+aller Komponenten, beim Laden `new MarkdownIt()` an. Damit lädt jede Seite den Parser.
+
+`scripts/kolibri-lazy-markdown.mjs` stellt nach, wie KoliBri das lösen könnte:
+
+- Der core-Chunk verliert markdown-it, entities, linkify-it, punycode, mdurl und uc.micro: 139 KB auf 2,7 KB minifiziert.
+- `md()` lädt den Parser beim ersten Aufruf dynamisch nach und gibt bis dahin den Text maskiert aus. Für Text ohne
+  Markdown ist das dieselbe Ausgabe.
+- Nach dem Laden werden alle `kol-badge` mit Stencils `forceUpdate` neu gezeichnet. `tests/markdown.spec.ts` prüft,
+  dass `**wichtig**` danach als `<strong>` erscheint und `<ok>` maskiert bleibt.
+
+Ergebnis (gzip): Auf einer Seite ohne Badge sinkt die Ladegröße von 444 auf 390 KB, um 54 KB. Auf der Prüfseite
+ändert sich nichts, weil Fink Tags als Badges darstellt und der Parser dort nachgeladen wird, nur später. In der
+Source-Map-Auswertung sinkt der KoliBri core von 116 auf 62 KB, der Parser erscheint als eigener Posten
+„KoliBri markdown (lazy)“ mit 55 KB. Alle Prüfungen bestehen weiter.
+
+Die Lösung im Experiment ist ein Nachbau per Build-Schritt auf dem fertigen Paket. In KoliBri selbst gehörte der
+dynamische Import in den Badge-Baustein oder in eine eigene Markdown-Fassung von `SpanFC`.
 
 ## Grenzen
 

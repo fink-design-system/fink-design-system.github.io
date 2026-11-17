@@ -3,7 +3,7 @@
  * hineinzoomen kann. Der Build ist danach nicht lauffähig und dient nur der Größenmessung.
  *
  * 1. @public-ui/theme-default: jeder Komponentenstil wird zu zwei Modulen, „icons“ (mitgeliefertes Icon-CSS) und
- *    „gestaltung“ (der Rest). Die Größen sind exakt, weil das CSS auch im echten Build als String vorliegt.
+ *    „styles“ (der Rest). Die Größen sind exakt, weil das CSS auch im echten Build als String vorliegt.
  * 2. Der KoliBri-Chunk mit markdown-it: Aufteilung nach Bibliotheken anhand fester Zeilenbereiche. Kommentare und
  *    Leerraum werden entfernt, die Größen sind damit eine Näherung an den minifizierten Code.
  */
@@ -22,7 +22,7 @@ function splitIcons(css) {
 
 /** Zeilenbereiche (1-basiert, inklusive) im KoliBri-Chunk component-oUQcgxDj.js aus 4.6.0-rc.2. */
 const CORE_SEGMENTS = [
-	['kolibri-eigener-code', 1, 56],
+	['kolibri-own-code', 1, 56],
 	['mdurl', 57, 607],
 	['uc.micro', 608, 646],
 	['entities', 647, 1692],
@@ -30,7 +30,7 @@ const CORE_SEGMENTS = [
 	['linkify-it', 7160, 8008],
 	['punycode', 8009, 8452],
 	['markdown-it', 8453, 9241],
-	['kolibri-eigener-code', 9242, Infinity],
+	['kolibri-own-code', 9242, Infinity],
 ];
 
 const strip = (code) =>
@@ -39,7 +39,7 @@ const strip = (code) =>
 		.replace(/^\s*\/\/.*$/gm, '')
 		.replace(/\s+/g, ' ');
 
-const PREFIX = '/analyse/';
+const PREFIX = '/analysis/';
 
 export function kolibriAnalyseSplit({ keepCodicons } = {}) {
 	const virtual = new Map();
@@ -61,20 +61,20 @@ export function kolibriAnalyseSplit({ keepCodicons } = {}) {
 					let css = JSON.parse(literal);
 					if (keepCodicons) css = keepCodicons(css);
 					const { icons, styling } = splitIcons(css);
-					const base = `${PREFIX}kolibri-theme/${names[name] ?? 'gemeinsam'}`;
+					const base = `${PREFIX}kolibri-theme/${names[name] ?? 'shared'}`;
 					virtual.set(`${base}/icons.css.js`, icons);
-					virtual.set(`${base}/gestaltung.css.js`, styling);
-					imports.push(`import ${name}_i from '${base}/icons.css.js';`, `import ${name}_g from '${base}/gestaltung.css.js';`);
+					virtual.set(`${base}/styles.css.js`, styling);
+					imports.push(`import ${name}_i from '${base}/icons.css.js';`, `import ${name}_g from '${base}/styles.css.js';`);
 					return `var ${name} = ${name}_i + ${name}_g;`;
 				});
 				return { code: `${imports.join('\n')}\n${out}`, map: null };
 			}
-			if (/@public-ui\/components\/dist\/esm\/component-[\w-]+\.js$/.test(id) && code.includes('new MarkdownIt()')) {
+			if ((/@public-ui\/components\/dist\/esm\/component-[\w-]+\.js$/.test(id) || id === '\0kolibri-markdown') && code.includes('new MarkdownIt()')) {
 				const lines = code.split('\n');
 				const parts = {};
 				for (const [name, from, to] of CORE_SEGMENTS) parts[name] = (parts[name] ?? '') + lines.slice(from - 1, Math.min(to, lines.length)).join('\n');
 				const imports = Object.entries(parts).map(([name, text], i) => {
-					const vid = `${PREFIX}kolibri-kern/markdown-chunk/${name}.js`;
+					const vid = `${PREFIX}kolibri-core/${id === '\0kolibri-markdown' ? 'markdown-lazy-chunk' : 'markdown-chunk'}/${name}.js`;
 					virtual.set(vid, strip(text));
 					return [`import p${i} from '${vid}';`, `p${i}`];
 				});

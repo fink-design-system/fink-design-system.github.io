@@ -1,6 +1,5 @@
 dist
-dist-slim
-dist-analyse
+dist-*
 analyse
 public/assets/icon-fonts
 test-results

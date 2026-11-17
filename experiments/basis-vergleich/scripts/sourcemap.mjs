@@ -22,6 +22,7 @@ const kb = (n) => (n / 1024).toLocaleString('de-DE', { maximumFractionDigits: n 
 const VARIANTS = [
 	{ id: 'kolibri', name: 'KoliBri (Fink heute)', dist: 'dist', page: 'kolibri', port: 4321 },
 	{ id: 'kolibri-schlank', name: 'KoliBri schlank', dist: 'dist-slim', page: 'kolibri', port: 4322 },
+	{ id: 'kolibri-lazy', name: 'KoliBri schlank + lazy markdown', dist: 'dist-lazy', page: 'kolibri', port: 4323 },
 	{ id: 'react-aria', name: 'React Aria', dist: 'dist', page: 'react-aria', port: 4321 },
 	{ id: 'lion', name: 'Lion', dist: 'dist', page: 'lion', port: 4321 },
 ];
@@ -29,39 +30,40 @@ const VARIANTS = [
 /** Ordnet eine Quelldatei einer Gruppe und einem Eintrag zu. */
 function classify(source) {
 	const s = source.replace(/\\/g, '/');
+	if (s.includes('kolibri-markdown')) return ['KoliBri markdown (lazy)', 'markdown-it, entities, linkify-it, punycode, mdurl, uc.micro'];
 	const last = s.lastIndexOf('node_modules/');
 	const pkg = last < 0 ? null : s.slice(last + 13).match(/^((?:@[^/]+\/)?[^/]+)\/(.*)$/);
 	const name = pkg?.[1] ?? '';
 	const rest = pkg?.[2] ?? s;
-	if (name === '@public-ui/theme-default') return ['KoliBri: Theme', 'theme-default'];
+	if (name === '@public-ui/theme-default') return ['KoliBri theme', 'theme-default'];
 	if (name === '@public-ui/components') {
 		const comp = rest.match(/(?:components\/|\/)(kol-[a-z-]+|[a-z-]+)(?:\.entry)?\.js$/);
 		const entry = rest.match(/(kol-[a-z-]+)\.entry/) ?? rest.match(/collection\/components\/([a-z-]+)\//);
-		if (entry) return ['KoliBri: Komponenten', entry[1].startsWith('kol-') ? entry[1] : `kol-${entry[1]}`];
-		return ['KoliBri: Kern', comp ? comp[1] : rest.split('/').pop()];
+		if (entry) return ['KoliBri components', entry[1].startsWith('kol-') ? entry[1] : `kol-${entry[1]}`];
+		return ['KoliBri core', comp ? comp[1] : rest.split('/').pop()];
 	}
-	if (name.startsWith('@public-ui/') || name.startsWith('@stencil/')) return ['KoliBri: Kern', name];
+	if (name.startsWith('@public-ui/') || name.startsWith('@stencil/')) return ['KoliBri core', name];
 	if (name === '@fink/components' || s.includes('packages/components/')) {
 		const comp = s.match(/fink-([a-z-]+)\.js$/) ?? s.match(/components\/([a-z-]+)\/[^/]+$/);
-		return comp ? ['Fink: Komponenten', `fink-${comp[1]}`] : ['Fink: Kern', s.split('/').pop()];
+		return comp ? ['Fink components', `fink-${comp[1]}`] : ['Fink core', s.split('/').pop()];
 	}
-	if (name === '@fink/react' || s.includes('packages/react/')) return ['Fink: React-Schicht', s.split('/').pop()];
-	if (name === '@fink/theme' || s.includes('packages/theme/')) return ['Fink: Theme', s.split('/').pop()];
-	if (name === '@fink/tokens' || s.includes('packages/tokens/')) return ['Fink: Tokens', s.split('/').pop()];
+	if (name === '@fink/react' || s.includes('packages/react/')) return ['Fink React layer', s.split('/').pop()];
+	if (name === '@fink/theme' || s.includes('packages/theme/')) return ['Fink theme', s.split('/').pop()];
+	if (name === '@fink/tokens' || s.includes('packages/tokens/')) return ['Fink tokens', s.split('/').pop()];
 	if (['react', 'react-dom', 'scheduler'].includes(name)) return ['React', name];
 	if (/^(react-aria|react-aria-components|react-stately|@react-aria\/|@react-stately\/|@react-types\/|@internationalized\/|@swc\/helpers|clsx|use-sync-external-store)/.test(name)) {
-		return ['React Aria: Bibliothek', name];
+		return ['React Aria library', name];
 	}
 	if (name === '@lion/ui') {
 		const comp = rest.match(/components\/([a-z-]+)\//);
-		return ['Lion: Bibliothek', comp ? comp[1] : rest.split('/')[0]];
+		return ['Lion library', comp ? comp[1] : rest.split('/')[0]];
 	}
 	if (/^(lit|lit-html|lit-element|@lit\/)/.test(name)) return ['Lit', name];
-	if (/^(@open-wc\/|@popperjs\/|singleton-manager|@bundled-es-modules\/|autosize|ibantools)/.test(name)) return ['Lion: Abhängigkeiten', name];
+	if (/^(@open-wc\/|@popperjs\/|singleton-manager|@bundled-es-modules\/|autosize|ibantools)/.test(name)) return ['Lion dependencies', name];
 	if (/i18next/.test(name)) return ['i18next', name];
-	if (s.includes('experiments/basis-vergleich/src/') || s.startsWith('../../src/') || /^\.?\.?\/?src\//.test(s)) return ['Variante: eigener Code', s.split('/').slice(-2).join('/')];
-	if (s.includes('vite/') || s.includes('commonjsHelpers') || s.startsWith('\0') || s.includes('preload-helper')) return ['Vite-Laufzeit', s.split('/').pop()];
-	return ['Sonstiges', name || s.split('/').slice(-2).join('/')];
+	if (s.includes('experiments/basis-vergleich/src/') || s.startsWith('../../src/') || /^\.?\.?\/?src\//.test(s)) return ['variant code', s.split('/').slice(-2).join('/')];
+	if (s.includes('vite/') || s.includes('commonjsHelpers') || s.startsWith('\0') || s.includes('preload-helper')) return ['Vite runtime', s.split('/').pop()];
+	return ['other', name || s.split('/').slice(-2).join('/')];
 }
 
 /** Bytes je Quelle eines gebauten Skripts, über alle Zuordnungen der Source Map. */
@@ -71,18 +73,18 @@ async function attribute(file) {
 	const result = new Map();
 	const add = (source, bytes) => result.set(source, (result.get(source) ?? 0) + bytes);
 	if (!existsSync(mapFile)) {
-		add('[ohne Source Map]', Buffer.byteLength(code));
+		add('[no source map]', Buffer.byteLength(code));
 		return { code, result };
 	}
 	const lines = code.split('\n');
 	const byLine = lines.map(() => []);
 	await SourceMapConsumer.with(JSON.parse(readFileSync(mapFile, 'utf8')), null, (consumer) => {
-		consumer.eachMapping((m) => byLine[m.generatedLine - 1]?.push([m.generatedColumn, m.source ?? '[ohne Zuordnung]']));
+		consumer.eachMapping((m) => byLine[m.generatedLine - 1]?.push([m.generatedColumn, m.source ?? '[unmapped]']));
 	});
 	lines.forEach((line, i) => {
 		const segs = byLine[i].sort((a, b) => a[0] - b[0]);
-		if (!segs.length) return add('[ohne Zuordnung]', Buffer.byteLength(line) + 1);
-		if (segs[0][0] > 0) add('[ohne Zuordnung]', Buffer.byteLength(line.slice(0, segs[0][0])));
+		if (!segs.length) return add('[unmapped]', Buffer.byteLength(line) + 1);
+		if (segs[0][0] > 0) add('[unmapped]', Buffer.byteLength(line.slice(0, segs[0][0])));
 		segs.forEach(([col, source], j) => add(source, Buffer.byteLength(line.slice(col, j + 1 < segs.length ? segs[j + 1][0] : line.length)) + (j + 1 === segs.length ? 1 : 0)));
 	});
 	return { code, result };
@@ -103,6 +105,7 @@ async function analyse() {
 	const servers = [
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4321', '--strictPort'], { cwd: root, stdio: 'ignore' }),
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4322', '--strictPort', '--outDir', 'dist-slim'], { cwd: root, stdio: 'ignore' }),
+		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4323', '--strictPort', '--outDir', 'dist-lazy'], { cwd: root, stdio: 'ignore' }),
 	];
 	await new Promise((r) => setTimeout(r, 3000));
 	const browser = await chromium.launch();
@@ -111,7 +114,10 @@ async function analyse() {
 		for (const v of VARIANTS) {
 			const groups = {};
 			for (const path of await loadedScripts(browser, v)) {
-				const { code, result } = await attribute(join(root, v.dist, path));
+				const attributed = await attribute(join(root, v.dist, path));
+				const { code } = attributed;
+				// Der nachgeladene Markdown-Chunk ist ein virtuelles Modul ohne Source Map: Zuordnung über den Dateinamen.
+				const result = path.includes('_kolibri-markdown') ? new Map([['kolibri-markdown', Buffer.byteLength(code)]]) : attributed.result;
 				const total = Buffer.byteLength(code);
 				const zipped = gz(code);
 				for (const [source, bytes] of result) {
@@ -152,7 +158,7 @@ function themeByComponent() {
 		const noIcons = pruneCss(css, new Set()).replace(/\.codicon[^{}]*\{[^}]*\}|\.kolicon[^{}]*\{[^}]*\}/g, '');
 		const pruned = pruneCss(css, keep);
 		rows.push({
-			components: names[m[1]] ?? ['(gemeinsam)'],
+			components: names[m[1]] ?? ['(shared)'],
 			total: Buffer.byteLength(css),
 			icons: Buffer.byteLength(css) - Buffer.byteLength(noIcons),
 			styling: Buffer.byteLength(noIcons),
@@ -184,8 +190,8 @@ for (const v of VARIANTS) {
 	}
 	md.push('');
 }
-md.push('## KoliBri-Theme je Komponente', '', 'Unkomprimiert in KB. „Icons“ ist mitgeliefertes Icon-CSS (Font Awesome, Codicons, Kolicons, @font-face). „Gestaltung“ ist der Rest.', '');
-md.push('| Komponente | Gesamt | davon Icons | Gestaltung | Gestaltung gzip | nach Kürzung | nach Kürzung gzip |', '| --- | ---: | ---: | ---: | ---: | ---: | ---: |');
+md.push('## KoliBri-Theme je Komponente', '', 'Unkomprimiert in KB. „icons“ ist mitgeliefertes Icon-CSS (Font Awesome, Codicons, Kolicons, @font-face), „styles“ der Rest.', '');
+md.push('| Komponente | Gesamt | davon icons | styles | styles gzip | nach Kürzung | nach Kürzung gzip |', '| --- | ---: | ---: | ---: | ---: | ---: | ---: |');
 for (const r of theme) md.push(`| ${r.components.join(', ')} | ${kb(r.total)} | ${kb(r.icons)} | ${kb(r.styling)} | ${kb(r.stylingGzip)} | ${kb(r.pruned)} | ${kb(r.prunedGzip)} |`);
 const sum = (k) => theme.reduce((n, r) => n + r[k], 0);
 md.push(`| **Summe** | **${kb(sum('total'))}** | **${kb(sum('icons'))}** | **${kb(sum('styling'))}** | **${kb(sum('stylingGzip'))}** | **${kb(sum('pruned'))}** | **${kb(sum('prunedGzip'))}** |`, '');
