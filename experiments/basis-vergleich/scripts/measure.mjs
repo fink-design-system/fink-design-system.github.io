@@ -32,6 +32,14 @@ const VARIANTS = {
 		],
 		locales: ['tagInput', 'fileUpload', 'chip'],
 	},
+	'kolibri-schlank': {
+		name: 'KoliBri schlank',
+		note: 'wie KoliBri, Build mit scripts/kolibri-icon-prune.ts: im Theme nur die genutzten Icons',
+		page: 'kolibri',
+		slim: true,
+		files: [],
+		locales: [],
+	},
 	'react-aria': {
 		name: 'React Aria',
 		files: [own('react-aria/TagInput.tsx'), own('react-aria/FileUpload.tsx'), own('react-aria/styles.css'), own('shared/texts.ts')],
@@ -103,11 +111,14 @@ function code() {
 		}
 		out[id] = { name: v.name, ...totals, total: totals.logic + totals.style };
 	}
+	// Die schlanke Variante nutzt denselben Fink-Code, nur der Build unterscheidet sich.
+	out['kolibri-schlank'] = { ...out.kolibri, name: VARIANTS['kolibri-schlank'].name };
 	return out;
 }
 
 async function loaded() {
 	const server = spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4318', '--strictPort'], { cwd: root, stdio: 'ignore' });
+	const slimServer = spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4320', '--strictPort', '--outDir', 'dist-slim'], { cwd: root, stdio: 'ignore' });
 	await new Promise((r) => setTimeout(r, 2500));
 	const browser = await chromium.launch();
 	const out = {};
@@ -125,8 +136,10 @@ async function loaded() {
 					}
 				}
 			});
-			await page.goto(`http://localhost:4318/${id}.html`, { waitUntil: 'networkidle' });
-			await page.waitForTimeout(500);
+			const v = VARIANTS[id];
+			await page.goto(`http://localhost:${v.slim ? 4320 : 4318}/${v.page ?? id}.html`, { waitUntil: 'networkidle' });
+			await page.evaluate(() => document.fonts.ready);
+			await page.waitForTimeout(1500);
 			const sum = (filter) => bodies.filter(filter).reduce((n, b) => n + b.body.length, 0);
 			const gz = (filter) => bodies.filter(filter).reduce((n, b) => n + gzipSync(b.body).length, 0);
 			out[id] = {
@@ -141,6 +154,7 @@ async function loaded() {
 	} finally {
 		await browser.close();
 		server.kill();
+		slimServer.kill();
 	}
 	return out;
 }

@@ -7,7 +7,7 @@
   "scripts": {
     "icons:sync": "fink-sync-icons public/assets/icon-fonts",
     "dev": "pnpm icons:sync && vite",
-    "spike:build": "pnpm icons:sync && vite build",
+    "spike:build": "pnpm icons:sync && vite build && KOLIBRI_SLIM=1 vite build",
     "spike:test": "playwright test",
     "spike:measure": "node scripts/measure.mjs",
     "spike": "pnpm spike:build && pnpm spike:test && pnpm spike:measure"

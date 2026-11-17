@@ -54,6 +54,59 @@
 			],
 			"total": 592
 		},
+		"kolibri-schlank": {
+			"name": "KoliBri schlank",
+			"logic": 417,
+			"style": 175,
+			"files": [
+				{
+					"file": "packages/components/src/components/tag-input/tag-input.tsx",
+					"logic": 119,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/tag-input/tag-input.css",
+					"logic": 0,
+					"style": 27
+				},
+				{
+					"file": "packages/components/src/components/chip/chip.tsx",
+					"logic": 72,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/chip/chip.css",
+					"logic": 0,
+					"style": 4
+				},
+				{
+					"file": "packages/components/src/components/file-upload/file-upload.tsx",
+					"logic": 151,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/file-upload/file-upload.css",
+					"logic": 0,
+					"style": 144
+				},
+				{
+					"file": "packages/components/src/utils/resolve-color.ts",
+					"logic": 37,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/utils/shared.ts",
+					"logic": 15,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/i18n/locales.ts (deutsche Texte)",
+					"logic": 23,
+					"style": 0
+				}
+			],
+			"total": 592
+		},
 		"react-aria": {
 			"name": "React Aria",
 			"logic": 230,
@@ -113,11 +166,18 @@
 	},
 	"loaded": {
 		"kolibri": {
-			"requests": 9,
-			"scriptBytes": 14048278,
-			"scriptGzip": 2033373,
-			"styleAndFontBytes": 136978,
-			"totalGzip": 2061093
+			"requests": 64,
+			"scriptBytes": 14354963,
+			"scriptGzip": 2153146,
+			"styleAndFontBytes": 218786,
+			"totalGzip": 2226171
+		},
+		"kolibri-schlank": {
+			"requests": 61,
+			"scriptBytes": 2083677,
+			"scriptGzip": 397724,
+			"styleAndFontBytes": 218786,
+			"totalGzip": 470749
 		},
 		"react-aria": {
 			"requests": 6,
@@ -136,6 +196,77 @@
 	},
 	"tests": {
 		"KoliBri": [
+			{
+				"test": "Tag per Tastatur mit Enter übernehmen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Freie Eingabe mit Komma übernehmen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Vorschlag per Pfeiltaste wählen",
+				"status": "nicht simulierbar",
+				"note": "Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet."
+			},
+			{
+				"test": "Doppelten Eintrag mit Meldung abweisen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Rücktaste im leeren Feld entfernt den letzten Eintrag",
+				"status": "bestanden"
+			},
+			{
+				"test": "Eintrag per Tastatur über den Entfernen-Knopf löschen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Höchstzahl sperrt das Feld",
+				"status": "bestanden"
+			},
+			{
+				"test": "Gültige Datei über die Dateiauswahl hinzufügen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Zu große Datei mit Meldung abweisen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Falschen Dateityp mit Meldung abweisen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Datei über den Entfernen-Knopf löschen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Datei per Ziehen und Ablegen hinzufügen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Fokus ist im Hochkontrastmodus sichtbar",
+				"status": "bestanden"
+			},
+			{
+				"test": "Kein seitliches Scrollen bei 320 Pixeln",
+				"status": "bestanden"
+			},
+			{
+				"test": "Alle sichtbaren Texte auf Deutsch",
+				"status": "bestanden"
+			},
+			{
+				"test": "Keine axe-Funde nach Interaktion",
+				"status": "bestanden"
+			},
+			{
+				"test": "Keine Konsolenfehler",
+				"status": "bestanden"
+			}
+		],
+		"KoliBri schlank": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"

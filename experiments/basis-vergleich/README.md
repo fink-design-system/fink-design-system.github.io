@@ -21,6 +21,7 @@ Zusammen nutzen sie sieben KoliBri-Bausteine: `kol-input-text`, `kol-badge` und 
 | Variante   | Basis                                                    | Was gezählt wird                                                                    |
 | ---------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | KoliBri    | `@public-ui/components` 4.6.0-rc.2, Fink-Theme           | Fink-Quellen beider Komponenten, `fink-chip`, Hilfsfunktionen, deutsche Texte       |
+| KoliBri schlank | wie KoliBri, Build mit `scripts/kolibri-icon-prune.ts`: im Theme nur die genutzten Icons | wie KoliBri                                  |
 | React Aria | `react-aria-components` 1.22.1 (ComboBox, TagGroup, DropZone, FileTrigger) | `src/react-aria/*`, `src/shared/texts.ts`                         |
 | Lion       | `@lion/ui` 0.25.0 (lion-combobox, lion-input-file, lion-button) | `src/lion/*`, `src/shared/texts.ts`                                          |
 
@@ -48,12 +49,12 @@ pnpm dev                         # Varianten im Browser ansehen
 
 Die Zahlen stehen in [ERGEBNIS.md](ERGEBNIS.md). Kurzfassung:
 
-| | KoliBri | React Aria | Lion |
-| --- | ---: | ---: | ---: |
-| Prüfungen bestanden (von 17) | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 17 |
-| Eigener Code (Zeilen) | 592 | 455 | 472 |
-| davon Gestaltung (CSS) | 175 | 225 | 269 |
-| Geladen beim Seitenaufruf (gzip) | rund 2 MB | 155 KB | 67 KB |
+| | KoliBri | KoliBri schlank | React Aria | Lion |
+| --- | ---: | ---: | ---: | ---: |
+| Prüfungen bestanden (von 17) | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 17 |
+| Eigener Code (Zeilen) | 592 | 592 | 455 | 472 |
+| davon Gestaltung (CSS) | 175 | 175 | 225 | 269 |
+| Geladen beim Seitenaufruf (gzip) | 2.174 KB | 460 KB | 155 KB | 67 KB |
 
 ## Auswertung
 
@@ -73,10 +74,20 @@ keine CSS-Variablen annimmt, und 144 Zeilen CSS für die Drop-Zone um `kol-input
 selbst gestaltet werden. Der Unterschied ist kleiner als erwartet: 50 bis 94 Zeilen mehr. Der Hochkontrastmodus
 kostete 23 Zeilen bei React Aria und 36 bei Lion.
 
-**Ladegröße.** Die KoliBri-Variante lädt rund 2 MB gzip, React Aria 155 KB, Lion 67 KB. Bei KoliBri schwankt der Wert
-zwischen den Läufen um einige Prozent, weil Komponenten nachgeladen werden. Ursache ist das Default-Theme
-`@public-ui/theme-default`: 14,5 MB unminifiziertes CSS als JavaScript-Strings, das Fink erweitert und beim Start
-vollständig lädt. Ein eigenes, schlankes Theme würde das vermutlich vermeiden. Das ist nicht geprüft.
+**Ladegröße.** Fink lädt in der heutigen Form 2.174 KB gzip. Fast alles davon ist das Default-Theme
+`@public-ui/theme-default`, das Fink erweitert. 12,2 der 12,9 MB Theme-CSS sind mitgelieferte Icon-Stile (Font
+Awesome, Codicons, Kolicons samt `@font-face`), eingebettet in 40 Komponentenstile. Die eigentliche Gestaltung der
+Komponenten macht nur 755 KB aus, 55 KB gzip.
+
+Die Variante „KoliBri schlank“ entfernt beim Build alle Icon-Regeln, die weder KoliBri intern noch Fink nutzt
+(`scripts/kolibri-icon-prune.ts`, ein Vite-Plugin mit rund 30 Zeilen). Sie lädt 460 KB gzip, bei pixelgleicher
+Darstellung und denselben bestandenen Prüfungen. Davon entfallen rund 70 KB auf global geladene Icon-Schriften,
+darunter Font Awesome, das Fink gar nicht nutzt.
+
+KoliBri lädt Komponenten einzeln nach. Auf der Prüfseite sind es vier (`kol-input-text`, `kol-input-file`,
+`kol-badge`, `kol-icon`), zusammen rund 20 KB. Über alle 52 Komponenten liegt der Median bei 4,3 KB gzip. Der Kern
+wird einmal geladen, jede weitere Komponente kostet wenig. React Aria (155 KB) und Lion (67 KB) bleiben für diese
+beiden Komponenten kleiner. Wie sich der Abstand bei vielen Komponenten entwickelt, ist nicht gemessen.
 
 **Befunde beim Bauen.**
 
@@ -104,5 +115,5 @@ vollständig lädt. Ein eigenes, schlankes Theme würde das vermutlich vermeiden
 Für Kompositionen wie diese beiden stützt das Experiment die Annahme nicht, dass Fink mit einer Headless-Bibliothek
 deutlich mehr Aufwand gehabt hätte. KoliBris Vorteil liegt woanders: in der Breite von 49 fertigen Bausteinen, in der
 Pflege durch das ITZBund und im BITV-orientierten Prüfverfahren. Sein messbarer Nachteil ist die Ladegröße des
-Default-Themes. Der nächste aufschlussreiche Schritt wäre derselbe Vergleich für einen komplexen Baustein,
+Default-Themes. Er lässt sich mit einem Build-Schritt auf rund ein Fünftel senken. Der nächste aufschlussreiche Schritt wäre derselbe Vergleich für einen komplexen Baustein,
 etwa eine sortierbare Tabelle oder eine Datumswahl.

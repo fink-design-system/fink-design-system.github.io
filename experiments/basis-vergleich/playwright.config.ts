@@ -12,9 +12,8 @@ export default defineConfig({
 		locale: 'de-DE',
 	},
 	projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
-	webServer: {
-		command: 'pnpm exec vite preview --port 4317 --strictPort',
-		url: 'http://localhost:4317',
-		reuseExistingServer: true,
-	},
+	webServer: [
+		{ command: 'pnpm exec vite preview --port 4317 --strictPort', url: 'http://localhost:4317', reuseExistingServer: true },
+		{ command: 'pnpm exec vite preview --port 4319 --strictPort --outDir dist-slim', url: 'http://localhost:4319/kolibri.html', reuseExistingServer: true },
+	],
 });

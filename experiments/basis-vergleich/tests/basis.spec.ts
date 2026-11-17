@@ -7,6 +7,7 @@ import { expect, test, type Locator, type Page } from '@playwright/test';
  */
 const VARIANTS = [
 	{ id: 'kolibri', name: 'KoliBri', dropTarget: 'fink-file-upload' },
+	{ id: 'kolibri', name: 'KoliBri schlank', dropTarget: 'fink-file-upload', base: 'http://localhost:4319' },
 	{ id: 'react-aria', name: 'React Aria', dropTarget: '.ra-zone' },
 	{ id: 'lion', name: 'Lion', dropTarget: 'fink-lion-file-upload .input-file__drop-zone' },
 ] as const;
@@ -32,8 +33,8 @@ function pdf(name: string, bytes: number, mimeType = 'application/pdf') {
 	return { name, mimeType, buffer: Buffer.alloc(bytes, 1) };
 }
 
-async function ready(page: Page, id: string) {
-	await page.goto(`/${id}.html`);
+async function ready(page: Page, id: string, base = '') {
+	await page.goto(`${base}/${id}.html`);
 	await expect(tagField(page)).toBeVisible();
 	await expect(page.getByRole('button', { name: 'Berlin entfernen' })).toBeVisible();
 	await page.waitForTimeout(300);
@@ -57,7 +58,7 @@ async function deepFocus(page: Page) {
 for (const variant of VARIANTS) {
 	test.describe(variant.name, () => {
 		test.beforeEach(async ({ page }) => {
-			await ready(page, variant.id);
+			await ready(page, variant.id, 'base' in variant ? variant.base : '');
 		});
 
 		test('Tag per Tastatur mit Enter übernehmen', async ({ page }) => {
@@ -207,7 +208,7 @@ for (const variant of VARIANTS) {
 			const errors: string[] = [];
 			page.on('console', (message) => message.type() === 'error' && errors.push(message.text()));
 			page.on('pageerror', (error) => errors.push(error.message));
-			await ready(page, variant.id);
+			await ready(page, variant.id, 'base' in variant ? variant.base : '');
 			await addTag(page, 'Bonn');
 			await page.locator('input[type=file]').setInputFiles(pdf('beleg.pdf', 1024));
 			await page.waitForTimeout(300);
