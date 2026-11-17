@@ -48,6 +48,13 @@ Fink baut nur, was KoliBri nicht hat. Alle 49 KoliBri-Komponenten (KoliBri 4.6, 
 Kompositionen, Doku oder als Innenleben von Fink-Komponenten genutzt. Die Seite „KoliBri-Nachnutzung“ ermittelt das zur
 Build-Zeit aus dem Quellcode und begründet jede eigene Fink-Komponente.
 
+## Experiment: KoliBri und Headless-Bibliotheken
+
+`experiments/basis-vergleich` baut `fink-tag-input` und `fink-file-upload` auf React Aria und Lion nach und vergleicht
+sie mit den Fink-Komponenten auf KoliBri: gleiche Vorgabe, gleiche Gestaltung, gleiche automatischen Prüfungen.
+Gemessen werden eigener Code, Ladegröße und Testergebnisse (`pnpm spike` im Ordner). Auswertung und Grenzen stehen in
+[experiments/basis-vergleich/README.md](experiments/basis-vergleich/README.md).
+
 ## Mehrsprachigkeit (Deutsch / Englisch)
 
 - Startsprache: gespeicherte Wahl, sonst `<html lang>`, sonst Browsersprache (`navigator.languages`), sonst Englisch

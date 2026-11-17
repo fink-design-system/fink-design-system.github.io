@@ -1,0 +1,37 @@
+{
+  "name": "@fink/experiment-basis-vergleich",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Experiment: zwei Fink-Komponenten auf KoliBri, React Aria und Lion im Vergleich.",
+  "type": "module",
+  "scripts": {
+    "icons:sync": "fink-sync-icons public/assets/icon-fonts",
+    "dev": "pnpm icons:sync && vite",
+    "spike:build": "pnpm icons:sync && vite build",
+    "spike:test": "playwright test",
+    "spike:measure": "node scripts/measure.mjs",
+    "spike": "pnpm spike:build && pnpm spike:test && pnpm spike:measure"
+  },
+  "dependencies": {
+    "@fink/components": "workspace:*",
+    "@fink/react": "workspace:*",
+    "@fink/theme": "workspace:*",
+    "@fink/tokens": "workspace:*",
+    "@lion/ui": "0.25.0",
+    "@public-ui/components": "4.6.0-rc.2",
+    "@public-ui/theme-default": "4.6.0-rc.2",
+    "lit": "3.3.3",
+    "react": "19.2.0",
+    "react-aria-components": "1.22.1",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.63.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.2.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.8"
+  }
+}
