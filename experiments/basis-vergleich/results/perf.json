@@ -1,0 +1,59 @@
+{
+	"stand": "2026-11-17",
+	"runs": 7,
+	"perType": 150,
+	"results": {
+		"ohne": {
+			"kolibri": {
+				"ms": 422,
+				"recalcStyleMs": 37.07299999999999,
+				"layoutMs": 79.57300000000001,
+				"heapMb": 69.57286071777344
+			},
+			"kolibri-global": {
+				"ms": 500.39999999990687,
+				"recalcStyleMs": 118.18,
+				"layoutMs": 70.17,
+				"heapMb": 10.953727722167969
+			},
+			"kolibri-global-slim": {
+				"ms": 434.19999999995343,
+				"recalcStyleMs": 40.336,
+				"layoutMs": 77.454,
+				"heapMb": 8.714481353759766
+			},
+			"kolibri-schlank": {
+				"ms": 419.60000000009313,
+				"recalcStyleMs": 37.767999999999994,
+				"layoutMs": 74.11699999999999,
+				"heapMb": 10.818038940429688
+			}
+		},
+		"gemischt": {
+			"kolibri": {
+				"ms": 980.3000000000466,
+				"recalcStyleMs": 105.142,
+				"layoutMs": 127.691,
+				"heapMb": 73.2373275756836
+			},
+			"kolibri-global": {
+				"ms": 1037.9000000001397,
+				"recalcStyleMs": 229.059,
+				"layoutMs": 130.135,
+				"heapMb": 15.79207992553711
+			},
+			"kolibri-global-slim": {
+				"ms": 954.6000000000931,
+				"recalcStyleMs": 98.715,
+				"layoutMs": 133.643,
+				"heapMb": 13.539051055908203
+			},
+			"kolibri-schlank": {
+				"ms": 999.8999999999069,
+				"recalcStyleMs": 96.348,
+				"layoutMs": 144.487,
+				"heapMb": 15.596508026123047
+			}
+		}
+	}
+}

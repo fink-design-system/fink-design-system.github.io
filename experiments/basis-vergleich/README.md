@@ -23,6 +23,8 @@ Zusammen nutzen sie sieben KoliBri-Bausteine: `kol-input-text`, `kol-badge` und 
 | KoliBri    | `@public-ui/components` 4.6.0-rc.2, Fink-Theme           | Fink-Quellen beider Komponenten, `fink-chip`, Hilfsfunktionen, deutsche Texte       |
 | KoliBri schlank | wie KoliBri, Build mit `scripts/kolibri-icon-prune.mjs`: im Theme nur die genutzten Icons (`KOLIBRI_BUILD=slim`) | wie KoliBri       |
 | KoliBri schlank + lazy markdown | wie KoliBri schlank, zusätzlich `scripts/kolibri-lazy-markdown.mjs`: markdown-it nur bei Bedarf (`KOLIBRI_BUILD=lazy`) | wie KoliBri |
+| KoliBri icons in GLOBAL | wie KoliBri, `scripts/kolibri-icons-global.mjs`: Icon-CSS vollständig, aber einmal in `GLOBAL` (`KOLIBRI_BUILD=global`) | wie KoliBri |
+| KoliBri icons in GLOBAL, gekürzt | Icon-CSS auf genutzte Icons gekürzt und einmal in `GLOBAL` (`KOLIBRI_BUILD=global-slim`) | wie KoliBri |
 | React Aria | `react-aria-components` 1.22.1 (ComboBox, TagGroup, DropZone, FileTrigger) | `src/react-aria/*`, `src/shared/texts.ts`                         |
 | Lion       | `@lion/ui` 0.25.0 (lion-combobox, lion-input-file, lion-button) | `src/lion/*`, `src/shared/texts.ts`                                          |
 
@@ -129,7 +131,7 @@ verschieben sie sich. Die minifizierten Bytes sind exakt.
 
 Daraus ergeben sich vier Hebel, keiner davon ist in Fink umgesetzt:
 
-1. Icon-CSS im theme nur für genutzte Icons (im Experiment umgesetzt, von 13,1 MB auf 1,2 MB).
+1. Icon-CSS im theme nur einmal und nur für genutzte Icons (im Experiment umgesetzt, siehe „Icon-CSS einmal in GLOBAL“).
 2. theme-Stile nur für die genutzten Komponenten laden.
 3. markdown-it aus dem gemeinsamen core lösen oder nur bei Bedarf laden (im Experiment umgesetzt, siehe unten).
 4. In Fink nur die genutzten Komponenten registrieren statt aller 44.
@@ -155,6 +157,41 @@ Source-Map-Auswertung sinkt der KoliBri core von 116 auf 62 KB, der Parser ersch
 
 Die Lösung im Experiment ist ein Nachbau per Build-Schritt auf dem fertigen Paket. In KoliBri selbst gehörte der
 dynamische Import in den Badge-Baustein oder in eine eigene Markdown-Fassung von `SpanFC`.
+
+## Icon-CSS einmal in GLOBAL statt in jeder Komponente
+
+Das Default-theme bindet das Icon-CSS über das Mixin `kol-icon-theme` in die SCSS-Datei jeder Komponente ein
+(`@include kol-icon-theme`). Sass fügt ein Mixin bei jedem `@include` vollständig ein, so entstehen 40 Kopien.
+KoliBris Styling-Laufzeit `adopted-style-sheets` setzt dagegen in jeden Shadow Root `PROPERTIES`, `GLOBAL` und den
+Komponentenstil und legt jedes CSS nur einmal als geteiltes `CSSStyleSheet` an.
+
+`scripts/kolibri-icons-global.mjs` stellt nach, wie das theme das Icon-CSS einmal in `GLOBAL` legen könnte. Es zerlegt
+jeden Komponentenstil in Anweisungen, nimmt reine Icon-Anweisungen heraus (auch ganze `@media`-, `@supports`- und
+`@keyframes`-Blöcke), dedupliziert sie und hängt sie an `GLOBAL` an. Damit sich die Kaskade nicht ändert, bleiben sie in
+derselben Ebene `@layer kol-theme-component`. Eine Bilanz über alle 40 Komponenten zeigt: Entfernt werden nur
+Icon-Regeln und Kommentare.
+
+Ergebnis (Ladegröße gzip, Prüfseite / Seite ohne Badge):
+
+| Fassung | Prüfseite | ohne Badge | JS-Speicher nach 900 Komponenten |
+| --- | ---: | ---: | ---: |
+| KoliBri (Fink heute) | 2.174 KB | 2.158 KB | 73 MB |
+| icons in GLOBAL, alle Icons | 492 KB | 477 KB | 16 MB |
+| icons in GLOBAL, gekürzt | 416 KB | 400 KB | 14 MB |
+| zum Vergleich: schlank (gekürzt, je Komponente) | 460 KB | 444 KB | 16 MB |
+
+Ohne ein Icon wegzulassen sinkt die Ladegröße von 2.174 auf 492 KB. Die Darstellung ist bis auf 25 Pixel mit einer
+Abweichung von höchstens 3 von 765 Farbstufen gleich (Kantenglättung), im Hochkontrastmodus pixelgleich. Alle
+Prüfungen bestehen.
+
+Der Preis zeigt sich in der Stilberechnung (`pnpm spike:perf`, Median aus 7 Läufen, Ergebnis in [PERF.md](PERF.md)):
+Mit allen Icons in `GLOBAL` muss jede Komponente rund 600 KB Icon-Regeln prüfen, auch Komponenten ohne Icons. Bei 450
+Komponenten ohne Icons steigt die Stilberechnung von 37 auf 118 ms, bei 900 gemischten von 105 auf 229 ms. Mit gekürztem
+Icon-CSS (10 KB statt 616 KB in `GLOBAL`) verschwindet dieser Preis: 40 bzw. 99 ms, so schnell wie heute.
+
+Folgerung: Icon-CSS gehört einmal in `GLOBAL`, aber nur für die Icon-Sets, die eine Anwendung nutzt. Font Awesome
+allein macht 497 der 616 KB aus. Ein theme könnte die Icon-Sets wählbar machen oder KoliBri das Theme-Format so
+erweitern, dass ein gemeinsamer Icon-String nur in die Komponenten mit Icons kommt.
 
 ## Grenzen
 

@@ -8,6 +8,8 @@ import { kolibriIconPrune } from './scripts/kolibri-icon-prune.mjs';
 // @ts-expect-error Skript ohne Typdeklaration
 import { kolibriAnalyseSplit } from './scripts/kolibri-analyse-split.mjs';
 // @ts-expect-error Skript ohne Typdeklaration
+import { kolibriIconsGlobal } from './scripts/kolibri-icons-global.mjs';
+// @ts-expect-error Skript ohne Typdeklaration
 import { kolibriLazyMarkdown } from './scripts/kolibri-lazy-markdown.mjs';
 
 /**
@@ -15,10 +17,13 @@ import { kolibriLazyMarkdown } from './scripts/kolibri-lazy-markdown.mjs';
  * - nicht gesetzt: wie Fink heute (alle vier Seiten, dist)
  * - slim: nur genutzte Icons im Theme (dist-slim)
  * - lazy: slim und markdown-it nur bei Bedarf (dist-lazy)
+ * - global: Icon-CSS vollständig, aber einmal in GLOBAL statt in jedem Komponentenstil (dist-global)
+ * - global-slim: Icon-CSS gekürzt und einmal in GLOBAL (dist-global-slim)
  */
 const flavor = process.env.KOLIBRI_BUILD ?? '';
-const slim = flavor === 'slim' || flavor === 'lazy';
+const slim = flavor === 'slim' || flavor === 'lazy' || flavor === 'global-slim';
 const lazy = flavor === 'lazy';
+const global = flavor === 'global' || flavor === 'global-slim';
 
 /** Mit ANALYZE=<seite> wird nur diese Seite gebaut und eine Treemap nach analyse/ geschrieben. */
 const analyze = process.env.ANALYZE;
@@ -40,6 +45,7 @@ export default defineConfig({
 		react(),
 		...(slim ? [kolibriIconPrune(finkCodicons())] : []),
 		...(lazy ? [kolibriLazyMarkdown()] : []),
+		...(global ? [kolibriIconsGlobal()] : []),
 		...(analyze
 			? [
 					kolibriAnalyseSplit(),
@@ -60,11 +66,16 @@ export default defineConfig({
 			input: analyze
 				? { [analyze]: resolve(import.meta.dirname, `${analyze}.html`) }
 				: flavor
-					? { kolibri: resolve(import.meta.dirname, 'kolibri.html'), 'kolibri-no-badge': resolve(import.meta.dirname, 'kolibri-no-badge.html') }
+					? {
+							kolibri: resolve(import.meta.dirname, 'kolibri.html'),
+							'kolibri-no-badge': resolve(import.meta.dirname, 'kolibri-no-badge.html'),
+							'kolibri-perf': resolve(import.meta.dirname, 'kolibri-perf.html'),
+						}
 					: {
 							index: resolve(import.meta.dirname, 'index.html'),
 							kolibri: resolve(import.meta.dirname, 'kolibri.html'),
 							'kolibri-no-badge': resolve(import.meta.dirname, 'kolibri-no-badge.html'),
+							'kolibri-perf': resolve(import.meta.dirname, 'kolibri-perf.html'),
 							'react-aria': resolve(import.meta.dirname, 'react-aria.html'),
 							lion: resolve(import.meta.dirname, 'lion.html'),
 						},

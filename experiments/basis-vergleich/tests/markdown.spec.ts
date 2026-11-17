@@ -8,6 +8,8 @@ const KOLIBRI = [
 	{ name: 'KoliBri', base: '' },
 	{ name: 'KoliBri schlank', base: 'http://localhost:4319' },
 	{ name: 'KoliBri schlank + lazy markdown', base: 'http://localhost:4323' },
+	{ name: 'KoliBri icons in GLOBAL', base: 'http://localhost:4325' },
+	{ name: 'KoliBri icons in GLOBAL, gekürzt', base: 'http://localhost:4327' },
 ];
 
 for (const variant of KOLIBRI) {
