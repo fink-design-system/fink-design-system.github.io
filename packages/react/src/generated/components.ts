@@ -31,6 +31,7 @@ import { FinkImageList as FinkImageListElement, defineCustomElement as defineFin
 import { FinkInfiniteScroll as FinkInfiniteScrollElement, defineCustomElement as defineFinkInfiniteScroll } from '@fink/components/dist/components/fink-infinite-scroll.js';
 import { FinkKbd as FinkKbdElement, defineCustomElement as defineFinkKbd } from '@fink/components/dist/components/fink-kbd.js';
 import { FinkList as FinkListElement, defineCustomElement as defineFinkList } from '@fink/components/dist/components/fink-list.js';
+import { FinkLogo as FinkLogoElement, defineCustomElement as defineFinkLogo } from '@fink/components/dist/components/fink-logo.js';
 import { FinkMenu as FinkMenuElement, defineCustomElement as defineFinkMenu } from '@fink/components/dist/components/fink-menu.js';
 import { FinkOtpInput as FinkOtpInputElement, defineCustomElement as defineFinkOtpInput } from '@fink/components/dist/components/fink-otp-input.js';
 import { FinkPageHeader as FinkPageHeaderElement, defineCustomElement as defineFinkPageHeader } from '@fink/components/dist/components/fink-page-header.js';
@@ -332,6 +333,17 @@ export const FinkList: StencilReactComponent<FinkListElement, FinkListEvents, Co
       onFinkSelect: 'finkSelect'
     } as FinkListEvents,
     defineCustomElement: defineFinkList,
+});
+
+export type FinkLogoEvents = NonNullable<unknown>;
+
+export const FinkLogo: StencilReactComponent<FinkLogoElement, FinkLogoEvents, Components.FinkLogo> = /*@__PURE__*/ createComponent<FinkLogoElement, FinkLogoEvents, Components.FinkLogo>({
+    tagName: 'fink-logo',
+    elementClass: FinkLogoElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as FinkLogoEvents,
+    defineCustomElement: defineFinkLogo,
 });
 
 export type FinkMenuEvents = {

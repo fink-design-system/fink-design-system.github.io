@@ -1,0 +1,48 @@
+:host {
+	display: inline-flex;
+	vertical-align: middle;
+}
+
+.logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.logo-mark {
+	flex: none;
+	width: 1.5em;
+	height: 1.5em;
+}
+
+/* Zeichen auf Kachelfläche in der Primärfarbe – bei 1rem Schriftgröße Kopfzeilenmaßstab (2rem Kachel). */
+.logo-badge {
+	padding: 0.3125em;
+	border-radius: var(--fink-radius-md);
+	background: var(--fink-color-primary);
+	color: var(--fink-color-light);
+}
+
+.logo-badge .logo-mark {
+	width: 1.375em;
+	height: 1.375em;
+}
+
+.logo-word {
+	display: inline-flex;
+	align-items: baseline;
+	font-family: var(--fink-font-family);
+	font-size: 1.6em;
+	font-weight: var(--fink-font-weight-bold);
+	letter-spacing: -0.03em;
+	line-height: 1;
+}
+
+.logo-subtitle {
+	margin-left: 0.6em;
+	font-size: 0.45em;
+	font-weight: var(--fink-font-weight-medium);
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--fink-color-subtle);
+}

@@ -616,6 +616,30 @@ export namespace Components {
         "_value"?: string;
     }
     /**
+     * Wortmarke und Zeichen des Fink Design Systems: aufrechte Buchfink-Silhouette
+     * mit Kegelschnabel, gefaltetem Flügel, abwärts gerichtetem Schwanz.
+     * Varianten: „mark“ zeichnet das Zeichen allein in der Textfarbe (currentColor),
+     * „badge“ setzt es auf eine Kachelfläche in der Primärfarbe (Kopfzeilenmaßstab),
+     * „lockup“ koppelt Zeichen und Wortmarke „fink“ mit optionalem Zusatz.
+     * Ohne _label ist die Marke rein dekorativ (aria-hidden); mit _label erhält sie
+     * role="img" und einen zugänglichen Namen.
+     */
+    interface FinkLogo {
+        /**
+          * Zugänglicher Name; ohne _label bleibt die Marke dekorativ.
+         */
+        "_label"?: string;
+        /**
+          * Zusatz hinter der Wortmarke (nur Variante „lockup“), z. B. „Design System“.
+         */
+        "_subtitle"?: string;
+        /**
+          * Darstellungsvariante der Marke.
+          * @default 'mark'
+         */
+        "_variant"?: 'mark' | 'badge' | 'lockup';
+    }
+    /**
      * Aktionsmenü an einer Schaltfläche (MUI „Menu“, Vuetify „v-menu“, Material 3 „Menus“).
      * Auslöser und Popover kommen von kol-popover-button; Fink ergänzt die Menüsemantik
      * (role="menu", Pfeiltasten, Pos1/Ende, Tippen springt zum Eintrag, Escape) sowie
@@ -1781,6 +1805,21 @@ declare global {
         prototype: HTMLFinkListElement;
         new (): HTMLFinkListElement;
     };
+    /**
+     * Wortmarke und Zeichen des Fink Design Systems: aufrechte Buchfink-Silhouette
+     * mit Kegelschnabel, gefaltetem Flügel, abwärts gerichtetem Schwanz.
+     * Varianten: „mark“ zeichnet das Zeichen allein in der Textfarbe (currentColor),
+     * „badge“ setzt es auf eine Kachelfläche in der Primärfarbe (Kopfzeilenmaßstab),
+     * „lockup“ koppelt Zeichen und Wortmarke „fink“ mit optionalem Zusatz.
+     * Ohne _label ist die Marke rein dekorativ (aria-hidden); mit _label erhält sie
+     * role="img" und einen zugänglichen Namen.
+     */
+    interface HTMLFinkLogoElement extends Components.FinkLogo, HTMLStencilElement {
+    }
+    var HTMLFinkLogoElement: {
+        prototype: HTMLFinkLogoElement;
+        new (): HTMLFinkLogoElement;
+    };
     interface HTMLFinkMenuElementEventMap {
         "finkSelect": string;
         "finkCheck": { id: string; checked: boolean };
@@ -2239,6 +2278,7 @@ declare global {
         "fink-infinite-scroll": HTMLFinkInfiniteScrollElement;
         "fink-kbd": HTMLFinkKbdElement;
         "fink-list": HTMLFinkListElement;
+        "fink-logo": HTMLFinkLogoElement;
         "fink-menu": HTMLFinkMenuElement;
         "fink-otp-input": HTMLFinkOtpInputElement;
         "fink-page-header": HTMLFinkPageHeaderElement;
@@ -2873,6 +2913,30 @@ declare namespace LocalJSX {
           * Liefert die ID des gewählten Eintrags.
          */
         "onFinkSelect"?: (event: FinkListCustomEvent<string>) => void;
+    }
+    /**
+     * Wortmarke und Zeichen des Fink Design Systems: aufrechte Buchfink-Silhouette
+     * mit Kegelschnabel, gefaltetem Flügel, abwärts gerichtetem Schwanz.
+     * Varianten: „mark“ zeichnet das Zeichen allein in der Textfarbe (currentColor),
+     * „badge“ setzt es auf eine Kachelfläche in der Primärfarbe (Kopfzeilenmaßstab),
+     * „lockup“ koppelt Zeichen und Wortmarke „fink“ mit optionalem Zusatz.
+     * Ohne _label ist die Marke rein dekorativ (aria-hidden); mit _label erhält sie
+     * role="img" und einen zugänglichen Namen.
+     */
+    interface FinkLogo {
+        /**
+          * Zugänglicher Name; ohne _label bleibt die Marke dekorativ.
+         */
+        "_label"?: string;
+        /**
+          * Zusatz hinter der Wortmarke (nur Variante „lockup“), z. B. „Design System“.
+         */
+        "_subtitle"?: string;
+        /**
+          * Darstellungsvariante der Marke.
+          * @default 'mark'
+         */
+        "_variant"?: 'mark' | 'badge' | 'lockup';
     }
     /**
      * Aktionsmenü an einer Schaltfläche (MUI „Menu“, Vuetify „v-menu“, Material 3 „Menus“).
@@ -3811,6 +3875,11 @@ declare namespace LocalJSX {
         "_dividers": boolean;
         "_lines": 1 | 2;
     }
+    interface FinkLogoAttributes {
+        "_variant": 'mark' | 'badge' | 'lockup';
+        "_label": string;
+        "_subtitle": string;
+    }
     interface FinkMenuAttributes {
         "_label": string;
         "_icons": string;
@@ -4008,6 +4077,7 @@ declare namespace LocalJSX {
         "fink-infinite-scroll": Omit<FinkInfiniteScroll, keyof FinkInfiniteScrollAttributes> & { [K in keyof FinkInfiniteScroll & keyof FinkInfiniteScrollAttributes]?: FinkInfiniteScroll[K] } & { [K in keyof FinkInfiniteScroll & keyof FinkInfiniteScrollAttributes as `attr:${K}`]?: FinkInfiniteScrollAttributes[K] } & { [K in keyof FinkInfiniteScroll & keyof FinkInfiniteScrollAttributes as `prop:${K}`]?: FinkInfiniteScroll[K] };
         "fink-kbd": Omit<FinkKbd, keyof FinkKbdAttributes> & { [K in keyof FinkKbd & keyof FinkKbdAttributes]?: FinkKbd[K] } & { [K in keyof FinkKbd & keyof FinkKbdAttributes as `attr:${K}`]?: FinkKbdAttributes[K] } & { [K in keyof FinkKbd & keyof FinkKbdAttributes as `prop:${K}`]?: FinkKbd[K] } & OneOf<"_keys", FinkKbd["_keys"], FinkKbdAttributes["_keys"]>;
         "fink-list": Omit<FinkList, keyof FinkListAttributes> & { [K in keyof FinkList & keyof FinkListAttributes]?: FinkList[K] } & { [K in keyof FinkList & keyof FinkListAttributes as `attr:${K}`]?: FinkListAttributes[K] } & { [K in keyof FinkList & keyof FinkListAttributes as `prop:${K}`]?: FinkList[K] } & OneOf<"_label", FinkList["_label"], FinkListAttributes["_label"]> & OneOf<"_items", FinkList["_items"], FinkListAttributes["_items"]>;
+        "fink-logo": Omit<FinkLogo, keyof FinkLogoAttributes> & { [K in keyof FinkLogo & keyof FinkLogoAttributes]?: FinkLogo[K] } & { [K in keyof FinkLogo & keyof FinkLogoAttributes as `attr:${K}`]?: FinkLogoAttributes[K] } & { [K in keyof FinkLogo & keyof FinkLogoAttributes as `prop:${K}`]?: FinkLogo[K] };
         "fink-menu": Omit<FinkMenu, keyof FinkMenuAttributes> & { [K in keyof FinkMenu & keyof FinkMenuAttributes]?: FinkMenu[K] } & { [K in keyof FinkMenu & keyof FinkMenuAttributes as `attr:${K}`]?: FinkMenuAttributes[K] } & { [K in keyof FinkMenu & keyof FinkMenuAttributes as `prop:${K}`]?: FinkMenu[K] } & OneOf<"_label", FinkMenu["_label"], FinkMenuAttributes["_label"]> & OneOf<"_items", FinkMenu["_items"], FinkMenuAttributes["_items"]>;
         "fink-otp-input": Omit<FinkOtpInput, keyof FinkOtpInputAttributes> & { [K in keyof FinkOtpInput & keyof FinkOtpInputAttributes]?: FinkOtpInput[K] } & { [K in keyof FinkOtpInput & keyof FinkOtpInputAttributes as `attr:${K}`]?: FinkOtpInputAttributes[K] } & { [K in keyof FinkOtpInput & keyof FinkOtpInputAttributes as `prop:${K}`]?: FinkOtpInput[K] } & OneOf<"_label", FinkOtpInput["_label"], FinkOtpInputAttributes["_label"]>;
         "fink-page-header": Omit<FinkPageHeader, keyof FinkPageHeaderAttributes> & { [K in keyof FinkPageHeader & keyof FinkPageHeaderAttributes]?: FinkPageHeader[K] } & { [K in keyof FinkPageHeader & keyof FinkPageHeaderAttributes as `attr:${K}`]?: FinkPageHeaderAttributes[K] } & { [K in keyof FinkPageHeader & keyof FinkPageHeaderAttributes as `prop:${K}`]?: FinkPageHeader[K] } & OneOf<"_heading", FinkPageHeader["_heading"], FinkPageHeaderAttributes["_heading"]>;
@@ -4161,6 +4231,16 @@ declare module "@stencil/core" {
              * Baut auf kol-icon und kol-avatar auf.
              */
             "fink-list": LocalJSX.IntrinsicElements["fink-list"] & JSXBase.HTMLAttributes<HTMLFinkListElement>;
+            /**
+             * Wortmarke und Zeichen des Fink Design Systems: aufrechte Buchfink-Silhouette
+             * mit Kegelschnabel, gefaltetem Flügel, abwärts gerichtetem Schwanz.
+             * Varianten: „mark“ zeichnet das Zeichen allein in der Textfarbe (currentColor),
+             * „badge“ setzt es auf eine Kachelfläche in der Primärfarbe (Kopfzeilenmaßstab),
+             * „lockup“ koppelt Zeichen und Wortmarke „fink“ mit optionalem Zusatz.
+             * Ohne _label ist die Marke rein dekorativ (aria-hidden); mit _label erhält sie
+             * role="img" und einen zugänglichen Namen.
+             */
+            "fink-logo": LocalJSX.IntrinsicElements["fink-logo"] & JSXBase.HTMLAttributes<HTMLFinkLogoElement>;
             /**
              * Aktionsmenü an einer Schaltfläche (MUI „Menu“, Vuetify „v-menu“, Material 3 „Menus“).
              * Auslöser und Popover kommen von kol-popover-button; Fink ergänzt die Menüsemantik
