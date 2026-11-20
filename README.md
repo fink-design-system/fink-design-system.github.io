@@ -4,6 +4,26 @@ Ein Design System im Stil von MUI oder Vuetify auf Basis von [Public UI – Koli
 KoliBri liefert die barrierefreien Atome (`kol-*`), Fink ergänzt Tokens, ein eigenes Theme, zusammengesetzte
 Komponenten (`fink-*`) und eine React-Schicht. KoliBri wird nur konsumiert, nie geforkt.
 
+## Warum Fink auf KoliBri baut
+
+36 der 46 Fink-Komponenten setzen sich aus 19 KoliBri-Bausteinen zusammen, mit 79 Einbettungen. Was das bringt, ist im
+Experiment `experiments/basis-vergleich` gemessen:
+
+- **Update-Dividende.** Gleicher Fink-Code, nur die KoliBri-Version geändert: Die Prüfseite lädt mit 4.5.0 2.182 KB
+  gzip, mit 4.6.0 448 KB und mit 4.7.0-rc.0 395 KB. Der JS-Speicher nach 900 Komponenten sinkt von 73 auf 14 MB.
+  Verbesserungen in KoliBri kommen jeder Anwendung auf Fink ohne eigenen Aufwand zugute.
+- **Barrierefreiheit geerbt.** Tastatur, Fokus, ARIA, Fehlermeldungen und Hochkontrastmodus stecken in jeder
+  KoliBri-Komponente. Fink prüft sie mit 1.067 automatischen Tests, alle bestanden.
+- **Gestaltung entkoppelt.** Finks Erscheinungsbild sind Tokens und 146 Zeilen Overrides. Transparente
+  Komponenten-Hosts sind eine einzige Regel im Theme und wirken in allen 50 KoliBri-Komponenten.
+- **Ein Code, alle Frameworks.** Als Web Components ist Fink in React, Angular, Vue und reinem HTML nutzbar.
+- **Öffentlich und mitgestaltbar.** EUPL-Lizenz, ITZBund als Träger. Zwei Größenbefunde aus Fink hat das KoliBri-Team
+  in rund vier bzw. unter 24 Stunden umgesetzt (public-ui/kolibri#11623, #11627).
+
+Ehrlich bleibt: Für einzelne Komponenten laden Headless-Bibliotheken wie Lion oder React Aria weniger. Den Abstand macht
+das Theme, das alle KoliBri-Komponenten gestaltet. Details in
+[experiments/basis-vergleich/README.md](experiments/basis-vergleich/README.md).
+
 ## Pakete
 
 | Paket              | Inhalt                                                                                                     |
