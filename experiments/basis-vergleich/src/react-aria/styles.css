@@ -1,0 +1,271 @@
+/*
+ * Gestaltung der React-Aria-Variante. React Aria liefert kein CSS: Layout, Zustände, Fokus und
+ * Hochkontrastmodus stehen hier. Werte kommen aus den Fink-Tokens.
+ */
+.ra-tag-input,
+.ra-upload {
+	display: grid;
+	gap: var(--fink-space-2);
+	font-family: var(--fink-font-family);
+	color: var(--fink-color-text);
+}
+
+.ra-tag-input *,
+.ra-upload * {
+	box-sizing: border-box;
+}
+
+/* Feld */
+.ra-field {
+	display: grid;
+	gap: var(--fink-space-1);
+}
+
+.ra-label {
+	font-weight: var(--fink-font-weight-medium);
+}
+
+.ra-hint {
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.ra-error {
+	margin: 0;
+	color: var(--fink-color-danger);
+	font-weight: var(--fink-font-weight-bold);
+}
+
+.ra-input {
+	width: 100%;
+	min-height: 44px;
+	padding: var(--fink-space-2) var(--fink-space-3);
+	border: var(--fink-border-width) solid var(--fink-color-subtle);
+	border-radius: var(--fink-radius-sm);
+	background: var(--fink-color-light);
+	color: var(--fink-color-text);
+	font: inherit;
+}
+
+.ra-input[data-invalid] {
+	border-color: var(--fink-color-danger);
+	border-width: 2px;
+}
+
+.ra-input[data-disabled] {
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+
+.ra-input[data-focused],
+.ra-button[data-focus-visible],
+.ra-icon-button[data-focus-visible],
+.ra-tag[data-focus-visible],
+.ra-tag-remove[data-focus-visible] {
+	outline: 3px solid var(--fink-color-primary);
+	outline-offset: 2px;
+}
+
+/* Vorschlagsliste */
+.ra-popover {
+	width: var(--trigger-width);
+	border: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-md);
+	background: var(--fink-color-overlay);
+	box-shadow: var(--fink-elevation-2);
+}
+
+.ra-listbox {
+	max-height: 16rem;
+	overflow: auto;
+	padding: var(--fink-space-1);
+	outline: none;
+}
+
+.ra-option {
+	padding: var(--fink-space-2) var(--fink-space-3);
+	border-radius: var(--fink-radius-sm);
+	cursor: pointer;
+	outline: none;
+}
+
+.ra-option[data-focused] {
+	background: var(--fink-color-secondary);
+	color: var(--fink-color-primary-variant);
+	outline: 2px solid var(--fink-color-primary);
+	outline-offset: -2px;
+}
+
+/* Tags */
+.ra-tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--fink-space-2);
+}
+
+.ra-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--fink-space-1);
+	padding: 0 0 0 var(--fink-space-3);
+	border: var(--fink-border-width) solid transparent;
+	border-radius: var(--fink-radius-pill);
+	background: var(--fink-color-secondary);
+	color: var(--fink-color-primary);
+	font-weight: var(--fink-font-weight-medium);
+	cursor: default;
+}
+
+.ra-tag-remove,
+.ra-icon-button {
+	display: inline-grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border: 0;
+	border-radius: var(--fink-radius-pill);
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+}
+
+.ra-tag-remove[data-hovered],
+.ra-icon-button[data-hovered] {
+	background: var(--fink-color-mute);
+	color: var(--fink-color-danger);
+}
+
+/* Upload */
+.ra-upload--error {
+	padding-inline-start: var(--fink-space-4);
+	border-inline-start: 4px solid var(--fink-color-danger);
+}
+
+.ra-zone {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: var(--fink-space-2) var(--fink-space-3);
+	padding: var(--fink-space-6) var(--fink-space-4);
+	border: 2px dashed var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-lg);
+	background: var(--fink-color-light);
+	text-align: center;
+}
+
+.ra-zone[data-drop-target] {
+	border-color: var(--fink-color-primary);
+	background: var(--fink-color-secondary);
+}
+
+.ra-zone[data-focus-visible] {
+	outline: 3px solid var(--fink-color-primary);
+	outline-offset: 2px;
+}
+
+.ra-zone-icon {
+	display: block;
+	width: 100%;
+	color: var(--fink-color-primary);
+	font-size: 2rem;
+}
+
+.ra-zone-text {
+	color: var(--fink-color-subtle);
+}
+
+.ra-button {
+	min-height: 44px;
+	padding: var(--fink-space-2) var(--fink-space-4);
+	border: 2px solid var(--fink-color-primary);
+	border-radius: var(--fink-radius-sm);
+	background: var(--fink-color-primary);
+	color: var(--fink-color-light);
+	font: inherit;
+	font-weight: var(--fink-font-weight-bold);
+	cursor: pointer;
+}
+
+.ra-button[data-hovered] {
+	background: var(--fink-color-primary-variant);
+}
+
+.ra-files {
+	display: grid;
+	gap: var(--fink-space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ra-file {
+	display: flex;
+	align-items: center;
+	gap: var(--fink-space-3);
+	padding: var(--fink-space-2) var(--fink-space-2) var(--fink-space-2) var(--fink-space-3);
+	border: var(--fink-border-width) solid var(--fink-color-mute-variant);
+	border-radius: var(--fink-radius-md);
+	background: var(--fink-color-light);
+}
+
+.ra-file--error {
+	border-color: var(--fink-color-danger);
+}
+
+.ra-file--error .ra-file-meta {
+	color: var(--fink-color-danger);
+}
+
+.ra-file-text {
+	display: grid;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.ra-file-name {
+	overflow-wrap: anywhere;
+}
+
+.ra-file-meta {
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+.ra-visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* Hochkontrastmodus: Flächen fallen weg, Zustände brauchen Rahmen und Systemfarben. */
+@media (forced-colors: active) {
+	.ra-tag,
+	.ra-file,
+	.ra-popover {
+		border-color: CanvasText;
+	}
+
+	.ra-option[data-focused] {
+		forced-color-adjust: none;
+		background: Highlight;
+		color: HighlightText;
+	}
+
+	.ra-button {
+		border-color: ButtonText;
+	}
+
+	.ra-input[data-focused],
+	.ra-button[data-focus-visible],
+	.ra-icon-button[data-focus-visible],
+	.ra-tag[data-focus-visible],
+	.ra-tag-remove[data-focus-visible],
+	.ra-zone[data-focus-visible] {
+		outline-color: Highlight;
+	}
+}

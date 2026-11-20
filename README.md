@@ -48,6 +48,13 @@ Fink baut nur, was KoliBri nicht hat. Alle 49 KoliBri-Komponenten (KoliBri 4.6, 
 Kompositionen, Doku oder als Innenleben von Fink-Komponenten genutzt. Die Seite „KoliBri-Nachnutzung“ ermittelt das zur
 Build-Zeit aus dem Quellcode und begründet jede eigene Fink-Komponente.
 
+## Experiment: KoliBri und Headless-Bibliotheken
+
+`experiments/basis-vergleich` baut `fink-tag-input` und `fink-file-upload` auf React Aria und Lion nach und vergleicht
+sie mit den Fink-Komponenten auf KoliBri: gleiche Vorgabe, gleiche Gestaltung, gleiche automatischen Prüfungen.
+Gemessen werden eigener Code, Ladegröße und Testergebnisse (`pnpm spike` im Ordner). Auswertung und Grenzen stehen in
+[experiments/basis-vergleich/README.md](experiments/basis-vergleich/README.md).
+
 ## Mehrsprachigkeit (Deutsch / Englisch)
 
 - Startsprache: gespeicherte Wahl, sonst `<html lang>`, sonst Browsersprache (`navigator.languages`), sonst Englisch
@@ -123,11 +130,12 @@ pnpm test:a11y     # Playwright + axe-core über alle Seiten, Kompositionen und 
 
 ## Bekannte Punkte
 
-- **KoliBri 4.6.0-rc.2:** Fink nutzt die Vorabversion, weil sie den unbenannten Aufklapp-Button von `kol-combobox`
-  behebt (axe `button-name`, WCAG 4.1.2). `kol-skeleton` entfällt dort. Vor dem Release auf 4.6.0 stabil wechseln.
-- **KoliBri-Texte mit „...“:** `filename-text` und `action-running` enden auf Auslassungszeichen. Eigene `translations`
-  ersetzen in KoliBri alle Standardtexte; `@fink/theme` erzeugt deshalb beim Build den vollständigen Satz aus der
-  installierten Version (`scripts/kolibri-locales.mjs`, Prüfung mit `pnpm locales:check`) und entfernt nur die „...“.
+- **KoliBri 4.6.0:** Ab dieser Version hat der Aufklapp-Button von `kol-combobox` einen zugänglichen Namen (axe
+  `button-name`, WCAG 4.1.2). `kol-skeleton` entfällt dort.
+- **KoliBri-Texte mit „...“:** `filename-text` und `action-running` enden auf Auslassungszeichen. `@fink/theme` erzeugt
+  beim Build den vollständigen Textsatz aus der installierten Version (`scripts/kolibri-locales.mjs`, Prüfung mit
+  `pnpm locales:check`) und entfernt nur die „...“. Bis 4.6.0-rc.2 ersetzten eigene `translations` alle Standardtexte;
+  ab 4.6.0 ergänzen sie sie, der vollständige Satz schadet aber nicht.
 - **Fehlerliste von `kol-form`:** KoliBri fokussiert sie nicht selbst. Anwendungen rufen nach einem fehlgeschlagenen
   Absenden `focusErrorList()` auf (Showcase: `useFormErrorFocus`).
 

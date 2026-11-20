@@ -1,0 +1,35 @@
+{
+	"stand": "2026-11-20",
+	"runs": 7,
+	"perType": 150,
+	"results": {
+		"ohne": {
+			"kolibri": {
+				"ms": 352.4000000000233,
+				"recalcStyleMs": 40.635999999999996,
+				"layoutMs": 59.086,
+				"heapMb": 9.748313903808594
+			},
+			"kolibri-schlank": {
+				"ms": 300.30000000004657,
+				"recalcStyleMs": 29.85,
+				"layoutMs": 56.752,
+				"heapMb": 9.11691665649414
+			}
+		},
+		"gemischt": {
+			"kolibri": {
+				"ms": 729.6999999999534,
+				"recalcStyleMs": 74.627,
+				"layoutMs": 104.90600000000002,
+				"heapMb": 14.561439514160156
+			},
+			"kolibri-schlank": {
+				"ms": 797.2999999999302,
+				"recalcStyleMs": 71.84700000000001,
+				"layoutMs": 105.002,
+				"heapMb": 13.939640045166016
+			}
+		}
+	}
+}

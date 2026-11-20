@@ -1,0 +1,57 @@
+/*
+ * Light-DOM-Teile der Lion-Variante: Beschriftung, Hinweis, Auswahlknopf und Statusmeldung von
+ * fink-lion-file-upload liegen als Slots im Dokument und werden hier gestaltet.
+ */
+fink-lion-file-upload [slot='label'] {
+	font-weight: var(--fink-font-weight-medium);
+}
+
+fink-lion-file-upload [slot='help-text'] {
+	color: var(--fink-color-subtle);
+	font-size: var(--fink-type-scale-sm);
+}
+
+fink-lion-file-upload [slot='feedback'] {
+	color: var(--fink-color-danger);
+	font-weight: var(--fink-font-weight-bold);
+}
+
+fink-lion-file-upload [slot='file-select-button'] {
+	min-height: 44px;
+	padding: var(--fink-space-2) var(--fink-space-4);
+	border: 2px solid var(--fink-color-primary);
+	border-radius: var(--fink-radius-sm);
+	background: var(--fink-color-primary);
+	color: var(--fink-color-light);
+	font: inherit;
+	font-weight: var(--fink-font-weight-bold);
+	cursor: pointer;
+}
+
+fink-lion-file-upload [slot='file-select-button']:hover {
+	background: var(--fink-color-primary-variant);
+}
+
+fink-lion-file-upload [slot='file-select-button']:focus-visible {
+	outline: 3px solid var(--fink-color-primary);
+	outline-offset: 2px;
+}
+
+.fink-lion-status {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+@media (forced-colors: active) {
+	fink-lion-file-upload [slot='file-select-button'] {
+		border-color: ButtonText;
+	}
+
+	fink-lion-file-upload [slot='file-select-button']:focus-visible {
+		outline-color: Highlight;
+	}
+}

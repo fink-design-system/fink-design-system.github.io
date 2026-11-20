@@ -1,0 +1,42 @@
+{
+  "name": "@fink/experiment-basis-vergleich",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Experiment: zwei Fink-Komponenten auf KoliBri, React Aria und Lion im Vergleich.",
+  "type": "module",
+  "scripts": {
+    "icons:sync": "fink-sync-icons public/assets/icon-fonts",
+    "dev": "pnpm icons:sync && vite",
+    "spike:build": "pnpm icons:sync && vite build && KOLIBRI_BUILD=slim vite build && KOLIBRI_BUILD=lazy vite build && KOLIBRI_BUILD=next vite build",
+    "spike:test": "playwright test",
+    "spike:measure": "node scripts/measure.mjs",
+    "spike": "pnpm spike:build && pnpm spike:test && pnpm spike:measure",
+    "spike:treemap": "pnpm icons:sync && ANALYZE=kolibri vite build && ANALYZE=kolibri KOLIBRI_BUILD=slim vite build && ANALYZE=kolibri KOLIBRI_BUILD=lazy vite build && ANALYZE=kolibri KOLIBRI_BUILD=next vite build && ANALYZE=react-aria vite build && ANALYZE=lion vite build",
+    "spike:perf": "node scripts/perf.mjs",
+    "spike:sourcemap": "pnpm icons:sync && SOURCEMAP=1 vite build && SOURCEMAP=1 KOLIBRI_BUILD=slim vite build && SOURCEMAP=1 KOLIBRI_BUILD=lazy vite build && SOURCEMAP=1 KOLIBRI_BUILD=next vite build && node scripts/sourcemap.mjs"
+  },
+  "dependencies": {
+    "@fink/components": "workspace:*",
+    "@fink/react": "workspace:*",
+    "@fink/theme": "workspace:*",
+    "@fink/tokens": "workspace:*",
+    "@lion/ui": "0.25.0",
+    "@public-ui/components": "4.6.0",
+    "@public-ui/theme-default": "4.6.0",
+    "lit": "3.3.3",
+    "react": "19.2.0",
+    "react-aria-components": "1.22.1",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.63.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.2.0",
+    "rollup-plugin-visualizer": "7.1.1",
+    "source-map": "0.7.6",
+    "typescript": "5.9.3",
+    "vite": "7.3.8"
+  }
+}
