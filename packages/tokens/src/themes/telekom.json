@@ -6,7 +6,7 @@
     "primary": { "light": "#e20074", "dark": "#f61488", "$description": "--telekom-color-primary-standard" },
     "primary-variant": { "light": "#c00063", "dark": "#ec59a5", "$description": "--telekom-color-primary-hovered / text-and-icon-primary-hovered" },
     "secondary": { "light": "#ffffff", "dark": "#151517", "$description": "Sekundäraktion als Kontur-Button wie in Scale" },
-    "success": { "light": "#00774b", "dark": "#00b367", "$description": "--telekom-color-text-and-icon-functional-success; light: --telekom-color-text-and-icon-on-subtle-success (#008653 → #00774b) für Text auf getönter Fläche" },
+    "success": { "light": "#00734a", "dark": "#00b367", "$description": "--telekom-color-text-and-icon-functional-success; light: --telekom-color-text-and-icon-on-subtle-success (#00774b), weiter abgedunkelt #008653 → #00734a für 4,5:1 auf getönter Fläche" },
     "warning": { "light": "#b33c00", "dark": "#f97012", "$description": "--telekom-color-text-and-icon-functional-warning; light angepasst #b63d00 → #b33c00 (4,5:1 auf getönter Fläche)" },
     "danger": { "light": "#c30a03", "dark": "#f8503b", "$description": "--telekom-color-text-and-icon-functional-danger; light: --telekom-color-text-and-icon-on-subtle-danger (#d91308 → #c30a03) für Text auf getönter Fläche; dark angepasst #f84934 → #f8503b (4,5:1 auf getönter Fläche)" },
     "info": { "light": "#2238df", "dark": "#7d94f9", "$description": "--telekom-color-text-and-icon-functional-informational" },

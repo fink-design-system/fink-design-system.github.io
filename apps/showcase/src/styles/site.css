@@ -602,7 +602,8 @@ pre {
 
 .teaser p {
 	margin: 0 0 var(--fink-space-4);
-	color: color-mix(in srgb, var(--fink-color-light) 85%, var(--fink-color-primary));
+	/* Reine Flächenfarbe: eine Mischung mit der Primärfarbe unterschreitet bei hellen Markenfarben 4,5:1. */
+	color: var(--fink-color-light);
 }
 
 .teaser-link {

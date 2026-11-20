@@ -15,7 +15,7 @@
     "ink": { "light": "#000000", "dark": "#ffffff", "$description": "--theme-color-contrast-text" },
     "surface": { "light": "#ffffff", "dark": "#0f1619", "$description": "--theme-color-1 (Body)" },
     "light": { "light": "#ffffff", "dark": "#283236", "$description": "--theme-color-2 im Dunkelmodus (Komponentenfläche)" },
-    "overlay": { "light": "#ffffff", "dark": "#3c484d", "$description": "--theme-color-3" },
+    "overlay": { "light": "#ffffff", "dark": "#323d42", "$description": "--theme-color-3; dunkel #3c484d → #323d42, damit Primär- und Sekundärtext in Overlays 4,5:1 erreichen" },
     "mute": { "light": "#eff0f1", "dark": "#1d272b", "$description": "--theme-color-2" },
     "mute-variant": { "light": "#c2c6ca", "dark": "#4c5a60", "$description": "--theme-color-7 / color-4" },
     "edge": { "light": "transparent", "dark": "#4c5a60" },
