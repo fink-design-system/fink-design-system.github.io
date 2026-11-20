@@ -3,7 +3,7 @@
 Fink konsumiert KoliBri nur und forkt es nicht. Funde, deren Ursache in KoliBri oder in Prüfwerkzeugen liegt, werden
 in Fink umgangen, solange es keinen Fix gibt, und sollten an die Hersteller gemeldet werden.
 Ermittelt mit `pnpm lint` und `pnpm test:a11y`: axe-core mit WCAG 2.2 AA, EN 301 549 / BITV 2.0 und Best Practices.
-Stand: KoliBri `@public-ui/components` 4.6.0, axe-core 4.14.
+Stand: KoliBri `@public-ui/components` 4.7.0-rc.0, axe-core 4.14.
 Gemeldet in KoliBri-Epic [#11600](https://github.com/public-ui/kolibri/issues/11600), Fix-Ziel `release/4`.
 
 | # | Ursache | Fund | Kriterium | Umgang in Fink | Status |

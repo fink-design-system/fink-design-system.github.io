@@ -7,24 +7,19 @@ import { defineConfig } from 'vite';
 import { kolibriIconPrune } from './scripts/kolibri-icon-prune.mjs';
 // @ts-expect-error Skript ohne Typdeklaration
 import { kolibriAnalyseSplit } from './scripts/kolibri-analyse-split.mjs';
-// @ts-expect-error Skript ohne Typdeklaration
-import { kolibriLazyMarkdown } from './scripts/kolibri-lazy-markdown.mjs';
-// @ts-expect-error Skript ohne Typdeklaration
-import { kolibriNextMarkdown } from './scripts/kolibri-next-markdown.mjs';
 
 /**
  * KOLIBRI_BUILD wählt die KoliBri-Fassung:
- * - nicht gesetzt: wie Fink heute (alle vier Seiten, dist)
- * - slim: nur genutzte Icons im Theme (dist-slim)
- * - lazy: slim und markdown-it nur bei Bedarf (dist-lazy)
- * - next: wie Fink heute, markdown-it durch den Renderer aus public-ui/kolibri#11637 ersetzt (dist-next)
- * Seit KoliBri 4.6.0 liegt das Icon-CSS einmal in GLOBAL (public-ui/kolibri#11623); die früheren Fassungen
- * global und global-slim sind damit der Normalfall.
+ * - nicht gesetzt: wie Fink heute, KoliBri 4.7.0-rc.0 (alle Seiten, dist)
+ * - slim: KoliBri 4.7.0-rc.0, im Theme nur die genutzten Icons (dist-slim)
+ * - 4.5: KoliBri 4.5.0 (dist-4.5)
+ * - 4.6: KoliBri 4.6.0 (dist-4.6)
+ * 4.5 und 4.6 liegen unter .kolibri/<version>, vorbereitet mit `pnpm kolibri:versions`.
  */
 const flavor = process.env.KOLIBRI_BUILD ?? '';
-const slim = flavor === 'slim' || flavor === 'lazy';
-const lazy = flavor === 'lazy';
-const next = flavor === 'next';
+const slim = flavor === 'slim';
+const version = flavor === '4.5' || flavor === '4.6' ? flavor : '';
+const versionDir = version ? resolve(import.meta.dirname, `.kolibri/${version}/node_modules/@public-ui`) : '';
 
 /** Mit ANALYZE=<seite> wird nur diese Seite gebaut und eine Treemap nach analyse/ geschrieben. */
 const analyze = process.env.ANALYZE;
@@ -45,8 +40,6 @@ export default defineConfig({
 	plugins: [
 		react(),
 		...(slim ? [kolibriIconPrune(finkCodicons())] : []),
-		...(lazy ? [kolibriLazyMarkdown()] : []),
-		...(next ? [kolibriNextMarkdown()] : []),
 		...(analyze
 			? [
 					kolibriAnalyseSplit(),
@@ -59,6 +52,14 @@ export default defineConfig({
 				]
 			: []),
 	],
+	resolve: versionDir
+		? {
+				alias: [
+					{ find: /^@public-ui\/components(?=\/|$)/, replacement: `${versionDir}/components` },
+					{ find: /^@public-ui\/theme-default(?=\/|$)/, replacement: `${versionDir}/theme-default` },
+				],
+			}
+		: undefined,
 	build: {
 		outDir: analyze ? `dist-analyse/${analyze}${suffix}` : `dist${suffix}`,
 		sourcemap: process.env.SOURCEMAP === '1',

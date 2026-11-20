@@ -23,12 +23,12 @@
     "@fink/tokens": "workspace:*"
   },
   "peerDependencies": {
-    "@public-ui/components": "4.6.0",
-    "@public-ui/theme-default": "4.6.0"
+    "@public-ui/components": "4.7.0-rc.0",
+    "@public-ui/theme-default": "4.7.0-rc.0"
   },
   "devDependencies": {
-    "@public-ui/components": "4.6.0",
-    "@public-ui/theme-default": "4.6.0",
+    "@public-ui/components": "4.7.0-rc.0",
+    "@public-ui/theme-default": "4.7.0-rc.0",
     "typescript": "5.9.3"
   },
   "bin": {

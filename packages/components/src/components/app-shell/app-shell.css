@@ -1,7 +1,7 @@
 :host {
 	display: block;
 	min-height: var(--fink-app-shell-min-height, 100dvh);
-	background: var(--fink-color-surface);
+	background: transparent;
 	--kol-surface: var(--fink-color-surface);
 	color: var(--fink-color-text);
 	font-family: var(--fink-font-family);

@@ -4,31 +4,55 @@
 	"perType": 150,
 	"results": {
 		"ohne": {
+			"kolibri-4.5": {
+				"ms": 460.9000000001397,
+				"recalcStyleMs": 46.728,
+				"layoutMs": 104.39999999999999,
+				"heapMb": 69.55001831054688
+			},
+			"kolibri-4.6": {
+				"ms": 488.30000000004657,
+				"recalcStyleMs": 53.669,
+				"layoutMs": 92.55499999999999,
+				"heapMb": 9.725616455078125
+			},
 			"kolibri": {
-				"ms": 352.4000000000233,
-				"recalcStyleMs": 40.635999999999996,
-				"layoutMs": 59.086,
-				"heapMb": 9.748313903808594
+				"ms": 542,
+				"recalcStyleMs": 62.587,
+				"layoutMs": 93.776,
+				"heapMb": 9.120193481445312
 			},
 			"kolibri-schlank": {
-				"ms": 300.30000000004657,
-				"recalcStyleMs": 29.85,
-				"layoutMs": 56.752,
-				"heapMb": 9.11691665649414
+				"ms": 447.80000000004657,
+				"recalcStyleMs": 51.927,
+				"layoutMs": 82.144,
+				"heapMb": 8.503730773925781
 			}
 		},
 		"gemischt": {
+			"kolibri-4.5": {
+				"ms": 1242.7999999998137,
+				"recalcStyleMs": 140.371,
+				"layoutMs": 227.30399999999997,
+				"heapMb": 73.19610977172852
+			},
+			"kolibri-4.6": {
+				"ms": 1216.2999999998137,
+				"recalcStyleMs": 133.44799999999998,
+				"layoutMs": 179.258,
+				"heapMb": 14.560550689697266
+			},
 			"kolibri": {
-				"ms": 729.6999999999534,
-				"recalcStyleMs": 74.627,
-				"layoutMs": 104.90600000000002,
-				"heapMb": 14.561439514160156
+				"ms": 1065.8000000000466,
+				"recalcStyleMs": 117.90500000000002,
+				"layoutMs": 149.148,
+				"heapMb": 13.943115234375
 			},
 			"kolibri-schlank": {
-				"ms": 797.2999999999302,
-				"recalcStyleMs": 71.84700000000001,
-				"layoutMs": 105.002,
-				"heapMb": 13.939640045166016
+				"ms": 1024.3000000000466,
+				"recalcStyleMs": 108.341,
+				"layoutMs": 149.162,
+				"heapMb": 13.278209686279297
 			}
 		}
 	}

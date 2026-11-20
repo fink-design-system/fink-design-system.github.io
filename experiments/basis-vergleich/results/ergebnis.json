@@ -1,8 +1,114 @@
 {
 	"stand": "2026-11-20",
 	"code": {
+		"kolibri-4.5": {
+			"name": "KoliBri 4.5.0",
+			"logic": 417,
+			"style": 175,
+			"files": [
+				{
+					"file": "packages/components/src/components/tag-input/tag-input.tsx",
+					"logic": 119,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/tag-input/tag-input.css",
+					"logic": 0,
+					"style": 27
+				},
+				{
+					"file": "packages/components/src/components/chip/chip.tsx",
+					"logic": 72,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/chip/chip.css",
+					"logic": 0,
+					"style": 4
+				},
+				{
+					"file": "packages/components/src/components/file-upload/file-upload.tsx",
+					"logic": 151,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/file-upload/file-upload.css",
+					"logic": 0,
+					"style": 144
+				},
+				{
+					"file": "packages/components/src/utils/resolve-color.ts",
+					"logic": 37,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/utils/shared.ts",
+					"logic": 15,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/i18n/locales.ts (deutsche Texte)",
+					"logic": 23,
+					"style": 0
+				}
+			],
+			"total": 592
+		},
+		"kolibri-4.6": {
+			"name": "KoliBri 4.6.0",
+			"logic": 417,
+			"style": 175,
+			"files": [
+				{
+					"file": "packages/components/src/components/tag-input/tag-input.tsx",
+					"logic": 119,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/tag-input/tag-input.css",
+					"logic": 0,
+					"style": 27
+				},
+				{
+					"file": "packages/components/src/components/chip/chip.tsx",
+					"logic": 72,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/chip/chip.css",
+					"logic": 0,
+					"style": 4
+				},
+				{
+					"file": "packages/components/src/components/file-upload/file-upload.tsx",
+					"logic": 151,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/file-upload/file-upload.css",
+					"logic": 0,
+					"style": 144
+				},
+				{
+					"file": "packages/components/src/utils/resolve-color.ts",
+					"logic": 37,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/utils/shared.ts",
+					"logic": 15,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/i18n/locales.ts (deutsche Texte)",
+					"logic": 23,
+					"style": 0
+				}
+			],
+			"total": 592
+		},
 		"kolibri": {
-			"name": "KoliBri",
+			"name": "KoliBri 4.7.0-rc.0",
 			"logic": 417,
 			"style": 175,
 			"files": [
@@ -55,113 +161,7 @@
 			"total": 592
 		},
 		"kolibri-schlank": {
-			"name": "KoliBri schlank",
-			"logic": 417,
-			"style": 175,
-			"files": [
-				{
-					"file": "packages/components/src/components/tag-input/tag-input.tsx",
-					"logic": 119,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/tag-input/tag-input.css",
-					"logic": 0,
-					"style": 27
-				},
-				{
-					"file": "packages/components/src/components/chip/chip.tsx",
-					"logic": 72,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/chip/chip.css",
-					"logic": 0,
-					"style": 4
-				},
-				{
-					"file": "packages/components/src/components/file-upload/file-upload.tsx",
-					"logic": 151,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/file-upload/file-upload.css",
-					"logic": 0,
-					"style": 144
-				},
-				{
-					"file": "packages/components/src/utils/resolve-color.ts",
-					"logic": 37,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/utils/shared.ts",
-					"logic": 15,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/i18n/locales.ts (deutsche Texte)",
-					"logic": 23,
-					"style": 0
-				}
-			],
-			"total": 592
-		},
-		"kolibri-lazy": {
-			"name": "KoliBri schlank + lazy markdown",
-			"logic": 417,
-			"style": 175,
-			"files": [
-				{
-					"file": "packages/components/src/components/tag-input/tag-input.tsx",
-					"logic": 119,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/tag-input/tag-input.css",
-					"logic": 0,
-					"style": 27
-				},
-				{
-					"file": "packages/components/src/components/chip/chip.tsx",
-					"logic": 72,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/chip/chip.css",
-					"logic": 0,
-					"style": 4
-				},
-				{
-					"file": "packages/components/src/components/file-upload/file-upload.tsx",
-					"logic": 151,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/file-upload/file-upload.css",
-					"logic": 0,
-					"style": 144
-				},
-				{
-					"file": "packages/components/src/utils/resolve-color.ts",
-					"logic": 37,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/utils/shared.ts",
-					"logic": 15,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/i18n/locales.ts (deutsche Texte)",
-					"logic": 23,
-					"style": 0
-				}
-			],
-			"total": 592
-		},
-		"kolibri-next": {
-			"name": "KoliBri next (#11637)",
+			"name": "KoliBri 4.7.0-rc.0 schlank",
 			"logic": 417,
 			"style": 175,
 			"files": [
@@ -271,79 +271,79 @@
 		}
 	},
 	"loaded": {
-		"kolibri": {
+		"kolibri-4.5": {
 			"requests": 64,
-			"scriptBytes": 1868749,
-			"scriptGzip": 387545,
+			"scriptBytes": 14372779,
+			"scriptGzip": 2161136,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 460570,
+			"totalGzip": 2234161,
 			"noBadge": {
 				"requests": 51,
-				"scriptBytes": 1817691,
-				"scriptGzip": 370936,
+				"scriptBytes": 14307629,
+				"scriptGzip": 2138615,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 443961
+				"totalGzip": 2211640
+			}
+		},
+		"kolibri-4.6": {
+			"requests": 60,
+			"scriptBytes": 1868463,
+			"scriptGzip": 385628,
+			"styleAndFontBytes": 218786,
+			"totalGzip": 458653,
+			"noBadge": {
+				"requests": 47,
+				"scriptBytes": 1818211,
+				"scriptGzip": 369617,
+				"styleAndFontBytes": 218786,
+				"totalGzip": 442642
+			}
+		},
+		"kolibri": {
+			"requests": 64,
+			"scriptBytes": 1732556,
+			"scriptGzip": 331020,
+			"styleAndFontBytes": 218786,
+			"totalGzip": 404045,
+			"noBadge": {
+				"requests": 51,
+				"scriptBytes": 1682230,
+				"scriptGzip": 314979,
+				"styleAndFontBytes": 218786,
+				"totalGzip": 388004
 			}
 		},
 		"kolibri-schlank": {
 			"requests": 60,
-			"scriptBytes": 1692795,
-			"scriptGzip": 360327,
+			"scriptBytes": 1556787,
+			"scriptGzip": 304085,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 433352,
+			"totalGzip": 377110,
 			"noBadge": {
 				"requests": 47,
-				"scriptBytes": 1641811,
-				"scriptGzip": 343781,
+				"scriptBytes": 1506535,
+				"scriptGzip": 288074,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 416806
-			}
-		},
-		"kolibri-lazy": {
-			"requests": 61,
-			"scriptBytes": 1695561,
-			"scriptGzip": 361784,
-			"styleAndFontBytes": 218786,
-			"totalGzip": 434809,
-			"noBadge": {
-				"requests": 47,
-				"scriptBytes": 1505219,
-				"scriptGzip": 288490,
-				"styleAndFontBytes": 218786,
-				"totalGzip": 361515
-			}
-		},
-		"kolibri-next": {
-			"requests": 60,
-			"scriptBytes": 1729806,
-			"scriptGzip": 329533,
-			"styleAndFontBytes": 218786,
-			"totalGzip": 402558,
-			"noBadge": {
-				"requests": 47,
-				"scriptBytes": 1679554,
-				"scriptGzip": 313514,
-				"styleAndFontBytes": 218786,
-				"totalGzip": 386539
+				"totalGzip": 361099
 			}
 		},
 		"react-aria": {
 			"requests": 7,
-			"scriptBytes": 532980,
-			"scriptGzip": 156220,
+			"scriptBytes": 532760,
+			"scriptGzip": 156033,
 			"styleAndFontBytes": 8462,
-			"totalGzip": 158527
+			"totalGzip": 158340
 		},
 		"lion": {
 			"requests": 11,
-			"scriptBytes": 243049,
-			"scriptGzip": 67613,
+			"scriptBytes": 242662,
+			"scriptGzip": 67136,
 			"styleAndFontBytes": 4940,
-			"totalGzip": 69222
+			"totalGzip": 68745
 		}
 	},
 	"tests": {
-		"KoliBri": [
+		"KoliBri 4.7.0-rc.0": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"
@@ -418,7 +418,7 @@
 				"status": "bestanden"
 			}
 		],
-		"KoliBri schlank": [
+		"KoliBri 4.7.0-rc.0 schlank": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"
@@ -493,7 +493,7 @@
 				"status": "bestanden"
 			}
 		],
-		"KoliBri schlank + lazy markdown": [
+		"KoliBri 4.5.0": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"
@@ -568,7 +568,7 @@
 				"status": "bestanden"
 			}
 		],
-		"KoliBri next (#11637)": [
+		"KoliBri 4.6.0": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"

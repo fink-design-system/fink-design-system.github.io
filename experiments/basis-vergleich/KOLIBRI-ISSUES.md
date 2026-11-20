@@ -4,8 +4,8 @@
 > - Issue 1: [public-ui/kolibri#11623](https://github.com/public-ui/kolibri/issues/11623), umgesetzt in #11629 und
 >   #11631, veröffentlicht mit 4.6.0.
 > - Issue 2: [public-ui/kolibri#11627](https://github.com/public-ui/kolibri/issues/11627), markdown-it in `release/4`
->   durch einen kleinen Inline-Renderer ersetzt (#11637), nach 4.6.0 gemergt. Im Experiment vorweggenommen
->   (Fassung „KoliBri next“): Prüfseite 450 auf 393 KB gzip.
+>   durch einen kleinen Inline-Renderer ersetzt (#11637), erscheint mit 4.7. Im Versionsvergleich gemessen
+>   (4.7 aus `release/4`): Prüfseite 447 auf 393 KB gzip.
 >
 > Die Texte unten sind der eingereichte Stand mit den Messwerten von 4.6.0-rc.2.
 

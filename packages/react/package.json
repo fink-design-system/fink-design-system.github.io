@@ -19,16 +19,16 @@
     "@fink/components": "workspace:*",
     "@fink/theme": "workspace:*",
     "@fink/tokens": "workspace:*",
-    "@public-ui/react-v19": "4.6.0",
+    "@public-ui/react-v19": "4.7.0-rc.0",
     "@stencil/react-output-target": "1.8.1"
   },
   "peerDependencies": {
-    "@public-ui/components": "4.6.0",
+    "@public-ui/components": "4.7.0-rc.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@public-ui/components": "4.6.0",
+    "@public-ui/components": "4.7.0-rc.0",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "react": "19.2.0",
