@@ -1,0 +1,47 @@
+{
+  "$description": "Nachbildung des Porsche Design System v4 (@porsche-design-system/components-js 4.10, stylesheets/variables.css). Nur Token-Werte; Schrift Porsche Next wird nicht ausgeliefert. Keine Verbindung zur Dr. Ing. h.c. F. Porsche AG.",
+  "$label": "Porsche Design System",
+  "$source": "https://designsystem.porsche.com",
+  "color": {
+    "primary": { "light": "#010205", "dark": "#fafbff", "$description": "--p-color-primary" },
+    "primary-variant": { "light": "#444447", "dark": "#c0c0c3", "$description": "--p-color-contrast-higher (Hover)" },
+    "secondary": { "light": "#f1f1f4", "dark": "#19191a", "$description": "--p-color-surface" },
+    "success": { "light": "#18770f", "dark": "#10c47f", "$description": "--p-color-success; light angepasst #197e10 → #18770f (4,5:1 auf getönter Fläche)" },
+    "warning": { "light": "#a44d02", "dark": "#f4882a", "$description": "--p-color-warning; light angepasst #ac5102 → #a44d02 (4,5:1 auf getönter Fläche)" },
+    "danger": { "light": "#ba171f", "dark": "#fc5454", "$description": "--p-color-error; dark angepasst #fc4040 → #fc5454 (4,5:1 auf getönter Fläche)" },
+    "info": { "light": "#1a44ea", "dark": "#2994ff", "$description": "--p-color-info; dark angepasst #178bff → #2994ff (4,5:1 auf getönter Fläche)" },
+    "text": { "light": "#010205", "dark": "#fafbff", "$description": "--p-color-primary" },
+    "subtle": { "light": "#5f5f62", "dark": "#a5a6a8", "$description": "--p-color-contrast-high" },
+    "ink": { "light": "#000000", "dark": "#ffffff" },
+    "surface": { "light": "#ffffff", "dark": "#010205", "$description": "--p-color-canvas" },
+    "light": { "light": "#ffffff", "dark": "#19191a", "$description": "Komponentenfläche, --p-color-surface im Dunkelmodus" },
+    "overlay": { "light": "#ffffff", "dark": "#222224" },
+    "mute": { "light": "#f1f1f4", "dark": "#222224", "$description": "--p-color-surface" },
+    "mute-variant": { "light": "#c6c6c9", "dark": "#3a3b3e", "$description": "--p-color-contrast-lower" },
+    "edge": { "light": "transparent", "dark": "#3a3b3e" },
+    "visited": { "light": "#444447", "dark": "#c0c0c3", "$description": "PDS unterscheidet besuchte Links nicht farblich" },
+    "shadow": { "light": "rgb(0 0 0 / 0.16)", "dark": "transparent" },
+    "backdrop": { "light": "hsl(240 5.3% 14.9% / 0.5)", "dark": "hsl(240 5.3% 14.9% / 0.5)", "$description": "--p-color-backdrop" }
+  },
+  "font": {
+    "family": { "value": "\"Porsche Next\", \"Arial Narrow\", Arial, \"Heiti SC\", SimHei, sans-serif", "$description": "--p-font-porsche-next" },
+    "weight-medium": { "value": "600", "$description": "--p-font-weight-semibold" },
+    "weight-bold": { "value": "700" }
+  },
+  "radius": {
+    "sm": { "value": "4px", "$description": "--p-radius-sm" },
+    "md": { "value": "12px", "$description": "--p-radius-xl: interaktive Elemente" },
+    "lg": { "value": "24px", "$description": "--p-radius-3xl: Karten, Dialoge" },
+    "pill": { "value": "999px" }
+  },
+  "elevation": {
+    "1": { "value": "0 3px 8px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--p-shadow-sm" },
+    "2": { "value": "0 4px 16px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--p-shadow-md" },
+    "3": { "value": "0 8px 40px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--p-shadow-lg" }
+  },
+  "motion": {
+    "duration-fast": { "value": "250ms", "$description": "--p-duration-sm" },
+    "duration-base": { "value": "400ms", "$description": "--p-duration-md" },
+    "easing": { "value": "cubic-bezier(0.25, 0.1, 0.25, 1)", "$description": "--p-ease-in-out" }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$description": "Nachbildung von Siemens iX, Classic-Theme (@siemens/ix 5.3, MIT, theme/classic-light.css und classic-dark.css). Nur Token-Werte; Siemens Sans wird nicht ausgeliefert. Keine Verbindung zur Siemens AG.",
+  "$label": "Siemens iX (Classic)",
+  "$source": "https://ix.siemens.io",
+  "color": {
+    "primary": { "light": "#006e93", "dark": "#00bde3", "$description": "--theme-color-primary" },
+    "primary-variant": { "light": "#196269", "dark": "#1aecff", "$description": "--theme-color-primary--hover" },
+    "secondary": { "light": "#e6f6f9", "dark": "#0f2a30", "$description": "--theme-color-ghost--selected, deckend gemischt" },
+    "success": { "light": "#277600", "dark": "#44cc00", "$description": "--theme-color-success; light angepasst #2c8500 → #277600 (4,5:1 auf getönter Fläche)" },
+    "warning": { "light": "#826300", "dark": "#ffbb00", "$description": "--theme-color-warning-text; light angepasst #947100 → #826300 (4,5:1 auf getönter Fläche)" },
+    "danger": { "light": "#b81e3f", "dark": "#ff90a8", "$description": "--theme-color-alarm-text; dark angepasst #ff7694 → #ff90a8 (4,5:1 auf getönter Fläche)" },
+    "info": { "light": "#0041b2", "dark": "#8cb3ff", "$description": "--theme-color-info; dunkel aufgehellt (Original #357fff hat auf --theme-color-2 nur 3,5:1); dark angepasst #7aa7ff → #8cb3ff (4,5:1 auf getönter Fläche)" },
+    "text": { "light": "#1a242e", "dark": "#dfe5e8", "$description": "--theme-color-std-text (90 % deckend)" },
+    "subtle": { "light": "#5c6268", "dark": "#a8b4b9", "$description": "--theme-color-soft-text (60/65 % deckend); dark angepasst #9aa8ae → #a8b4b9 (4,5:1 auf getönter Fläche)" },
+    "ink": { "light": "#000000", "dark": "#ffffff", "$description": "--theme-color-contrast-text" },
+    "surface": { "light": "#ffffff", "dark": "#0f1619", "$description": "--theme-color-1 (Body)" },
+    "light": { "light": "#ffffff", "dark": "#283236", "$description": "--theme-color-2 im Dunkelmodus (Komponentenfläche)" },
+    "overlay": { "light": "#ffffff", "dark": "#3c484d", "$description": "--theme-color-3" },
+    "mute": { "light": "#eff0f1", "dark": "#1d272b", "$description": "--theme-color-2" },
+    "mute-variant": { "light": "#c2c6ca", "dark": "#4c5a60", "$description": "--theme-color-7 / color-4" },
+    "edge": { "light": "transparent", "dark": "#4c5a60" },
+    "visited": { "light": "#005e66", "dark": "#00eaff", "$description": "--theme-color-dynamic" },
+    "shadow": { "light": "rgb(0 0 0 / 0.2)", "dark": "transparent" },
+    "backdrop": { "light": "hsl(0 0% 100% / 0.85)", "dark": "rgb(0 0 0 / 0.85)", "$description": "--theme-color-backdrop" }
+  },
+  "font": {
+    "family": { "value": "\"Siemens Sans\", system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", Arial, sans-serif", "$description": "--theme-font-family" },
+    "weight-medium": { "value": "700" },
+    "weight-bold": { "value": "700" }
+  },
+  "radius": {
+    "sm": { "value": "2px", "$description": "--theme-small-border-radius" },
+    "md": { "value": "4px", "$description": "--theme-default-border-radius" },
+    "lg": { "value": "4px", "$description": "--theme-default-border-radius" },
+    "pill": { "value": "999px" }
+  },
+  "elevation": {
+    "1": { "value": "0 2px 2px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--theme-shadow-1" },
+    "2": { "value": "0 2px 6px var(--fink-color-shadow), 0 0 8px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--theme-shadow-3" },
+    "3": { "value": "0 4px 8px var(--fink-color-shadow), 0 12px 18px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--theme-shadow-4" }
+  },
+  "motion": {
+    "duration-fast": { "value": "100ms" },
+    "duration-base": { "value": "150ms" },
+    "easing": { "value": "cubic-bezier(0.4, 0, 0.2, 1)" }
+  }
+}

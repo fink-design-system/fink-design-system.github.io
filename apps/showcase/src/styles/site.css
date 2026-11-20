@@ -544,6 +544,9 @@ pre {
 	border: var(--fink-border-width) solid var(--fink-color-mute-variant);
 	border-radius: var(--fink-radius-lg);
 	background: var(--fink-color-light);
+	/* Eigenes data-theme am Bereich: Schrift und Textfarbe neu auflösen statt vom Body zu erben. */
+	color: var(--fink-color-text);
+	font-family: var(--fink-font-family);
 }
 
 .compare-pane h3 {

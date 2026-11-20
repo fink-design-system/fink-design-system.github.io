@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { FinkAppShell, KolAvatar, KolLinkButton, KolNav, useToast } from '@fink/react';
 import { useRoute, navigate } from '../../router';
 import { SchemeToggle } from '../../site/SchemeToggle';
+import { ThemeSwitcher } from '../../site/ThemeSwitcher';
 import { ApplicationDrawer } from './ApplicationDrawer';
 import { ApplicationsView } from './ApplicationsView';
 import { InboxView } from './InboxView';
@@ -55,6 +56,7 @@ export function CompositionApp() {
 			</span>
 			<div slot="actions" className="header-tools">
 				<KolLinkButton _label={t('Alle Kompositionen')} _href="#/compositions" _variant="ghost" _icons="codicon codicon-book" className="hide-small" />
+				<ThemeSwitcher />
 				<SchemeToggle />
 				<KolAvatar _label={t('Jonas Weber')} style={{ width: '2.25rem' }} />
 			</div>

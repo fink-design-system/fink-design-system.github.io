@@ -8,8 +8,8 @@ Komponenten (`fink-*`) und eine React-Schicht. KoliBri wird nur konsumiert, nie 
 
 | Paket              | Inhalt                                                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------------------------------- |
-| `@fink/tokens`     | Design Tokens in `src/tokens.json` → `tokens.css` (CSS-Variablen, `light-dark()`), JS-Objekt, TS-Typen. Speist die `--kolibri-*`-Hooks von KoliBri. |
-| `@fink/theme`      | KoliBri-Theme `FINK` (erweitert `@public-ui/theme-default`), `registerFink()`, CLI `fink-sync-icons`.        |
+| `@fink/tokens`     | Design Tokens in `src/tokens.json` → `tokens.css` (CSS-Variablen, `light-dark()`), JS-Objekt, TS-Typen. Speist die `--kolibri-*`-Hooks von KoliBri. Marken-Themes in `src/themes/*.json`. |
+| `@fink/theme`      | KoliBri-Theme `FINK` (erweitert `@public-ui/theme-default`), Marken-Themes, `registerFink()`, CLI `fink-sync-icons`. |
 | `@fink/components` | 46 Stencil-Komponenten (App Shell, Page Header, Stat Card, Stepper, Chip, List, Menu, Tag Input, Calendar, Range Slider, Carousel, FAB, Transfer List, OTP Input, Image List, Tour, Virtual List, Bar Chart, Splitter …), intern aus KoliBri gebaut; eigene i18next-Instanz (de/en). |
 | `@fink/react`      | Generierte React-Wrapper (`@stencil/react-output-target`), Re-Export von `@public-ui/react-v19`, `FinkProvider`, `useFink`, `useToast`. |
 | `@fink/showcase`   | Doku-Website: Grundlagen, Theming, Katalog aller Fink- und KoliBri-Komponenten, 30 Patterns, sechs interaktive Kompositionen, Vergleich mit MUI/Vuetify/Material 3/Carbon/Ant, KoliBri-Nachnutzung. |
@@ -103,8 +103,37 @@ pnpm icons:check   # bricht ab, wenn die Fonts nicht zur installierten KoliBri-V
   (Layer `kol-theme-component`, nur Token-Referenzen).
 - Dark Mode: Die Anwendung setzt `color-scheme`; `FinkProvider` übernimmt das über `defaultColorScheme` bzw. `useFink().setColorScheme`.
 - Theme-Wahl: `registerFink()` nutzt `detect: 'auto'`, KoliBri liest beim Mounten das nächste `data-theme`-Attribut.
-  Registriert sind `fink` und `default`.
+  Registriert sind `fink`, `default` und die Marken-Themes `porsche`, `telekom` und `siemens-ix`. `FinkProvider` speichert
+  die Wahl (`useFink().setTheme`, `localStorage` „fink-theme“); die Showcase bietet sie über das Farbeimer-Symbol im Kopf an.
 - Container mit eigener Fläche melden sie über `--kol-surface`, damit KoliBri-Hosts dieselbe Fläche malen.
+
+### Marken-Themes: Porsche, Telekom, Siemens iX
+
+Die Marken-Themes zeigen, dass dieselben KoliBri- und Fink-Komponenten andere Design-Systeme tragen können, nur über
+Tokens und wenige Overrides:
+
+| Theme        | Vorbild                                     | Token-Quelle                                          |
+| ------------ | ------------------------------------------- | ----------------------------------------------------- |
+| `porsche`    | Porsche Design System v4                    | `@porsche-design-system/components-js` 4.10, `stylesheets/variables.css` |
+| `telekom`    | Telekom Scale / One Experience              | `@telekom/design-tokens` 1.0.0-beta.12                 |
+| `siemens-ix` | Siemens iX, Classic-Theme                   | `@siemens/ix` 5.3, `theme/classic-light.css` und `classic-dark.css` |
+
+- **Tokens:** `packages/tokens/src/themes/<name>.json` enthält nur abweichende Werte (gleiche Schlüssel wie `tokens.json`,
+  unbekannte Schlüssel brechen den Build ab). Der Build erzeugt je Theme einen Block `[data-theme='<name>']` mit allen
+  `--fink-*`-Tokens **und** den `--kolibri-*`-Hooks: `var()` in Custom Properties wird dort aufgelöst, wo sie
+  deklariert sind. So funktionieren auch verschachtelte Bereiche mit eigenem `data-theme` (Seite „Theming“).
+- **KoliBri-Theme:** `packages/theme/src/brands/<name>.ts` ergänzt die gemeinsamen Overrides (`sharedOverrides`) um
+  Markenoptik, z. B. Button-Varianten, Radien und bei Siemens iX 32 px hohe Bedienelemente (`--a11y-min-size`; WCAG 2.2 AA
+  verlangt 24 px).
+- **Nicht übernommen:** Schriften (Porsche Next, TeleNeo, Siemens Sans), Logos und Icons der Marken. Die Schriftangabe
+  nennt die Markenschrift zuerst; ist sie lizenziert lokal installiert, nutzt der Browser sie, sonst die Ersatzschrift.
+- **Kontrast:** Abweichungen vom Original sind im Token per `$description` dokumentiert (Siemens iX: `info` im Dunkelmodus
+  aufgehellt, das Original hat auf der Komponentenfläche nur 3,5:1).
+- **Rechtliches:** Fink ist nicht mit der Dr. Ing. h.c. F. Porsche AG, der Deutschen Telekom AG oder der Siemens AG
+  verbunden. Der Code der Vorbilder ist offen (Apache 2.0, MPL-2.0, MIT), die Marken nicht: Porsche lizenziert Schriften,
+  Icons und Marque nur für Porsche-Anwendungen, Telekom behält sich Logo, Magenta, Schrift und Icons vor, das Siemens-Brand-
+  Theme ist Siemens-Anwendungen vorbehalten (daher Classic). Ob die öffentliche Showcase mit diesen Nachbildungen
+  veröffentlicht werden darf, ist rechtlich zu prüfen.
 
 ## Barrierefreiheit prüfen (BITV 2.0 / WCAG 2.2)
 

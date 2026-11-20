@@ -1,0 +1,47 @@
+{
+  "$description": "Nachbildung von Telekom Scale / One Experience (@telekom/design-tokens 1.0.0-beta.12). Nur Token-Werte; Schrift TeleNeo wird nicht ausgeliefert. Magenta ist eine Marke der Deutschen Telekom AG; keine Verbindung zur Deutschen Telekom AG.",
+  "$label": "Telekom Scale",
+  "$source": "https://github.com/telekom/scale",
+  "color": {
+    "primary": { "light": "#e20074", "dark": "#f61488", "$description": "--telekom-color-primary-standard" },
+    "primary-variant": { "light": "#c00063", "dark": "#ec59a5", "$description": "--telekom-color-primary-hovered / text-and-icon-primary-hovered" },
+    "secondary": { "light": "#ffffff", "dark": "#151517", "$description": "Sekundäraktion als Kontur-Button wie in Scale" },
+    "success": { "light": "#00774b", "dark": "#00b367", "$description": "--telekom-color-text-and-icon-functional-success; light: --telekom-color-text-and-icon-on-subtle-success (#008653 → #00774b) für Text auf getönter Fläche" },
+    "warning": { "light": "#b33c00", "dark": "#f97012", "$description": "--telekom-color-text-and-icon-functional-warning; light angepasst #b63d00 → #b33c00 (4,5:1 auf getönter Fläche)" },
+    "danger": { "light": "#c30a03", "dark": "#f8503b", "$description": "--telekom-color-text-and-icon-functional-danger; light: --telekom-color-text-and-icon-on-subtle-danger (#d91308 → #c30a03) für Text auf getönter Fläche; dark angepasst #f84934 → #f8503b (4,5:1 auf getönter Fläche)" },
+    "info": { "light": "#2238df", "dark": "#7d94f9", "$description": "--telekom-color-text-and-icon-functional-informational" },
+    "text": { "light": "#000000", "dark": "#ffffff", "$description": "--telekom-color-text-and-icon-standard" },
+    "subtle": { "light": "#595959", "dark": "#a9a9aa", "$description": "--telekom-color-text-and-icon-additional (65 % deckend)" },
+    "ink": { "light": "#000000", "dark": "#ffffff" },
+    "surface": { "light": "#fbfbfb", "dark": "#000000", "$description": "--telekom-color-background-canvas(-subtle)" },
+    "light": { "light": "#ffffff", "dark": "#151517", "$description": "--telekom-color-background-surface" },
+    "overlay": { "light": "#ffffff", "dark": "#242426", "$description": "--telekom-color-background-surface-subtle (dunkel)" },
+    "mute": { "light": "#efeff0", "dark": "#1c1c1e", "$description": "--telekom-color-ui-subtle" },
+    "mute-variant": { "light": "#dfdfe1", "dark": "#39393c", "$description": "--telekom-color-ui-faint" },
+    "edge": { "light": "transparent", "dark": "#39393c" },
+    "visited": { "light": "#6c3bdb", "dark": "#9a75f8", "$description": "--telekom-color-text-and-icon-link-visited" },
+    "shadow": { "light": "hsl(0 0% 0% / 0.1)", "dark": "transparent" },
+    "backdrop": { "light": "hsl(0 0% 0% / 0.5)", "dark": "hsl(0 0% 0% / 0.65)", "$description": "--telekom-color-background-backdrop" }
+  },
+  "font": {
+    "family": { "value": "TeleNeoWeb, TeleNeo, \"Segoe UI\", system-ui, -apple-system, Roboto, Arial, sans-serif", "$description": "--telekom-typography-font-family-sans" },
+    "weight-medium": { "value": "700" },
+    "weight-bold": { "value": "800" }
+  },
+  "radius": {
+    "sm": { "value": "4px", "$description": "--telekom-radius-small" },
+    "md": { "value": "8px", "$description": "--telekom-radius-standard" },
+    "lg": { "value": "12px", "$description": "--telekom-radius-large" },
+    "pill": { "value": "999px" }
+  },
+  "elevation": {
+    "1": { "value": "0 4px 16px var(--fink-color-shadow), 0 2px 4px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--telekom-shadow-raised-pressed" },
+    "2": { "value": "0 8px 32px var(--fink-color-shadow), 0 4px 8px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--telekom-shadow-raised-standard" },
+    "3": { "value": "0 24px 96px var(--fink-color-shadow), 0 12px 24px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--telekom-shadow-overlay" }
+  },
+  "motion": {
+    "duration-fast": { "value": "100ms", "$description": "--telekom-motion-duration-immediate" },
+    "duration-base": { "value": "200ms", "$description": "--telekom-motion-duration-transition" },
+    "easing": { "value": "cubic-bezier(0.4, 0, 0.6, 1)", "$description": "--telekom-motion-easing-standard" }
+  }
+}

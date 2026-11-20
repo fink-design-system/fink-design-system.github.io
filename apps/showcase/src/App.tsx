@@ -10,6 +10,7 @@ import { navigate, useRoute } from './router';
 import { Logo } from './site/Logo';
 import { SchemeToggle } from './site/SchemeToggle';
 import { LanguageToggle } from './site/LanguageToggle';
+import { ThemeSwitcher } from './site/ThemeSwitcher';
 import { GitHubLink } from './site/GitHubLink';
 import { Home } from './pages/Home';
 import { Foundations } from './pages/Foundations';
@@ -86,6 +87,7 @@ export function App() {
 			<div slot="actions" className="header-tools">
 				<KolVersion _label="0.1.0" className="header-version" />
 				<LanguageToggle />
+				<ThemeSwitcher />
 				<SchemeToggle />
 				<GitHubLink />
 			</div>

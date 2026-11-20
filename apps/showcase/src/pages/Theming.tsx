@@ -11,6 +11,8 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolSingleSelect,
+	KolLink,
+	FINK_THEMES,
 	tokens,
 } from '@fink/react';
 import { CodeBlock } from '../site/CodeBlock';
@@ -48,9 +50,16 @@ function Sample() {
 	);
 }
 
-/** Rendert die Kinder unter einem anderen KoliBri-Theme. KoliBri liest data-theme beim Mounten. */
+/**
+ * Rendert die Kinder unter einem anderen Theme. KoliBri liest data-theme beim Mounten, die Tokens
+ * des Themes gelten über den Selektor [data-theme='…'] aus @fink/tokens für den ganzen Teilbaum.
+ */
 function ThemeScope({ theme, children }: { theme: string; children: ReactNode }) {
-	return <div data-theme={theme}>{children}</div>;
+	return (
+		<div className="compare-pane" data-theme={theme}>
+			{children}
+		</div>
+	);
 }
 
 export function Theming() {
@@ -81,28 +90,44 @@ export function Theming() {
 			/>
 
 			<section className="section" aria-labelledby="compare">
-				<h2 id="compare">{t('Fink und KoliBri-Default im Vergleich')}</h2>
+				<h2 id="compare">{t('Ein Komponentensatz, fünf Design-Systeme')}</h2>
 				<p className="section-intro">
-					{t('Beide Themes sind registriert. KoliBri sucht beim Mounten das nächste')} <code>{t('data-theme')}</code>{t('-Attribut – so lassen sich Themes sogar auf einer Seite mischen.')}
+					{t('Alle Themes sind registriert. KoliBri sucht beim Mounten das nächste')} <code>{t('data-theme')}</code>{t('-Attribut – so lassen sich Themes sogar auf einer Seite mischen.')}{' '}
+					{t('Neben Fink und dem KoliBri-Default stehen Nachbildungen von Porsche Design System, Telekom Scale und Siemens iX: dieselben KoliBri- und Fink-Komponenten, nur andere Tokens und wenige Overrides. Für die ganze Seite wählt man das Theme über das Farbeimer-Symbol im Kopf.')}
 				</p>
 				<div className="compare">
-					<div className="compare-pane">
-						<h3>
-							<code>data-theme="fink"</code>
-						</h3>
-						<ThemeScope theme="fink">
+					{FINK_THEMES.map((theme) => (
+						<ThemeScope key={theme.name} theme={theme.name}>
+							<h3>
+								{theme.label} <code className="muted small">data-theme="{theme.name}"</code>
+							</h3>
 							<Sample />
 						</ThemeScope>
-					</div>
-					<div className="compare-pane">
-						<h3>
-							<code>data-theme="default"</code>
-						</h3>
-						<ThemeScope theme="default">
-							<Sample />
-						</ThemeScope>
-					</div>
+					))}
 				</div>
+			</section>
+
+			<section className="section" aria-labelledby="brands">
+				<h2 id="brands">{t('Marken-Themes: was übernommen wird und was nicht')}</h2>
+				<p className="section-intro">
+					{t('Die Nachbildungen zeigen, dass Fink fremde Design-Systeme allein über Tokens und Theme-Overrides tragen kann. Übernommen sind veröffentlichte Token-Werte: Farben für hell und dunkel, Radien, Schatten, Bewegung und die Schriftangabe.')}
+				</p>
+				<ul className="section-intro">
+					<li>{t('Schriften (Porsche Next, TeleNeo, Siemens Sans), Logos und Icons der Marken werden nicht ausgeliefert. Ist eine lizenzierte Schrift lokal installiert, nutzt der Browser sie, sonst die Ersatzschrift.')}</li>
+					<li>{t('Wo ein Originalwert die Kontrastprüfung (WCAG 2.2 AA) nicht besteht, ist er minimal angepasst und im Token dokumentiert.')}</li>
+					<li>{t('Siemens iX nutzt das offene Classic-Theme (MIT). Das Siemens-Brand-Theme ist Siemens-Anwendungen vorbehalten.')}</li>
+					<li>
+						<strong>{t('Keine Verbindung zu den Marken:')}</strong>{' '}
+						{t('Fink ist weder mit der Dr. Ing. h.c. F. Porsche AG, der Deutschen Telekom AG noch der Siemens AG verbunden. Die Nachbildungen dienen nur der Demonstration; Marken, Magenta und Markenfarben gehören ihren Inhabern.')}
+					</li>
+				</ul>
+				<ul className="section-intro">
+					{FINK_THEMES.filter((theme) => theme.brand).map((theme) => (
+						<li key={theme.name}>
+							<KolLink _href={theme.source} _label={theme.label} _target="_blank" />: <code>packages/tokens/src/themes/{theme.name}.json</code>
+						</li>
+					))}
+				</ul>
 			</section>
 
 			<section className="section" aria-labelledby="live">

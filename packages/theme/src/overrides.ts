@@ -48,7 +48,22 @@ export const hostOverrides: Record<string, string> = {
 	'KOL-NAV': transparentHost,
 };
 
-export const overrides: Record<string, string> = {
+/** Fügt Override-Sätze zusammen; CSS gleicher Komponenten wird in Reihenfolge angehängt. */
+export const mergeOverrides = (...sets: Array<Record<string, string>>): Record<string, string> => {
+	const merged: Record<string, string> = {};
+	for (const set of sets) {
+		for (const [key, css] of Object.entries(set)) {
+			merged[key] = merged[key] ? `${merged[key]}\n${css}` : css;
+		}
+	}
+	return merged;
+};
+
+/**
+ * Overrides, die für jedes Fink-Theme gelten (Fink und Marken-Themes): Verhalten und Barrierefreiheit,
+ * keine Markenoptik.
+ */
+export const sharedOverrides: Record<string, string> = {
 	GLOBAL: `
 @layer kol-theme-global {
 	:host {
@@ -57,6 +72,45 @@ export const overrides: Record<string, string> = {
 }
 ${transparentHost}`,
 	'KOL-NAV': transparentHost,
+	'KOL-INPUT-CHECKBOX': `
+@layer kol-theme-component {
+	/*
+	 * Variante „button“ als Filter-Chip (fink-chip): Pill-Form; die Icon-Spalte erscheint nur im
+	 * gewählten Zustand (Haken), ungewählt bleibt ein schmaler Innenabstand.
+	 */
+	.kol-input-checkbox--variant-button .kol-field-control__input {
+		border-radius: var(--fink-radius-pill) 0 0 var(--fink-radius-pill);
+	}
+	.kol-input-checkbox--variant-button .kol-field-control__label {
+		border-radius: 0 var(--fink-radius-pill) var(--fink-radius-pill) 0;
+	}
+	.kol-input-checkbox--variant-button:not(:has(.kol-checkbox__input:checked)) .kol-field-control__input {
+		width: var(--fink-space-4);
+		min-width: 0;
+	}
+	.kol-input-checkbox--variant-button:not(:has(.kol-checkbox__input:checked)) .kol-checkbox {
+		width: 0;
+		min-width: 0;
+		overflow: clip;
+	}
+}`,
+	/* Dateiname und Hinweis brechen um, statt mit „…“ gekürzt zu werden (WCAG 1.4.4, 1.4.10, 1.4.12). */
+	'KOL-INPUT-FILE': `
+@layer kol-theme-component {
+	.kol-input-container__filename {
+		min-width: 0;
+		overflow: visible;
+		white-space: normal;
+		text-overflow: clip;
+		overflow-wrap: anywhere;
+	}
+}`,
+	'KOL-TABLE-STATELESS': narrowTable,
+	'KOL-TABLE-STATEFUL': narrowTable,
+};
+
+/** Markenoptik des Fink-Themes. */
+const finkLook: Record<string, string> = {
 	'KOL-BUTTON': `
 @layer kol-theme-component {
 	:host {
@@ -96,47 +150,12 @@ ${transparentHost}`,
 		font-weight: var(--fink-font-weight-medium);
 	}
 }`,
-	'KOL-INPUT-CHECKBOX': `
-@layer kol-theme-component {
-	/*
-	 * Variante „button“ als Filter-Chip (fink-chip): Pill-Form; die Icon-Spalte erscheint nur im
-	 * gewählten Zustand (Haken), ungewählt bleibt ein schmaler Innenabstand.
-	 */
-	.kol-input-checkbox--variant-button .kol-field-control__input {
-		border-radius: var(--fink-radius-pill) 0 0 var(--fink-radius-pill);
-	}
-	.kol-input-checkbox--variant-button .kol-field-control__label {
-		border-radius: 0 var(--fink-radius-pill) var(--fink-radius-pill) 0;
-	}
-	.kol-input-checkbox--variant-button:not(:has(.kol-checkbox__input:checked)) .kol-field-control__input {
-		width: var(--fink-space-4);
-		min-width: 0;
-	}
-	.kol-input-checkbox--variant-button:not(:has(.kol-checkbox__input:checked)) .kol-checkbox {
-		width: 0;
-		min-width: 0;
-		overflow: clip;
-	}
-}`,
 	'KOL-MODAL': `
 @layer kol-theme-component {
 	:host {
 		--border-radius: var(--fink-radius-lg);
 	}
 }`,
-	/* Dateiname und Hinweis brechen um, statt mit „…“ gekürzt zu werden (WCAG 1.4.4, 1.4.10, 1.4.12). */
-	'KOL-INPUT-FILE': `
-@layer kol-theme-component {
-	.kol-input-container__filename {
-		min-width: 0;
-		overflow: visible;
-		white-space: normal;
-		text-overflow: clip;
-		overflow-wrap: anywhere;
-	}
-}`,
-	'KOL-TABLE-STATELESS': narrowTable,
-	'KOL-TABLE-STATEFUL': narrowTable,
 	'KOL-DRAWER': `
 @layer kol-theme-component {
 	:host {
@@ -144,3 +163,5 @@ ${transparentHost}`,
 	}
 }`,
 };
+
+export const overrides: Record<string, string> = mergeOverrides(sharedOverrides, finkLook);

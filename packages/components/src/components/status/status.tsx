@@ -1,6 +1,6 @@
 import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
 import { FinkTone, normalizeTone } from '../../utils/tone';
-import { mixHex, onColorContextChange, resolveColor } from '../../utils/resolve-color';
+import { onColorContextChange, resolveColor, tintFor } from '../../utils/resolve-color';
 
 const TONE: Record<FinkTone, { icon: string; color: string }> = {
 	brand: { icon: 'codicon codicon-circle-filled', color: 'var(--fink-color-primary)' },
@@ -38,7 +38,7 @@ export class FinkStatus {
 	updateColors() {
 		const foreground = resolveColor(this.host, TONE[normalizeTone(this._tone)].color);
 		const light = resolveColor(this.host, 'var(--fink-color-light)');
-		this.colors = { foregroundColor: foreground, backgroundColor: mixHex(foreground, light, 12) };
+		this.colors = { foregroundColor: foreground, backgroundColor: tintFor(foreground, light, 12) };
 	}
 
 	connectedCallback() {
