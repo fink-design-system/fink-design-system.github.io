@@ -1,0 +1,10 @@
+import { chromium } from '@playwright/test';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 2 });
+await page.goto('http://localhost:5173', { waitUntil: 'networkidle' });
+await page.waitForTimeout(1500);
+await page.screenshot({ path: join(dirname(fileURLToPath(import.meta.url)), 'header-check.png'), clip: { x: 0, y: 0, width: 1280, height: 220 } });
+await browser.close();
+console.log('ok');

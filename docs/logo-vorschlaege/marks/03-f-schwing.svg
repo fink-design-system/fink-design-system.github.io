@@ -1,0 +1,8 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <mask id="m03"><rect width="24" height="24" fill="#fff"/><circle cx="9.7" cy="5.9" r="1.15" fill="#000"/></mask>
+  <g fill="currentColor" mask="url(#m03)">
+    <rect x="5.8" y="3.4" width="3.5" height="17.2" rx="1.75"/>
+    <path d="M5.8 3.4H13.9c1.9 0 3.4.5 4.8 1.6L21.2 5.9L18.7 6.8C17.3 7.9 15.8 8.4 13.9 8.4H5.8Z"/>
+    <path d="M5.8 11H11.9c1.05 0 1.9.78 1.9 1.75s-.85 1.75-1.9 1.75H5.8Z"/>
+  </g>
+</svg>
