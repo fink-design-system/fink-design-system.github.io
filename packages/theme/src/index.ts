@@ -3,6 +3,7 @@ import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import { brandThemes, themeCss } from '@fink/tokens';
 import { hostOverrides, overrides } from './overrides.js';
+import { dbOverrides } from './brands/db.js';
 import { porscheOverrides } from './brands/porsche.js';
 import { siemensIxOverrides } from './brands/siemens-ix.js';
 import { telekomOverrides } from './brands/telekom.js';
@@ -41,6 +42,7 @@ export const FINK: typeof DEFAULT = createTheme(FINK_THEME_NAME, overrides);
 export type FinkBrandThemeName = (typeof brandThemes)[number]['name'];
 
 const brandOverrides: Record<FinkBrandThemeName, Record<string, string>> = {
+	db: dbOverrides,
 	porsche: porscheOverrides,
 	'siemens-ix': siemensIxOverrides,
 	telekom: telekomOverrides,
@@ -102,7 +104,7 @@ export interface RegisterFinkOptions {
 	injectTokens?: boolean;
 	/** Das unveränderte KoliBri-Default-Theme zusätzlich registrieren (Standard: true). */
 	includeKolibriDefault?: boolean;
-	/** Die Marken-Themes (Porsche, Telekom, Siemens iX) zusätzlich registrieren (Standard: true). */
+	/** Die Stil-Adaptionen (Porsche, Telekom, Siemens iX, DB) zusätzlich registrieren (Standard: true). */
 	includeBrandThemes?: boolean;
 	/**
 	 * Theme-Erkennung: „auto“ liest das Attribut data-theme am nächsten Vorfahren (auch über

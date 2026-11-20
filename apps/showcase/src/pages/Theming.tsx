@@ -112,10 +112,10 @@ export function Theming() {
 			/>
 
 			<section className="section" aria-labelledby="compare">
-				<h2 id="compare">{t('Ein Komponentensatz, fünf Design-Systeme')}</h2>
+				<h2 id="compare">{t('Ein Komponentensatz, sechs Design-Systeme')}</h2>
 				<p className="section-intro">
 					{t('Alle Themes sind registriert. KoliBri sucht beim Mounten das nächste')} <code>{t('data-theme')}</code>{t('-Attribut – so lassen sich Themes sogar auf einer Seite mischen.')}{' '}
-					{t('Neben Fink und dem KoliBri-Default stehen Nachbildungen von Porsche Design System, Telekom Scale und Siemens iX: dieselben KoliBri- und Fink-Komponenten, nur andere Tokens und wenige Overrides. Für die ganze Seite wählt man das Theme über das Farbeimer-Symbol im Kopf.')}
+					{t('Neben Fink und dem KoliBri-Default stehen Stil-Adaptionen von DB UX Design System, Porsche Design System, Telekom Scale und Siemens iX: dieselben KoliBri- und Fink-Komponenten, nur andere Tokens und wenige Overrides. Für die ganze Seite wählt man das Theme über das Farbeimer-Symbol im Kopf.')}
 				</p>
 				<div className="theme-select">
 					<PageThemeSelect />

@@ -1,0 +1,48 @@
+{
+  "$description": "Stil-Adaption des DB UX Design System, Generation 3 (Token-Quelle: @db-ux/db-theme 7.3.1 und @db-ux/core-foundations 6.4.1, build/styles). Keine Schriften, Logos oder Icons des Vorbilds; keine Verbindung zum Unternehmen.",
+  "$label": "DB UX Design System",
+  "$source": "https://design-system.deutschebahn.com",
+  "color": {
+    "primary": { "light": "#ec0016", "dark": "#ff5357", "$description": "--db-brand-origin-default; dunkel --db-brand-8, weil #ec0016 auf dunkler Fläche als Text nur 3,4:1 erreicht" },
+    "primary-variant": { "light": "#bd000f", "dark": "#ff888a", "$description": "--db-brand-origin-pressed / --db-brand-9" },
+    "secondary": { "light": "#ffffff", "dark": "#222428", "$description": "Sekundäraktion als Kontur-Button wie im Original" },
+    "success": { "light": "#3d6a09", "dark": "#72bf1a", "$description": "--db-successful-6 / -9 (on-bg emphasis-80)" },
+    "warning": { "light": "#8a5100", "dark": "#f69400", "$description": "--db-warning-6 / -9 (on-bg emphasis-80)" },
+    "danger": { "light": "#c00010", "dark": "#ff888a", "$description": "--db-critical-6 / -9 (on-bg emphasis-80)" },
+    "info": { "light": "#1b6586", "dark": "#38b6ef", "$description": "--db-informational-6 / -9 (on-bg emphasis-80)" },
+    "text": { "light": "#16181b", "dark": "#edeef0", "$description": "--db-neutral-on-bg-basic-emphasis-100 (neutral-1 / -12)" },
+    "subtle": { "light": "#5a5e68", "dark": "#a6abb6", "$description": "--db-neutral-on-bg-basic-emphasis-80 (neutral-6 / -9)" },
+    "ink": { "light": "#0d0e11", "dark": "#ffffff", "$description": "neutral-0 / -14" },
+    "surface": { "light": "#ffffff", "dark": "#16181b", "$description": "--db-neutral-bg-basic-level-1 (neutral-14 / -1)" },
+    "light": { "light": "#ffffff", "dark": "#222428", "$description": "Komponentenfläche, --db-neutral-bg-basic-level-2 im Dunkelmodus" },
+    "overlay": { "light": "#ffffff", "dark": "#2e3036", "$description": "--db-neutral-bg-basic-level-3 im Dunkelmodus" },
+    "mute": { "light": "#f3f3f5", "dark": "#2e3036", "$description": "--db-neutral-bg-basic-level-2 / -3 (neutral-13 / -3)" },
+    "mute-variant": { "light": "#c3c7ce", "dark": "#5a5e68", "$description": "--db-neutral-on-bg-basic-emphasis-60 (neutral-10 / -6)" },
+    "edge": { "light": "transparent", "dark": "#3b3e44" },
+    "visited": { "light": "#9c000a", "dark": "#ffb3b4", "$description": "--db-brand-5 / -10" },
+    "focus": { "light": "#257fa8", "dark": "#2e9acb", "$description": "--db-informational-on-bg-basic-emphasis-70 (Fokusring)" },
+    "shadow": { "light": "rgb(0 0 0 / 0.14)", "dark": "transparent" },
+    "backdrop": { "light": "rgb(13 14 17 / 0.5)", "dark": "rgb(0 0 0 / 0.65)" }
+  },
+  "font": {
+    "family": { "value": "\"Helvetica Neue\", Helvetica, Arial, sans-serif", "$description": "Systemschrift ähnlich dem Vorbild (Fallback-Stack des Originals)" },
+    "weight-medium": { "value": "700" },
+    "weight-bold": { "value": "700" }
+  },
+  "radius": {
+    "sm": { "value": "0", "$description": "--db-border-radius-*: seit db-theme 7 eckig" },
+    "md": { "value": "0", "$description": "--db-border-radius-*: seit db-theme 7 eckig" },
+    "lg": { "value": "0", "$description": "--db-border-radius-*: seit db-theme 7 eckig" },
+    "pill": { "value": "999px", "$description": "--db-border-radius-full" }
+  },
+  "elevation": {
+    "1": { "value": "0 0 1px -1px var(--fink-color-shadow), 0 0 4px 1px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--db-elevation-sm" },
+    "2": { "value": "0 0 2px -1px var(--fink-color-shadow), 0 0 8px 1px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--db-elevation-md" },
+    "3": { "value": "0 0 4px -3px var(--fink-color-shadow), 0 0 16px 3px var(--fink-color-shadow), 0 0 0 1px var(--fink-color-edge)", "$description": "--db-elevation-lg" }
+  },
+  "motion": {
+    "duration-fast": { "value": "150ms", "$description": "--db-transition-duration-fast" },
+    "duration-base": { "value": "300ms", "$description": "--db-transition-duration-medium" },
+    "easing": { "value": "cubic-bezier(0.15, 0, 0.45, 1)", "$description": "--db-transition-timing-functional" }
+  }
+}

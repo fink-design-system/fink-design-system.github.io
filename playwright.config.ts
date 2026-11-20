@@ -5,7 +5,7 @@ const port = Number(process.env.PORT ?? 4173);
 const desktop = { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' as const };
 
 /** Marken-Themes aus @fink/tokens (src/themes); je Theme hell und dunkel über alle Routen. */
-const brandThemes = ['porsche', 'siemens-ix', 'telekom'];
+const brandThemes = ['db', 'porsche', 'siemens-ix', 'telekom'];
 
 /**
  * Barrierefreiheitstests der Showcase mit Playwright und axe-core.
