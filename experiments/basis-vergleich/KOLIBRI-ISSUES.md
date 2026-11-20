@@ -1,5 +1,13 @@
 # Vorschläge für das KoliBri-Team
 
+> **Stand 20.11.2026:** Beide Issues sind eingereicht und umgesetzt.
+> - Issue 1: [public-ui/kolibri#11623](https://github.com/public-ui/kolibri/issues/11623), umgesetzt in #11629 und
+>   #11631, veröffentlicht mit 4.6.0.
+> - Issue 2: [public-ui/kolibri#11627](https://github.com/public-ui/kolibri/issues/11627), markdown-it in `release/4`
+>   durch einen kleinen Inline-Renderer ersetzt (#11637), nach 4.6.0 gemergt.
+>
+> Die Texte unten sind der eingereichte Stand mit den Messwerten von 4.6.0-rc.2.
+
 Zwei Issue-Texte zum Einreichen unter https://github.com/public-ui/kolibri/issues. Beide beziehen sich auf
 `@public-ui/components` und `@public-ui/theme-default` in Version 4.6.0-rc.2. Belege, Skripte und Messwerte liegen in
 diesem Ordner (`experiments/basis-vergleich`).

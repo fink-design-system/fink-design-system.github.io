@@ -57,11 +57,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tokens
       '@public-ui/components':
-        specifier: 4.6.0-rc.2
-        version: 4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.6.0
+        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
       '@public-ui/theme-default':
-        specifier: 4.6.0-rc.2
-        version: 4.6.0-rc.2(@public-ui/components@4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25))
+        specifier: 4.6.0
+        version: 4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))
       i18next:
         specifier: 25.10.10
         version: 25.10.10(typescript@5.9.3)
@@ -109,11 +109,11 @@ importers:
         specifier: 0.25.0
         version: 0.25.0
       '@public-ui/components':
-        specifier: 4.6.0-rc.2
-        version: 4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.6.0
+        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
       '@public-ui/theme-default':
-        specifier: 4.6.0-rc.2
-        version: 4.6.0-rc.2(@public-ui/components@4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25))
+        specifier: 4.6.0
+        version: 4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))
       lit:
         specifier: 3.3.3
         version: 3.3.3
@@ -162,8 +162,8 @@ importers:
         version: 25.10.10(typescript@5.9.3)
     devDependencies:
       '@public-ui/components':
-        specifier: 4.6.0-rc.2
-        version: 4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.6.0
+        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
       '@stencil/core':
         specifier: 4.45.3
         version: 4.45.3
@@ -183,15 +183,15 @@ importers:
         specifier: workspace:*
         version: link:../tokens
       '@public-ui/react-v19':
-        specifier: 4.6.0-rc.2
-        version: 4.6.0-rc.2(@public-ui/components@4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 4.6.0
+        version: 4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@stencil/react-output-target':
         specifier: 1.8.1
         version: 1.8.1(@stencil/core@4.45.3)(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     devDependencies:
       '@public-ui/components':
-        specifier: 4.6.0-rc.2
-        version: 4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.6.0
+        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
       '@types/react':
         specifier: 19.2.2
         version: 19.2.2
@@ -215,11 +215,11 @@ importers:
         version: link:../tokens
     devDependencies:
       '@public-ui/components':
-        specifier: 4.6.0-rc.2
-        version: 4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.6.0
+        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
       '@public-ui/theme-default':
-        specifier: 4.6.0-rc.2
-        version: 4.6.0-rc.2(@public-ui/components@4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25))
+        specifier: 4.6.0
+        version: 4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -619,23 +619,23 @@ packages:
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
 
-  '@public-ui/components@4.6.0-rc.2':
-    resolution: {integrity: sha512-o0LeTRfh5X769CX2EI8XDFVt6y3imSZOe0sAhOKRts+f2b/zeE9ES+XLH4QcA3j6OyahRQ72/tWtsnGHg48lng==}
+  '@public-ui/components@4.6.0':
+    resolution: {integrity: sha512-YpmBQV6pO+1qMGSAQtLG/2GQLAYiTiJLJnZ9itOOIqrdjTR/0YjbfGCUpw7mC0RdDOJ0nAuGypRxsNeEJwPHzQ==}
     hasBin: true
     peerDependencies:
       adopted-style-sheets: 1.2.0-rc.3
 
-  '@public-ui/react-v19@4.6.0-rc.2':
-    resolution: {integrity: sha512-TFO2QFtvAl+7pjFwOCod0pb7PEnxmrLg3sHVAot7jWzkQ6DYRwD6girspuB0CVA4VpEupSdgOnVxEuufN0EmSQ==}
+  '@public-ui/react-v19@4.6.0':
+    resolution: {integrity: sha512-r3pM3H6vZUZqG9C4a9zvqwPcDWKtSZuLuWS0vMg4UK9sQLAKyJuQ9AohoNDFViVa66iLEgoGBq0b37YuZ7WwFw==}
     peerDependencies:
-      '@public-ui/components': 4.6.0-rc.2
+      '@public-ui/components': 4.6.0
       react: 19.x
       react-dom: 19.x
 
-  '@public-ui/theme-default@4.6.0-rc.2':
-    resolution: {integrity: sha512-rotF0IYe36gppMCwR7/fnnHU2Dg1iru2UvwN25ur7kdwPJoHSdM7sL0uydrFTSXViwioR0Yb4/ir7J4ZF65dXQ==}
+  '@public-ui/theme-default@4.6.0':
+    resolution: {integrity: sha512-1nm+bBAbo2WdX4i6tbpvR6yz2p8634YkVFEsnVca66kMZBt19lOz9jZr/5e5SsGcQzZ27Qnz3wMSG5yVEzvBoA==}
     peerDependencies:
-      '@public-ui/components': 4.6.0-rc.2
+      '@public-ui/components': 4.6.0
 
   '@react-types/shared@3.37.0':
     resolution: {integrity: sha512-VNlZuifu4tHdxWPfHvoMfKsHA9kVTCGkduv5vKVTdinm8wHFJNhyVB5RzIMiRFj0q3RKoCbP68u2zaoBSiFueg==}
@@ -2592,7 +2592,7 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
-  '@public-ui/components@4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25)':
+  '@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25)':
     dependencies:
       '@floating-ui/dom': 1.8.0
       adopted-style-sheets: 1.1.9-rc.25
@@ -2604,15 +2604,15 @@ snapshots:
       typed-bem: 1.0.2
       wcag-contrast: 3.0.0
 
-  '@public-ui/react-v19@4.6.0-rc.2(@public-ui/components@4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@public-ui/react-v19@4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@public-ui/components': 4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25)
+      '@public-ui/components': 4.6.0(adopted-style-sheets@1.1.9-rc.25)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@public-ui/theme-default@4.6.0-rc.2(@public-ui/components@4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25))':
+  '@public-ui/theme-default@4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))':
     dependencies:
-      '@public-ui/components': 4.6.0-rc.2(adopted-style-sheets@1.1.9-rc.25)
+      '@public-ui/components': 4.6.0(adopted-style-sheets@1.1.9-rc.25)
 
   '@react-types/shared@3.37.0(react@19.2.0)':
     dependencies:

@@ -1,6 +1,6 @@
 /**
  * Renderzeit, Stilberechnung und JS-Speicher mit vielen KoliBri-Komponenten auf einer Seite.
- * Frage: Was kostet es, wenn das Icon-CSS in GLOBAL liegt und damit auch Komponenten ohne Icons erreicht?
+ * Frage: Was kostet es, dass das Icon-CSS seit 4.6.0 in GLOBAL liegt und damit auch Komponenten ohne Icons erreicht?
  * Voraussetzung: `pnpm spike:build`. Schreibt results/perf.json und PERF.md.
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -14,10 +14,8 @@ const RUNS = 7;
 const PER_TYPE = 150;
 
 const VARIANTS = [
-	{ id: 'kolibri', name: 'KoliBri (Fink heute)', dist: 'dist', port: 4331 },
-	{ id: 'kolibri-global', name: 'KoliBri icons in GLOBAL', dist: 'dist-global', port: 4332 },
-	{ id: 'kolibri-global-slim', name: 'KoliBri icons in GLOBAL, gekürzt', dist: 'dist-global-slim', port: 4334 },
-	{ id: 'kolibri-schlank', name: 'KoliBri schlank', dist: 'dist-slim', port: 4333 },
+	{ id: 'kolibri', name: 'KoliBri 4.6.0 (Icon-CSS in GLOBAL)', dist: 'dist', port: 4331 },
+	{ id: 'kolibri-schlank', name: 'KoliBri 4.6.0, nur genutzte Icons', dist: 'dist-slim', port: 4333 },
 ];
 
 /** Komponenten ohne Icon-CSS im Default-Theme und Komponenten mit Icon-CSS. */

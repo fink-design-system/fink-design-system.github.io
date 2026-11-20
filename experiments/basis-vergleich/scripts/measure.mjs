@@ -48,22 +48,6 @@ const VARIANTS = {
 		files: [],
 		locales: [],
 	},
-	'kolibri-global': {
-		name: 'KoliBri icons in GLOBAL',
-		note: 'wie KoliBri, Build mit scripts/kolibri-icons-global.mjs: Icon-CSS vollständig, aber einmal in GLOBAL',
-		page: 'kolibri',
-		dist: 'dist-global',
-		files: [],
-		locales: [],
-	},
-	'kolibri-global-slim': {
-		name: 'KoliBri icons in GLOBAL, gekürzt',
-		note: 'Icon-CSS auf genutzte Icons gekürzt und einmal in GLOBAL',
-		page: 'kolibri',
-		dist: 'dist-global-slim',
-		files: [],
-		locales: [],
-	},
 	'react-aria': {
 		name: 'React Aria',
 		files: [own('react-aria/TagInput.tsx'), own('react-aria/FileUpload.tsx'), own('react-aria/styles.css'), own('shared/texts.ts')],
@@ -138,12 +122,10 @@ function code() {
 	// Die schlanke Variante nutzt denselben Fink-Code, nur der Build unterscheidet sich.
 	out['kolibri-schlank'] = { ...out.kolibri, name: VARIANTS['kolibri-schlank'].name };
 	out['kolibri-lazy'] = { ...out.kolibri, name: VARIANTS['kolibri-lazy'].name };
-	out['kolibri-global'] = { ...out.kolibri, name: VARIANTS['kolibri-global'].name };
-	out['kolibri-global-slim'] = { ...out.kolibri, name: VARIANTS['kolibri-global-slim'].name };
 	return out;
 }
 
-const PORTS = { dist: 4318, 'dist-slim': 4320, 'dist-lazy': 4324, 'dist-global': 4326, 'dist-global-slim': 4328 };
+const PORTS = { dist: 4318, 'dist-slim': 4320, 'dist-lazy': 4324 };
 
 /** Lädt eine Seite und summiert Skripte, Stylesheets und Schriften. */
 async function measurePage(browser, url) {

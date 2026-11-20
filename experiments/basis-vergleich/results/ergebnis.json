@@ -1,5 +1,5 @@
 {
-	"stand": "2026-11-17",
+	"stand": "2026-11-20",
 	"code": {
 		"kolibri": {
 			"name": "KoliBri",
@@ -160,112 +160,6 @@
 			],
 			"total": 592
 		},
-		"kolibri-global": {
-			"name": "KoliBri icons in GLOBAL",
-			"logic": 417,
-			"style": 175,
-			"files": [
-				{
-					"file": "packages/components/src/components/tag-input/tag-input.tsx",
-					"logic": 119,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/tag-input/tag-input.css",
-					"logic": 0,
-					"style": 27
-				},
-				{
-					"file": "packages/components/src/components/chip/chip.tsx",
-					"logic": 72,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/chip/chip.css",
-					"logic": 0,
-					"style": 4
-				},
-				{
-					"file": "packages/components/src/components/file-upload/file-upload.tsx",
-					"logic": 151,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/file-upload/file-upload.css",
-					"logic": 0,
-					"style": 144
-				},
-				{
-					"file": "packages/components/src/utils/resolve-color.ts",
-					"logic": 37,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/utils/shared.ts",
-					"logic": 15,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/i18n/locales.ts (deutsche Texte)",
-					"logic": 23,
-					"style": 0
-				}
-			],
-			"total": 592
-		},
-		"kolibri-global-slim": {
-			"name": "KoliBri icons in GLOBAL, gekürzt",
-			"logic": 417,
-			"style": 175,
-			"files": [
-				{
-					"file": "packages/components/src/components/tag-input/tag-input.tsx",
-					"logic": 119,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/tag-input/tag-input.css",
-					"logic": 0,
-					"style": 27
-				},
-				{
-					"file": "packages/components/src/components/chip/chip.tsx",
-					"logic": 72,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/chip/chip.css",
-					"logic": 0,
-					"style": 4
-				},
-				{
-					"file": "packages/components/src/components/file-upload/file-upload.tsx",
-					"logic": 151,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/components/file-upload/file-upload.css",
-					"logic": 0,
-					"style": 144
-				},
-				{
-					"file": "packages/components/src/utils/resolve-color.ts",
-					"logic": 37,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/utils/shared.ts",
-					"logic": 15,
-					"style": 0
-				},
-				{
-					"file": "packages/components/src/i18n/locales.ts (deutsche Texte)",
-					"logic": 23,
-					"style": 0
-				}
-			],
-			"total": 592
-		},
 		"react-aria": {
 			"name": "React Aria",
 			"logic": 230,
@@ -325,73 +219,45 @@
 	},
 	"loaded": {
 		"kolibri": {
-			"requests": 67,
-			"scriptBytes": 14353962,
-			"scriptGzip": 2152956,
+			"requests": 64,
+			"scriptBytes": 1865520,
+			"scriptGzip": 384925,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 2225981,
+			"totalGzip": 457950,
 			"noBadge": {
-				"requests": 54,
-				"scriptBytes": 14304436,
-				"scriptGzip": 2136973,
+				"requests": 51,
+				"scriptBytes": 1815194,
+				"scriptGzip": 368877,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 2209998
+				"totalGzip": 441902
 			}
 		},
 		"kolibri-schlank": {
-			"requests": 63,
-			"scriptBytes": 2083024,
-			"scriptGzip": 397868,
+			"requests": 60,
+			"scriptBytes": 1689749,
+			"scriptGzip": 357902,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 470893,
+			"totalGzip": 430927,
 			"noBadge": {
-				"requests": 50,
-				"scriptBytes": 2033572,
-				"scriptGzip": 381931,
+				"requests": 47,
+				"scriptBytes": 1639497,
+				"scriptGzip": 341899,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 454956
+				"totalGzip": 414924
 			}
 		},
 		"kolibri-lazy": {
-			"requests": 64,
-			"scriptBytes": 2085779,
-			"scriptGzip": 399281,
+			"requests": 61,
+			"scriptBytes": 1692460,
+			"scriptGzip": 359231,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 472306,
+			"totalGzip": 432256,
 			"noBadge": {
-				"requests": 50,
-				"scriptBytes": 1897023,
-				"scriptGzip": 326641,
+				"requests": 47,
+				"scriptBytes": 1502905,
+				"scriptGzip": 286553,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 399666
-			}
-		},
-		"kolibri-global": {
-			"requests": 63,
-			"scriptBytes": 2261169,
-			"scriptGzip": 430942,
-			"styleAndFontBytes": 218786,
-			"totalGzip": 503967,
-			"noBadge": {
-				"requests": 50,
-				"scriptBytes": 2211717,
-				"scriptGzip": 414989,
-				"styleAndFontBytes": 218786,
-				"totalGzip": 488014
-			}
-		},
-		"kolibri-global-slim": {
-			"requests": 63,
-			"scriptBytes": 1634194,
-			"scriptGzip": 352571,
-			"styleAndFontBytes": 218786,
-			"totalGzip": 425596,
-			"noBadge": {
-				"requests": 50,
-				"scriptBytes": 1584742,
-				"scriptGzip": 336633,
-				"styleAndFontBytes": 218786,
-				"totalGzip": 409658
+				"totalGzip": 359578
 			}
 		},
 		"react-aria": {
@@ -561,156 +427,6 @@
 			}
 		],
 		"KoliBri schlank + lazy markdown": [
-			{
-				"test": "Tag per Tastatur mit Enter übernehmen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Freie Eingabe mit Komma übernehmen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Vorschlag per Pfeiltaste wählen",
-				"status": "nicht simulierbar",
-				"note": "Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet."
-			},
-			{
-				"test": "Doppelten Eintrag mit Meldung abweisen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Rücktaste im leeren Feld entfernt den letzten Eintrag",
-				"status": "bestanden"
-			},
-			{
-				"test": "Eintrag per Tastatur über den Entfernen-Knopf löschen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Höchstzahl sperrt das Feld",
-				"status": "bestanden"
-			},
-			{
-				"test": "Gültige Datei über die Dateiauswahl hinzufügen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Zu große Datei mit Meldung abweisen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Falschen Dateityp mit Meldung abweisen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Datei über den Entfernen-Knopf löschen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Datei per Ziehen und Ablegen hinzufügen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Fokus ist im Hochkontrastmodus sichtbar",
-				"status": "bestanden"
-			},
-			{
-				"test": "Kein seitliches Scrollen bei 320 Pixeln",
-				"status": "bestanden"
-			},
-			{
-				"test": "Alle sichtbaren Texte auf Deutsch",
-				"status": "bestanden"
-			},
-			{
-				"test": "Keine axe-Funde nach Interaktion",
-				"status": "bestanden"
-			},
-			{
-				"test": "Keine Konsolenfehler",
-				"status": "bestanden"
-			},
-			{
-				"test": "Markdown in Badge-Beschriftung wird gerendert",
-				"status": "bestanden"
-			}
-		],
-		"KoliBri icons in GLOBAL": [
-			{
-				"test": "Tag per Tastatur mit Enter übernehmen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Freie Eingabe mit Komma übernehmen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Vorschlag per Pfeiltaste wählen",
-				"status": "nicht simulierbar",
-				"note": "Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet."
-			},
-			{
-				"test": "Doppelten Eintrag mit Meldung abweisen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Rücktaste im leeren Feld entfernt den letzten Eintrag",
-				"status": "bestanden"
-			},
-			{
-				"test": "Eintrag per Tastatur über den Entfernen-Knopf löschen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Höchstzahl sperrt das Feld",
-				"status": "bestanden"
-			},
-			{
-				"test": "Gültige Datei über die Dateiauswahl hinzufügen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Zu große Datei mit Meldung abweisen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Falschen Dateityp mit Meldung abweisen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Datei über den Entfernen-Knopf löschen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Datei per Ziehen und Ablegen hinzufügen",
-				"status": "bestanden"
-			},
-			{
-				"test": "Fokus ist im Hochkontrastmodus sichtbar",
-				"status": "bestanden"
-			},
-			{
-				"test": "Kein seitliches Scrollen bei 320 Pixeln",
-				"status": "bestanden"
-			},
-			{
-				"test": "Alle sichtbaren Texte auf Deutsch",
-				"status": "bestanden"
-			},
-			{
-				"test": "Keine axe-Funde nach Interaktion",
-				"status": "bestanden"
-			},
-			{
-				"test": "Keine Konsolenfehler",
-				"status": "bestanden"
-			},
-			{
-				"test": "Markdown in Badge-Beschriftung wird gerendert",
-				"status": "bestanden"
-			}
-		],
-		"KoliBri icons in GLOBAL, gekürzt": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"

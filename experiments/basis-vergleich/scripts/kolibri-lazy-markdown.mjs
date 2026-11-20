@@ -1,7 +1,7 @@
 import { dirname, resolve } from 'node:path';
 
 /**
- * Lösung 1 für KoliBri 4.6.0-rc.2: markdown-it nur bei Bedarf laden.
+ * Lösung 1 für KoliBri 4.6.0: markdown-it nur bei Bedarf laden.
  *
  * Im gemeinsamen core-Chunk (SpanFC, importiert von 44 Komponenten) legt KoliBri beim Laden `new MarkdownIt()` an.
  * Gebraucht wird der Parser nur für Badge-Beschriftungen (`allowMarkdown: true` im Badge). Das Plugin

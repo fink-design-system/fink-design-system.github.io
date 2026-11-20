@@ -20,17 +20,17 @@ function splitIcons(css) {
 	return { icons, styling };
 }
 
-/** Zeilenbereiche (1-basiert, inklusive) im KoliBri-Chunk component-oUQcgxDj.js aus 4.6.0-rc.2. */
+/** Zeilenbereiche (1-basiert, inklusive) im KoliBri-Chunk component-hiabKVP3.js aus 4.6.0. */
 const CORE_SEGMENTS = [
-	['kolibri-own-code', 1, 56],
-	['mdurl', 57, 607],
-	['uc.micro', 608, 646],
-	['entities', 647, 1692],
-	['markdown-it', 1693, 7159],
-	['linkify-it', 7160, 8008],
-	['punycode', 8009, 8452],
-	['markdown-it', 8453, 9241],
-	['kolibri-own-code', 9242, Infinity],
+	['kolibri-own-code', 1, 55],
+	['mdurl', 56, 606],
+	['uc.micro', 607, 645],
+	['entities', 646, 1691],
+	['markdown-it', 1692, 7158],
+	['linkify-it', 7159, 8007],
+	['punycode', 8008, 8451],
+	['markdown-it', 8452, 9240],
+	['kolibri-own-code', 9241, Infinity],
 ];
 
 const strip = (code) =>
