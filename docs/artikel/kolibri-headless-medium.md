@@ -3,7 +3,7 @@ status: Entwurf für Medium
 titel: Headless oder KoliBri? Was ein Designsystem wirklich lädt, kostet und gewinnt
 untertitel: Ein Experiment mit Fink, React Aria und Lion – und warum zwei Issues in drei Tagen die Rechnung verändert haben
 sprache: de
-stand: 20.11.2026
+stand: 20.11.2026, KoliBri 4.7.0-rc.0
 tags: Design Systems, Web Components, Accessibility, Barrierefreiheit, Performance
 ---
 
@@ -144,14 +144,14 @@ Unsere Build-Schritte haben wir danach wieder gelöscht. Das ist das beste Ende,
 
 ## KoliBri 4.5, 4.6 und 4.7 im Vergleich
 
-Derselbe Fink-Code auf drei Versionen (4.7 aus dem Quellcode gebaut, noch nicht veröffentlicht):
+Derselbe Fink-Code auf drei Versionen, 4.7 als Vorabversion 4.7.0-rc.0:
 
-| | 4.5.0 | 4.6.0 | 4.7 |
+| | 4.5.0 | 4.6.0 | 4.7.0-rc.0 |
 | --- | ---: | ---: | ---: |
-| Prüfseite (gzip) | 2.181 KB | 447 KB | 393 KB |
+| Prüfseite (gzip) | 2.182 KB | 448 KB | 395 KB |
 | KoliBri-Theme (gzip) | 1.838 KB | 115 KB | 115 KB |
 | KoliBri-Kern (gzip) | 112 KB | 111 KB | 57 KB |
-| KoliBri ohne Theme (minifiziert) | 435 KB | 420 KB | 288 KB |
+| KoliBri ohne Theme (minifiziert) | 435 KB | 420 KB | 287 KB |
 | JS-Speicher nach 900 Komponenten | 73 MB | 15 MB | 14 MB |
 | Prüfungen | alle bestanden | alle bestanden | alle bestanden |
 
@@ -179,11 +179,11 @@ Ohne Theme, ohne Fink, ohne Wrapper (minifiziert):
 
 | | KoliBri 4.6 | KoliBri 4.7 | Lion | React Aria |
 | --- | ---: | ---: | ---: | ---: |
-| Eigener Code | 157 KB | 160 KB | 159 KB | 322 KB |
+| Eigener Code | 157 KB | 159 KB | 159 KB | 322 KB |
 | Basis-CSS (Layout, Hochkontrast) | 35 KB | 35 KB | – | – |
 | Abhängigkeiten | 136 KB | 1 KB | 43 KB | 3 KB |
 | Laufzeit | 92 KB (Stencil) | 92 KB (Stencil) | 19 KB (Lit) | 188 KB (React) |
-| **Summe** | **420 KB** | **288 KB** | **221 KB** | **325 KB + 188 KB** |
+| **Summe** | **420 KB** | **287 KB** | **221 KB** | **325 KB + 188 KB** |
 
 KoliBris eigener Code ist etwa so groß wie Lions Bibliothek und halb so groß wie React Aria. Mit 4.7 liegt KoliBri
 zwischen beiden. Der Rest des Abstands zu Lion ist das Basis-CSS, das Lion nicht mitliefert, und die größere
@@ -195,14 +195,25 @@ Bibliothek, Laufzeit, Theme oder eigenes CSS und der Code der beiden Komponenten
 
 | | KoliBri 4.6 | KoliBri 4.7 | React Aria | Lion |
 | --- | ---: | ---: | ---: | ---: |
-| Summe | 269 KB | 217 KB | 155 KB | 68 KB |
-| Theme nur für genutzte Komponenten (geschätzt) | 168 KB | 116 KB | 155 KB | 68 KB |
+| Summe | 270 KB | 215 KB | 155 KB | 68 KB |
+| Theme nur für genutzte Komponenten (geschätzt) | 169 KB | 115 KB | 155 KB | 68 KB |
 
 Auch fair gerechnet bleiben Lion und React Aria für zwei Komponenten kleiner. Den Abstand macht fast nur das Theme, das
 alle 45 KoliBri-Komponenten gestaltet. Wie sich das bei vielen Komponenten entwickelt, ist offen: KoliBri lädt jede
 Komponente einzeln nach, im Median für 4,3 KB gzip, der Kern wird nur einmal geladen.
 
 ---
+
+## Warum das für Fink so gut ist
+
+Die Versionstabelle ist das stärkste Argument für eine gestaltete, gepflegte Basis: **Fink hat nur die Versionsnummer
+geändert** und lädt danach ein Fünftel, bei einem Fünftel des Speichers. Jede Verbesserung in KoliBri kommt allen
+Anwendungen auf Fink zugute, ohne dass ein Fink-Team eine Zeile schreibt. Bei einem Eigenbau oder einer
+Headless-Bibliothek, um die man Gestaltung, Layout und Hochkontrastmodus selbst baut, trägt man diese Arbeit selbst.
+
+Dasselbe gilt in die andere Richtung: Als wir alle Komponenten-Hosts transparent haben wollten, war das eine einzige
+Regel im Fink-Theme, wirksam in allen 50 KoliBri-Komponenten. Danach bestanden alle 1.067 automatischen
+Barrierefreiheitstests weiter.
 
 ## Wo die Alternativen wirklich besser sind – und wo KoliBri
 
