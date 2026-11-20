@@ -1,15 +1,15 @@
 import { expect, test } from '@playwright/test';
 
 /**
- * KoliBri rendert Badge-Beschriftungen als Markdown. Die Fassung „lazy markdown“ lädt markdown-it erst beim ersten
- * Badge nach und zeichnet die Badges dann neu. Die Fassung „next“ nutzt statt markdown-it den Renderer aus
- * public-ui/kolibri#11637. Diese Prüfung stellt sicher, dass Markdown in allen Fassungen sichtbar ist.
+ * KoliBri rendert Badge-Beschriftungen als Markdown: bis 4.6 mit markdown-it, ab 4.7 mit einem eigenen kleinen
+ * Inline-Renderer (public-ui/kolibri#11637). Die Prüfung stellt sicher, dass Markdown in allen Versionen sichtbar ist
+ * und rohes HTML maskiert bleibt.
  */
 const KOLIBRI = [
-	{ name: 'KoliBri', base: '' },
-	{ name: 'KoliBri schlank', base: 'http://localhost:4319' },
-	{ name: 'KoliBri schlank + lazy markdown', base: 'http://localhost:4323' },
-	{ name: 'KoliBri next (#11637)', base: 'http://localhost:4329' },
+	{ name: 'KoliBri 4.6.0', base: '' },
+	{ name: 'KoliBri 4.6.0 schlank', base: 'http://localhost:4319' },
+	{ name: 'KoliBri 4.5.0', base: 'http://localhost:4323' },
+	{ name: 'KoliBri 4.7 (release/4)', base: 'http://localhost:4329' },
 ];
 
 for (const variant of KOLIBRI) {

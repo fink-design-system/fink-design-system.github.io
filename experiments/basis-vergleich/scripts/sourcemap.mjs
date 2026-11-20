@@ -20,10 +20,10 @@ const gz = (text) => gzipSync(text).length;
 const kb = (n) => (n / 1024).toLocaleString('de-DE', { maximumFractionDigits: n < 10240 ? 1 : 0 });
 
 const VARIANTS = [
-	{ id: 'kolibri', name: 'KoliBri (Fink heute)', dist: 'dist', page: 'kolibri', port: 4321 },
-	{ id: 'kolibri-schlank', name: 'KoliBri schlank', dist: 'dist-slim', page: 'kolibri', port: 4322 },
-	{ id: 'kolibri-lazy', name: 'KoliBri schlank + lazy markdown', dist: 'dist-lazy', page: 'kolibri', port: 4323 },
-	{ id: 'kolibri-next', name: 'KoliBri next (#11637)', dist: 'dist-next', page: 'kolibri', port: 4325 },
+	{ id: 'kolibri-4.5', name: 'KoliBri 4.5.0', dist: 'dist-4.5', page: 'kolibri', port: 4323 },
+	{ id: 'kolibri', name: 'KoliBri 4.6.0 (Fink heute)', dist: 'dist', page: 'kolibri', port: 4321 },
+	{ id: 'kolibri-4.7', name: 'KoliBri 4.7 (release/4)', dist: 'dist-4.7', page: 'kolibri', port: 4325 },
+	{ id: 'kolibri-schlank', name: 'KoliBri 4.6.0 schlank', dist: 'dist-slim', page: 'kolibri', port: 4322 },
 	{ id: 'react-aria', name: 'React Aria', dist: 'dist', page: 'react-aria', port: 4321 },
 	{ id: 'lion', name: 'Lion', dist: 'dist', page: 'lion', port: 4321 },
 ];
@@ -31,7 +31,6 @@ const VARIANTS = [
 /** Ordnet eine Quelldatei einer Gruppe und einem Eintrag zu. */
 function classify(source) {
 	const s = source.replace(/\\/g, '/');
-	if (s.includes('kolibri-markdown')) return ['KoliBri markdown (lazy)', 'markdown-it, entities, linkify-it, punycode, mdurl, uc.micro'];
 	const last = s.lastIndexOf('node_modules/');
 	const pkg = last < 0 ? null : s.slice(last + 13).match(/^((?:@[^/]+\/)?[^/]+)\/(.*)$/);
 	const name = pkg?.[1] ?? '';
@@ -106,8 +105,8 @@ async function analyse() {
 	const servers = [
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4321', '--strictPort'], { cwd: root, stdio: 'ignore' }),
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4322', '--strictPort', '--outDir', 'dist-slim'], { cwd: root, stdio: 'ignore' }),
-		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4323', '--strictPort', '--outDir', 'dist-lazy'], { cwd: root, stdio: 'ignore' }),
-		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4325', '--strictPort', '--outDir', 'dist-next'], { cwd: root, stdio: 'ignore' }),
+		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4323', '--strictPort', '--outDir', 'dist-4.5'], { cwd: root, stdio: 'ignore' }),
+		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4325', '--strictPort', '--outDir', 'dist-4.7'], { cwd: root, stdio: 'ignore' }),
 	];
 	await new Promise((r) => setTimeout(r, 3000));
 	const browser = await chromium.launch();
@@ -119,7 +118,7 @@ async function analyse() {
 				const attributed = await attribute(join(root, v.dist, path));
 				const { code } = attributed;
 				// Der nachgeladene Markdown-Chunk ist ein virtuelles Modul ohne Source Map: Zuordnung über den Dateinamen.
-				const result = path.includes('_kolibri-markdown') ? new Map([['kolibri-markdown', Buffer.byteLength(code)]]) : attributed.result;
+				const result = attributed.result;
 				const total = Buffer.byteLength(code);
 				const zipped = gz(code);
 				for (const [source, bytes] of result) {

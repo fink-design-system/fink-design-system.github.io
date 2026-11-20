@@ -7,13 +7,14 @@
   "scripts": {
     "icons:sync": "fink-sync-icons public/assets/icon-fonts",
     "dev": "pnpm icons:sync && vite",
-    "spike:build": "pnpm icons:sync && vite build && KOLIBRI_BUILD=slim vite build && KOLIBRI_BUILD=lazy vite build && KOLIBRI_BUILD=next vite build",
+    "kolibri:versions": "node scripts/kolibri-versions.mjs",
+    "spike:build": "pnpm icons:sync && vite build && KOLIBRI_BUILD=slim vite build && KOLIBRI_BUILD=4.5 vite build && KOLIBRI_BUILD=4.7 vite build",
     "spike:test": "playwright test",
     "spike:measure": "node scripts/measure.mjs",
     "spike": "pnpm spike:build && pnpm spike:test && pnpm spike:measure",
-    "spike:treemap": "pnpm icons:sync && ANALYZE=kolibri vite build && ANALYZE=kolibri KOLIBRI_BUILD=slim vite build && ANALYZE=kolibri KOLIBRI_BUILD=lazy vite build && ANALYZE=kolibri KOLIBRI_BUILD=next vite build && ANALYZE=react-aria vite build && ANALYZE=lion vite build",
+    "spike:treemap": "pnpm icons:sync && ANALYZE=kolibri vite build && ANALYZE=kolibri KOLIBRI_BUILD=slim vite build && ANALYZE=kolibri KOLIBRI_BUILD=4.5 vite build && ANALYZE=kolibri KOLIBRI_BUILD=4.7 vite build && ANALYZE=react-aria vite build && ANALYZE=lion vite build",
     "spike:perf": "node scripts/perf.mjs",
-    "spike:sourcemap": "pnpm icons:sync && SOURCEMAP=1 vite build && SOURCEMAP=1 KOLIBRI_BUILD=slim vite build && SOURCEMAP=1 KOLIBRI_BUILD=lazy vite build && SOURCEMAP=1 KOLIBRI_BUILD=next vite build && node scripts/sourcemap.mjs"
+    "spike:sourcemap": "pnpm icons:sync && SOURCEMAP=1 vite build && SOURCEMAP=1 KOLIBRI_BUILD=slim vite build && SOURCEMAP=1 KOLIBRI_BUILD=4.5 vite build && SOURCEMAP=1 KOLIBRI_BUILD=4.7 vite build && node scripts/sourcemap.mjs"
   },
   "dependencies": {
     "@fink/components": "workspace:*",

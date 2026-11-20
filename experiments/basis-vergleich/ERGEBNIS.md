@@ -6,7 +6,7 @@ Stand 2026-11-20. Erzeugt mit `pnpm spike`, nicht von Hand bearbeiten.
 
 Zeilen ohne Leerzeilen und Kommentare. Bei KoliBri sind es die Fink-Quellen beider Komponenten samt `fink-chip`, Hilfsfunktionen und deutschen Texten.
 
-| | KoliBri | KoliBri schlank | KoliBri schlank + lazy markdown | KoliBri next (#11637) | React Aria | Lion |
+| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 (release/4) | KoliBri 4.6.0 schlank | React Aria | Lion |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Logik und Texte | 417 | 417 | 417 | 417 | 230 | 203 |
 | Gestaltung (CSS) | 175 | 175 | 175 | 175 | 225 | 269 |
@@ -16,27 +16,27 @@ Zeilen ohne Leerzeilen und Kommentare. Bei KoliBri sind es die Fink-Quellen beid
 
 Skripte, Stylesheets und Schriften der Prüfseite mit beiden Komponenten.
 
-| | KoliBri | KoliBri schlank | KoliBri schlank + lazy markdown | KoliBri next (#11637) | React Aria | Lion |
+| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 (release/4) | KoliBri 4.6.0 schlank | React Aria | Lion |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Anfragen | 64 | 60 | 61 | 60 | 7 | 11 |
-| Skripte, unkomprimiert | 1.825 KB | 1.653 KB | 1.656 KB | 1.689 KB | 520 KB | 237 KB |
-| Skripte, gzip | 378 KB | 352 KB | 353 KB | 322 KB | 153 KB | 66 KB |
+| Anfragen | 64 | 64 | 60 | 60 | 7 | 11 |
+| Skripte, unkomprimiert | 14.033 KB | 1.822 KB | 1.689 KB | 1.650 KB | 520 KB | 237 KB |
+| Skripte, gzip | 2.109 KB | 376 KB | 322 KB | 350 KB | 152 KB | 66 KB |
 | Stylesheets und Schriften | 214 KB | 214 KB | 214 KB | 214 KB | 8 KB | 5 KB |
-| Gesamt, gzip | 450 KB | 423 KB | 425 KB | 393 KB | 155 KB | 68 KB |
+| Gesamt, gzip | 2.181 KB | 447 KB | 393 KB | 421 KB | 155 KB | 67 KB |
 
 ## KoliBri auf einer Seite ohne Badge
 
-Nur `fink-file-upload`, kein `kol-badge`. Hier zeigt sich, was das Nachladen von markdown-it spart.
+Nur `fink-file-upload`, kein `kol-badge`. Zeigt, was eine Seite ohne Badge lädt.
 
-| | KoliBri | KoliBri schlank | KoliBri schlank + lazy markdown | KoliBri next (#11637) |
+| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 (release/4) | KoliBri 4.6.0 schlank |
 | --- | ---: | ---: | ---: | ---: |
-| Anfragen | 51 | 47 | 47 | 47 |
-| Skripte, gzip | 362 KB | 336 KB | 282 KB | 306 KB |
-| Gesamt, gzip | 434 KB | 407 KB | 353 KB | 377 KB |
+| Anfragen | 51 | 51 | 47 | 47 |
+| Skripte, gzip | 2.087 KB | 360 KB | 306 KB | 334 KB |
+| Gesamt, gzip | 2.159 KB | 432 KB | 378 KB | 405 KB |
 
 ## Prüfungen
 
-| Prüfung | KoliBri | KoliBri schlank | KoliBri schlank + lazy markdown | KoliBri next (#11637) | React Aria | Lion |
+| Prüfung | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 (release/4) | KoliBri 4.6.0 schlank | React Aria | Lion |
 | --- | --- | --- | --- | --- | --- | --- |
 | Tag per Tastatur mit Enter übernehmen | bestanden | bestanden | bestanden | bestanden | bestanden | bestanden |
 | Freie Eingabe mit Komma übernehmen | bestanden | bestanden | bestanden | bestanden | bestanden | bestanden |
@@ -57,8 +57,8 @@ Nur `fink-file-upload`, kein `kol-badge`. Hier zeigt sich, was das Nachladen von
 | Keine Konsolenfehler | bestanden | bestanden | bestanden | bestanden | bestanden | bestanden |
 | Markdown in Badge-Beschriftung wird gerendert | bestanden | bestanden | bestanden | bestanden | – | – |
 
-- KoliBri, „Vorschlag per Pfeiltaste wählen“: Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet.
-- KoliBri schlank, „Vorschlag per Pfeiltaste wählen“: Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet.
-- KoliBri schlank + lazy markdown, „Vorschlag per Pfeiltaste wählen“: Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet.
-- KoliBri next (#11637), „Vorschlag per Pfeiltaste wählen“: Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet.
+- KoliBri 4.6.0, „Vorschlag per Pfeiltaste wählen“: Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet.
+- KoliBri 4.6.0 schlank, „Vorschlag per Pfeiltaste wählen“: Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet.
+- KoliBri 4.5.0, „Vorschlag per Pfeiltaste wählen“: Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet.
+- KoliBri 4.7 (release/4), „Vorschlag per Pfeiltaste wählen“: Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet.
 - React Aria, „Datei per Ziehen und Ablegen hinzufügen“: Nicht simulierbar: React Aria prüft dataTransfer.effectAllowed, das bei synthetischen Ereignissen immer „none“ ist.

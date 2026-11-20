@@ -6,27 +6,41 @@ Beim Seitenaufruf geladene Skripte, per Source Map ihrer Herkunft zugeordnet. Mi
 
 ## Übersicht
 
-| Herkunft | KoliBri (Fink heute) (gzip) | KoliBri schlank (gzip) | KoliBri schlank + lazy markdown (gzip) | KoliBri next (#11637) (gzip) | React Aria (gzip) | Lion (gzip) |
+| Herkunft | KoliBri 4.5.0 (gzip) | KoliBri 4.6.0 (Fink heute) (gzip) | KoliBri 4.7 (release/4) (gzip) | KoliBri 4.6.0 schlank (gzip) | React Aria (gzip) | Lion (gzip) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| KoliBri theme | 115 | 90 | 90 | 115 | – | – |
-| KoliBri core | 111 | 110 | 56 | 57 | – | – |
+| KoliBri theme | 1.838 | 115 | 115 | 90 | – | – |
+| KoliBri core | 112 | 111 | 57 | 110 | – | – |
 | React Aria library | – | – | – | – | 91 | – |
-| React | 59 | 57 | 57 | 57 | 59 | – |
-| KoliBri markdown (lazy) | – | – | 55 | – | – | – |
-| Fink components | 43 | 44 | 44 | 44 | – | – |
+| React | 57 | 59 | 57 | 57 | 59 | – |
+| Fink components | 44 | 43 | 44 | 44 | – | – |
 | Lion library | – | – | – | – | – | 42 |
-| Fink core | 21 | 22 | 22 | 22 | – | – |
-| KoliBri components | 15 | 15 | 15 | 15 | – | – |
+| KoliBri components | 25 | 15 | 15 | 15 | – | – |
+| Fink core | 22 | 21 | 22 | 22 | – | – |
 | Lion dependencies | – | – | – | – | – | 13 |
-| other | 11 | 9,4 | 9,6 | 9,5 | 0,6 | 1,8 |
-| Lit | 0,3 | 0,4 | 0,4 | 0,4 | – | 5 |
-| variant code | 0,8 | 0,6 | 0,6 | 0,6 | 2,3 | 3,7 |
-| Fink theme | 1,3 | 1,2 | 1,2 | 1,3 | – | – |
+| other | 10 | 11 | 9,5 | 9,4 | 0,6 | 1,8 |
+| Lit | 0,4 | 0,3 | 0,4 | 0,4 | – | 5 |
+| variant code | 0,6 | 0,8 | 0,6 | 0,6 | 2,3 | 3,7 |
+| Fink theme | 1,5 | 1,3 | 1,3 | 1,2 | – | – |
 | Fink React layer | 1 | 1 | 1 | 1 | – | – |
-| Fink tokens | 0,4 | 0,4 | 0,4 | 0,4 | – | – |
-| **Summe** | **378** | **352** | **353** | **324** | **153** | **66** |
+| Fink tokens | 0,5 | 0,4 | 0,4 | 0,4 | – | – |
+| **Summe** | **2.112** | **378** | **324** | **352** | **153** | **66** |
 
-## KoliBri (Fink heute): Einträge je Herkunft
+## KoliBri 4.5.0: Einträge je Herkunft
+
+- **KoliBri theme**: 13.148 KB minifiziert, 1.838 KB gzip. theme-default 1.838
+- **KoliBri core**: 357 KB minifiziert, 112 KB gzip. component-DoCNds1d.js 55, behavior-D1kOlK6p.js 8,1, base-web-component-3R1Dy3QK.js 5,8, index-wY4pHWJG.js 5,4, loader 5,2, common-BqpMtheU.js 4,8, api-Bhr2ic7C.js 3,6, behavior-DnkpB_7O.js 1,7, base-web-component-6IoFcVM9.js 1,6, index 1,4, behavior-COQhqcG7.js 1,2, component-CHz6TLzY.js 1,1, … (63 Einträge)
+- **React**: 188 KB minifiziert, 57 KB gzip. react-dom 53, react 2,4, scheduler 1,1
+- **Fink components**: 147 KB minifiziert, 44 KB gzip. fink-code-block 2,2, fink-file-upload 2, fink-app-shell 2, fink-calendar 2, fink-transfer-list 1,9, fink-carousel 1,6, fink-range-slider 1,5, fink-image-list 1,5, fink-menu 1,5, fink-tour 1,5, fink-consent-banner 1,4, fink-list 1,3, … (44 Einträge)
+- **KoliBri components**: 78 KB minifiziert, 25 KB gzip. kol-input-text 8,6, kol-input-file 8,5, kol-badge 6,4, kol-icon 1
+- **Fink core**: 73 KB minifiziert, 22 KB gzip. p-aAlZGJU7.js 16, p-Mm4qbnvn.js 4,7, p-CiRKhT1l.js 0,5, p-CcR-Lcfc.js 0,4, p-CTnekbzJ.js 0,3, p-DY84WS8v.js 0,1, p-0q_cDiSu.js 0,1, p-B-BbokvN.js 0
+- **other**: 26 KB minifiziert, 10 KB gzip. [unmapped] 10
+- **Fink theme**: 11 KB minifiziert, 1,5 KB gzip. kolibri-locales.js 0,9, overrides.js 0,4, index.js 0,2
+- **Fink React layer**: 3,3 KB minifiziert, 1 KB gzip. kolibri.js 0,5, provider.js 0,4, components.js 0,1
+- **variant code**: 1,2 KB minifiziert, 0,6 KB gzip. kolibri/main.tsx 0,5, shared/config.ts 0,1
+- **Fink tokens**: 3,5 KB minifiziert, 0,5 KB gzip. index.js 0,5
+- **Lit**: 1,2 KB minifiziert, 0,4 KB gzip. @lit/react 0,4
+
+## KoliBri 4.6.0 (Fink heute): Einträge je Herkunft
 
 - **KoliBri theme**: 952 KB minifiziert, 115 KB gzip. theme-default 115
 - **KoliBri core**: 365 KB minifiziert, 111 KB gzip. component-hiabKVP3.js 55, behavior-B6y5Gofe.js 8,1, props-from-config-BOUcpF7e.js 6,4, index-Bbr6Os1b.js 5, loader 4,8, common-BdSzSIXg.js 4,2, api-D0RNr-zh.js 3,8, base-web-component-DP9_OPgV.js 1,7, behavior-DlH8byIw.js 1,6, behavior-BJR8CKBx.js 1,2, component-CNgECeRi.js 1,1, component-CSsUaL_h.js 1,1, … (59 Einträge)
@@ -41,7 +55,22 @@ Beim Seitenaufruf geladene Skripte, per Source Map ihrer Herkunft zugeordnet. Mi
 - **Fink tokens**: 3,5 KB minifiziert, 0,4 KB gzip. index.js 0,4
 - **Lit**: 1,2 KB minifiziert, 0,3 KB gzip. @lit/react 0,3
 
-## KoliBri schlank: Einträge je Herkunft
+## KoliBri 4.7 (release/4): Einträge je Herkunft
+
+- **KoliBri theme**: 952 KB minifiziert, 115 KB gzip. theme-default 115
+- **KoliBri core**: 233 KB minifiziert, 57 KB gzip. behavior-SZj9jeU1.js 8,1, props-from-config-BOUcpF7e.js 6,4, index-Bbr6Os1b.js 5, loader 4,8, common-BdSzSIXg.js 4,2, api-DEtU9ubC.js 3,8, base-web-component-Dfob_H9p.js 1,7, behavior-BPGFME57.js 1,6, component-BFSRLSIQ.js 1,6, behavior-BSM2rzqZ.js 1,2, index 1,2, component-Lwh_OCDt.js 1,1, … (59 Einträge)
+- **React**: 188 KB minifiziert, 57 KB gzip. react-dom 53, react 2,4, scheduler 1,1
+- **Fink components**: 147 KB minifiziert, 44 KB gzip. fink-code-block 2,2, fink-file-upload 2, fink-app-shell 2, fink-calendar 2, fink-transfer-list 1,9, fink-carousel 1,6, fink-range-slider 1,5, fink-image-list 1,5, fink-menu 1,5, fink-tour 1,5, fink-consent-banner 1,4, fink-list 1,3, … (44 Einträge)
+- **Fink core**: 73 KB minifiziert, 22 KB gzip. p-aAlZGJU7.js 16, p-Mm4qbnvn.js 4,7, p-CiRKhT1l.js 0,5, p-CcR-Lcfc.js 0,4, p-CTnekbzJ.js 0,3, p-DY84WS8v.js 0,1, p-0q_cDiSu.js 0,1, p-B-BbokvN.js 0
+- **KoliBri components**: 55 KB minifiziert, 15 KB gzip. kol-input-file 5,5, kol-input-text 5,3, kol-badge 3,5, kol-icon 1
+- **other**: 25 KB minifiziert, 9,5 KB gzip. [unmapped] 9,5
+- **Fink theme**: 11 KB minifiziert, 1,3 KB gzip. kolibri-locales.js 0,8, overrides.js 0,3, index.js 0,2
+- **Fink React layer**: 3,3 KB minifiziert, 1 KB gzip. kolibri.js 0,5, provider.js 0,4, components.js 0,1
+- **variant code**: 1,2 KB minifiziert, 0,6 KB gzip. kolibri/main.tsx 0,5, shared/config.ts 0,1
+- **Fink tokens**: 3,5 KB minifiziert, 0,4 KB gzip. index.js 0,4
+- **Lit**: 1,2 KB minifiziert, 0,4 KB gzip. @lit/react 0,4
+
+## KoliBri 4.6.0 schlank: Einträge je Herkunft
 
 - **KoliBri core**: 366 KB minifiziert, 110 KB gzip. component-hiabKVP3.js 55, behavior-B6y5Gofe.js 8,1, props-from-config-BOUcpF7e.js 6,4, index-Bbr6Os1b.js 4,8, loader 4,6, common-BdSzSIXg.js 4, api-D0RNr-zh.js 3,8, base-web-component-DP9_OPgV.js 1,7, behavior-DlH8byIw.js 1,6, behavior-BJR8CKBx.js 1,2, index 1,1, component-CNgECeRi.js 1,1, … (59 Einträge)
 - **KoliBri theme**: 780 KB minifiziert, 90 KB gzip. theme-default 90
@@ -51,37 +80,6 @@ Beim Seitenaufruf geladene Skripte, per Source Map ihrer Herkunft zugeordnet. Mi
 - **KoliBri components**: 55 KB minifiziert, 15 KB gzip. kol-input-file 5,5, kol-input-text 5,3, kol-badge 3,5, kol-icon 1
 - **other**: 25 KB minifiziert, 9,4 KB gzip. [unmapped] 9,4
 - **Fink theme**: 11 KB minifiziert, 1,2 KB gzip. kolibri-locales.js 0,8, overrides.js 0,3, index.js 0,1
-- **Fink React layer**: 3,3 KB minifiziert, 1 KB gzip. kolibri.js 0,5, provider.js 0,4, components.js 0,1
-- **variant code**: 1,2 KB minifiziert, 0,6 KB gzip. kolibri/main.tsx 0,5, shared/config.ts 0,1
-- **Fink tokens**: 3,5 KB minifiziert, 0,4 KB gzip. index.js 0,4
-- **Lit**: 1,2 KB minifiziert, 0,4 KB gzip. @lit/react 0,4
-
-## KoliBri schlank + lazy markdown: Einträge je Herkunft
-
-- **KoliBri theme**: 780 KB minifiziert, 90 KB gzip. theme-default 90
-- **React**: 188 KB minifiziert, 57 KB gzip. react-dom 53, react 2,4, scheduler 1,1
-- **KoliBri core**: 232 KB minifiziert, 56 KB gzip. behavior-B6y5Gofe.js 8,1, props-from-config-BOUcpF7e.js 6,4, index-Bbr6Os1b.js 4,8, loader 4,6, common-BdSzSIXg.js 4, api-D0RNr-zh.js 3,8, base-web-component-DP9_OPgV.js 1,7, behavior-DlH8byIw.js 1,6, behavior-BJR8CKBx.js 1,2, index 1,1, component-CNgECeRi.js 1,1, component-CSsUaL_h.js 1,1, … (59 Einträge)
-- **KoliBri markdown (lazy)**: 136 KB minifiziert, 55 KB gzip. markdown-it, entities, linkify-it, punycode, mdurl, uc.micro 55
-- **Fink components**: 147 KB minifiziert, 44 KB gzip. fink-code-block 2,2, fink-file-upload 2, fink-app-shell 2, fink-calendar 2, fink-transfer-list 1,9, fink-carousel 1,6, fink-range-slider 1,5, fink-image-list 1,5, fink-menu 1,5, fink-tour 1,5, fink-consent-banner 1,4, fink-list 1,3, … (44 Einträge)
-- **Fink core**: 73 KB minifiziert, 22 KB gzip. p-aAlZGJU7.js 16, p-Mm4qbnvn.js 4,7, p-CiRKhT1l.js 0,5, p-CcR-Lcfc.js 0,4, p-CTnekbzJ.js 0,3, p-DY84WS8v.js 0,1, p-0q_cDiSu.js 0,1, p-B-BbokvN.js 0
-- **KoliBri components**: 55 KB minifiziert, 15 KB gzip. kol-input-file 5,5, kol-input-text 5,3, kol-badge 3,5, kol-icon 1
-- **other**: 25 KB minifiziert, 9,6 KB gzip. [unmapped] 9,6
-- **Fink theme**: 11 KB minifiziert, 1,2 KB gzip. kolibri-locales.js 0,8, overrides.js 0,3, index.js 0,1
-- **Fink React layer**: 3,3 KB minifiziert, 1 KB gzip. kolibri.js 0,5, provider.js 0,4, components.js 0,1
-- **variant code**: 1,2 KB minifiziert, 0,6 KB gzip. kolibri/main.tsx 0,5, shared/config.ts 0,1
-- **Fink tokens**: 3,5 KB minifiziert, 0,4 KB gzip. index.js 0,4
-- **Lit**: 1,2 KB minifiziert, 0,4 KB gzip. @lit/react 0,4
-
-## KoliBri next (#11637): Einträge je Herkunft
-
-- **KoliBri theme**: 952 KB minifiziert, 115 KB gzip. theme-default 115
-- **KoliBri core**: 233 KB minifiziert, 57 KB gzip. behavior-B6y5Gofe.js 8,1, props-from-config-BOUcpF7e.js 6,4, index-Bbr6Os1b.js 5, loader 4,8, common-BdSzSIXg.js 4,2, api-D0RNr-zh.js 3,8, base-web-component-DP9_OPgV.js 1,7, behavior-DlH8byIw.js 1,6, component-hiabKVP3.js 1,5, behavior-BJR8CKBx.js 1,2, index 1,2, component-CNgECeRi.js 1,1, … (59 Einträge)
-- **React**: 188 KB minifiziert, 57 KB gzip. react-dom 53, react 2,4, scheduler 1,1
-- **Fink components**: 147 KB minifiziert, 44 KB gzip. fink-code-block 2,2, fink-file-upload 2, fink-app-shell 2, fink-calendar 2, fink-transfer-list 1,9, fink-carousel 1,6, fink-range-slider 1,5, fink-image-list 1,5, fink-menu 1,5, fink-tour 1,5, fink-consent-banner 1,4, fink-list 1,3, … (44 Einträge)
-- **Fink core**: 73 KB minifiziert, 22 KB gzip. p-aAlZGJU7.js 16, p-Mm4qbnvn.js 4,7, p-CiRKhT1l.js 0,5, p-CcR-Lcfc.js 0,4, p-CTnekbzJ.js 0,3, p-DY84WS8v.js 0,1, p-0q_cDiSu.js 0,1, p-B-BbokvN.js 0
-- **KoliBri components**: 55 KB minifiziert, 15 KB gzip. kol-input-file 5,5, kol-input-text 5,3, kol-badge 3,5, kol-icon 1
-- **other**: 25 KB minifiziert, 9,5 KB gzip. [unmapped] 9,5
-- **Fink theme**: 11 KB minifiziert, 1,3 KB gzip. kolibri-locales.js 0,8, overrides.js 0,3, index.js 0,2
 - **Fink React layer**: 3,3 KB minifiziert, 1 KB gzip. kolibri.js 0,5, provider.js 0,4, components.js 0,1
 - **variant code**: 1,2 KB minifiziert, 0,6 KB gzip. kolibri/main.tsx 0,5, shared/config.ts 0,1
 - **Fink tokens**: 3,5 KB minifiziert, 0,4 KB gzip. index.js 0,4

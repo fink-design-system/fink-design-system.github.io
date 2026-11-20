@@ -1,6 +1,6 @@
 /**
  * Renderzeit, Stilberechnung und JS-Speicher mit vielen KoliBri-Komponenten auf einer Seite.
- * Frage: Was kostet es, dass das Icon-CSS seit 4.6.0 in GLOBAL liegt und damit auch Komponenten ohne Icons erreicht?
+ * Fragen: Wie unterscheiden sich KoliBri 4.5, 4.6 und 4.7? Was kostet es, dass das Icon-CSS seit 4.6.0 in GLOBAL liegt?
  * Voraussetzung: `pnpm spike:build`. Schreibt results/perf.json und PERF.md.
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -14,7 +14,9 @@ const RUNS = 7;
 const PER_TYPE = 150;
 
 const VARIANTS = [
-	{ id: 'kolibri', name: 'KoliBri 4.6.0 (Icon-CSS in GLOBAL)', dist: 'dist', port: 4331 },
+	{ id: 'kolibri-4.5', name: 'KoliBri 4.5.0', dist: 'dist-4.5', port: 4335 },
+	{ id: 'kolibri', name: 'KoliBri 4.6.0', dist: 'dist', port: 4331 },
+	{ id: 'kolibri-4.7', name: 'KoliBri 4.7 (release/4)', dist: 'dist-4.7', port: 4336 },
 	{ id: 'kolibri-schlank', name: 'KoliBri 4.6.0, nur genutzte Icons', dist: 'dist-slim', port: 4333 },
 ];
 

@@ -20,10 +20,10 @@ Zusammen nutzen sie sieben KoliBri-Bausteine: `kol-input-text`, `kol-badge` und 
 
 | Variante   | Basis                                                    | Was gezählt wird                                                                    |
 | ---------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| KoliBri    | `@public-ui/components` 4.6.0, Fink-Theme                | Fink-Quellen beider Komponenten, `fink-chip`, Hilfsfunktionen, deutsche Texte       |
-| KoliBri schlank | wie KoliBri, Build mit `scripts/kolibri-icon-prune.mjs`: im Theme nur die genutzten Icons (`KOLIBRI_BUILD=slim`) | wie KoliBri       |
-| KoliBri schlank + lazy markdown | wie KoliBri schlank, zusätzlich `scripts/kolibri-lazy-markdown.mjs`: markdown-it nur bei Bedarf (`KOLIBRI_BUILD=lazy`) | wie KoliBri |
-| KoliBri next (#11637) | wie KoliBri, `scripts/kolibri-next-markdown.mjs`: markdown-it durch den Renderer aus public-ui/kolibri#11637 ersetzt, wie im nächsten Release (`KOLIBRI_BUILD=next`) | wie KoliBri |
+| KoliBri 4.6.0 | `@public-ui/components` 4.6.0, Fink-Theme, wie Fink heute | Fink-Quellen beider Komponenten, `fink-chip`, Hilfsfunktionen, deutsche Texte |
+| KoliBri 4.5.0 | gleicher Fink-Code auf KoliBri 4.5.0 (`KOLIBRI_BUILD=4.5`) | wie KoliBri 4.6.0 |
+| KoliBri 4.7 (release/4) | gleicher Fink-Code auf KoliBri aus `release/4`, noch nicht veröffentlicht (`KOLIBRI_BUILD=4.7`) | wie KoliBri 4.6.0 |
+| KoliBri 4.6.0 schlank | wie KoliBri 4.6.0, Build mit `scripts/kolibri-icon-prune.mjs`: im Theme nur die genutzten Icons (`KOLIBRI_BUILD=slim`) | wie KoliBri 4.6.0 |
 | React Aria | `react-aria-components` 1.22.1 (ComboBox, TagGroup, DropZone, FileTrigger) | `src/react-aria/*`, `src/shared/texts.ts`                         |
 | Lion       | `@lion/ui` 0.25.0 (lion-combobox, lion-input-file, lion-button) | `src/lion/*`, `src/shared/texts.ts`                                          |
 
@@ -44,21 +44,27 @@ Zusammen nutzen sie sieben KoliBri-Bausteine: `kol-input-text`, `kol-badge` und 
 pnpm install
 pnpm build                       # Fink-Pakete bauen, die KoliBri-Variante nutzt sie
 cd experiments/basis-vergleich
+pnpm kolibri:versions            # KoliBri 4.5.0 von npm und 4.7 aus einem gebauten release/4-Checkout nach .kolibri/
 pnpm spike                       # bauen, prüfen, messen; schreibt ERGEBNIS.md und results/ergebnis.json
 pnpm dev                         # Varianten im Browser ansehen
 ```
+
+Für 4.7 braucht `pnpm kolibri:versions` einen gebauten Checkout von public-ui/kolibri, Branch `release/4`
+(`KOLIBRI_SRC`, Standard `../../../kolibri`): dort `pnpm install`, `pnpm --filter @public-ui/icons build`, in
+`packages/components` `stencil build --prod` und in `packages/themes/default` `pnpm build`. Gemessen wurde Commit
+`794c476` vom 19.11.2026; das Paket trägt dort noch die Versionsnummer 4.6.0.
 
 ## Ergebnis
 
 Die Zahlen stehen in [ERGEBNIS.md](ERGEBNIS.md). Kurzfassung:
 
-| | KoliBri | KoliBri schlank | KoliBri schlank + lazy markdown | KoliBri next (#11637) | React Aria | Lion |
+| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 | KoliBri 4.6.0 schlank | React Aria | Lion |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Prüfungen bestanden (von 17) | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 17 |
 | Eigener Code (Zeilen) | 592 | 592 | 592 | 592 | 455 | 472 |
 | davon Gestaltung (CSS) | 175 | 175 | 175 | 175 | 225 | 269 |
-| Geladen, Prüfseite (gzip) | 450 KB | 423 KB | 425 KB | 393 KB | 155 KB | 68 KB |
-| Geladen, Seite ohne Badge (gzip) | 434 KB | 407 KB | 353 KB | 377 KB | – | – |
+| Geladen, Prüfseite (gzip) | 2.181 KB | 447 KB | 393 KB | 421 KB | 155 KB | 67 KB |
+| Geladen, Seite ohne Badge (gzip) | 2.159 KB | 432 KB | 378 KB | 405 KB | – | – |
 
 ## Auswertung
 
@@ -78,13 +84,12 @@ keine CSS-Variablen annimmt, und 144 Zeilen CSS für die Drop-Zone um `kol-input
 selbst gestaltet werden. Der Unterschied ist kleiner als erwartet: 50 bis 94 Zeilen mehr. Der Hochkontrastmodus
 kostete 23 Zeilen bei React Aria und 36 bei Lion.
 
-**Ladegröße.** Fink lädt mit KoliBri 4.6.0 450 KB gzip. Mit 4.6.0-rc.2 waren es noch 2.174 KB, weil das
-Default-Theme das Icon-CSS in 40 Komponentenstilen kopierte. Seit 4.6.0 liegt es einmal in `GLOBAL` (siehe
-„Icon-CSS einmal in GLOBAL“). Das Default-Theme macht jetzt 952 KB minifiziert aus, 115 KB gzip: 187 KB `GLOBAL` mit
+**Ladegröße.** Fink lädt mit KoliBri 4.6.0 447 KB gzip, mit 4.5.0 waren es 2.181 KB, mit 4.7 werden es 393 KB
+(siehe „KoliBri 4.5, 4.6 und 4.7 im Vergleich“). Das Default-Theme macht jetzt 952 KB minifiziert aus, 115 KB gzip: 187 KB `GLOBAL` mit
 Icon-CSS und die Stile aller 45 Komponenten.
 
 Die Variante „KoliBri schlank“ entfernt beim Build alle Icon-Regeln, die weder KoliBri intern noch Fink nutzt
-(`scripts/kolibri-icon-prune.mjs`, ein Vite-Plugin mit rund 30 Zeilen). Sie lädt 423 KB gzip, bei denselben
+(`scripts/kolibri-icon-prune.mjs`, ein Vite-Plugin mit rund 30 Zeilen). Sie lädt 421 KB gzip, bei denselben
 bestandenen Prüfungen. Davon entfallen rund 70 KB auf global geladene Icon-Schriften, darunter Font Awesome, das Fink
 gar nicht nutzt.
 
@@ -108,21 +113,21 @@ beiden Komponenten kleiner. Wie sich der Abstand bei vielen Komponenten entwicke
 ## Woher die Größe kommt
 
 `pnpm spike:sourcemap` baut alle Varianten mit Source Maps und ordnet jedes beim Seitenaufruf geladene Byte seiner
-Quelle zu. Die vollständige Aufstellung je Komponente steht in [SOURCEMAP.md](SOURCEMAP.md). Für „KoliBri schlank“
+Quelle zu. Die vollständige Aufstellung je Komponente steht in [SOURCEMAP.md](SOURCEMAP.md). Für „KoliBri 4.6.0 schlank“
 (Skripte, minifiziert):
 
 | Herkunft | minifiziert | Anmerkung |
 | --- | ---: | --- |
 | KoliBri theme | 780 KB | Stile aller 45 Komponenten, auch der nicht genutzten. Die drei genutzten brauchen rund 60 KB. |
-| KoliBri core | 366 KB | Darin ein Chunk von 343 KB Quelle, davon 341 KB markdown-it mit `entities` und `linkify-it`. Fast jede Komponente importiert ihn über `SpanFC`, die gemeinsame Beschriftung. |
+| KoliBri core | 366 KB | Darin 136 KB markdown-it mit `entities` und `linkify-it`, importiert über `SpanFC`, die gemeinsame Beschriftung fast aller Komponenten. Ab 4.7 entfällt markdown-it: 233 KB. |
 | React | 188 KB | wie bei React Aria |
 | Fink components | 147 KB | alle 44, weil `@fink/react` jede Komponente registriert. Genutzt werden zwei. |
 | KoliBri components | 55 KB | genau die vier genutzten: `kol-input-file`, `kol-input-text`, `kol-badge`, `kol-icon` |
 | Fink core, theme, tokens | 87 KB | Stencil-Laufzeit von Fink, Texte, Overrides |
 
 Als interaktive Treemap: `pnpm spike:treemap` schreibt je Variante eine Karte nach `analyse/` (rollup-plugin-visualizer).
-Für diese Analyse-Builds zerlegt `scripts/kolibri-analyse-split.mjs` das KoliBri theme je Komponente und den core-Chunk nach Bibliotheken (`analysis/kolibri-core/markdown-chunk`). Die Analyse-Builds sind nicht
-lauffähig. Die Theme-Größen sind exakt, die Größen im core-Chunk sind eine Näherung (ohne Kommentare und Leerraum).
+Für diese Analyse-Builds zerlegt `scripts/kolibri-analyse-split.mjs` das KoliBri theme je Stil (GLOBAL und je
+Komponente) in Icon-CSS und übrige Stile. Die Analyse-Builds sind nicht lauffähig, die Theme-Größen sind exakt.
 
 Die gzip-Anteile in SOURCEMAP.md sind anteilig je Chunk geschätzt. Wo Theme und React im selben Chunk liegen,
 verschieben sie sich. Die minifizierten Bytes sind exakt.
@@ -132,46 +137,38 @@ Daraus ergaben sich vier Hebel. Zwei davon hat KoliBri inzwischen umgesetzt:
 1. Icon-CSS im theme nur einmal: seit KoliBri 4.6.0 (public-ui/kolibri#11623). Offen bleibt, nur die genutzten
    Icon-Sets auszuliefern.
 2. theme-Stile nur für die genutzten Komponenten laden: offen.
-3. markdown-it aus dem gemeinsamen core lösen: in `release/4` durch einen kleinen Inline-Renderer ersetzt
-   (public-ui/kolibri#11627, #11637), nach 4.6.0 gemergt, kommt mit dem nächsten Release.
+3. markdown-it aus dem gemeinsamen core entfernen: ab 4.7 durch einen kleinen Inline-Renderer ersetzt
+   (public-ui/kolibri#11627, #11637).
 4. In Fink nur die genutzten Komponenten registrieren statt aller 44: offen, liegt bei Fink.
 
-## markdown-it nur bei Bedarf (Hebel 3)
+## KoliBri 4.5, 4.6 und 4.7 im Vergleich
 
-KoliBri rendert Badge-Beschriftungen als Markdown (`allowMarkdown: true` im Badge-Baustein). Sonst setzt keine
-Komponente `allowMarkdown`, und als Prop gibt es es nicht. Trotzdem legt `SpanFC`, die gemeinsame Beschriftung fast
-aller Komponenten, beim Laden `new MarkdownIt()` an. Damit lädt jede Seite den Parser.
+Derselbe Fink-Code auf drei KoliBri-Versionen. 4.7 ist aus `release/4` gebaut und noch nicht veröffentlicht.
 
-`scripts/kolibri-lazy-markdown.mjs` stellt nach, wie KoliBri das lösen könnte:
+| | 4.5.0 | 4.6.0 | 4.7 |
+| --- | ---: | ---: | ---: |
+| Prüfseite (gzip) | 2.181 KB | 447 KB | 393 KB |
+| Seite ohne Badge (gzip) | 2.159 KB | 432 KB | 378 KB |
+| KoliBri theme (gzip) | 1.838 KB | 115 KB | 115 KB |
+| KoliBri core (gzip) | 112 KB | 111 KB | 57 KB |
+| KoliBri components, die vier genutzten (gzip) | 25 KB | 15 KB | 15 KB |
+| KoliBri ohne Theme: core und Komponenten (minifiziert) | 435 KB | 420 KB | 288 KB |
+| JS-Speicher nach 900 Komponenten | 73 MB | 15 MB | 14 MB |
+| Prüfungen | alle bestanden | alle bestanden | alle bestanden |
 
-- Der core-Chunk verliert markdown-it, entities, linkify-it, punycode, mdurl und uc.micro: 139 KB auf 2,7 KB minifiziert.
-- `md()` lädt den Parser beim ersten Aufruf dynamisch nach und gibt bis dahin den Text maskiert aus. Für Text ohne
-  Markdown ist das dieselbe Ausgabe.
-- Nach dem Laden werden alle `kol-badge` mit Stencils `forceUpdate` neu gezeichnet. `tests/markdown.spec.ts` prüft,
-  dass `**wichtig**` danach als `<strong>` erscheint und `<ok>` maskiert bleibt.
+- **4.5 → 4.6:** Das Default-Theme legt das Icon-CSS einmal in `GLOBAL` statt in 40 Komponentenstile
+  (public-ui/kolibri#11623). Die Prüfseite schrumpft auf ein Fünftel, der JS-Speicher ebenso. Die vier genutzten
+  Komponenten sind zusammen 10 KB gzip kleiner.
+- **4.6 → 4.7:** markdown-it samt `entities`, `linkify-it`, `punycode`, `mdurl` und `uc.micro` entfällt
+  (public-ui/kolibri#11627, #11637). Ein eigener Renderer kann fett, kursiv, durchgestrichen, Inline-Code und
+  Zeilenumbrüche; Links und Bilder bleiben sichtbarer Text. Der core halbiert sich, die Prüfseite verliert 54 KB gzip,
+  auch mit Badge. `tests/markdown.spec.ts` prüft in allen Versionen, dass `**wichtig**` als `<strong>` erscheint und
+  `<ok>` maskiert bleibt.
+- **Laufzeit:** Rendern, Stilberechnung und Layout liegen in allen drei Versionen im Rahmen der Messstreuung
+  ([PERF.md](PERF.md)).
 
-Ergebnis mit 4.6.0 (gzip): Auf einer Seite ohne Badge sinkt die Ladegröße von 407 auf 353 KB, um 54 KB. Auf der Prüfseite
-ändert sich nichts, weil Fink Tags als Badges darstellt und der Parser dort nachgeladen wird, nur später. In der
-Source-Map-Auswertung sinkt der KoliBri core von 110 auf 56 KB, der Parser erscheint als eigener Posten
-„KoliBri markdown (lazy)“ mit 55 KB. Alle Prüfungen bestehen weiter.
-
-Die Lösung im Experiment ist ein Nachbau per Build-Schritt auf dem fertigen Paket. KoliBri hat sich für einen anderen
-Weg entschieden: markdown-it wird in `release/4` durch einen kleinen Inline-Renderer ersetzt (public-ui/kolibri#11637).
-
-## Renderer aus #11637 (nächstes Release)
-
-`scripts/kolibri-next-markdown.mjs` nimmt #11637 für 4.6.0 vorweg: Es entfernt markdown-it samt Abhängigkeiten aus dem
-core-Chunk und setzt den Renderer aus dem PR ein (`scripts/vendor/kolibri-11637-markdown.js`, nur Typen entfernt). Er
-kann fett, kursiv, durchgestrichen, Inline-Code und harte Zeilenumbrüche; Links und Bilder bleiben sichtbarer Text.
-
-- core-Chunk: 136 auf 3,3 KB minifiziert. KoliBri core in der Source-Map-Auswertung: 111 auf 57 KB gzip.
-- Prüfseite: 450 auf 393 KB gzip. Seite ohne Badge: 434 auf 377 KB.
-- Anders als beim Nachladen fällt der Parser auch auf Seiten mit Badge weg.
-- Alle Prüfungen bestehen, auch `tests/markdown.spec.ts` (`**wichtig**` als `<strong>`, `<ok>` maskiert).
-
-Ohne Theme gerechnet sinkt KoliBri damit von rund 420 auf 288 KB minifiziert (Lion 221 KB, React Aria 325 KB ohne
-React). Sobald das Release erscheint, werden `scripts/kolibri-next-markdown.mjs` und `scripts/kolibri-lazy-markdown.mjs`
-überflüssig.
+Ohne Theme gerechnet liegt KoliBri mit 4.7 bei 288 KB minifiziert, zwischen Lion (221 KB) und React Aria (325 KB ohne
+React, 513 KB mit).
 
 ## Icon-CSS einmal in GLOBAL statt in jeder Komponente
 
@@ -186,9 +183,9 @@ und gemeldet (public-ui/kolibri#11623). KoliBri hat es für alle Themes umgesetz
 
 | Fassung | Prüfseite (gzip) | ohne Badge (gzip) |
 | --- | ---: | ---: |
-| 4.6.0-rc.2, 40 Kopien | 2.174 KB | 2.158 KB |
-| 4.6.0, einmal in `GLOBAL` | 450 KB | 434 KB |
-| 4.6.0, nur genutzte Icons (schlank) | 423 KB | 407 KB |
+| 4.5.0, 40 Kopien | 2.181 KB | 2.159 KB |
+| 4.6.0, einmal in `GLOBAL` | 447 KB | 432 KB |
+| 4.6.0, nur genutzte Icons (schlank) | 421 KB | 405 KB |
 
 In der Nachbildung kostete das vollständige Icon-CSS in `GLOBAL` Zeit: Jede Komponente bekam rund 600 KB Icon-Regeln,
 die Stilberechnung für Komponenten ohne Icons wurde etwa dreimal so lang. In 4.6.0 ist `GLOBAL` mit 187 KB deutlich
@@ -212,6 +209,6 @@ Laufzeitgewinn.
 
 Für Kompositionen wie diese beiden stützt das Experiment die Annahme nicht, dass Fink mit einer Headless-Bibliothek
 deutlich mehr Aufwand gehabt hätte. KoliBris Vorteil liegt woanders: in der Breite von 49 fertigen Bausteinen, in der
-Pflege durch das ITZBund und im BITV-orientierten Prüfverfahren. Sein messbarer Nachteil ist die Ladegröße des
-Default-Themes. Er lässt sich mit einem Build-Schritt auf rund ein Fünftel senken. Der nächste aufschlussreiche Schritt wäre derselbe Vergleich für einen komplexen Baustein,
+Pflege durch das ITZBund und im BITV-orientierten Prüfverfahren. Sein messbarer Nachteil war die Ladegröße. Mit 4.6
+sank sie auf ein Fünftel, mit 4.7 entfällt markdown-it; beides nach Meldungen aus diesem Experiment. Der nächste aufschlussreiche Schritt wäre derselbe Vergleich für einen komplexen Baustein,
 etwa eine sortierbare Tabelle oder eine Datumswahl.
