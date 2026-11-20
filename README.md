@@ -28,8 +28,8 @@ das Theme, das alle KoliBri-Komponenten gestaltet. Details in
 
 | Paket              | Inhalt                                                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------------------------------- |
-| `@fink/tokens`     | Design Tokens in `src/tokens.json` → `tokens.css` (CSS-Variablen, `light-dark()`), JS-Objekt, TS-Typen. Speist die `--kolibri-*`-Hooks von KoliBri. |
-| `@fink/theme`      | KoliBri-Theme `FINK` (erweitert `@public-ui/theme-default`), `registerFink()`, CLI `fink-sync-icons`.        |
+| `@fink/tokens`     | Design Tokens in `src/tokens.json` → `tokens.css` (CSS-Variablen, `light-dark()`), JS-Objekt, TS-Typen. Speist die `--kolibri-*`-Hooks von KoliBri. Marken-Themes in `src/themes/*.json`. |
+| `@fink/theme`      | KoliBri-Theme `FINK` (erweitert `@public-ui/theme-default`), Marken-Themes, `registerFink()`, CLI `fink-sync-icons`. |
 | `@fink/components` | 46 Stencil-Komponenten (App Shell, Page Header, Stat Card, Stepper, Chip, List, Menu, Tag Input, Calendar, Range Slider, Carousel, FAB, Transfer List, OTP Input, Image List, Tour, Virtual List, Bar Chart, Splitter …), intern aus KoliBri gebaut; eigene i18next-Instanz (de/en). |
 | `@fink/react`      | Generierte React-Wrapper (`@stencil/react-output-target`), Re-Export von `@public-ui/react-v19`, `FinkProvider`, `useFink`, `useToast`. |
 | `@fink/showcase`   | Doku-Website: Grundlagen, Theming, Katalog aller Fink- und KoliBri-Komponenten, 30 Patterns, sechs interaktive Kompositionen, Vergleich mit MUI/Vuetify/Material 3/Carbon/Ant, KoliBri-Nachnutzung. |
@@ -123,8 +123,32 @@ pnpm icons:check   # bricht ab, wenn die Fonts nicht zur installierten KoliBri-V
   (Layer `kol-theme-component`, nur Token-Referenzen).
 - Dark Mode: Die Anwendung setzt `color-scheme`; `FinkProvider` übernimmt das über `defaultColorScheme` bzw. `useFink().setColorScheme`.
 - Theme-Wahl: `registerFink()` nutzt `detect: 'auto'`, KoliBri liest beim Mounten das nächste `data-theme`-Attribut.
-  Registriert sind `fink` und `default`.
+  Registriert sind `fink`, `default` und die Marken-Themes `porsche`, `telekom` und `siemens-ix`. `FinkProvider` speichert
+  die Wahl (`useFink().setTheme`, `localStorage` „fink-theme“); die Showcase bietet sie über das Farbeimer-Symbol im Kopf an.
 - Container mit eigener Fläche melden sie über `--kol-surface`, damit KoliBri-Hosts dieselbe Fläche malen.
+
+### Stil-Adaptionen: Porsche, Telekom, Siemens iX
+
+Die Stil-Adaptionen zeigen, dass dieselben KoliBri- und Fink-Komponenten andere Design-Systeme tragen können, nur über
+Tokens und wenige Overrides:
+
+| Theme        | Vorbild                                     | Token-Quelle                                          |
+| ------------ | ------------------------------------------- | ----------------------------------------------------- |
+| `porsche`    | Porsche Design System v4                    | `@porsche-design-system/components-js` 4.10, `stylesheets/variables.css` |
+| `telekom`    | Telekom Scale / One Experience              | `@telekom/design-tokens` 1.0.0-beta.12                 |
+| `siemens-ix` | Siemens iX, Classic-Theme                   | `@siemens/ix` 5.3, `theme/classic-light.css` und `classic-dark.css` |
+
+- **Tokens:** `packages/tokens/src/themes/<name>.json` enthält nur abweichende Werte (gleiche Schlüssel wie `tokens.json`,
+  unbekannte Schlüssel brechen den Build ab). Der Build erzeugt je Theme einen Block `[data-theme='<name>']` mit allen
+  `--fink-*`-Tokens **und** den `--kolibri-*`-Hooks: `var()` in Custom Properties wird dort aufgelöst, wo sie
+  deklariert sind. So funktionieren auch verschachtelte Bereiche mit eigenem `data-theme` (Seite „Theming“).
+- **KoliBri-Theme:** `packages/theme/src/brands/<name>.ts` ergänzt die gemeinsamen Overrides (`sharedOverrides`) um
+  Markenoptik, z. B. Button-Varianten, Radien und bei Siemens iX 32 px hohe Bedienelemente (`--a11y-min-size`; WCAG 2.2 AA
+  verlangt 24 px).
+- **Nur der Stil:** keine Schriften, Logos oder Icons der Vorbilder. Die Schriftangabe ist ein System-Stack mit
+  ähnlichem Charakter; es werden keine Webfonts geladen. Keine Verbindung zu den Unternehmen.
+- **Kontrast:** Abweichungen vom Original sind im Token per `$description` dokumentiert.
+- Ob die öffentliche Showcase die Stil-Adaptionen zeigen darf, ist rechtlich zu prüfen.
 
 ## Barrierefreiheit prüfen (BITV 2.0 / WCAG 2.2)
 

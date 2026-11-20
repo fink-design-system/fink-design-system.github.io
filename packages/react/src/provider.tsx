@@ -1,10 +1,9 @@
 import { createContext, Fragment, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { FINK_THEME_NAME, registerFink, type RegisterFinkOptions } from '@fink/theme';
+import { FINK_THEME_NAME, isFinkThemeName, registerFink, type FinkThemeName, type RegisterFinkOptions } from '@fink/theme';
 import { setFinkLanguage, type FinkLanguage } from '@fink/components/i18n';
 
 export type FinkColorScheme = 'light' | 'dark' | 'system';
-export type FinkThemeName = typeof FINK_THEME_NAME | 'default';
-export type { FinkLanguage };
+export type { FinkLanguage, FinkThemeName };
 
 export interface FinkContextValue {
 	colorScheme: FinkColorScheme;
@@ -19,6 +18,29 @@ export interface FinkContextValue {
 const FinkContext = createContext<FinkContextValue | null>(null);
 
 const LANGUAGE_KEY = 'fink-language';
+const THEME_KEY = 'fink-theme';
+
+const readStorage = (key: string): string | null => {
+	try {
+		return localStorage.getItem(key);
+	} catch {
+		return null;
+	}
+};
+
+const writeStorage = (key: string, value: string) => {
+	try {
+		localStorage.setItem(key, value);
+	} catch {
+		// localStorage nicht verfügbar
+	}
+};
+
+/** Gespeicherte Theme-Wahl, sonst der übergebene Startwert. */
+export const detectFinkTheme = (fallback: FinkThemeName = FINK_THEME_NAME): FinkThemeName => {
+	const stored = readStorage(THEME_KEY);
+	return isFinkThemeName(stored) ? stored : fallback;
+};
 
 /**
  * Ermittelt die Startsprache: gespeicherte Wahl, dann <html lang>, dann die Browsersprachen
@@ -29,12 +51,7 @@ export const detectFinkLanguage = (fallback: FinkLanguage = 'en'): FinkLanguage 
 		const v = value?.toLowerCase() ?? '';
 		return v.startsWith('en') ? 'en' : v.startsWith('de') ? 'de' : undefined;
 	};
-	let stored: string | null = null;
-	try {
-		stored = localStorage.getItem(LANGUAGE_KEY);
-	} catch {
-		stored = null;
-	}
+	const stored = readStorage(LANGUAGE_KEY);
 	const browser = typeof navigator !== 'undefined' ? [...(navigator.languages ?? []), navigator.language] : [];
 	return match(stored) ?? match(typeof document !== 'undefined' ? document.documentElement.lang : '') ?? browser.map(match).find(Boolean) ?? fallback;
 };
@@ -43,7 +60,10 @@ export interface FinkProviderProps {
 	children: ReactNode;
 	/** Startwert für das Farbschema. „system“ folgt dem Betriebssystem. */
 	defaultColorScheme?: FinkColorScheme;
-	/** Startwert für das Theme (Fink oder unverändertes KoliBri-Default). */
+	/**
+	 * Startwert für das Theme: Fink, unverändertes KoliBri-Default oder ein Marken-Theme
+	 * (porsche, telekom, siemens-ix). Eine gespeicherte Wahl hat Vorrang.
+	 */
 	defaultTheme?: FinkThemeName;
 	/** Startsprache; ohne Angabe gespeicherte Wahl, <html lang>, Browsersprache oder Englisch. */
 	defaultLanguage?: FinkLanguage;
@@ -63,8 +83,8 @@ export interface FinkProviderProps {
 /**
  * Registriert KoliBri mit dem Fink-Theme und stellt Farbschema, Theme und Sprache bereit.
  *
- * Das Farbschema setzt `color-scheme` am Dokument. Ein Theme-Wechsel setzt `data-theme` und montiert
- * die Kinder neu, weil KoliBri das Theme beim Mounten anwendet. Die Sprache steht in `<html lang>`;
+ * Das Farbschema setzt `color-scheme` am Dokument. Ein Theme-Wechsel setzt `data-theme` (Tokens und
+ * KoliBri-Theme), speichert die Wahl und montiert die Kinder neu, weil KoliBri das Theme beim Mounten anwendet. Die Sprache steht in `<html lang>`;
  * Fink-Komponenten folgen live, KoliBri nach dem Neuladen.
  */
 export function FinkProvider({
@@ -79,7 +99,7 @@ export function FinkProvider({
 }: FinkProviderProps) {
 	const [ready, setReady] = useState(false);
 	const [colorScheme, setColorScheme] = useState<FinkColorScheme>(defaultColorScheme);
-	const [theme, setThemeState] = useState<FinkThemeName>(defaultTheme);
+	const [theme, setThemeState] = useState<FinkThemeName>(() => detectFinkTheme(defaultTheme));
 	const [language, setLanguageState] = useState<FinkLanguage>(() => defaultLanguage ?? detectFinkLanguage());
 
 	useEffect(() => {
@@ -110,15 +130,16 @@ export function FinkProvider({
 		document.documentElement.style.colorScheme = colorScheme === 'system' ? 'light dark' : colorScheme;
 	}, [colorScheme]);
 
-	const setTheme = useCallback((next: FinkThemeName) => setThemeState(next), []);
+	const setTheme = useCallback((next: FinkThemeName) => {
+		writeStorage(THEME_KEY, next);
+		// Vor dem Neumontieren setzen, damit KoliBri beim Mounten bereits das neue Theme findet.
+		document.documentElement.dataset.theme = next;
+		setThemeState(next);
+	}, []);
 
 	const setLanguage = useCallback(
 		(next: FinkLanguage) => {
-			try {
-				localStorage.setItem(LANGUAGE_KEY, next);
-			} catch {
-				// localStorage nicht verfügbar
-			}
+			writeStorage(LANGUAGE_KEY, next);
 			setLanguageState(next);
 			if (reloadOnLanguageChange && ready) {
 				document.documentElement.lang = next;

@@ -1,7 +1,7 @@
 import { Component, Element, Prop, State, h } from '@stencil/core';
 import { getFinkLanguage, onFinkLanguageChange, t } from '../../i18n';
 import { parseList } from '../../utils/shared';
-import { mixHex, onColorContextChange, resolveColor } from '../../utils/resolve-color';
+import { onColorContextChange, resolveColor, tintFor } from '../../utils/resolve-color';
 
 /** Tonfarben der Initialen; der Name bestimmt die Farbe, damit dieselbe Person gleich aussieht. */
 const TONES = ['primary', 'info', 'success', 'warning', 'danger'];
@@ -38,7 +38,7 @@ export class FinkAvatarGroup {
 		const light = resolveColor(this.host, 'var(--fink-color-light)');
 		this.palette = TONES.map((tone) => {
 			const fg = resolveColor(this.host, `var(--fink-color-${tone})`);
-			return { backgroundColor: mixHex(fg, light, 18), foregroundColor: fg };
+			return { backgroundColor: tintFor(fg, light, 18), foregroundColor: fg };
 		});
 	}
 

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { FinkAppShell, KolAvatar, KolLinkButton, KolNav } from '@fink/react';
 import { SchemeToggle } from '../site/SchemeToggle';
 import { LanguageToggle } from '../site/LanguageToggle';
+import { ThemeSwitcher } from '../site/ThemeSwitcher';
 import { t } from '../i18n';
 
 export interface ShellLink {
@@ -46,6 +47,7 @@ export function CompositionShell({ label, icon, base, view, links, user = 'Erika
 				{actions}
 				<KolLinkButton _label={t('Alle Kompositionen')} _href="#/compositions" _variant="ghost" _icons="codicon codicon-arrow-left" className="hide-small" />
 				<LanguageToggle />
+				<ThemeSwitcher />
 				<SchemeToggle />
 				<KolAvatar _label={user} style={{ width: '2.25rem' }} />
 			</div>

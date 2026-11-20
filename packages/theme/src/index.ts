@@ -1,8 +1,11 @@
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
-import { tokenDeclarations } from '@fink/tokens';
+import { brandThemes, themeCss } from '@fink/tokens';
 import { hostOverrides, overrides } from './overrides.js';
+import { porscheOverrides } from './brands/porsche.js';
+import { siemensIxOverrides } from './brands/siemens-ix.js';
+import { telekomOverrides } from './brands/telekom.js';
 import { kolibriLocales } from './kolibri-locales.js';
 
 type ThemePatch = Parameters<typeof DEFAULT>[0];
@@ -23,8 +26,53 @@ function withOverrides(map: ThemeMap, extra: Record<string, string>): ThemeMap {
 	return merged as ThemeMap;
 }
 
-export const FINK: typeof DEFAULT = (patch) =>
-	DEFAULT((_name, map, options, features) => patch(FINK_THEME_NAME, withOverrides(map, overrides), options, features));
+/**
+ * Erzeugt ein KoliBri-Theme unter eigenem Namen: alle Styles von @public-ui/theme-default plus Overrides.
+ * Fink und die Marken-Themes entstehen auf diese Weise; die Optik kommt überwiegend aus den Tokens.
+ */
+export const createTheme =
+	(name: string, extra: Record<string, string>): typeof DEFAULT =>
+	(patch) =>
+		DEFAULT((_name, map, options, features) => patch(name, withOverrides(map, extra), options, features));
+
+export const FINK: typeof DEFAULT = createTheme(FINK_THEME_NAME, overrides);
+
+/** Namen der Marken-Themes (Nachbildungen anderer Design-Systeme auf Fink-Basis). */
+export type FinkBrandThemeName = (typeof brandThemes)[number]['name'];
+
+const brandOverrides: Record<FinkBrandThemeName, Record<string, string>> = {
+	porsche: porscheOverrides,
+	'siemens-ix': siemensIxOverrides,
+	telekom: telekomOverrides,
+};
+
+/** KoliBri-Themes der Marken, je Name. Tokens kommen aus @fink/tokens (src/themes/<name>.json). */
+export const BRAND_THEMES: Record<FinkBrandThemeName, typeof DEFAULT> = Object.fromEntries(
+	brandThemes.map((theme) => [theme.name, createTheme(theme.name, brandOverrides[theme.name])]),
+) as Record<FinkBrandThemeName, typeof DEFAULT>;
+
+/** Alle wählbaren Themes. */
+export type FinkThemeName = typeof FINK_THEME_NAME | 'default' | FinkBrandThemeName;
+
+export interface FinkThemeInfo {
+	name: FinkThemeName;
+	label: string;
+	/** Herkunft und Lizenzhinweis; leer für Fink und KoliBri-Default. */
+	description: string;
+	/** Website des nachgebildeten Systems. */
+	source: string;
+	/** true für Nachbildungen fremder Design-Systeme. */
+	brand: boolean;
+}
+
+/** Wählbare Themes in Anzeigereihenfolge, z. B. für einen Umschalter. */
+export const FINK_THEMES: FinkThemeInfo[] = [
+	{ name: FINK_THEME_NAME, label: 'Fink', description: '', source: '', brand: false },
+	{ name: 'default', label: 'KoliBri Default', description: '', source: 'https://public-ui.github.io', brand: false },
+	...brandThemes.map(({ name, label, description, source }) => ({ name, label, description, source, brand: true })),
+];
+
+export const isFinkThemeName = (value: unknown): value is FinkThemeName => FINK_THEMES.some((theme) => theme.name === value);
 
 /**
  * Das KoliBri-Default-Theme für den Vergleich, unverändert bis auf transparente Hosts (siehe hostOverrides).
@@ -35,15 +83,15 @@ export const KOLIBRI_DEFAULT: typeof DEFAULT = (patch) =>
 const TOKENS_STYLE_ID = 'fink-tokens';
 
 /**
- * Hängt die Fink-Tokens als :root-Stylesheet an das Dokument, falls die Anwendung
- * @fink/tokens/tokens.css nicht selbst einbindet. Tokens auf :root erreichen über Vererbung
- * auch die Shadow Roots aller kol-*- und fink-*-Komponenten.
+ * Hängt die Fink-Tokens als Stylesheet an das Dokument, falls die Anwendung
+ * @fink/tokens/tokens.css nicht selbst einbindet: Basis auf :root, Marken-Themes je [data-theme].
+ * Tokens erreichen über Vererbung auch die Shadow Roots aller kol-*- und fink-*-Komponenten.
  */
 export const injectTokens = (doc: Document = document): void => {
 	if (doc.getElementById(TOKENS_STYLE_ID)) return;
 	const style = doc.createElement('style');
 	style.id = TOKENS_STYLE_ID;
-	style.textContent = `:root {\n${tokenDeclarations}\n}`;
+	style.textContent = themeCss;
 	doc.head.prepend(style);
 };
 
@@ -54,6 +102,8 @@ export interface RegisterFinkOptions {
 	injectTokens?: boolean;
 	/** Das unveränderte KoliBri-Default-Theme zusätzlich registrieren (Standard: true). */
 	includeKolibriDefault?: boolean;
+	/** Die Marken-Themes (Porsche, Telekom, Siemens iX) zusätzlich registrieren (Standard: true). */
+	includeBrandThemes?: boolean;
 	/**
 	 * Theme-Erkennung: „auto“ liest das Attribut data-theme am nächsten Vorfahren (auch über
 	 * Shadow-Grenzen), „fixed“ nutzt immer das Fink-Theme (Standard: „auto“).
@@ -88,7 +138,11 @@ export const registerFink = (options: RegisterFinkOptions = {}): Promise<unknown
 	if (detect === 'auto' && typeof document !== 'undefined' && !document.documentElement.dataset.theme) {
 		document.documentElement.dataset.theme = FINK_THEME_NAME;
 	}
-	const themes = options.includeKolibriDefault === false ? [FINK] : [FINK, KOLIBRI_DEFAULT];
+	const themes = [
+		FINK,
+		...(options.includeKolibriDefault === false ? [] : [KOLIBRI_DEFAULT]),
+		...(options.includeBrandThemes === false ? [] : Object.values(BRAND_THEMES)),
+	];
 	registration = register(themes, [defineCustomElements, ...(options.loaders ?? [])], {
 		environment: 'production',
 		theme: { detect, name: FINK_THEME_NAME },
