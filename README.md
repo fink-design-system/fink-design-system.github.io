@@ -123,17 +123,18 @@ pnpm icons:check   # bricht ab, wenn die Fonts nicht zur installierten KoliBri-V
   (Layer `kol-theme-component`, nur Token-Referenzen).
 - Dark Mode: Die Anwendung setzt `color-scheme`; `FinkProvider` übernimmt das über `defaultColorScheme` bzw. `useFink().setColorScheme`.
 - Theme-Wahl: `registerFink()` nutzt `detect: 'auto'`, KoliBri liest beim Mounten das nächste `data-theme`-Attribut.
-  Registriert sind `fink`, `default` und die Marken-Themes `porsche`, `telekom` und `siemens-ix`. `FinkProvider` speichert
+  Registriert sind `fink`, `default` und die Stil-Adaptionen `db`, `porsche`, `telekom` und `siemens-ix`. `FinkProvider` speichert
   die Wahl (`useFink().setTheme`, `localStorage` „fink-theme“); die Showcase bietet sie über das Farbeimer-Symbol im Kopf an.
 - Container mit eigener Fläche melden sie über `--kol-surface`, damit KoliBri-Hosts dieselbe Fläche malen.
 
-### Stil-Adaptionen: Porsche, Telekom, Siemens iX
+### Stil-Adaptionen: DB, Porsche, Telekom, Siemens iX
 
 Die Stil-Adaptionen zeigen, dass dieselben KoliBri- und Fink-Komponenten andere Design-Systeme tragen können, nur über
 Tokens und wenige Overrides:
 
 | Theme        | Vorbild                                     | Token-Quelle                                          |
 | ------------ | ------------------------------------------- | ----------------------------------------------------- |
+| `db`         | DB UX Design System, Generation 3           | `@db-ux/db-theme` 7.3.1, `@db-ux/core-foundations` 6.4.1 (`build/styles`) |
 | `porsche`    | Porsche Design System v4                    | `@porsche-design-system/components-js` 4.10, `stylesheets/variables.css` |
 | `telekom`    | Telekom Scale / One Experience              | `@telekom/design-tokens` 1.0.0-beta.12                 |
 | `siemens-ix` | Siemens iX, Classic-Theme                   | `@siemens/ix` 5.3, `theme/classic-light.css` und `classic-dark.css` |
