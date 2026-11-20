@@ -553,6 +553,17 @@ pre {
 	margin: 0;
 }
 
+/* data-theme="siemens-ix" und Dateipfade sind lange Wörter ohne Leerzeichen: bei 320 px umbrechen (WCAG 1.4.10). */
+.compare-pane h3 code,
+.brand-notes code {
+	overflow-wrap: anywhere;
+}
+
+.theme-select {
+	max-width: 24rem;
+	margin-block-end: var(--fink-space-5);
+}
+
 .playground {
 	display: grid;
 	grid-template-columns: minmax(14rem, 18rem) 1fr;

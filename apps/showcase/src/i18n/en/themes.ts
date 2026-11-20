@@ -3,6 +3,8 @@ export const themes: Record<string, string> = {
 	'Theme: {{name}}': 'Theme: {{name}}',
 	'Design-System': 'Design system',
 	Aktiv: 'Active',
+	'Theme dieser Seite': 'Theme of this site',
+	'Gilt für die ganze Showcase und wird gespeichert.': 'Applies to the whole showcase and is saved.',
 	'Nachbildungen auf Fink-Basis': 'Recreations on Fink',
 	'Ein Komponentensatz, fünf Design-Systeme': 'One component set, five design systems',
 	'Alle Themes sind registriert. KoliBri sucht beim Mounten das nächste': 'All themes are registered. When mounting, KoliBri looks for the nearest',

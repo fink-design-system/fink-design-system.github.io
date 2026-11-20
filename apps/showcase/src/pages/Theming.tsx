@@ -14,6 +14,8 @@ import {
 	KolLink,
 	FINK_THEMES,
 	tokens,
+	useFink,
+	type FinkThemeName,
 } from '@fink/react';
 import { CodeBlock } from '../site/CodeBlock';
 import { t } from '../i18n';
@@ -22,6 +24,22 @@ const PROGRAM_OPTIONS = [
 	{ label: t('Digitalisierung'), value: 'dig' },
 	{ label: t('Klimaschutz'), value: 'klima' },
 ];
+
+const THEME_OPTIONS = FINK_THEMES.map((theme) => ({ label: theme.label, value: theme.name }));
+
+/** Theme der ganzen Seite; auf Smartphones der einzige Umschalter, weil der Kopf dafür keinen Platz hat. */
+function PageThemeSelect() {
+	const { theme, setTheme } = useFink();
+	return (
+		<KolSingleSelect
+			_label={t('Theme dieser Seite')}
+			_hint={t('Gilt für die ganze Showcase und wird gespeichert.')}
+			_options={THEME_OPTIONS}
+			_value={theme}
+			_on={{ onChange: (_e, value) => setTheme(String(value) as FinkThemeName) }}
+		/>
+	);
+}
 
 const FONT_OPTIONS = [
 	{ label: t('Fink (Inter/System)'), value: 'var(--fink-font-family)' },
@@ -95,6 +113,9 @@ export function Theming() {
 					{t('Alle Themes sind registriert. KoliBri sucht beim Mounten das nächste')} <code>{t('data-theme')}</code>{t('-Attribut – so lassen sich Themes sogar auf einer Seite mischen.')}{' '}
 					{t('Neben Fink und dem KoliBri-Default stehen Nachbildungen von Porsche Design System, Telekom Scale und Siemens iX: dieselben KoliBri- und Fink-Komponenten, nur andere Tokens und wenige Overrides. Für die ganze Seite wählt man das Theme über das Farbeimer-Symbol im Kopf.')}
 				</p>
+				<div className="theme-select">
+					<PageThemeSelect />
+				</div>
 				<div className="compare">
 					{FINK_THEMES.map((theme) => (
 						<ThemeScope key={theme.name} theme={theme.name}>
@@ -112,7 +133,7 @@ export function Theming() {
 				<p className="section-intro">
 					{t('Die Nachbildungen zeigen, dass Fink fremde Design-Systeme allein über Tokens und Theme-Overrides tragen kann. Übernommen sind veröffentlichte Token-Werte: Farben für hell und dunkel, Radien, Schatten, Bewegung und die Schriftangabe.')}
 				</p>
-				<ul className="section-intro">
+				<ul className="section-intro brand-notes">
 					<li>{t('Schriften (Porsche Next, TeleNeo, Siemens Sans), Logos und Icons der Marken werden nicht ausgeliefert. Ist eine lizenzierte Schrift lokal installiert, nutzt der Browser sie, sonst die Ersatzschrift.')}</li>
 					<li>{t('Wo ein Originalwert die Kontrastprüfung (WCAG 2.2 AA) nicht besteht, ist er minimal angepasst und im Token dokumentiert.')}</li>
 					<li>{t('Siemens iX nutzt das offene Classic-Theme (MIT). Das Siemens-Brand-Theme ist Siemens-Anwendungen vorbehalten.')}</li>
@@ -121,7 +142,7 @@ export function Theming() {
 						{t('Fink ist weder mit der Dr. Ing. h.c. F. Porsche AG, der Deutschen Telekom AG noch der Siemens AG verbunden. Die Nachbildungen dienen nur der Demonstration; Marken, Magenta und Markenfarben gehören ihren Inhabern.')}
 					</li>
 				</ul>
-				<ul className="section-intro">
+				<ul className="section-intro brand-notes">
 					{FINK_THEMES.filter((theme) => theme.brand).map((theme) => (
 						<li key={theme.name}>
 							<KolLink _href={theme.source} _label={theme.label} _target="_blank" />: <code>packages/tokens/src/themes/{theme.name}.json</code>
