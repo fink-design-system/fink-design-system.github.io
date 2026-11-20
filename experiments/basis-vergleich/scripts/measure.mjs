@@ -48,6 +48,14 @@ const VARIANTS = {
 		files: [],
 		locales: [],
 	},
+	'kolibri-next': {
+		name: 'KoliBri next (#11637)',
+		note: 'wie KoliBri, Build mit scripts/kolibri-next-markdown.mjs: markdown-it durch den Renderer aus public-ui/kolibri#11637 ersetzt',
+		page: 'kolibri',
+		dist: 'dist-next',
+		files: [],
+		locales: [],
+	},
 	'react-aria': {
 		name: 'React Aria',
 		files: [own('react-aria/TagInput.tsx'), own('react-aria/FileUpload.tsx'), own('react-aria/styles.css'), own('shared/texts.ts')],
@@ -122,10 +130,11 @@ function code() {
 	// Die schlanke Variante nutzt denselben Fink-Code, nur der Build unterscheidet sich.
 	out['kolibri-schlank'] = { ...out.kolibri, name: VARIANTS['kolibri-schlank'].name };
 	out['kolibri-lazy'] = { ...out.kolibri, name: VARIANTS['kolibri-lazy'].name };
+	out['kolibri-next'] = { ...out.kolibri, name: VARIANTS['kolibri-next'].name };
 	return out;
 }
 
-const PORTS = { dist: 4318, 'dist-slim': 4320, 'dist-lazy': 4324 };
+const PORTS = { dist: 4318, 'dist-slim': 4320, 'dist-lazy': 4324, 'dist-next': 4330 };
 
 /** Lädt eine Seite und summiert Skripte, Stylesheets und Schriften. */
 async function measurePage(browser, url) {

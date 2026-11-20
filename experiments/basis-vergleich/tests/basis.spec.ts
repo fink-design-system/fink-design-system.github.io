@@ -9,6 +9,7 @@ const VARIANTS = [
 	{ id: 'kolibri', name: 'KoliBri', dropTarget: 'fink-file-upload' },
 	{ id: 'kolibri', name: 'KoliBri schlank', dropTarget: 'fink-file-upload', base: 'http://localhost:4319' },
 	{ id: 'kolibri', name: 'KoliBri schlank + lazy markdown', dropTarget: 'fink-file-upload', base: 'http://localhost:4323' },
+	{ id: 'kolibri', name: 'KoliBri next (#11637)', dropTarget: 'fink-file-upload', base: 'http://localhost:4329' },
 	{ id: 'react-aria', name: 'React Aria', dropTarget: '.ra-zone' },
 	{ id: 'lion', name: 'Lion', dropTarget: 'fink-lion-file-upload .input-file__drop-zone' },
 ] as const;

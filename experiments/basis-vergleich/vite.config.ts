@@ -9,18 +9,22 @@ import { kolibriIconPrune } from './scripts/kolibri-icon-prune.mjs';
 import { kolibriAnalyseSplit } from './scripts/kolibri-analyse-split.mjs';
 // @ts-expect-error Skript ohne Typdeklaration
 import { kolibriLazyMarkdown } from './scripts/kolibri-lazy-markdown.mjs';
+// @ts-expect-error Skript ohne Typdeklaration
+import { kolibriNextMarkdown } from './scripts/kolibri-next-markdown.mjs';
 
 /**
  * KOLIBRI_BUILD wählt die KoliBri-Fassung:
  * - nicht gesetzt: wie Fink heute (alle vier Seiten, dist)
  * - slim: nur genutzte Icons im Theme (dist-slim)
  * - lazy: slim und markdown-it nur bei Bedarf (dist-lazy)
+ * - next: wie Fink heute, markdown-it durch den Renderer aus public-ui/kolibri#11637 ersetzt (dist-next)
  * Seit KoliBri 4.6.0 liegt das Icon-CSS einmal in GLOBAL (public-ui/kolibri#11623); die früheren Fassungen
  * global und global-slim sind damit der Normalfall.
  */
 const flavor = process.env.KOLIBRI_BUILD ?? '';
 const slim = flavor === 'slim' || flavor === 'lazy';
 const lazy = flavor === 'lazy';
+const next = flavor === 'next';
 
 /** Mit ANALYZE=<seite> wird nur diese Seite gebaut und eine Treemap nach analyse/ geschrieben. */
 const analyze = process.env.ANALYZE;
@@ -42,6 +46,7 @@ export default defineConfig({
 		react(),
 		...(slim ? [kolibriIconPrune(finkCodicons())] : []),
 		...(lazy ? [kolibriLazyMarkdown()] : []),
+		...(next ? [kolibriNextMarkdown()] : []),
 		...(analyze
 			? [
 					kolibriAnalyseSplit(),

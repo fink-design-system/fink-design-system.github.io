@@ -160,6 +160,59 @@
 			],
 			"total": 592
 		},
+		"kolibri-next": {
+			"name": "KoliBri next (#11637)",
+			"logic": 417,
+			"style": 175,
+			"files": [
+				{
+					"file": "packages/components/src/components/tag-input/tag-input.tsx",
+					"logic": 119,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/tag-input/tag-input.css",
+					"logic": 0,
+					"style": 27
+				},
+				{
+					"file": "packages/components/src/components/chip/chip.tsx",
+					"logic": 72,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/chip/chip.css",
+					"logic": 0,
+					"style": 4
+				},
+				{
+					"file": "packages/components/src/components/file-upload/file-upload.tsx",
+					"logic": 151,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/components/file-upload/file-upload.css",
+					"logic": 0,
+					"style": 144
+				},
+				{
+					"file": "packages/components/src/utils/resolve-color.ts",
+					"logic": 37,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/utils/shared.ts",
+					"logic": 15,
+					"style": 0
+				},
+				{
+					"file": "packages/components/src/i18n/locales.ts (deutsche Texte)",
+					"logic": 23,
+					"style": 0
+				}
+			],
+			"total": 592
+		},
 		"react-aria": {
 			"name": "React Aria",
 			"logic": 230,
@@ -220,59 +273,73 @@
 	"loaded": {
 		"kolibri": {
 			"requests": 64,
-			"scriptBytes": 1865520,
-			"scriptGzip": 384925,
+			"scriptBytes": 1868749,
+			"scriptGzip": 387545,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 457950,
+			"totalGzip": 460570,
 			"noBadge": {
 				"requests": 51,
-				"scriptBytes": 1815194,
-				"scriptGzip": 368877,
+				"scriptBytes": 1817691,
+				"scriptGzip": 370936,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 441902
+				"totalGzip": 443961
 			}
 		},
 		"kolibri-schlank": {
 			"requests": 60,
-			"scriptBytes": 1689749,
-			"scriptGzip": 357902,
+			"scriptBytes": 1692795,
+			"scriptGzip": 360327,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 430927,
+			"totalGzip": 433352,
 			"noBadge": {
 				"requests": 47,
-				"scriptBytes": 1639497,
-				"scriptGzip": 341899,
+				"scriptBytes": 1641811,
+				"scriptGzip": 343781,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 414924
+				"totalGzip": 416806
 			}
 		},
 		"kolibri-lazy": {
 			"requests": 61,
-			"scriptBytes": 1692460,
-			"scriptGzip": 359231,
+			"scriptBytes": 1695561,
+			"scriptGzip": 361784,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 432256,
+			"totalGzip": 434809,
 			"noBadge": {
 				"requests": 47,
-				"scriptBytes": 1502905,
-				"scriptGzip": 286553,
+				"scriptBytes": 1505219,
+				"scriptGzip": 288490,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 359578
+				"totalGzip": 361515
+			}
+		},
+		"kolibri-next": {
+			"requests": 60,
+			"scriptBytes": 1729806,
+			"scriptGzip": 329533,
+			"styleAndFontBytes": 218786,
+			"totalGzip": 402558,
+			"noBadge": {
+				"requests": 47,
+				"scriptBytes": 1679554,
+				"scriptGzip": 313514,
+				"styleAndFontBytes": 218786,
+				"totalGzip": 386539
 			}
 		},
 		"react-aria": {
 			"requests": 7,
-			"scriptBytes": 532760,
-			"scriptGzip": 156033,
+			"scriptBytes": 532980,
+			"scriptGzip": 156220,
 			"styleAndFontBytes": 8462,
-			"totalGzip": 158340
+			"totalGzip": 158527
 		},
 		"lion": {
 			"requests": 11,
-			"scriptBytes": 242662,
-			"scriptGzip": 67136,
+			"scriptBytes": 243049,
+			"scriptGzip": 67613,
 			"styleAndFontBytes": 4940,
-			"totalGzip": 68745
+			"totalGzip": 69222
 		}
 	},
 	"tests": {
@@ -427,6 +494,81 @@
 			}
 		],
 		"KoliBri schlank + lazy markdown": [
+			{
+				"test": "Tag per Tastatur mit Enter übernehmen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Freie Eingabe mit Komma übernehmen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Vorschlag per Pfeiltaste wählen",
+				"status": "nicht simulierbar",
+				"note": "Nicht simulierbar: fink-tag-input nutzt die native Vorschlagsliste (datalist), die Chromium headless nicht öffnet."
+			},
+			{
+				"test": "Doppelten Eintrag mit Meldung abweisen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Rücktaste im leeren Feld entfernt den letzten Eintrag",
+				"status": "bestanden"
+			},
+			{
+				"test": "Eintrag per Tastatur über den Entfernen-Knopf löschen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Höchstzahl sperrt das Feld",
+				"status": "bestanden"
+			},
+			{
+				"test": "Gültige Datei über die Dateiauswahl hinzufügen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Zu große Datei mit Meldung abweisen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Falschen Dateityp mit Meldung abweisen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Datei über den Entfernen-Knopf löschen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Datei per Ziehen und Ablegen hinzufügen",
+				"status": "bestanden"
+			},
+			{
+				"test": "Fokus ist im Hochkontrastmodus sichtbar",
+				"status": "bestanden"
+			},
+			{
+				"test": "Kein seitliches Scrollen bei 320 Pixeln",
+				"status": "bestanden"
+			},
+			{
+				"test": "Alle sichtbaren Texte auf Deutsch",
+				"status": "bestanden"
+			},
+			{
+				"test": "Keine axe-Funde nach Interaktion",
+				"status": "bestanden"
+			},
+			{
+				"test": "Keine Konsolenfehler",
+				"status": "bestanden"
+			},
+			{
+				"test": "Markdown in Badge-Beschriftung wird gerendert",
+				"status": "bestanden"
+			}
+		],
+		"KoliBri next (#11637)": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"

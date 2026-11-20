@@ -6,11 +6,11 @@
 			"groups": {
 				"other": {
 					"bytes": 27224,
-					"gzip": 10976.069274835085,
+					"gzip": 10976.069274835087,
 					"items": {
 						"[unmapped]": {
 							"bytes": 27224,
-							"gzip": 10976.069274835085
+							"gzip": 10976.069274835087
 						}
 					}
 				},
@@ -122,13 +122,13 @@
 							"bytes": 40344,
 							"gzip": 4868.2351246126545
 						},
-						"devtools-DuJRc6wJ.js": {
-							"bytes": 1844,
-							"gzip": 994.995287464656
-						},
 						"dev.utils-B0t4rcBV.js": {
 							"bytes": 1536,
 							"gzip": 940.5017921146954
+						},
+						"devtools-DuJRc6wJ.js": {
+							"bytes": 1844,
+							"gzip": 994.995287464656
 						},
 						"i18n-BLkzMf6D.js": {
 							"bytes": 111,
@@ -146,6 +146,10 @@
 							"bytes": 1461,
 							"gzip": 816.1505073280722
 						},
+						"validators-BgDmq-Qt.js": {
+							"bytes": 152,
+							"gzip": 131.14801444043323
+						},
 						"props-from-config-BOUcpF7e.js": {
 							"bytes": 18716,
 							"gzip": 6544.5484999469945
@@ -154,41 +158,45 @@
 							"bytes": 398,
 							"gzip": 280.0032051282051
 						},
-						"component-bIIx1x7q.js": {
-							"bytes": 311,
-							"gzip": 226.71028037383178
-						},
-						"validators-BgDmq-Qt.js": {
-							"bytes": 152,
-							"gzip": 131.14801444043323
-						},
 						"disabled-B2o4Ctgy.js": {
 							"bytes": 43,
 							"gzip": 44.068322981366464
-						},
-						"id-Bh4FF8c0.js": {
-							"bytes": 37,
-							"gzip": 38.44155844155844
 						},
 						"label-with-expert-slot-D1tpX9DI.js": {
 							"bytes": 52,
 							"gzip": 43.303754266211605
 						},
+						"id-Bh4FF8c0.js": {
+							"bytes": 37,
+							"gzip": 38.44155844155844
+						},
+						"component-bIIx1x7q.js": {
+							"bytes": 311,
+							"gzip": 226.71028037383178
+						},
 						"label-hints-CZGo9ZD5.js": {
 							"bytes": 312,
 							"gzip": 232.7317073170732
 						},
-						"controller-CZcQ57AP.js": {
-							"bytes": 1477,
-							"gzip": 739.4208229426433
+						"item-hsQoejqZ.js": {
+							"bytes": 1025,
+							"gzip": 569.3673883626523
 						},
 						"element-interaction-sGYdEpmv.js": {
 							"bytes": 1221,
 							"gzip": 654.5567010309278
 						},
-						"item-hsQoejqZ.js": {
-							"bytes": 1025,
-							"gzip": 569.3673883626523
+						"controller-CZcQ57AP.js": {
+							"bytes": 1477,
+							"gzip": 739.4208229426433
+						},
+						"element-focus-BIRmGg5W.js": {
+							"bytes": 2068,
+							"gzip": 1038.2668500687757
+						},
+						"base-web-component-CYPdDdRn.js": {
+							"bytes": 950,
+							"gzip": 432.6208178438662
 						},
 						"component-hiabKVP3.js": {
 							"bytes": 139021,
@@ -198,29 +206,13 @@
 							"bytes": 56,
 							"gzip": 49.30677290836653
 						},
-						"element-focus-BIRmGg5W.js": {
-							"bytes": 2068,
-							"gzip": 1038.2668500687757
+						"aria-labelledby-DqJY_4G-.js": {
+							"bytes": 489,
+							"gzip": 344.34119782214157
 						},
 						"resolve-props-DAVb5BM3.js": {
 							"bytes": 1170,
 							"gzip": 571.9847775175643
-						},
-						"base-web-component-CYPdDdRn.js": {
-							"bytes": 950,
-							"gzip": 432.6208178438662
-						},
-						"tooltip-open-tracking-D3tCiiGP.js": {
-							"bytes": 91,
-							"gzip": 34.49720994598455
-						},
-						"behavior-B6y5Gofe.js": {
-							"bytes": 21964,
-							"gzip": 8326.337574215437
-						},
-						"aria-labelledby-DqJY_4G-.js": {
-							"bytes": 489,
-							"gzip": 344.34119782214157
 						},
 						"api-D0RNr-zh.js": {
 							"bytes": 10906,
@@ -230,41 +222,41 @@
 							"bytes": 3944,
 							"gzip": 1640.7710843373495
 						},
-						"item-Dms_59sU.js": {
-							"bytes": 2091,
-							"gzip": 1036.02416918429
+						"tooltip-open-tracking-D3tCiiGP.js": {
+							"bytes": 91,
+							"gzip": 34.49720994598455
+						},
+						"behavior-B6y5Gofe.js": {
+							"bytes": 21964,
+							"gzip": 8326.337574215437
 						},
 						"input-C1YsxnDL.js": {
 							"bytes": 634,
 							"gzip": 372.67148760330576
 						},
-						"component-CSsUaL_h.js": {
-							"bytes": 2742,
-							"gzip": 1129.9306836248013
+						"item-Dms_59sU.js": {
+							"bytes": 2091,
+							"gzip": 1036.02416918429
 						},
 						"component-ZdHnXLLI.js": {
 							"bytes": 1755,
 							"gzip": 878.6694802310084
 						},
+						"component-CSsUaL_h.js": {
+							"bytes": 2742,
+							"gzip": 1129.9306836248013
+						},
 						"Heading-BubZbykM.js": {
 							"bytes": 960,
 							"gzip": 450.4109589041096
 						},
-						"spell-check-hy6xFhmT.js": {
-							"bytes": 49,
-							"gzip": 48.440000000000005
-						},
-						"suggestions-BsiiaAxK.js": {
-							"bytes": 226,
-							"gzip": 166.09638554216866
-						},
-						"placeholder-DlHbiVjz.js": {
-							"bytes": 50,
-							"gzip": 48.01136363636364
-						},
 						"input-container-zXl_6y52.js": {
 							"bytes": 1722,
 							"gzip": 880.6502095947835
+						},
+						"spell-check-hy6xFhmT.js": {
+							"bytes": 49,
+							"gzip": 48.440000000000005
 						},
 						"suggestions-CY8BJMOa.js": {
 							"bytes": 384,
@@ -274,13 +266,25 @@
 							"bytes": 5236,
 							"gzip": 1728.2496790757382
 						},
-						"read-only-DSBWEPED.js": {
-							"bytes": 43,
-							"gzip": 44.327160493827165
+						"suggestions-BsiiaAxK.js": {
+							"bytes": 226,
+							"gzip": 166.09638554216866
+						},
+						"placeholder-DlHbiVjz.js": {
+							"bytes": 50,
+							"gzip": 48.01136363636364
+						},
+						"value-string-Dy8zJxlP.js": {
+							"bytes": 44,
+							"gzip": 44.771929824561404
 						},
 						"required-xw5BBPvV.js": {
 							"bytes": 43,
 							"gzip": 43
+						},
+						"read-only-DSBWEPED.js": {
+							"bytes": 43,
+							"gzip": 44.327160493827165
 						},
 						"smart-button-CQps8AlL.js": {
 							"bytes": 197,
@@ -290,25 +294,21 @@
 							"bytes": 114,
 							"gzip": 111.4806629834254
 						},
-						"behavior-BJR8CKBx.js": {
-							"bytes": 3501,
-							"gzip": 1207.8724516466284
-						},
-						"value-string-Dy8zJxlP.js": {
-							"bytes": 44,
-							"gzip": 44.771929824561404
-						},
 						"multiple-S3Ol1G6Z.js": {
 							"bytes": 43,
 							"gzip": 43.25903614457831
 						},
-						"component-CMHB3reH.js": {
-							"bytes": 586,
-							"gzip": 347.76635514018693
+						"behavior-BJR8CKBx.js": {
+							"bytes": 3501,
+							"gzip": 1207.8724516466284
 						},
 						"color-BbljGuAW.js": {
 							"bytes": 930,
 							"gzip": 415.61946902654864
+						},
+						"component-CMHB3reH.js": {
+							"bytes": 586,
+							"gzip": 347.76635514018693
 						},
 						"contrast-DtK0a6X2.js": {
 							"bytes": 1009,
@@ -582,13 +582,13 @@
 							"bytes": 19900,
 							"gzip": 5437.69101709518
 						},
-						"kol-icon": {
-							"bytes": 2793,
-							"gzip": 1064.4889705882354
-						},
 						"kol-input-file": {
 							"bytes": 21145,
 							"gzip": 5665.953300637993
+						},
+						"kol-icon": {
+							"bytes": 2793,
+							"gzip": 1064.4889705882354
 						},
 						"kol-badge": {
 							"bytes": 12353,
@@ -719,49 +719,37 @@
 							"bytes": 40344,
 							"gzip": 4663.848632876704
 						},
-						"devtools-DuJRc6wJ.js": {
-							"bytes": 1844,
-							"gzip": 991.4263788968825
-						},
 						"dev.utils-B0t4rcBV.js": {
 							"bytes": 1536,
 							"gzip": 939.584229390681
 						},
-						"tslib.es6-QNbPBOk5.js": {
-							"bytes": 678,
-							"gzip": 400.88828337874656
+						"devtools-DuJRc6wJ.js": {
+							"bytes": 1844,
+							"gzip": 991.4263788968825
 						},
 						"i18n-BLkzMf6D.js": {
 							"bytes": 111,
 							"gzip": 106.88888888888889
 						},
-						"component-CNgECeRi.js": {
-							"bytes": 2245,
-							"gzip": 1138.0849983068065
+						"tslib.es6-QNbPBOk5.js": {
+							"bytes": 678,
+							"gzip": 400.88828337874656
 						},
 						"component-DEwcJKDA.js": {
 							"bytes": 1461,
 							"gzip": 815.3269447576099
 						},
+						"component-CNgECeRi.js": {
+							"bytes": 2245,
+							"gzip": 1138.0849983068065
+						},
 						"props-from-config-BOUcpF7e.js": {
 							"bytes": 18716,
 							"gzip": 6543.5564507579775
 						},
-						"component-B8UMedaK.js": {
-							"bytes": 398,
-							"gzip": 279.3653846153846
-						},
 						"validators-BgDmq-Qt.js": {
 							"bytes": 152,
 							"gzip": 131.69675090252707
-						},
-						"component-bIIx1x7q.js": {
-							"bytes": 311,
-							"gzip": 224.96635514018692
-						},
-						"label-with-expert-slot-D1tpX9DI.js": {
-							"bytes": 52,
-							"gzip": 43.303754266211605
 						},
 						"disabled-B2o4Ctgy.js": {
 							"bytes": 43,
@@ -771,6 +759,18 @@
 							"bytes": 37,
 							"gzip": 38.44155844155844
 						},
+						"component-bIIx1x7q.js": {
+							"bytes": 311,
+							"gzip": 224.96635514018692
+						},
+						"component-B8UMedaK.js": {
+							"bytes": 398,
+							"gzip": 279.3653846153846
+						},
+						"label-with-expert-slot-D1tpX9DI.js": {
+							"bytes": 52,
+							"gzip": 43.303754266211605
+						},
 						"label-hints-CZGo9ZD5.js": {
 							"bytes": 312,
 							"gzip": 231.46341463414635
@@ -779,21 +779,13 @@
 							"bytes": 1025,
 							"gzip": 568.6738836265223
 						},
-						"controller-CZcQ57AP.js": {
-							"bytes": 1477,
-							"gzip": 741.2624688279301
-						},
-						"element-focus-BIRmGg5W.js": {
-							"bytes": 2068,
-							"gzip": 1038.2668500687757
-						},
 						"element-interaction-sGYdEpmv.js": {
 							"bytes": 1221,
 							"gzip": 654.5567010309278
 						},
-						"base-web-component-CYPdDdRn.js": {
-							"bytes": 950,
-							"gzip": 430.8550185873606
+						"controller-CZcQ57AP.js": {
+							"bytes": 1477,
+							"gzip": 741.2624688279301
 						},
 						"label-lang-segment-C5LYGOHt.js": {
 							"bytes": 56,
@@ -803,13 +795,17 @@
 							"bytes": 139021,
 							"gzip": 56581.94507797306
 						},
-						"aria-labelledby-DqJY_4G-.js": {
-							"bytes": 489,
-							"gzip": 344.34119782214157
+						"element-focus-BIRmGg5W.js": {
+							"bytes": 2068,
+							"gzip": 1038.2668500687757
 						},
-						"behavior-DlH8byIw.js": {
-							"bytes": 3944,
-							"gzip": 1637.9759036144578
+						"base-web-component-CYPdDdRn.js": {
+							"bytes": 950,
+							"gzip": 430.8550185873606
+						},
+						"api-D0RNr-zh.js": {
+							"bytes": 10906,
+							"gzip": 3921.369715984148
 						},
 						"tooltip-open-tracking-D3tCiiGP.js": {
 							"bytes": 91,
@@ -823,33 +819,33 @@
 							"bytes": 1170,
 							"gzip": 570.2290076335878
 						},
-						"api-D0RNr-zh.js": {
-							"bytes": 10906,
-							"gzip": 3921.369715984148
-						},
-						"item-Dms_59sU.js": {
-							"bytes": 2091,
-							"gzip": 1036.02416918429
-						},
-						"input-C1YsxnDL.js": {
-							"bytes": 634,
-							"gzip": 370.7066115702479
+						"aria-labelledby-DqJY_4G-.js": {
+							"bytes": 489,
+							"gzip": 344.34119782214157
 						},
 						"component-ZdHnXLLI.js": {
 							"bytes": 1755,
 							"gzip": 877.1101732563305
 						},
+						"item-Dms_59sU.js": {
+							"bytes": 2091,
+							"gzip": 1036.02416918429
+						},
+						"behavior-DlH8byIw.js": {
+							"bytes": 3944,
+							"gzip": 1637.9759036144578
+						},
 						"component-CSsUaL_h.js": {
 							"bytes": 2742,
 							"gzip": 1129.0588235294117
 						},
+						"input-C1YsxnDL.js": {
+							"bytes": 634,
+							"gzip": 370.7066115702479
+						},
 						"Heading-BubZbykM.js": {
 							"bytes": 960,
 							"gzip": 448.7671232876712
-						},
-						"spell-check-hy6xFhmT.js": {
-							"bytes": 49,
-							"gzip": 48.160000000000004
 						},
 						"suggestions-CY8BJMOa.js": {
 							"bytes": 384,
@@ -859,17 +855,25 @@
 							"bytes": 1722,
 							"gzip": 879.0461108523522
 						},
-						"base-web-component-DP9_OPgV.js": {
-							"bytes": 5236,
-							"gzip": 1725.7291399229782
+						"spell-check-hy6xFhmT.js": {
+							"bytes": 49,
+							"gzip": 48.160000000000004
 						},
 						"suggestions-BsiiaAxK.js": {
 							"bytes": 226,
 							"gzip": 165.18875502008032
 						},
+						"placeholder-DlHbiVjz.js": {
+							"bytes": 50,
+							"gzip": 47.44318181818182
+						},
 						"read-only-DSBWEPED.js": {
 							"bytes": 43,
 							"gzip": 44.06172839506173
+						},
+						"base-web-component-DP9_OPgV.js": {
+							"bytes": 5236,
+							"gzip": 1725.7291399229782
 						},
 						"required-xw5BBPvV.js": {
 							"bytes": 43,
@@ -887,21 +891,13 @@
 							"bytes": 114,
 							"gzip": 111.4806629834254
 						},
-						"placeholder-DlHbiVjz.js": {
-							"bytes": 50,
-							"gzip": 47.44318181818182
-						},
-						"multiple-S3Ol1G6Z.js": {
-							"bytes": 43,
-							"gzip": 43.25903614457831
-						},
 						"behavior-BJR8CKBx.js": {
 							"bytes": 3501,
 							"gzip": 1203.297177208573
 						},
-						"color-BbljGuAW.js": {
-							"bytes": 930,
-							"gzip": 413.9734513274336
+						"multiple-S3Ol1G6Z.js": {
+							"bytes": 43,
+							"gzip": 43.25903614457831
 						},
 						"component-CMHB3reH.js": {
 							"bytes": 586,
@@ -910,6 +906,10 @@
 						"contrast-DtK0a6X2.js": {
 							"bytes": 1009,
 							"gzip": 506.22184300341297
+						},
+						"color-BbljGuAW.js": {
+							"bytes": 930,
+							"gzip": 413.9734513274336
 						}
 					}
 				},
@@ -1173,7 +1173,7 @@
 				},
 				"KoliBri components": {
 					"bytes": 56191,
-					"gzip": 15753.666373843938,
+					"gzip": 15753.66637384394,
 					"items": {
 						"kol-input-text": {
 							"bytes": 19900,
@@ -1183,13 +1183,13 @@
 							"bytes": 2793,
 							"gzip": 1060.2494577006507
 						},
-						"kol-badge": {
-							"bytes": 12353,
-							"gzip": 3611.6438004402057
-						},
 						"kol-input-file": {
 							"bytes": 21145,
 							"gzip": 5653.925186924013
+						},
+						"kol-badge": {
+							"bytes": 12353,
+							"gzip": 3611.6438004402057
 						}
 					}
 				}
@@ -1200,11 +1200,11 @@
 			"groups": {
 				"other": {
 					"bytes": 25718,
-					"gzip": 9856.235868032281,
+					"gzip": 9856.235868032278,
 					"items": {
 						"[unmapped]": {
 							"bytes": 25718,
-							"gzip": 9856.235868032281
+							"gzip": 9856.235868032278
 						}
 					}
 				},
@@ -1219,286 +1219,6 @@
 						"shared/config.ts": {
 							"bytes": 446,
 							"gzip": 134.38485355115748
-						}
-					}
-				},
-				"KoliBri core": {
-					"bytes": 237552,
-					"gzip": 57578.119072471556,
-					"items": {
-						"common-BdSzSIXg.js": {
-							"bytes": 35823,
-							"gzip": 4141.139861686952
-						},
-						"component-names-Dhbtt0mX.js": {
-							"bytes": 1459,
-							"gzip": 168.66044324041152
-						},
-						"i18n-BRgvVqCf.js": {
-							"bytes": 7161,
-							"gzip": 827.811812230697
-						},
-						"bootstrap-Bp7i4RJQ.js": {
-							"bytes": 402,
-							"gzip": 46.47121191408186
-						},
-						"bem-registry-SKACeCny.js": {
-							"bytes": 520,
-							"gzip": 60.11201541125017
-						},
-						"events-CRHxtwup.js": {
-							"bytes": 804,
-							"gzip": 92.94242382816373
-						},
-						"index": {
-							"bytes": 9913,
-							"gzip": 1145.943093791775
-						},
-						"index-Bbr6Os1b.js": {
-							"bytes": 42286,
-							"gzip": 4888.262853231009
-						},
-						"app-globals-DYRte_jr.js": {
-							"bytes": 312,
-							"gzip": 36.0672092467501
-						},
-						"loader": {
-							"bytes": 40344,
-							"gzip": 4663.767595675917
-						},
-						"@stencil/react-output-target": {
-							"bytes": 788,
-							"gzip": 237.43332869576702
-						},
-						"dev.utils-B0t4rcBV.js": {
-							"bytes": 1536,
-							"gzip": 940.5017921146954
-						},
-						"devtools-DuJRc6wJ.js": {
-							"bytes": 1844,
-							"gzip": 990.5419664268585
-						},
-						"tslib.es6-QNbPBOk5.js": {
-							"bytes": 678,
-							"gzip": 400.88828337874656
-						},
-						"component-CNgECeRi.js": {
-							"bytes": 2245,
-							"gzip": 1137.3247544869623
-						},
-						"i18n-BLkzMf6D.js": {
-							"bytes": 111,
-							"gzip": 106.88888888888889
-						},
-						"component-DEwcJKDA.js": {
-							"bytes": 1461,
-							"gzip": 816.1505073280722
-						},
-						"props-from-config-BOUcpF7e.js": {
-							"bytes": 18716,
-							"gzip": 6545.5405491360125
-						},
-						"validators-BgDmq-Qt.js": {
-							"bytes": 152,
-							"gzip": 131.14801444043323
-						},
-						"component-B8UMedaK.js": {
-							"bytes": 398,
-							"gzip": 280.0032051282051
-						},
-						"component-bIIx1x7q.js": {
-							"bytes": 311,
-							"gzip": 227.87289719626168
-						},
-						"disabled-B2o4Ctgy.js": {
-							"bytes": 43,
-							"gzip": 44.33540372670807
-						},
-						"id-Bh4FF8c0.js": {
-							"bytes": 37,
-							"gzip": 38.201298701298704
-						},
-						"component-hiabKVP3.js": {
-							"bytes": 2124,
-							"gzip": 1063.161502005104
-						},
-						"label-hints-CZGo9ZD5.js": {
-							"bytes": 312,
-							"gzip": 234.6341463414634
-						},
-						"controller-CZcQ57AP.js": {
-							"bytes": 1477,
-							"gzip": 742.1832917705735
-						},
-						"element-interaction-sGYdEpmv.js": {
-							"bytes": 1221,
-							"gzip": 654.5567010309278
-						},
-						"element-focus-BIRmGg5W.js": {
-							"bytes": 2068,
-							"gzip": 1038.2668500687757
-						},
-						"item-hsQoejqZ.js": {
-							"bytes": 1025,
-							"gzip": 571.4479025710419
-						},
-						"base-web-component-CYPdDdRn.js": {
-							"bytes": 950,
-							"gzip": 430.8550185873606
-						},
-						"label-with-expert-slot-D1tpX9DI.js": {
-							"bytes": 52,
-							"gzip": 43.48122866894198
-						},
-						"label-lang-segment-C5LYGOHt.js": {
-							"bytes": 56,
-							"gzip": 49.08366533864542
-						},
-						"resolve-props-DAVb5BM3.js": {
-							"bytes": 1170,
-							"gzip": 571.6030534351146
-						},
-						"aria-labelledby-DqJY_4G-.js": {
-							"bytes": 489,
-							"gzip": 344.34119782214157
-						},
-						"api-D0RNr-zh.js": {
-							"bytes": 10906,
-							"gzip": 3923.170574636724
-						},
-						"tooltip-open-tracking-D3tCiiGP.js": {
-							"bytes": 91,
-							"gzip": 34.49314762733806
-						},
-						"behavior-B6y5Gofe.js": {
-							"bytes": 21964,
-							"gzip": 8325.357082273113
-						},
-						"input-C1YsxnDL.js": {
-							"bytes": 634,
-							"gzip": 373.3264462809917
-						},
-						"component-CSsUaL_h.js": {
-							"bytes": 2742,
-							"gzip": 1129.9306836248013
-						},
-						"behavior-DlH8byIw.js": {
-							"bytes": 3944,
-							"gzip": 1640.7710843373495
-						},
-						"Heading-BubZbykM.js": {
-							"bytes": 960,
-							"gzip": 451.23287671232873
-						},
-						"component-ZdHnXLLI.js": {
-							"bytes": 1755,
-							"gzip": 878.6694802310084
-						},
-						"item-Dms_59sU.js": {
-							"bytes": 2091,
-							"gzip": 1035.3222557905337
-						},
-						"spell-check-hy6xFhmT.js": {
-							"bytes": 49,
-							"gzip": 48.160000000000004
-						},
-						"placeholder-DlHbiVjz.js": {
-							"bytes": 50,
-							"gzip": 48.01136363636364
-						},
-						"suggestions-CY8BJMOa.js": {
-							"bytes": 384,
-							"gzip": 277.87636363636364
-						},
-						"suggestions-BsiiaAxK.js": {
-							"bytes": 226,
-							"gzip": 166.55020080321285
-						},
-						"input-container-zXl_6y52.js": {
-							"bytes": 1722,
-							"gzip": 881.4522589659991
-						},
-						"base-web-component-DP9_OPgV.js": {
-							"bytes": 5236,
-							"gzip": 1729.0898587933248
-						},
-						"read-only-DSBWEPED.js": {
-							"bytes": 43,
-							"gzip": 44.06172839506173
-						},
-						"smart-button-CQps8AlL.js": {
-							"bytes": 197,
-							"gzip": 157.82072829131653
-						},
-						"value-string-Dy8zJxlP.js": {
-							"bytes": 44,
-							"gzip": 44.25730994152047
-						},
-						"required-xw5BBPvV.js": {
-							"bytes": 43,
-							"gzip": 42.74096385542169
-						},
-						"access-and-short-key-ijzCZfHm.js": {
-							"bytes": 114,
-							"gzip": 111.4806629834254
-						},
-						"behavior-BJR8CKBx.js": {
-							"bytes": 3501,
-							"gzip": 1207.8724516466284
-						},
-						"multiple-S3Ol1G6Z.js": {
-							"bytes": 43,
-							"gzip": 43.51807228915663
-						},
-						"component-CMHB3reH.js": {
-							"bytes": 586,
-							"gzip": 347.76635514018693
-						},
-						"contrast-DtK0a6X2.js": {
-							"bytes": 1009,
-							"gzip": 507.94368600682594
-						},
-						"color-BbljGuAW.js": {
-							"bytes": 930,
-							"gzip": 415.61946902654864
-						}
-					}
-				},
-				"KoliBri theme": {
-					"bytes": 798494,
-					"gzip": 92305.9300649823,
-					"items": {
-						"theme-default": {
-							"bytes": 798494,
-							"gzip": 92305.9300649823
-						}
-					}
-				},
-				"Fink tokens": {
-					"bytes": 3564,
-					"gzip": 411.99850562633776,
-					"items": {
-						"index.js": {
-							"bytes": 3564,
-							"gzip": 411.99850562633776
-						}
-					}
-				},
-				"Fink theme": {
-					"bytes": 10891,
-					"gzip": 1258.99992277678,
-					"items": {
-						"overrides.js": {
-							"bytes": 2654,
-							"gzip": 306.80247865664995
-						},
-						"kolibri-locales.js": {
-							"bytes": 6949,
-							"gzip": 803.304605947649
-						},
-						"index.js": {
-							"bytes": 1288,
-							"gzip": 148.8928381724812
 						}
 					}
 				},
@@ -1545,6 +1265,248 @@
 						"@lit/react": {
 							"bytes": 1219,
 							"gzip": 367.2985122844416
+						}
+					}
+				},
+				"KoliBri core": {
+					"bytes": 237552,
+					"gzip": 57578.11907247156,
+					"items": {
+						"@stencil/react-output-target": {
+							"bytes": 788,
+							"gzip": 237.43332869576702
+						},
+						"common-BdSzSIXg.js": {
+							"bytes": 35823,
+							"gzip": 4141.139861686952
+						},
+						"component-names-Dhbtt0mX.js": {
+							"bytes": 1459,
+							"gzip": 168.66044324041152
+						},
+						"i18n-BRgvVqCf.js": {
+							"bytes": 7161,
+							"gzip": 827.811812230697
+						},
+						"bootstrap-Bp7i4RJQ.js": {
+							"bytes": 402,
+							"gzip": 46.47121191408186
+						},
+						"bem-registry-SKACeCny.js": {
+							"bytes": 520,
+							"gzip": 60.11201541125017
+						},
+						"events-CRHxtwup.js": {
+							"bytes": 804,
+							"gzip": 92.94242382816373
+						},
+						"index": {
+							"bytes": 9913,
+							"gzip": 1145.943093791775
+						},
+						"index-Bbr6Os1b.js": {
+							"bytes": 42286,
+							"gzip": 4888.262853231009
+						},
+						"app-globals-DYRte_jr.js": {
+							"bytes": 312,
+							"gzip": 36.0672092467501
+						},
+						"loader": {
+							"bytes": 40344,
+							"gzip": 4663.767595675917
+						},
+						"dev.utils-B0t4rcBV.js": {
+							"bytes": 1536,
+							"gzip": 940.5017921146954
+						},
+						"devtools-DuJRc6wJ.js": {
+							"bytes": 1844,
+							"gzip": 990.5419664268585
+						},
+						"tslib.es6-QNbPBOk5.js": {
+							"bytes": 678,
+							"gzip": 400.88828337874656
+						},
+						"component-CNgECeRi.js": {
+							"bytes": 2245,
+							"gzip": 1137.3247544869623
+						},
+						"component-DEwcJKDA.js": {
+							"bytes": 1461,
+							"gzip": 816.1505073280722
+						},
+						"i18n-BLkzMf6D.js": {
+							"bytes": 111,
+							"gzip": 106.88888888888889
+						},
+						"props-from-config-BOUcpF7e.js": {
+							"bytes": 18716,
+							"gzip": 6545.5405491360125
+						},
+						"validators-BgDmq-Qt.js": {
+							"bytes": 152,
+							"gzip": 131.14801444043323
+						},
+						"component-B8UMedaK.js": {
+							"bytes": 398,
+							"gzip": 280.0032051282051
+						},
+						"component-bIIx1x7q.js": {
+							"bytes": 311,
+							"gzip": 227.87289719626168
+						},
+						"component-hiabKVP3.js": {
+							"bytes": 2124,
+							"gzip": 1063.161502005104
+						},
+						"item-hsQoejqZ.js": {
+							"bytes": 1025,
+							"gzip": 571.4479025710419
+						},
+						"disabled-B2o4Ctgy.js": {
+							"bytes": 43,
+							"gzip": 44.33540372670807
+						},
+						"label-hints-CZGo9ZD5.js": {
+							"bytes": 312,
+							"gzip": 234.6341463414634
+						},
+						"id-Bh4FF8c0.js": {
+							"bytes": 37,
+							"gzip": 38.201298701298704
+						},
+						"label-with-expert-slot-D1tpX9DI.js": {
+							"bytes": 52,
+							"gzip": 43.48122866894198
+						},
+						"controller-CZcQ57AP.js": {
+							"bytes": 1477,
+							"gzip": 742.1832917705735
+						},
+						"label-lang-segment-C5LYGOHt.js": {
+							"bytes": 56,
+							"gzip": 49.08366533864542
+						},
+						"element-interaction-sGYdEpmv.js": {
+							"bytes": 1221,
+							"gzip": 654.5567010309278
+						},
+						"element-focus-BIRmGg5W.js": {
+							"bytes": 2068,
+							"gzip": 1038.2668500687757
+						},
+						"resolve-props-DAVb5BM3.js": {
+							"bytes": 1170,
+							"gzip": 571.6030534351146
+						},
+						"base-web-component-CYPdDdRn.js": {
+							"bytes": 950,
+							"gzip": 430.8550185873606
+						},
+						"api-D0RNr-zh.js": {
+							"bytes": 10906,
+							"gzip": 3923.170574636724
+						},
+						"aria-labelledby-DqJY_4G-.js": {
+							"bytes": 489,
+							"gzip": 344.34119782214157
+						},
+						"tooltip-open-tracking-D3tCiiGP.js": {
+							"bytes": 91,
+							"gzip": 34.49314762733806
+						},
+						"behavior-B6y5Gofe.js": {
+							"bytes": 21964,
+							"gzip": 8325.357082273113
+						},
+						"behavior-DlH8byIw.js": {
+							"bytes": 3944,
+							"gzip": 1640.7710843373495
+						},
+						"item-Dms_59sU.js": {
+							"bytes": 2091,
+							"gzip": 1035.3222557905337
+						},
+						"component-CSsUaL_h.js": {
+							"bytes": 2742,
+							"gzip": 1129.9306836248013
+						},
+						"component-ZdHnXLLI.js": {
+							"bytes": 1755,
+							"gzip": 878.6694802310084
+						},
+						"Heading-BubZbykM.js": {
+							"bytes": 960,
+							"gzip": 451.23287671232873
+						},
+						"input-C1YsxnDL.js": {
+							"bytes": 634,
+							"gzip": 373.3264462809917
+						},
+						"suggestions-CY8BJMOa.js": {
+							"bytes": 384,
+							"gzip": 277.87636363636364
+						},
+						"suggestions-BsiiaAxK.js": {
+							"bytes": 226,
+							"gzip": 166.55020080321285
+						},
+						"spell-check-hy6xFhmT.js": {
+							"bytes": 49,
+							"gzip": 48.160000000000004
+						},
+						"placeholder-DlHbiVjz.js": {
+							"bytes": 50,
+							"gzip": 48.01136363636364
+						},
+						"base-web-component-DP9_OPgV.js": {
+							"bytes": 5236,
+							"gzip": 1729.0898587933248
+						},
+						"input-container-zXl_6y52.js": {
+							"bytes": 1722,
+							"gzip": 881.4522589659991
+						},
+						"required-xw5BBPvV.js": {
+							"bytes": 43,
+							"gzip": 42.74096385542169
+						},
+						"smart-button-CQps8AlL.js": {
+							"bytes": 197,
+							"gzip": 157.82072829131653
+						},
+						"access-and-short-key-ijzCZfHm.js": {
+							"bytes": 114,
+							"gzip": 111.4806629834254
+						},
+						"read-only-DSBWEPED.js": {
+							"bytes": 43,
+							"gzip": 44.06172839506173
+						},
+						"behavior-BJR8CKBx.js": {
+							"bytes": 3501,
+							"gzip": 1207.8724516466284
+						},
+						"value-string-Dy8zJxlP.js": {
+							"bytes": 44,
+							"gzip": 44.25730994152047
+						},
+						"multiple-S3Ol1G6Z.js": {
+							"bytes": 43,
+							"gzip": 43.51807228915663
+						},
+						"color-BbljGuAW.js": {
+							"bytes": 930,
+							"gzip": 415.61946902654864
+						},
+						"contrast-DtK0a6X2.js": {
+							"bytes": 1009,
+							"gzip": 507.94368600682594
+						},
+						"component-CMHB3reH.js": {
+							"bytes": 586,
+							"gzip": 347.76635514018693
 						}
 					}
 				},
@@ -1768,6 +1730,44 @@
 						}
 					}
 				},
+				"KoliBri theme": {
+					"bytes": 798494,
+					"gzip": 92305.9300649823,
+					"items": {
+						"theme-default": {
+							"bytes": 798494,
+							"gzip": 92305.9300649823
+						}
+					}
+				},
+				"Fink tokens": {
+					"bytes": 3564,
+					"gzip": 411.99850562633776,
+					"items": {
+						"index.js": {
+							"bytes": 3564,
+							"gzip": 411.99850562633776
+						}
+					}
+				},
+				"Fink theme": {
+					"bytes": 10891,
+					"gzip": 1258.99992277678,
+					"items": {
+						"overrides.js": {
+							"bytes": 2654,
+							"gzip": 306.80247865664995
+						},
+						"kolibri-locales.js": {
+							"bytes": 6949,
+							"gzip": 803.304605947649
+						},
+						"index.js": {
+							"bytes": 1288,
+							"gzip": 148.8928381724812
+						}
+					}
+				},
 				"KoliBri components": {
 					"bytes": 56191,
 					"gzip": 15762.704740698986,
@@ -1797,6 +1797,603 @@
 						"markdown-it, entities, linkify-it, punycode, mdurl, uc.micro": {
 							"bytes": 139358,
 							"gzip": 56718
+						}
+					}
+				}
+			}
+		},
+		"kolibri-next": {
+			"name": "KoliBri next (#11637)",
+			"groups": {
+				"other": {
+					"bytes": 25404,
+					"gzip": 9728.267658306426,
+					"items": {
+						"[unmapped]": {
+							"bytes": 25404,
+							"gzip": 9728.267658306426
+						}
+					}
+				},
+				"variant code": {
+					"bytes": 1270,
+					"gzip": 598.5642233926428,
+					"items": {
+						"kolibri/main.tsx": {
+							"bytes": 824,
+							"gzip": 464.1783181357649
+						},
+						"shared/config.ts": {
+							"bytes": 446,
+							"gzip": 134.38590525687795
+						}
+					}
+				},
+				"React": {
+					"bytes": 192652,
+					"gzip": 58048.68479719294,
+					"items": {
+						"react": {
+							"bytes": 8299,
+							"gzip": 2500.6023043202467
+						},
+						"scheduler": {
+							"bytes": 3689,
+							"gzip": 1111.5461984139522
+						},
+						"react-dom": {
+							"bytes": 180664,
+							"gzip": 54436.53629445874
+						}
+					}
+				},
+				"Fink React layer": {
+					"bytes": 3411,
+					"gzip": 1027.780992895091,
+					"items": {
+						"kolibri.js": {
+							"bytes": 1688,
+							"gzip": 508.6175068915021
+						},
+						"components.js": {
+							"bytes": 252,
+							"gzip": 75.9310496070252
+						},
+						"provider.js": {
+							"bytes": 1471,
+							"gzip": 443.2324363965638
+						}
+					}
+				},
+				"Lit": {
+					"bytes": 1219,
+					"gzip": 367.3013867895386,
+					"items": {
+						"@lit/react": {
+							"bytes": 1219,
+							"gzip": 367.3013867895386
+						}
+					}
+				},
+				"KoliBri core": {
+					"bytes": 238566,
+					"gzip": 58827.37875651915,
+					"items": {
+						"@stencil/react-output-target": {
+							"bytes": 788,
+							"gzip": 237.43518686641215
+						},
+						"common-BdSzSIXg.js": {
+							"bytes": 35823,
+							"gzip": 4337.791628534398
+						},
+						"component-names-Dhbtt0mX.js": {
+							"bytes": 1459,
+							"gzip": 176.66968109962
+						},
+						"i18n-BRgvVqCf.js": {
+							"bytes": 7161,
+							"gzip": 867.1224032586557
+						},
+						"bootstrap-Bp7i4RJQ.js": {
+							"bytes": 402,
+							"gzip": 48.67800671833258
+						},
+						"bem-registry-SKACeCny.js": {
+							"bytes": 520,
+							"gzip": 62.96657585455956
+						},
+						"events-CRHxtwup.js": {
+							"bytes": 804,
+							"gzip": 97.35601343666517
+						},
+						"index": {
+							"bytes": 9913,
+							"gzip": 1200.3608970120172
+						},
+						"index-Bbr6Os1b.js": {
+							"bytes": 42286,
+							"gzip": 5120.393512665203
+						},
+						"app-globals-DYRte_jr.js": {
+							"bytes": 312,
+							"gzip": 37.779945512735736
+						},
+						"loader": {
+							"bytes": 40344,
+							"gzip": 4885.237569762213
+						},
+						"devtools-DuJRc6wJ.js": {
+							"bytes": 1844,
+							"gzip": 991.4263788968825
+						},
+						"dev.utils-B0t4rcBV.js": {
+							"bytes": 1536,
+							"gzip": 940.5017921146954
+						},
+						"tslib.es6-QNbPBOk5.js": {
+							"bytes": 678,
+							"gzip": 400.88828337874656
+						},
+						"i18n-BLkzMf6D.js": {
+							"bytes": 111,
+							"gzip": 107.91666666666666
+						},
+						"component-CNgECeRi.js": {
+							"bytes": 2245,
+							"gzip": 1135.0440230274296
+						},
+						"component-DEwcJKDA.js": {
+							"bytes": 1461,
+							"gzip": 816.1505073280722
+						},
+						"props-from-config-BOUcpF7e.js": {
+							"bytes": 18716,
+							"gzip": 6544.5484999469945
+						},
+						"disabled-B2o4Ctgy.js": {
+							"bytes": 43,
+							"gzip": 44.068322981366464
+						},
+						"component-B8UMedaK.js": {
+							"bytes": 398,
+							"gzip": 279.3653846153846
+						},
+						"component-hiabKVP3.js": {
+							"bytes": 3138,
+							"gzip": 1570.3671216961952
+						},
+						"id-Bh4FF8c0.js": {
+							"bytes": 37,
+							"gzip": 38.201298701298704
+						},
+						"component-bIIx1x7q.js": {
+							"bytes": 311,
+							"gzip": 226.71028037383178
+						},
+						"validators-BgDmq-Qt.js": {
+							"bytes": 152,
+							"gzip": 131.69675090252707
+						},
+						"item-hsQoejqZ.js": {
+							"bytes": 1025,
+							"gzip": 569.3673883626523
+						},
+						"label-hints-CZGo9ZD5.js": {
+							"bytes": 312,
+							"gzip": 232.7317073170732
+						},
+						"label-with-expert-slot-D1tpX9DI.js": {
+							"bytes": 52,
+							"gzip": 43.303754266211605
+						},
+						"controller-CZcQ57AP.js": {
+							"bytes": 1477,
+							"gzip": 742.1832917705735
+						},
+						"element-interaction-sGYdEpmv.js": {
+							"bytes": 1221,
+							"gzip": 654.5567010309278
+						},
+						"element-focus-BIRmGg5W.js": {
+							"bytes": 2068,
+							"gzip": 1038.2668500687757
+						},
+						"base-web-component-CYPdDdRn.js": {
+							"bytes": 950,
+							"gzip": 431.7379182156134
+						},
+						"label-lang-segment-C5LYGOHt.js": {
+							"bytes": 56,
+							"gzip": 49.08366533864542
+						},
+						"aria-labelledby-DqJY_4G-.js": {
+							"bytes": 489,
+							"gzip": 344.34119782214157
+						},
+						"resolve-props-DAVb5BM3.js": {
+							"bytes": 1170,
+							"gzip": 568.1679389312977
+						},
+						"api-D0RNr-zh.js": {
+							"bytes": 10906,
+							"gzip": 3921.369715984148
+						},
+						"behavior-DlH8byIw.js": {
+							"bytes": 3944,
+							"gzip": 1639.839357429719
+						},
+						"tooltip-open-tracking-D3tCiiGP.js": {
+							"bytes": 91,
+							"gzip": 34.48502299004508
+						},
+						"behavior-B6y5Gofe.js": {
+							"bytes": 21964,
+							"gzip": 8323.396098388464
+						},
+						"item-Dms_59sU.js": {
+							"bytes": 2091,
+							"gzip": 1032.5146022155086
+						},
+						"input-C1YsxnDL.js": {
+							"bytes": 634,
+							"gzip": 373.9814049586777
+						},
+						"input-container-zXl_6y52.js": {
+							"bytes": 1722,
+							"gzip": 881.4522589659991
+						},
+						"component-CSsUaL_h.js": {
+							"bytes": 2742,
+							"gzip": 1130.8025437201907
+						},
+						"Heading-BubZbykM.js": {
+							"bytes": 960,
+							"gzip": 451.23287671232873
+						},
+						"component-ZdHnXLLI.js": {
+							"bytes": 1755,
+							"gzip": 878.6694802310084
+						},
+						"spell-check-hy6xFhmT.js": {
+							"bytes": 49,
+							"gzip": 48.160000000000004
+						},
+						"suggestions-CY8BJMOa.js": {
+							"bytes": 384,
+							"gzip": 277.1781818181818
+						},
+						"suggestions-BsiiaAxK.js": {
+							"bytes": 226,
+							"gzip": 167.91164658634537
+						},
+						"base-web-component-DP9_OPgV.js": {
+							"bytes": 5236,
+							"gzip": 1724.8889602053916
+						},
+						"placeholder-DlHbiVjz.js": {
+							"bytes": 50,
+							"gzip": 48.29545454545455
+						},
+						"read-only-DSBWEPED.js": {
+							"bytes": 43,
+							"gzip": 44.592592592592595
+						},
+						"required-xw5BBPvV.js": {
+							"bytes": 43,
+							"gzip": 43
+						},
+						"smart-button-CQps8AlL.js": {
+							"bytes": 197,
+							"gzip": 157.2689075630252
+						},
+						"value-string-Dy8zJxlP.js": {
+							"bytes": 44,
+							"gzip": 44.25730994152047
+						},
+						"behavior-BJR8CKBx.js": {
+							"bytes": 3501,
+							"gzip": 1208.7875065342396
+						},
+						"multiple-S3Ol1G6Z.js": {
+							"bytes": 43,
+							"gzip": 43.25903614457831
+						},
+						"access-and-short-key-ijzCZfHm.js": {
+							"bytes": 114,
+							"gzip": 111.4806629834254
+						},
+						"component-CMHB3reH.js": {
+							"bytes": 586,
+							"gzip": 347.0817757009346
+						},
+						"color-BbljGuAW.js": {
+							"bytes": 930,
+							"gzip": 413.9734513274336
+						},
+						"contrast-DtK0a6X2.js": {
+							"bytes": 1009,
+							"gzip": 507.0827645051194
+						}
+					}
+				},
+				"Fink core": {
+					"bytes": 74479,
+					"gzip": 22441.542236831865,
+					"items": {
+						"p-Mm4qbnvn.js": {
+							"bytes": 15982,
+							"gzip": 4815.5953762677655
+						},
+						"p-aAlZGJU7.js": {
+							"bytes": 53576,
+							"gzip": 16143.182197404692
+						},
+						"p-DY84WS8v.js": {
+							"bytes": 448,
+							"gzip": 134.98853263471148
+						},
+						"p-0q_cDiSu.js": {
+							"bytes": 331,
+							"gzip": 99.73483103144979
+						},
+						"p-CTnekbzJ.js": {
+							"bytes": 975,
+							"gzip": 293.78084669384754
+						},
+						"p-CiRKhT1l.js": {
+							"bytes": 1713,
+							"gzip": 516.1503491144213
+						},
+						"p-B-BbokvN.js": {
+							"bytes": 104,
+							"gzip": 31.33662364734374
+						},
+						"p-CcR-Lcfc.js": {
+							"bytes": 1350,
+							"gzip": 406.773480037635
+						}
+					}
+				},
+				"Fink components": {
+					"bytes": 150816,
+					"gzip": 45442.925307671074,
+					"items": {
+						"fink-app-shell": {
+							"bytes": 6861,
+							"gzip": 2067.3132196579363
+						},
+						"fink-avatar-group": {
+							"bytes": 2219,
+							"gzip": 668.6150757063053
+						},
+						"fink-back-to-top": {
+							"bytes": 1884,
+							"gzip": 567.6749899191884
+						},
+						"fink-bar-chart": {
+							"bytes": 3285,
+							"gzip": 989.8154680915785
+						},
+						"fink-bottom-nav": {
+							"bytes": 2924,
+							"gzip": 881.0412263926258
+						},
+						"fink-calendar": {
+							"bytes": 6749,
+							"gzip": 2033.5660864992583
+						},
+						"fink-carousel": {
+							"bytes": 5509,
+							"gzip": 1659.9371122424677
+						},
+						"fink-code-block": {
+							"bytes": 7622,
+							"gzip": 2296.612936923596
+						},
+						"fink-consent-banner": {
+							"bytes": 4748,
+							"gzip": 1430.6373949768083
+						},
+						"fink-divider": {
+							"bytes": 1903,
+							"gzip": 573.399950008607
+						},
+						"fink-empty-state": {
+							"bytes": 1672,
+							"gzip": 503.7964878688339
+						},
+						"fink-fab": {
+							"bytes": 2822,
+							"gzip": 850.3072301231156
+						},
+						"fink-feedback": {
+							"bytes": 2904,
+							"gzip": 875.0149526142905
+						},
+						"fink-file-upload": {
+							"bytes": 6902,
+							"gzip": 2079.667080903524
+						},
+						"fink-footer": {
+							"bytes": 2572,
+							"gzip": 774.9788078939239
+						},
+						"fink-grid": {
+							"bytes": 546,
+							"gzip": 164.5172741485546
+						},
+						"fink-image-list": {
+							"bytes": 5094,
+							"gzip": 1534.8919313420095
+						},
+						"fink-infinite-scroll": {
+							"bytes": 2363,
+							"gzip": 712.0042469103196
+						},
+						"fink-kbd": {
+							"bytes": 1001,
+							"gzip": 301.61500260568346
+						},
+						"fink-list": {
+							"bytes": 4422,
+							"gzip": 1332.4091323899422
+						},
+						"fink-menu": {
+							"bytes": 5068,
+							"gzip": 1527.0577754301735
+						},
+						"fink-otp-input": {
+							"bytes": 3731,
+							"gzip": 1124.2013733484566
+						},
+						"fink-page-header": {
+							"bytes": 1947,
+							"gzip": 586.6577523209447
+						},
+						"fink-panel": {
+							"bytes": 2056,
+							"gzip": 619.5009444128723
+						},
+						"fink-popconfirm": {
+							"bytes": 2820,
+							"gzip": 849.704602745282
+						},
+						"fink-range-slider": {
+							"bytes": 5180,
+							"gzip": 1560.8049085888513
+						},
+						"fink-rating": {
+							"bytes": 2687,
+							"gzip": 809.6298821193521
+						},
+						"fink-result": {
+							"bytes": 3722,
+							"gzip": 1121.4895501482056
+						},
+						"fink-segmented": {
+							"bytes": 2917,
+							"gzip": 878.9320305702084
+						},
+						"fink-selection-bar": {
+							"bytes": 2020,
+							"gzip": 608.6536516118687
+						},
+						"fink-skeleton": {
+							"bytes": 1633,
+							"gzip": 492.04525400107997
+						},
+						"fink-sparkline": {
+							"bytes": 2557,
+							"gzip": 770.4591025601724
+						},
+						"fink-splitter": {
+							"bytes": 3600,
+							"gzip": 1084.72928010036
+						},
+						"fink-stack": {
+							"bytes": 739,
+							"gzip": 222.67081610949057
+						},
+						"fink-stat-card": {
+							"bytes": 4178,
+							"gzip": 1258.8885922942513
+						},
+						"fink-stepper": {
+							"bytes": 3389,
+							"gzip": 1021.1520917389223
+						},
+						"fink-summary-list": {
+							"bytes": 1838,
+							"gzip": 553.8145602290172
+						},
+						"fink-tag-input": {
+							"bytes": 3271,
+							"gzip": 985.5970764467438
+						},
+						"fink-task-list": {
+							"bytes": 2926,
+							"gzip": 881.6438537704594
+						},
+						"fink-timeline": {
+							"bytes": 2200,
+							"gzip": 662.8901156168866
+						},
+						"fink-toc": {
+							"bytes": 3293,
+							"gzip": 992.2259776029127
+						},
+						"fink-tour": {
+							"bytes": 4989,
+							"gzip": 1503.253994005749
+						},
+						"fink-transfer-list": {
+							"bytes": 6369,
+							"gzip": 1919.066884710887
+						},
+						"fink-virtual-list": {
+							"bytes": 3684,
+							"gzip": 1110.0396299693684
+						}
+					}
+				},
+				"KoliBri theme": {
+					"bytes": 974460,
+					"gzip": 117996.9413600656,
+					"items": {
+						"theme-default": {
+							"bytes": 974460,
+							"gzip": 117996.9413600656
+						}
+					}
+				},
+				"Fink tokens": {
+					"bytes": 3564,
+					"gzip": 431.56322374163517,
+					"items": {
+						"index.js": {
+							"bytes": 3564,
+							"gzip": 431.56322374163517
+						}
+					}
+				},
+				"Fink theme": {
+					"bytes": 10874,
+					"gzip": 1316.7279727740013,
+					"items": {
+						"overrides.js": {
+							"bytes": 2654,
+							"gzip": 321.3717159961559
+						},
+						"kolibri-locales.js": {
+							"bytes": 6949,
+							"gzip": 841.4514146410277
+						},
+						"index.js": {
+							"bytes": 1271,
+							"gzip": 153.9048421368177
+						}
+					}
+				},
+				"KoliBri components": {
+					"bytes": 56191,
+					"gzip": 15757.284604447745,
+					"items": {
+						"kol-input-text": {
+							"bytes": 19900,
+							"gzip": 5429.655704941861
+						},
+						"kol-icon": {
+							"bytes": 2793,
+							"gzip": 1061.114967462039
+						},
+						"kol-input-file": {
+							"bytes": 21145,
+							"gzip": 5656.682750825943
+						},
+						"kol-badge": {
+							"bytes": 12353,
+							"gzip": 3609.8311812179018
 						}
 					}
 				}
@@ -1894,6 +2491,16 @@
 		"lion": {
 			"name": "Lion",
 			"groups": {
+				"other": {
+					"bytes": 4324,
+					"gzip": 1869.3768157152072,
+					"items": {
+						"[unmapped]": {
+							"bytes": 4324,
+							"gzip": 1869.3768157152072
+						}
+					}
+				},
 				"variant code": {
 					"bytes": 12320,
 					"gzip": 3822.5615219194015,
@@ -1917,16 +2524,6 @@
 						"lion/main.ts": {
 							"bytes": 779,
 							"gzip": 204.02201938588388
-						}
-					}
-				},
-				"other": {
-					"bytes": 4324,
-					"gzip": 1869.3768157152072,
-					"items": {
-						"[unmapped]": {
-							"bytes": 4324,
-							"gzip": 1869.3768157152072
 						}
 					}
 				},

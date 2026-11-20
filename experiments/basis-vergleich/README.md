@@ -23,6 +23,7 @@ Zusammen nutzen sie sieben KoliBri-Bausteine: `kol-input-text`, `kol-badge` und 
 | KoliBri    | `@public-ui/components` 4.6.0, Fink-Theme                | Fink-Quellen beider Komponenten, `fink-chip`, Hilfsfunktionen, deutsche Texte       |
 | KoliBri schlank | wie KoliBri, Build mit `scripts/kolibri-icon-prune.mjs`: im Theme nur die genutzten Icons (`KOLIBRI_BUILD=slim`) | wie KoliBri       |
 | KoliBri schlank + lazy markdown | wie KoliBri schlank, zusätzlich `scripts/kolibri-lazy-markdown.mjs`: markdown-it nur bei Bedarf (`KOLIBRI_BUILD=lazy`) | wie KoliBri |
+| KoliBri next (#11637) | wie KoliBri, `scripts/kolibri-next-markdown.mjs`: markdown-it durch den Renderer aus public-ui/kolibri#11637 ersetzt, wie im nächsten Release (`KOLIBRI_BUILD=next`) | wie KoliBri |
 | React Aria | `react-aria-components` 1.22.1 (ComboBox, TagGroup, DropZone, FileTrigger) | `src/react-aria/*`, `src/shared/texts.ts`                         |
 | Lion       | `@lion/ui` 0.25.0 (lion-combobox, lion-input-file, lion-button) | `src/lion/*`, `src/shared/texts.ts`                                          |
 
@@ -51,13 +52,13 @@ pnpm dev                         # Varianten im Browser ansehen
 
 Die Zahlen stehen in [ERGEBNIS.md](ERGEBNIS.md). Kurzfassung:
 
-| | KoliBri | KoliBri schlank | KoliBri schlank + lazy markdown | React Aria | Lion |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Prüfungen bestanden (von 17) | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 17 |
-| Eigener Code (Zeilen) | 592 | 592 | 592 | 455 | 472 |
-| davon Gestaltung (CSS) | 175 | 175 | 175 | 225 | 269 |
-| Geladen, Prüfseite (gzip) | 447 KB | 421 KB | 422 KB | 155 KB | 67 KB |
-| Geladen, Seite ohne Badge (gzip) | 432 KB | 405 KB | 351 KB | – | – |
+| | KoliBri | KoliBri schlank | KoliBri schlank + lazy markdown | KoliBri next (#11637) | React Aria | Lion |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Prüfungen bestanden (von 17) | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 17 |
+| Eigener Code (Zeilen) | 592 | 592 | 592 | 592 | 455 | 472 |
+| davon Gestaltung (CSS) | 175 | 175 | 175 | 175 | 225 | 269 |
+| Geladen, Prüfseite (gzip) | 450 KB | 423 KB | 425 KB | 393 KB | 155 KB | 68 KB |
+| Geladen, Seite ohne Badge (gzip) | 434 KB | 407 KB | 353 KB | 377 KB | – | – |
 
 ## Auswertung
 
@@ -77,13 +78,13 @@ keine CSS-Variablen annimmt, und 144 Zeilen CSS für die Drop-Zone um `kol-input
 selbst gestaltet werden. Der Unterschied ist kleiner als erwartet: 50 bis 94 Zeilen mehr. Der Hochkontrastmodus
 kostete 23 Zeilen bei React Aria und 36 bei Lion.
 
-**Ladegröße.** Fink lädt mit KoliBri 4.6.0 447 KB gzip. Mit 4.6.0-rc.2 waren es noch 2.174 KB, weil das
+**Ladegröße.** Fink lädt mit KoliBri 4.6.0 450 KB gzip. Mit 4.6.0-rc.2 waren es noch 2.174 KB, weil das
 Default-Theme das Icon-CSS in 40 Komponentenstilen kopierte. Seit 4.6.0 liegt es einmal in `GLOBAL` (siehe
 „Icon-CSS einmal in GLOBAL“). Das Default-Theme macht jetzt 952 KB minifiziert aus, 115 KB gzip: 187 KB `GLOBAL` mit
 Icon-CSS und die Stile aller 45 Komponenten.
 
 Die Variante „KoliBri schlank“ entfernt beim Build alle Icon-Regeln, die weder KoliBri intern noch Fink nutzt
-(`scripts/kolibri-icon-prune.mjs`, ein Vite-Plugin mit rund 30 Zeilen). Sie lädt 421 KB gzip, bei denselben
+(`scripts/kolibri-icon-prune.mjs`, ein Vite-Plugin mit rund 30 Zeilen). Sie lädt 423 KB gzip, bei denselben
 bestandenen Prüfungen. Davon entfallen rund 70 KB auf global geladene Icon-Schriften, darunter Font Awesome, das Fink
 gar nicht nutzt.
 
@@ -149,14 +150,28 @@ aller Komponenten, beim Laden `new MarkdownIt()` an. Damit lädt jede Seite den 
 - Nach dem Laden werden alle `kol-badge` mit Stencils `forceUpdate` neu gezeichnet. `tests/markdown.spec.ts` prüft,
   dass `**wichtig**` danach als `<strong>` erscheint und `<ok>` maskiert bleibt.
 
-Ergebnis mit 4.6.0 (gzip): Auf einer Seite ohne Badge sinkt die Ladegröße von 405 auf 351 KB, um 54 KB. Auf der Prüfseite
+Ergebnis mit 4.6.0 (gzip): Auf einer Seite ohne Badge sinkt die Ladegröße von 407 auf 353 KB, um 54 KB. Auf der Prüfseite
 ändert sich nichts, weil Fink Tags als Badges darstellt und der Parser dort nachgeladen wird, nur später. In der
 Source-Map-Auswertung sinkt der KoliBri core von 110 auf 56 KB, der Parser erscheint als eigener Posten
 „KoliBri markdown (lazy)“ mit 55 KB. Alle Prüfungen bestehen weiter.
 
 Die Lösung im Experiment ist ein Nachbau per Build-Schritt auf dem fertigen Paket. KoliBri hat sich für einen anderen
 Weg entschieden: markdown-it wird in `release/4` durch einen kleinen Inline-Renderer ersetzt (public-ui/kolibri#11637).
-Sobald das veröffentlicht ist, wird `scripts/kolibri-lazy-markdown.mjs` überflüssig.
+
+## Renderer aus #11637 (nächstes Release)
+
+`scripts/kolibri-next-markdown.mjs` nimmt #11637 für 4.6.0 vorweg: Es entfernt markdown-it samt Abhängigkeiten aus dem
+core-Chunk und setzt den Renderer aus dem PR ein (`scripts/vendor/kolibri-11637-markdown.js`, nur Typen entfernt). Er
+kann fett, kursiv, durchgestrichen, Inline-Code und harte Zeilenumbrüche; Links und Bilder bleiben sichtbarer Text.
+
+- core-Chunk: 136 auf 3,3 KB minifiziert. KoliBri core in der Source-Map-Auswertung: 111 auf 57 KB gzip.
+- Prüfseite: 450 auf 393 KB gzip. Seite ohne Badge: 434 auf 377 KB.
+- Anders als beim Nachladen fällt der Parser auch auf Seiten mit Badge weg.
+- Alle Prüfungen bestehen, auch `tests/markdown.spec.ts` (`**wichtig**` als `<strong>`, `<ok>` maskiert).
+
+Ohne Theme gerechnet sinkt KoliBri damit von rund 420 auf 288 KB minifiziert (Lion 221 KB, React Aria 325 KB ohne
+React). Sobald das Release erscheint, werden `scripts/kolibri-next-markdown.mjs` und `scripts/kolibri-lazy-markdown.mjs`
+überflüssig.
 
 ## Icon-CSS einmal in GLOBAL statt in jeder Komponente
 
@@ -172,8 +187,8 @@ und gemeldet (public-ui/kolibri#11623). KoliBri hat es für alle Themes umgesetz
 | Fassung | Prüfseite (gzip) | ohne Badge (gzip) |
 | --- | ---: | ---: |
 | 4.6.0-rc.2, 40 Kopien | 2.174 KB | 2.158 KB |
-| 4.6.0, einmal in `GLOBAL` | 447 KB | 432 KB |
-| 4.6.0, nur genutzte Icons (schlank) | 421 KB | 405 KB |
+| 4.6.0, einmal in `GLOBAL` | 450 KB | 434 KB |
+| 4.6.0, nur genutzte Icons (schlank) | 423 KB | 407 KB |
 
 In der Nachbildung kostete das vollständige Icon-CSS in `GLOBAL` Zeit: Jede Komponente bekam rund 600 KB Icon-Regeln,
 die Stilberechnung für Komponenten ohne Icons wurde etwa dreimal so lang. In 4.6.0 ist `GLOBAL` mit 187 KB deutlich

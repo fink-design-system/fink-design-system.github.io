@@ -23,6 +23,7 @@ const VARIANTS = [
 	{ id: 'kolibri', name: 'KoliBri (Fink heute)', dist: 'dist', page: 'kolibri', port: 4321 },
 	{ id: 'kolibri-schlank', name: 'KoliBri schlank', dist: 'dist-slim', page: 'kolibri', port: 4322 },
 	{ id: 'kolibri-lazy', name: 'KoliBri schlank + lazy markdown', dist: 'dist-lazy', page: 'kolibri', port: 4323 },
+	{ id: 'kolibri-next', name: 'KoliBri next (#11637)', dist: 'dist-next', page: 'kolibri', port: 4325 },
 	{ id: 'react-aria', name: 'React Aria', dist: 'dist', page: 'react-aria', port: 4321 },
 	{ id: 'lion', name: 'Lion', dist: 'dist', page: 'lion', port: 4321 },
 ];
@@ -106,6 +107,7 @@ async function analyse() {
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4321', '--strictPort'], { cwd: root, stdio: 'ignore' }),
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4322', '--strictPort', '--outDir', 'dist-slim'], { cwd: root, stdio: 'ignore' }),
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4323', '--strictPort', '--outDir', 'dist-lazy'], { cwd: root, stdio: 'ignore' }),
+		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4325', '--strictPort', '--outDir', 'dist-next'], { cwd: root, stdio: 'ignore' }),
 	];
 	await new Promise((r) => setTimeout(r, 3000));
 	const browser = await chromium.launch();
