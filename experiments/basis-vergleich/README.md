@@ -6,6 +6,9 @@ Das Experiment baut zwei typische Fink-Komponenten auf React Aria und auf Lion n
 unveränderten Fink-Komponenten auf KoliBri. Alle drei Varianten erfüllen dieselbe Vorgabe und durchlaufen dieselben
 automatischen Prüfungen.
 
+Gesammelte Erkenntnisse, Stolpersteine und der Verlauf stehen in [ERKENNTNISSE.md](ERKENNTNISSE.md), ein Artikelentwurf in
+[docs/artikel/kolibri-headless-medium.md](../../docs/artikel/kolibri-headless-medium.md).
+
 ## Stichprobe
 
 | Komponente         | Warum                                                                                                   |
