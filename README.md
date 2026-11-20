@@ -107,9 +107,9 @@ pnpm icons:check   # bricht ab, wenn die Fonts nicht zur installierten KoliBri-V
   die Wahl (`useFink().setTheme`, `localStorage` „fink-theme“); die Showcase bietet sie über das Farbeimer-Symbol im Kopf an.
 - Container mit eigener Fläche melden sie über `--kol-surface`, damit KoliBri-Hosts dieselbe Fläche malen.
 
-### Marken-Themes: Porsche, Telekom, Siemens iX
+### Stil-Adaptionen: Porsche, Telekom, Siemens iX
 
-Die Marken-Themes zeigen, dass dieselben KoliBri- und Fink-Komponenten andere Design-Systeme tragen können, nur über
+Die Stil-Adaptionen zeigen, dass dieselben KoliBri- und Fink-Komponenten andere Design-Systeme tragen können, nur über
 Tokens und wenige Overrides:
 
 | Theme        | Vorbild                                     | Token-Quelle                                          |
@@ -125,15 +125,10 @@ Tokens und wenige Overrides:
 - **KoliBri-Theme:** `packages/theme/src/brands/<name>.ts` ergänzt die gemeinsamen Overrides (`sharedOverrides`) um
   Markenoptik, z. B. Button-Varianten, Radien und bei Siemens iX 32 px hohe Bedienelemente (`--a11y-min-size`; WCAG 2.2 AA
   verlangt 24 px).
-- **Nicht übernommen:** Schriften (Porsche Next, TeleNeo, Siemens Sans), Logos und Icons der Marken. Die Schriftangabe
-  nennt die Markenschrift zuerst; ist sie lizenziert lokal installiert, nutzt der Browser sie, sonst die Ersatzschrift.
-- **Kontrast:** Abweichungen vom Original sind im Token per `$description` dokumentiert (Siemens iX: `info` im Dunkelmodus
-  aufgehellt, das Original hat auf der Komponentenfläche nur 3,5:1).
-- **Rechtliches:** Fink ist nicht mit der Dr. Ing. h.c. F. Porsche AG, der Deutschen Telekom AG oder der Siemens AG
-  verbunden. Der Code der Vorbilder ist offen (Apache 2.0, MPL-2.0, MIT), die Marken nicht: Porsche lizenziert Schriften,
-  Icons und Marque nur für Porsche-Anwendungen, Telekom behält sich Logo, Magenta, Schrift und Icons vor, das Siemens-Brand-
-  Theme ist Siemens-Anwendungen vorbehalten (daher Classic). Ob die öffentliche Showcase mit diesen Nachbildungen
-  veröffentlicht werden darf, ist rechtlich zu prüfen.
+- **Nur der Stil:** keine Schriften, Logos oder Icons der Vorbilder. Die Schriftangabe ist ein System-Stack mit
+  ähnlichem Charakter; es werden keine Webfonts geladen. Keine Verbindung zu den Unternehmen.
+- **Kontrast:** Abweichungen vom Original sind im Token per `$description` dokumentiert.
+- Ob die öffentliche Showcase die Stil-Adaptionen zeigen darf, ist rechtlich zu prüfen.
 
 ## Barrierefreiheit prüfen (BITV 2.0 / WCAG 2.2)
 

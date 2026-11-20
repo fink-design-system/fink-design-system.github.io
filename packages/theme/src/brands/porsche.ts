@@ -1,4 +1,4 @@
-import { mergeOverrides, sharedOverrides } from '../overrides.js';
+import { INPUT_COMPONENTS, focusColor, forComponents, mergeOverrides, neutralTableHeader, sharedOverrides, slimInputs, tintedAlert } from '../overrides.js';
 
 /** Button-Stil für kol-button (.kol-button) und kol-link-button (.kol-link): gleiche Varianten, andere Klassen. */
 const buttons = (b: '.kol-button' | '.kol-link') => `
@@ -19,11 +19,14 @@ const buttons = (b: '.kol-button' | '.kol-link') => `
 }`;
 
 /**
- * Nachbildung des Porsche Design System v4: Schwarz/Weiß als Primärfarbe, 12 px Radius für Bedienelemente,
- * 24 px für Karten und Dialoge, Sekundär-Button als graue Fläche ohne Rahmen, normales Schriftgewicht.
- * Farben, Radius und Schrift kommen aus src/themes/porsche.json in @fink/tokens.
+ * Stil-Adaption „Porsche Design System v4“: Schwarz/Weiß als Primärfarbe, 12 px Radius für Bedienelemente,
+ * 24 px für Karten und Dialoge, Sekundär-Button als graue Fläche ohne Rahmen, normales Schriftgewicht,
+ * blauer Fokusring, neutraler Tabellenkopf, getönte Hinweise. Werte aus src/themes/porsche.json in @fink/tokens.
  */
-export const porscheOverrides = mergeOverrides(sharedOverrides, {
+export const porscheOverrides = mergeOverrides(sharedOverrides, forComponents(INPUT_COMPONENTS, slimInputs('var(--fink-radius-md)')), {
+	GLOBAL: focusColor,
+	'KOL-TABLE-STATELESS': neutralTableHeader('var(--color-surface-current)'),
+	'KOL-TABLE-STATEFUL': neutralTableHeader('var(--color-surface-current)'),
 	'KOL-BUTTON': buttons('.kol-button'),
 	'KOL-LINK-BUTTON': buttons('.kol-link'),
 	'KOL-CARD': `
@@ -42,7 +45,8 @@ export const porscheOverrides = mergeOverrides(sharedOverrides, {
 	:host {
 		--border-radius: var(--fink-radius-lg);
 	}
-}`,
+}
+${tintedAlert}`,
 	'KOL-BADGE': `
 @layer kol-theme-component {
 	:host {

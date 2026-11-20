@@ -6,6 +6,7 @@ import {
 	KolLinkButton,
 	KolQuote,
 	KolVersion,
+	tokens,
 } from '@fink/react';
 import { catalog } from '../catalog';
 import { benchmark, coverageOf } from '../catalog/benchmark';
@@ -48,7 +49,7 @@ export function Home() {
 				<FinkGrid _min="9.5rem">
 					<FinkStatCard _label={t('Fink-Komposita')} _value={String(finkCount)} _icons="codicon codicon-extensions" />
 					<FinkStatCard _label={t('KoliBri-Atome im Katalog')} _value={String(kolibriCount)} _icons="codicon codicon-symbol-misc" _tone="success" />
-					<FinkStatCard _label={t('Design Tokens')} _value="54" _icons="codicon codicon-symbol-color" _tone="warning" />
+					<FinkStatCard _label={t('Design Tokens')} _value={String(Object.keys(tokens).length)} _icons="codicon codicon-symbol-color" _tone="warning" />
 					<FinkStatCard _label={t('Abdeckung ggü. MUI, Vuetify & Co.')} _value={`${coverageOf('fink')} / ${benchmark.length}`} _icons="codicon codicon-graph" _tone="brand" />
 					<FinkStatCard _label={t('Farbschemata')} _value={t('Hell + Dunkel')} _icons="codicon codicon-color-mode" _tone="info" />
 				</FinkGrid>

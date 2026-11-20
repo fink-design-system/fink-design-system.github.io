@@ -1,5 +1,5 @@
 {
-  "$description": "Nachbildung des Porsche Design System v4 (@porsche-design-system/components-js 4.10, stylesheets/variables.css). Nur Token-Werte; Schrift Porsche Next wird nicht ausgeliefert. Keine Verbindung zur Dr. Ing. h.c. F. Porsche AG.",
+  "$description": "Stil-Adaption des Porsche Design System v4 (Token-Quelle: @porsche-design-system/components-js 4.10, stylesheets/variables.css). Keine Schriften, Logos oder Icons des Vorbilds; keine Verbindung zum Unternehmen.",
   "$label": "Porsche Design System",
   "$source": "https://designsystem.porsche.com",
   "color": {
@@ -20,11 +20,12 @@
     "mute-variant": { "light": "#c6c6c9", "dark": "#3a3b3e", "$description": "--p-color-contrast-lower" },
     "edge": { "light": "transparent", "dark": "#3a3b3e" },
     "visited": { "light": "#444447", "dark": "#c0c0c3", "$description": "PDS unterscheidet besuchte Links nicht farblich" },
+    "focus": { "light": "#1a44ea", "dark": "#5a78f2", "$description": "--p-color-focus; dunkel #1a44ea → #5a78f2 (3:1 zur Fläche)" },
     "shadow": { "light": "rgb(0 0 0 / 0.16)", "dark": "transparent" },
     "backdrop": { "light": "hsl(240 5.3% 14.9% / 0.5)", "dark": "hsl(240 5.3% 14.9% / 0.5)", "$description": "--p-color-backdrop" }
   },
   "font": {
-    "family": { "value": "\"Porsche Next\", \"Arial Narrow\", Arial, \"Heiti SC\", SimHei, sans-serif", "$description": "--p-font-porsche-next" },
+    "family": { "value": "\"Arial Narrow\", \"Roboto Condensed\", \"Helvetica Neue\", Arial, sans-serif", "$description": "Systemschrift ähnlich dem Vorbild (schmal, sachlich)" },
     "weight-medium": { "value": "600", "$description": "--p-font-weight-semibold" },
     "weight-bold": { "value": "700" }
   },

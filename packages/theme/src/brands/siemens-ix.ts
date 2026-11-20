@@ -1,4 +1,4 @@
-import { mergeOverrides, sharedOverrides } from '../overrides.js';
+import { INPUT_COMPONENTS, focusColor, forComponents, mergeOverrides, neutralTableHeader, sharedOverrides, slimInputs } from '../overrides.js';
 
 /** Button-Stil für kol-button (.kol-button) und kol-link-button (.kol-link): gleiche Varianten, andere Klassen. */
 const buttons = (b: '.kol-button' | '.kol-link') => `
@@ -19,18 +19,21 @@ const buttons = (b: '.kol-button' | '.kol-link') => `
 }`;
 
 /**
- * Nachbildung von Siemens iX (Classic): dichte Oberfläche für Industrie-Software mit 32 px hohen
- * Bedienelementen (statt KoliBris 44 px; WCAG 2.2 AA verlangt 24 px), 2 px Radius für Buttons,
- * 4 px für Flächen, Sekundär-Button als Kontur in Primärfarbe. Farben, Radius und Schrift kommen aus
- * src/themes/siemens-ix.json in @fink/tokens.
+ * Stil-Adaption „Siemens iX (Classic)“: dichte Oberfläche für Industrie-Software mit 32 px hohen
+ * Bedienelementen (statt KoliBris 44 px; WCAG 2.2 AA verlangt 24 px), 2 px Radius für Buttons und Felder,
+ * 4 px für Flächen, Sekundär-Button als Kontur in Primärfarbe, blauer Fokusring, Tabellenkopf auf
+ * gedämpfter Fläche. Werte aus src/themes/siemens-ix.json in @fink/tokens.
  */
-export const siemensIxOverrides = mergeOverrides(sharedOverrides, {
+export const siemensIxOverrides = mergeOverrides(sharedOverrides, forComponents(INPUT_COMPONENTS, slimInputs('var(--fink-radius-sm)')), {
 	GLOBAL: `
 @layer kol-theme-global {
 	:host {
 		--a11y-min-size: 2rem;
 	}
-}`,
+}
+${focusColor}`,
+	'KOL-TABLE-STATELESS': neutralTableHeader('var(--fink-color-mute)'),
+	'KOL-TABLE-STATEFUL': neutralTableHeader('var(--fink-color-mute)'),
 	'KOL-BUTTON': buttons('.kol-button'),
 	'KOL-LINK-BUTTON': buttons('.kol-link'),
 	'KOL-CARD': `

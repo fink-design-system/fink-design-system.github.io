@@ -1,5 +1,5 @@
 {
-  "$description": "Nachbildung von Siemens iX, Classic-Theme (@siemens/ix 5.3, MIT, theme/classic-light.css und classic-dark.css). Nur Token-Werte; Siemens Sans wird nicht ausgeliefert. Keine Verbindung zur Siemens AG.",
+  "$description": "Stil-Adaption von Siemens iX, Classic-Theme (Token-Quelle: @siemens/ix 5.3, MIT, theme/classic-light.css und classic-dark.css). Keine Schriften, Logos oder Icons des Vorbilds; keine Verbindung zum Unternehmen.",
   "$label": "Siemens iX (Classic)",
   "$source": "https://ix.siemens.io",
   "color": {
@@ -20,11 +20,12 @@
     "mute-variant": { "light": "#c2c6ca", "dark": "#4c5a60", "$description": "--theme-color-7 / color-4" },
     "edge": { "light": "transparent", "dark": "#4c5a60" },
     "visited": { "light": "#005e66", "dark": "#00eaff", "$description": "--theme-color-dynamic" },
+    "focus": { "light": "#0b86e0", "dark": "#199fff", "$description": "--theme-color-focus-bdr; hell #199fff → #0b86e0 (3:1 zur Fläche)" },
     "shadow": { "light": "rgb(0 0 0 / 0.2)", "dark": "transparent" },
     "backdrop": { "light": "hsl(0 0% 100% / 0.85)", "dark": "rgb(0 0 0 / 0.85)", "$description": "--theme-color-backdrop" }
   },
   "font": {
-    "family": { "value": "\"Siemens Sans\", system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", Arial, sans-serif", "$description": "--theme-font-family" },
+    "family": { "value": "system-ui, -apple-system, \"Segoe UI\", Roboto, \"Noto Sans\", Arial, sans-serif", "$description": "Systemschrift ähnlich dem Vorbild (technisch, neutral)" },
     "weight-medium": { "value": "700" },
     "weight-bold": { "value": "700" }
   },

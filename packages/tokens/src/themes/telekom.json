@@ -1,5 +1,5 @@
 {
-  "$description": "Nachbildung von Telekom Scale / One Experience (@telekom/design-tokens 1.0.0-beta.12). Nur Token-Werte; Schrift TeleNeo wird nicht ausgeliefert. Magenta ist eine Marke der Deutschen Telekom AG; keine Verbindung zur Deutschen Telekom AG.",
+  "$description": "Stil-Adaption von Telekom Scale / One Experience (Token-Quelle: @telekom/design-tokens 1.0.0-beta.12). Keine Schriften, Logos oder Icons des Vorbilds; keine Verbindung zum Unternehmen.",
   "$label": "Telekom Scale",
   "$source": "https://github.com/telekom/scale",
   "color": {
@@ -20,11 +20,12 @@
     "mute-variant": { "light": "#dfdfe1", "dark": "#39393c", "$description": "--telekom-color-ui-faint" },
     "edge": { "light": "transparent", "dark": "#39393c" },
     "visited": { "light": "#6c3bdb", "dark": "#9a75f8", "$description": "--telekom-color-text-and-icon-link-visited" },
+    "focus": { "light": "#2238df", "dark": "#7d94f9", "$description": "--telekom-color-functional-focus-standard" },
     "shadow": { "light": "hsl(0 0% 0% / 0.1)", "dark": "transparent" },
     "backdrop": { "light": "hsl(0 0% 0% / 0.5)", "dark": "hsl(0 0% 0% / 0.65)", "$description": "--telekom-color-background-backdrop" }
   },
   "font": {
-    "family": { "value": "TeleNeoWeb, TeleNeo, \"Segoe UI\", system-ui, -apple-system, Roboto, Arial, sans-serif", "$description": "--telekom-typography-font-family-sans" },
+    "family": { "value": "\"Segoe UI\", system-ui, -apple-system, Roboto, \"Helvetica Neue\", Arial, sans-serif", "$description": "Systemschrift ähnlich dem Vorbild (rund, geometrisch)" },
     "weight-medium": { "value": "700" },
     "weight-bold": { "value": "800" }
   },

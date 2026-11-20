@@ -1,4 +1,4 @@
-import { mergeOverrides, sharedOverrides } from '../overrides.js';
+import { INPUT_COMPONENTS, focusColor, forComponents, mergeOverrides, neutralTableHeader, sharedOverrides, slimInputs, tintedAlert } from '../overrides.js';
 
 /** Button-Stil für kol-button (.kol-button) und kol-link-button (.kol-link): gleiche Varianten, andere Klassen. */
 const buttons = (b: '.kol-button' | '.kol-link') => `
@@ -16,13 +16,23 @@ const buttons = (b: '.kol-button' | '.kol-link') => `
 }`;
 
 /**
- * Nachbildung von Telekom Scale: Magenta für Primäraktionen, 8 px Radius, fette Button-Beschriftung,
- * Sekundär-Button als Kontur in Textfarbe. Farben, Radius und Schrift kommen aus
- * src/themes/telekom.json in @fink/tokens.
+ * Stil-Adaption „Telekom Scale“: Magenta für Primäraktionen, 8 px Radius, fette Button-Beschriftung,
+ * Sekundär-Button als Kontur in Textfarbe, blauer Fokusring, neutraler Tabellenkopf, getönte Hinweise.
+ * Werte aus src/themes/telekom.json in @fink/tokens.
  */
-export const telekomOverrides = mergeOverrides(sharedOverrides, {
+export const telekomOverrides = mergeOverrides(sharedOverrides, forComponents(INPUT_COMPONENTS, slimInputs('var(--fink-radius-md)')), {
+	GLOBAL: focusColor,
+	'KOL-TABLE-STATELESS': neutralTableHeader('var(--color-surface-current)'),
+	'KOL-TABLE-STATEFUL': neutralTableHeader('var(--color-surface-current)'),
 	'KOL-BUTTON': buttons('.kol-button'),
 	'KOL-LINK-BUTTON': buttons('.kol-link'),
+	'KOL-ALERT': `
+@layer kol-theme-component {
+	:host {
+		--border-radius: var(--fink-radius-lg);
+	}
+}
+${tintedAlert}`,
 	'KOL-CARD': `
 @layer kol-theme-component {
 	:host {

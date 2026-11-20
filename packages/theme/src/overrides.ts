@@ -109,6 +109,88 @@ ${transparentHost}`,
 	'KOL-TABLE-STATEFUL': narrowTable,
 };
 
+/*
+ * Bausteine der Stil-Adaptionen (packages/theme/src/brands). Sie referenzieren nur Tokens.
+ */
+
+/**
+ * Fokusfarbe aus color.focus. KoliBri setzt die Umrissfarbe in vielen Komponentenregeln mit höherer
+ * Spezifität (outline: var(--color-primary-variant) …), die zugleich die Hover-Farbe ist. Die Regel steht
+ * deshalb bewusst ohne Layer und ändert nur outline-color; ob und wie dick der Fokusring ist, bleibt bei KoliBri.
+ */
+export const focusColor = `
+:focus,
+:focus *,
+:focus-within {
+	outline-color: var(--fink-color-focus);
+}`;
+
+/** Neutraler Tabellenkopf statt der Primärfläche des KoliBri-Defaults; Zeilenlinien in Linienfarbe. */
+export const neutralTableHeader = (background: string) => `
+@layer kol-theme-component {
+	.kol-table__cell {
+		border-color: var(--fink-color-mute-variant);
+	}
+	.kol-table__cell--header {
+		color: var(--fink-color-text);
+		background-color: ${background};
+		font-weight: var(--fink-font-weight-bold);
+		border-color: var(--fink-color-text);
+	}
+}`;
+
+/**
+ * Alert-Karte als getönte Fläche mit Akzent-Icon statt farbigem Kopfbalken. Text bleibt in Textfarbe,
+ * damit der Kontrast nicht von der Tonfarbe abhängt.
+ */
+export const tintedAlert = `
+@layer kol-theme-component {
+	.kol-alert--variant-card {
+		--kol-surface: color-mix(in srgb, var(--alert-accent-color) 10%, var(--fink-color-light));
+		background-color: var(--kol-surface);
+		filter: none;
+	}
+	.kol-alert--variant-card .kol-alert__heading,
+	.kol-alert--variant-card .kol-alert__closer.kol-button {
+		color: var(--fink-color-text);
+		--text-color: var(--fink-color-text);
+	}
+	.kol-alert--variant-card .kol-alert__icon {
+		color: var(--alert-accent-color);
+	}
+	.kol-alert--variant-card .kol-alert__content {
+		--kol-surface: transparent;
+		background-color: transparent;
+	}
+}`;
+
+/** Eingabefelder mit schmalem Rahmen (1 px statt KoliBris 2 px) und eigenem Radius. */
+export const slimInputs = (radius: string) => `
+@layer kol-theme-component {
+	.kol-input-container {
+		border-width: var(--fink-border-width);
+		border-radius: ${radius};
+	}
+}`;
+
+/** KoliBri-Komponenten mit Eingabefeld (.kol-input-container). */
+export const INPUT_COMPONENTS = [
+	'KOL-INPUT-COLOR',
+	'KOL-INPUT-DATE',
+	'KOL-INPUT-EMAIL',
+	'KOL-INPUT-FILE',
+	'KOL-INPUT-NUMBER',
+	'KOL-INPUT-PASSWORD',
+	'KOL-INPUT-TEXT',
+	'KOL-SELECT',
+	'KOL-SINGLE-SELECT',
+	'KOL-COMBOBOX',
+	'KOL-TEXTAREA',
+] as const;
+
+/** Wendet dasselbe CSS auf mehrere Komponenten an. */
+export const forComponents = (keys: readonly string[], css: string): Record<string, string> => Object.fromEntries(keys.map((key) => [key, css]));
+
 /** Markenoptik des Fink-Themes. */
 const finkLook: Record<string, string> = {
 	'KOL-BUTTON': `

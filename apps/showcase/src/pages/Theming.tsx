@@ -13,6 +13,7 @@ import {
 	KolSingleSelect,
 	KolLink,
 	FINK_THEMES,
+	brandThemes,
 	tokens,
 	useFink,
 	type FinkThemeName,
@@ -47,7 +48,10 @@ const FONT_OPTIONS = [
 	{ label: t('Monospace'), value: 'ui-monospace, Menlo, monospace' },
 ];
 
-function Sample() {
+/** Primärfarbe eines Themes als Hex-Wert; kol-badge wertet Farben selbst aus und akzeptiert keine var(). */
+const primaryOf = (theme?: string): string => brandThemes.find((item) => item.name === theme)?.flat['color.primary'].light ?? tokens['color.primary'].light!;
+
+function Sample({ theme }: { theme?: string }) {
 	return (
 		<FinkStack _gap="4">
 			<FinkStack _direction="row" _gap="2">
@@ -61,7 +65,7 @@ function Sample() {
 				{t('Gleiche Komponenten, anderes Theme.')}
 			</KolAlert>
 			<FinkStack _direction="row" _gap="2" _align="center">
-				<KolBadge _label={t('Badge')} _color={tokens['color.primary'].light!} />
+				<KolBadge _label={t('Badge')} _color={primaryOf(theme)} />
 				<FinkStatus _label={t('Fink-Status')} _tone="success" />
 			</FinkStack>
 		</FinkStack>
@@ -122,26 +126,17 @@ export function Theming() {
 							<h3>
 								{theme.label} <code className="muted small">data-theme="{theme.name}"</code>
 							</h3>
-							<Sample />
+							<Sample theme={theme.name} />
 						</ThemeScope>
 					))}
 				</div>
 			</section>
 
 			<section className="section" aria-labelledby="brands">
-				<h2 id="brands">{t('Marken-Themes: was übernommen wird und was nicht')}</h2>
+				<h2 id="brands">{t('Stil-Adaptionen')}</h2>
 				<p className="section-intro">
-					{t('Die Nachbildungen zeigen, dass Fink fremde Design-Systeme allein über Tokens und Theme-Overrides tragen kann. Übernommen sind veröffentlichte Token-Werte: Farben für hell und dunkel, Radien, Schatten, Bewegung und die Schriftangabe.')}
+					{t('Stil-Nachbildungen auf Basis veröffentlichter Design-Tokens: Farben, Radien, Schatten und Abstände. Keine Schriften, Logos oder Icons der Vorbilder; keine Verbindung zu den Unternehmen.')}
 				</p>
-				<ul className="section-intro brand-notes">
-					<li>{t('Schriften (Porsche Next, TeleNeo, Siemens Sans), Logos und Icons der Marken werden nicht ausgeliefert. Ist eine lizenzierte Schrift lokal installiert, nutzt der Browser sie, sonst die Ersatzschrift.')}</li>
-					<li>{t('Wo ein Originalwert die Kontrastprüfung (WCAG 2.2 AA) nicht besteht, ist er minimal angepasst und im Token dokumentiert.')}</li>
-					<li>{t('Siemens iX nutzt das offene Classic-Theme (MIT). Das Siemens-Brand-Theme ist Siemens-Anwendungen vorbehalten.')}</li>
-					<li>
-						<strong>{t('Keine Verbindung zu den Marken:')}</strong>{' '}
-						{t('Fink ist weder mit der Dr. Ing. h.c. F. Porsche AG, der Deutschen Telekom AG noch der Siemens AG verbunden. Die Nachbildungen dienen nur der Demonstration; Marken, Magenta und Markenfarben gehören ihren Inhabern.')}
-					</li>
-				</ul>
 				<ul className="section-intro brand-notes">
 					{FINK_THEMES.filter((theme) => theme.brand).map((theme) => (
 						<li key={theme.name}>
