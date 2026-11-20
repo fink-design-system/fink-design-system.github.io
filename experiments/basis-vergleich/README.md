@@ -85,7 +85,25 @@ selbst gestaltet werden. Der Unterschied ist kleiner als erwartet: 50 bis 94 Zei
 kostete 23 Zeilen bei React Aria und 36 bei Lion.
 
 **Ladegröße.** Fink lädt mit KoliBri 4.6.0 447 KB gzip, mit 4.5.0 waren es 2.181 KB, mit 4.7 werden es 393 KB
-(siehe „KoliBri 4.5, 4.6 und 4.7 im Vergleich“). Das Default-Theme macht jetzt 952 KB minifiziert aus, 115 KB gzip: 187 KB `GLOBAL` mit
+(siehe „KoliBri 4.5, 4.6 und 4.7 im Vergleich“).
+
+Die Prüfseiten sind untereinander nicht vergleichbar: Die KoliBri-Seite lädt zusätzlich Icon-Schriften (Codicons
+49 KB, Font Awesome 20 KB gzip), alle 44 Fink-Komponenten (43 KB) und React mit Finks React-Schicht (60 KB). Mit
+gleichem Umfang, also Bibliothek, Laufzeit, Theme oder eigenes CSS und Code der beiden Komponenten (gzip, Anteile aus
+der Source Map):
+
+| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 | React Aria | Lion |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Bibliothek mit Abhängigkeiten | 137 KB | 126 KB | 73 KB | 91 KB | 56 KB |
+| Laufzeit der Komponenten | 22 KB (Stencil, Fink) | 21 KB | 22 KB | 59 KB (React) | 5 KB (Lit) |
+| Gestaltung: Theme bzw. eigenes CSS | 1.838 KB | 115 KB | 115 KB | 1 KB | 0,4 KB |
+| Code der beiden Komponenten und der Seite | 7 KB | 6 KB | 7 KB | 4 KB | 7 KB |
+| **Summe** | **2.003 KB** | **269 KB** | **217 KB** | **155 KB** | **68 KB** |
+| Summe mit Theme nur für genutzte Komponenten und Icons (geschätzt) | – | 168 KB | 116 KB | 155 KB | 68 KB |
+
+Das Default-Theme gestaltet alle 45 KoliBri-Komponenten, Lion und React Aria haben nur CSS für diese beiden. Die
+geschätzte Zeile rechnet das Theme auf `GLOBAL` mit den genutzten Icons und die Stile der drei genutzten Komponenten
+herunter. Das Default-Theme macht jetzt 952 KB minifiziert aus, 115 KB gzip: 187 KB `GLOBAL` mit
 Icon-CSS und die Stile aller 45 Komponenten.
 
 Die Variante „KoliBri schlank“ entfernt beim Build alle Icon-Regeln, die weder KoliBri intern noch Fink nutzt
