@@ -6,10 +6,10 @@ import { expect, test } from '@playwright/test';
  * und rohes HTML maskiert bleibt.
  */
 const KOLIBRI = [
-	{ name: 'KoliBri 4.6.0', base: '' },
-	{ name: 'KoliBri 4.6.0 schlank', base: 'http://localhost:4319' },
+	{ name: 'KoliBri 4.7.0-rc.0', base: '' },
+	{ name: 'KoliBri 4.7.0-rc.0 schlank', base: 'http://localhost:4319' },
 	{ name: 'KoliBri 4.5.0', base: 'http://localhost:4323' },
-	{ name: 'KoliBri 4.7 (release/4)', base: 'http://localhost:4329' },
+	{ name: 'KoliBri 4.6.0', base: 'http://localhost:4329' },
 ];
 
 for (const variant of KOLIBRI) {

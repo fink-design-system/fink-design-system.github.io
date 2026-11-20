@@ -54,7 +54,7 @@
 			],
 			"total": 592
 		},
-		"kolibri": {
+		"kolibri-4.6": {
 			"name": "KoliBri 4.6.0",
 			"logic": 417,
 			"style": 175,
@@ -107,8 +107,8 @@
 			],
 			"total": 592
 		},
-		"kolibri-4.7": {
-			"name": "KoliBri 4.7 (release/4)",
+		"kolibri": {
+			"name": "KoliBri 4.7.0-rc.0",
 			"logic": 417,
 			"style": 175,
 			"files": [
@@ -161,7 +161,7 @@
 			"total": 592
 		},
 		"kolibri-schlank": {
-			"name": "KoliBri 4.6.0 schlank",
+			"name": "KoliBri 4.7.0-rc.0 schlank",
 			"logic": 417,
 			"style": 175,
 			"files": [
@@ -273,58 +273,58 @@
 	"loaded": {
 		"kolibri-4.5": {
 			"requests": 64,
-			"scriptBytes": 14370031,
-			"scriptGzip": 2160024,
+			"scriptBytes": 14372779,
+			"scriptGzip": 2161136,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 2233049,
+			"totalGzip": 2234161,
 			"noBadge": {
 				"requests": 51,
-				"scriptBytes": 14304881,
-				"scriptGzip": 2137509,
+				"scriptBytes": 14307629,
+				"scriptGzip": 2138615,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 2210534
+				"totalGzip": 2211640
+			}
+		},
+		"kolibri-4.6": {
+			"requests": 60,
+			"scriptBytes": 1868463,
+			"scriptGzip": 385628,
+			"styleAndFontBytes": 218786,
+			"totalGzip": 458653,
+			"noBadge": {
+				"requests": 47,
+				"scriptBytes": 1818211,
+				"scriptGzip": 369617,
+				"styleAndFontBytes": 218786,
+				"totalGzip": 442642
 			}
 		},
 		"kolibri": {
 			"requests": 64,
-			"scriptBytes": 1865520,
-			"scriptGzip": 384925,
+			"scriptBytes": 1732556,
+			"scriptGzip": 331020,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 457950,
+			"totalGzip": 404045,
 			"noBadge": {
 				"requests": 51,
-				"scriptBytes": 1815194,
-				"scriptGzip": 368877,
+				"scriptBytes": 1682230,
+				"scriptGzip": 314979,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 441902
-			}
-		},
-		"kolibri-4.7": {
-			"requests": 60,
-			"scriptBytes": 1730000,
-			"scriptGzip": 329593,
-			"styleAndFontBytes": 218786,
-			"totalGzip": 402618,
-			"noBadge": {
-				"requests": 47,
-				"scriptBytes": 1679748,
-				"scriptGzip": 313581,
-				"styleAndFontBytes": 218786,
-				"totalGzip": 386606
+				"totalGzip": 388004
 			}
 		},
 		"kolibri-schlank": {
 			"requests": 60,
-			"scriptBytes": 1689749,
-			"scriptGzip": 357902,
+			"scriptBytes": 1556787,
+			"scriptGzip": 304085,
 			"styleAndFontBytes": 218786,
-			"totalGzip": 430927,
+			"totalGzip": 377110,
 			"noBadge": {
 				"requests": 47,
-				"scriptBytes": 1639497,
-				"scriptGzip": 341899,
+				"scriptBytes": 1506535,
+				"scriptGzip": 288074,
 				"styleAndFontBytes": 218786,
-				"totalGzip": 414924
+				"totalGzip": 361099
 			}
 		},
 		"react-aria": {
@@ -343,7 +343,7 @@
 		}
 	},
 	"tests": {
-		"KoliBri 4.6.0": [
+		"KoliBri 4.7.0-rc.0": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"
@@ -418,7 +418,7 @@
 				"status": "bestanden"
 			}
 		],
-		"KoliBri 4.6.0 schlank": [
+		"KoliBri 4.7.0-rc.0 schlank": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"
@@ -568,7 +568,7 @@
 				"status": "bestanden"
 			}
 		],
-		"KoliBri 4.7 (release/4)": [
+		"KoliBri 4.6.0": [
 			{
 				"test": "Tag per Tastatur mit Enter übernehmen",
 				"status": "bestanden"

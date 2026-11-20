@@ -2,7 +2,7 @@ import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import { tokenDeclarations } from '@fink/tokens';
-import { overrides } from './overrides.js';
+import { hostOverrides, overrides } from './overrides.js';
 import { kolibriLocales } from './kolibri-locales.js';
 
 type ThemePatch = Parameters<typeof DEFAULT>[0];
@@ -15,16 +15,22 @@ export const FINK_THEME_NAME = 'fink';
  * Das Fink-Theme: die vollständigen Styles von @public-ui/theme-default plus die Fink-Overrides,
  * registriert unter eigenem Namen. Die Optik kommt überwiegend aus den Tokens (--kolibri-*-Hooks).
  */
-export const FINK: typeof DEFAULT = (patch) =>
-	DEFAULT((_name, map, options, features) => {
-		const merged: Record<string, string | undefined> = { ...map };
-		for (const [key, css] of Object.entries(overrides)) {
-			merged[key] = `${merged[key] ?? ''}\n${css}`;
-		}
-		return patch(FINK_THEME_NAME, merged as ThemeMap, options, features);
-	});
+function withOverrides(map: ThemeMap, extra: Record<string, string>): ThemeMap {
+	const merged: Record<string, string | undefined> = { ...map };
+	for (const [key, css] of Object.entries(extra)) {
+		merged[key] = `${merged[key] ?? ''}\n${css}`;
+	}
+	return merged as ThemeMap;
+}
 
-export { DEFAULT as KOLIBRI_DEFAULT };
+export const FINK: typeof DEFAULT = (patch) =>
+	DEFAULT((_name, map, options, features) => patch(FINK_THEME_NAME, withOverrides(map, overrides), options, features));
+
+/**
+ * Das KoliBri-Default-Theme für den Vergleich, unverändert bis auf transparente Hosts (siehe hostOverrides).
+ */
+export const KOLIBRI_DEFAULT: typeof DEFAULT = (patch) =>
+	DEFAULT((name, map, options, features) => patch(name, withOverrides(map, hostOverrides), options, features));
 
 const TOKENS_STYLE_ID = 'fink-tokens';
 
@@ -82,7 +88,7 @@ export const registerFink = (options: RegisterFinkOptions = {}): Promise<unknown
 	if (detect === 'auto' && typeof document !== 'undefined' && !document.documentElement.dataset.theme) {
 		document.documentElement.dataset.theme = FINK_THEME_NAME;
 	}
-	const themes = options.includeKolibriDefault === false ? [FINK] : [FINK, DEFAULT];
+	const themes = options.includeKolibriDefault === false ? [FINK] : [FINK, KOLIBRI_DEFAULT];
 	registration = register(themes, [defineCustomElements, ...(options.loaders ?? [])], {
 		environment: 'production',
 		theme: { detect, name: FINK_THEME_NAME },

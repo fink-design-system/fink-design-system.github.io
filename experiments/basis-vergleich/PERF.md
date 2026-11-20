@@ -6,18 +6,18 @@ Je Komponententyp 150 Elemente, Median aus 7 Läufen, Chromium ohne Drosselung. 
 
 ## Nur Komponenten ohne Icons (450 Elemente: kol-heading, kol-progress, kol-quote)
 
-| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 (release/4) | KoliBri 4.6.0, nur genutzte Icons |
+| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7.0-rc.0 | KoliBri 4.7.0-rc.0, nur genutzte Icons |
 | --- | ---: | ---: | ---: | ---: |
-| Rendern | 275 ms | 313 ms | 321 ms | 395 ms |
-| Stilberechnung | 27 ms | 32 ms | 38 ms | 34 ms |
-| Layout | 59 ms | 56 ms | 58 ms | 72 ms |
-| JS-Speicher | 69,6 MB | 9,7 MB | 9,1 MB | 9,1 MB |
+| Rendern | 461 ms | 488 ms | 542 ms | 448 ms |
+| Stilberechnung | 47 ms | 54 ms | 63 ms | 52 ms |
+| Layout | 104 ms | 93 ms | 94 ms | 82 ms |
+| JS-Speicher | 69,6 MB | 9,7 MB | 9,1 MB | 8,5 MB |
 
 ## Gemischt, mit und ohne Icons (900 Elemente: kol-heading, kol-progress, kol-quote, kol-button, kol-badge, kol-input-text)
 
-| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 (release/4) | KoliBri 4.6.0, nur genutzte Icons |
+| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7.0-rc.0 | KoliBri 4.7.0-rc.0, nur genutzte Icons |
 | --- | ---: | ---: | ---: | ---: |
-| Rendern | 688 ms | 676 ms | 720 ms | 841 ms |
-| Stilberechnung | 70 ms | 68 ms | 72 ms | 80 ms |
-| Layout | 95 ms | 97 ms | 98 ms | 105 ms |
-| JS-Speicher | 73,2 MB | 14,6 MB | 13,9 MB | 14,0 MB |
+| Rendern | 1.243 ms | 1.216 ms | 1.066 ms | 1.024 ms |
+| Stilberechnung | 140 ms | 133 ms | 118 ms | 108 ms |
+| Layout | 227 ms | 179 ms | 149 ms | 149 ms |
+| JS-Speicher | 73,2 MB | 14,6 MB | 13,9 MB | 13,3 MB |

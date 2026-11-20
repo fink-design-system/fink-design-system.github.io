@@ -15,9 +15,9 @@ const PER_TYPE = 150;
 
 const VARIANTS = [
 	{ id: 'kolibri-4.5', name: 'KoliBri 4.5.0', dist: 'dist-4.5', port: 4335 },
-	{ id: 'kolibri', name: 'KoliBri 4.6.0', dist: 'dist', port: 4331 },
-	{ id: 'kolibri-4.7', name: 'KoliBri 4.7 (release/4)', dist: 'dist-4.7', port: 4336 },
-	{ id: 'kolibri-schlank', name: 'KoliBri 4.6.0, nur genutzte Icons', dist: 'dist-slim', port: 4333 },
+	{ id: 'kolibri-4.6', name: 'KoliBri 4.6.0', dist: 'dist-4.6', port: 4336 },
+	{ id: 'kolibri', name: 'KoliBri 4.7.0-rc.0', dist: 'dist', port: 4331 },
+	{ id: 'kolibri-schlank', name: 'KoliBri 4.7.0-rc.0, nur genutzte Icons', dist: 'dist-slim', port: 4333 },
 ];
 
 /** Komponenten ohne Icon-CSS im Default-Theme und Komponenten mit Icon-CSS. */

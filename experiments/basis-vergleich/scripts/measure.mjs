@@ -26,8 +26,16 @@ const VARIANTS = {
 		files: [],
 		locales: [],
 	},
-	kolibri: {
+	'kolibri-4.6': {
 		name: 'KoliBri 4.6.0',
+		note: 'gleicher Fink-Code, KoliBri 4.6.0 (KOLIBRI_BUILD=4.6)',
+		page: 'kolibri',
+		dist: 'dist-4.6',
+		files: [],
+		locales: [],
+	},
+	kolibri: {
+		name: 'KoliBri 4.7.0-rc.0',
 		files: [
 			fink('components/tag-input/tag-input.tsx'),
 			fink('components/tag-input/tag-input.css'),
@@ -40,17 +48,9 @@ const VARIANTS = {
 		],
 		locales: ['tagInput', 'fileUpload', 'chip'],
 	},
-	'kolibri-4.7': {
-		name: 'KoliBri 4.7 (release/4)',
-		note: 'gleicher Fink-Code, KoliBri aus release/4, noch nicht veröffentlicht (KOLIBRI_BUILD=4.7)',
-		page: 'kolibri',
-		dist: 'dist-4.7',
-		files: [],
-		locales: [],
-	},
 	'kolibri-schlank': {
-		name: 'KoliBri 4.6.0 schlank',
-		note: 'wie KoliBri 4.6.0, Build mit scripts/kolibri-icon-prune.mjs: im Theme nur die genutzten Icons',
+		name: 'KoliBri 4.7.0-rc.0 schlank',
+		note: 'wie KoliBri 4.7.0-rc.0, Build mit scripts/kolibri-icon-prune.mjs: im Theme nur die genutzten Icons',
 		page: 'kolibri',
 		dist: 'dist-slim',
 		files: [],
@@ -128,11 +128,11 @@ function code() {
 		out[id] = { name: v.name, ...totals, total: totals.logic + totals.style };
 	}
 	// Die übrigen KoliBri-Fassungen nutzen denselben Fink-Code, nur KoliBri-Version oder Build unterscheiden sich.
-	for (const id of ['kolibri-4.5', 'kolibri-4.7', 'kolibri-schlank']) out[id] = { ...out.kolibri, name: VARIANTS[id].name };
+	for (const id of ['kolibri-4.5', 'kolibri-4.6', 'kolibri-schlank']) out[id] = { ...out.kolibri, name: VARIANTS[id].name };
 	return out;
 }
 
-const PORTS = { dist: 4318, 'dist-slim': 4320, 'dist-4.5': 4324, 'dist-4.7': 4330 };
+const PORTS = { dist: 4318, 'dist-slim': 4320, 'dist-4.5': 4324, 'dist-4.6': 4330 };
 
 /** Lädt eine Seite und summiert Skripte, Stylesheets und Schriften. */
 async function measurePage(browser, url) {

@@ -26,6 +26,7 @@ Designsystem der Verwaltung. Untersucht wurden zwei Ebenen:
 | 18.11.2026 | #11623 umgesetzt (#11629, #11631) und mit KoliBri 4.6.0 veröffentlicht, rund vier Stunden nach der Meldung |
 | 19.11.2026 | #11627 durch eigenen Inline-Renderer gelöst (#11637), keine 24 Stunden nach der Meldung, erscheint mit 4.7 |
 | 20.11.2026 | Fink auf 4.6.0 gehoben, Experiment neu gemessen, Versionsvergleich 4.5 / 4.6 / 4.7, Vergleich mit gleichem Umfang |
+| 20.11.2026 | Fink auf 4.7.0-rc.0 gehoben; alle Komponenten-Hosts per Theme auf `background: transparent` |
 
 ## Ergebnisse in Kürze
 
@@ -122,6 +123,16 @@ Designsystem der Verwaltung. Untersucht wurden zwei Ebenen:
 | – | `kol-combobox`: Aufklapp-Button ohne zugänglichen Namen | in 4.6.0 behoben |
 | – | `kol-badge` nimmt keine CSS-Variablen für Farben an | Fink löst Farben zur Laufzeit auf |
 
+## Transparente Hosts
+
+KoliBris Basis-Stil setzt in allen 50 Komponenten `:host { background-color: var(--kol-a11y-background-color) }`
+(Notfall-Stil, falls kein Theme greift). Das Default-Theme setzt die Variable auf die aktuelle Fläche und färbt
+`kol-nav` zusätzlich ein. Fink setzt in seinem Theme `:host { background: transparent }` in `kol-theme-component`, in
+`GLOBAL` und erneut für `KOL-NAV`, weil dessen Komponentenstil nach `GLOBAL` greift. Dasselbe gilt für das zum
+Vergleich registrierte Default-Theme. `fink-app-shell` und die Lightbox von `fink-image-list` malen ebenfalls keinen
+Host-Hintergrund mehr. Geprüft auf allen 164 Routen der Showcase in hell und dunkel: 96 Host-Typen, alle transparent.
+Alle 1.067 Barrierefreiheitstests bestehen.
+
 ## Methoden und Werkzeuge
 
 - **Prüfstand:** Playwright 1.63 mit axe-core 4.14 (WCAG 2.2 AA, EN 301 549, Best Practices). Elemente über Rollen und
@@ -185,7 +196,8 @@ Designsystem der Verwaltung. Untersucht wurden zwei Ebenen:
 - Aufwand nur als Codezeilen. Alle Varianten KI-gestützt, React Aria und Lion mit Fink als Vorlage.
 - Nur Chromium, keine Prüfung von Hand mit Screenreadern.
 - Pflege, Updates und BITV-Prüfungen über Jahre sind nicht erfasst.
-- 4.7 ist aus `release/4` (Commit 794c476 vom 19.11.2026) gebaut und noch nicht veröffentlicht.
+- 4.7 wurde zuerst aus `release/4` (Commit 794c476) gebaut, danach mit der Vorabversion 4.7.0-rc.0 gemessen; die Werte
+  stimmen bis auf 1 bis 2 KB überein.
 
 ## Nächste Schritte
 
@@ -193,4 +205,4 @@ Designsystem der Verwaltung. Untersucht wurden zwei Ebenen:
 2. In Fink nur die genutzten Komponenten registrieren statt aller 44 (43 KB gzip auf der Prüfseite).
 3. Font-Awesome-CSS in Fink streichen, Fink nutzt nur Codicons (20 KB gzip).
 4. In KoliBri vorschlagen: Icon-Sets wählbar machen und Theme-Stile je Komponente nachladen.
-5. Nach Erscheinen von 4.7 Fink hochziehen und `scripts/kolibri-versions.mjs` auf npm umstellen.
+5. Nach Erscheinen von 4.7.0 stabil von 4.7.0-rc.0 wechseln.

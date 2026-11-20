@@ -21,9 +21,9 @@ const kb = (n) => (n / 1024).toLocaleString('de-DE', { maximumFractionDigits: n 
 
 const VARIANTS = [
 	{ id: 'kolibri-4.5', name: 'KoliBri 4.5.0', dist: 'dist-4.5', page: 'kolibri', port: 4323 },
-	{ id: 'kolibri', name: 'KoliBri 4.6.0 (Fink heute)', dist: 'dist', page: 'kolibri', port: 4321 },
-	{ id: 'kolibri-4.7', name: 'KoliBri 4.7 (release/4)', dist: 'dist-4.7', page: 'kolibri', port: 4325 },
-	{ id: 'kolibri-schlank', name: 'KoliBri 4.6.0 schlank', dist: 'dist-slim', page: 'kolibri', port: 4322 },
+	{ id: 'kolibri-4.6', name: 'KoliBri 4.6.0', dist: 'dist-4.6', page: 'kolibri', port: 4325 },
+	{ id: 'kolibri', name: 'KoliBri 4.7.0-rc.0 (Fink heute)', dist: 'dist', page: 'kolibri', port: 4321 },
+	{ id: 'kolibri-schlank', name: 'KoliBri 4.7.0-rc.0 schlank', dist: 'dist-slim', page: 'kolibri', port: 4322 },
 	{ id: 'react-aria', name: 'React Aria', dist: 'dist', page: 'react-aria', port: 4321 },
 	{ id: 'lion', name: 'Lion', dist: 'dist', page: 'lion', port: 4321 },
 ];
@@ -106,7 +106,7 @@ async function analyse() {
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4321', '--strictPort'], { cwd: root, stdio: 'ignore' }),
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4322', '--strictPort', '--outDir', 'dist-slim'], { cwd: root, stdio: 'ignore' }),
 		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4323', '--strictPort', '--outDir', 'dist-4.5'], { cwd: root, stdio: 'ignore' }),
-		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4325', '--strictPort', '--outDir', 'dist-4.7'], { cwd: root, stdio: 'ignore' }),
+		spawn('pnpm', ['exec', 'vite', 'preview', '--port', '4325', '--strictPort', '--outDir', 'dist-4.6'], { cwd: root, stdio: 'ignore' }),
 	];
 	await new Promise((r) => setTimeout(r, 3000));
 	const browser = await chromium.launch();

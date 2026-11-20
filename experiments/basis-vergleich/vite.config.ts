@@ -10,15 +10,15 @@ import { kolibriAnalyseSplit } from './scripts/kolibri-analyse-split.mjs';
 
 /**
  * KOLIBRI_BUILD wählt die KoliBri-Fassung:
- * - nicht gesetzt: wie Fink heute, KoliBri 4.6.0 (alle Seiten, dist)
- * - slim: KoliBri 4.6.0, im Theme nur die genutzten Icons (dist-slim)
+ * - nicht gesetzt: wie Fink heute, KoliBri 4.7.0-rc.0 (alle Seiten, dist)
+ * - slim: KoliBri 4.7.0-rc.0, im Theme nur die genutzten Icons (dist-slim)
  * - 4.5: KoliBri 4.5.0 (dist-4.5)
- * - 4.7: KoliBri 4.7 aus release/4, noch nicht veröffentlicht (dist-4.7)
- * 4.5 und 4.7 liegen unter .kolibri/<version>, vorbereitet mit `pnpm kolibri:versions`.
+ * - 4.6: KoliBri 4.6.0 (dist-4.6)
+ * 4.5 und 4.6 liegen unter .kolibri/<version>, vorbereitet mit `pnpm kolibri:versions`.
  */
 const flavor = process.env.KOLIBRI_BUILD ?? '';
 const slim = flavor === 'slim';
-const version = flavor === '4.5' || flavor === '4.7' ? flavor : '';
+const version = flavor === '4.5' || flavor === '4.6' ? flavor : '';
 const versionDir = version ? resolve(import.meta.dirname, `.kolibri/${version}/node_modules/@public-ui`) : '';
 
 /** Mit ANALYZE=<seite> wird nur diese Seite gebaut und eine Treemap nach analyse/ geschrieben. */

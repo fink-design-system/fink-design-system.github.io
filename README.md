@@ -130,6 +130,12 @@ pnpm test:a11y     # Playwright + axe-core über alle Seiten, Kompositionen und 
 
 ## Bekannte Punkte
 
+- **KoliBri 4.7.0-rc.0:** Fink nutzt die Vorabversion von 4.7, weil sie markdown-it entfernt (rund 54 KB gzip
+  weniger je Seite). Vor dem Release auf 4.7.0 stabil wechseln.
+- **Transparente Hosts:** KoliBris Basis-Stil malt jeden Komponenten-Host in `--kol-a11y-background-color`.
+  `@fink/theme` setzt `:host { background: transparent }` (in `GLOBAL` und für `KOL-NAV`, auch im zum Vergleich
+  registrierten Default-Theme), damit die Fläche dem umgebenden Container gehört. Finks eigene Hosts haben ebenfalls
+  keinen Hintergrund.
 - **KoliBri 4.6.0:** Ab dieser Version hat der Aufklapp-Button von `kol-combobox` einen zugänglichen Namen (axe
   `button-name`, WCAG 4.1.2). `kol-skeleton` entfällt dort.
 - **KoliBri-Texte mit „...“:** `filename-text` und `action-running` enden auf Auslassungszeichen. `@fink/theme` erzeugt

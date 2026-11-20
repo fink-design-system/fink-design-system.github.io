@@ -5,54 +5,54 @@
 	"results": {
 		"ohne": {
 			"kolibri-4.5": {
-				"ms": 275.29999999998836,
-				"recalcStyleMs": 26.683000000000003,
-				"layoutMs": 59.474000000000004,
-				"heapMb": 69.5690689086914
+				"ms": 460.9000000001397,
+				"recalcStyleMs": 46.728,
+				"layoutMs": 104.39999999999999,
+				"heapMb": 69.55001831054688
+			},
+			"kolibri-4.6": {
+				"ms": 488.30000000004657,
+				"recalcStyleMs": 53.669,
+				"layoutMs": 92.55499999999999,
+				"heapMb": 9.725616455078125
 			},
 			"kolibri": {
-				"ms": 312.8999999999651,
-				"recalcStyleMs": 31.99,
-				"layoutMs": 55.84799999999999,
-				"heapMb": 9.726425170898438
-			},
-			"kolibri-4.7": {
-				"ms": 321.3999999999651,
-				"recalcStyleMs": 38.44799999999999,
-				"layoutMs": 57.966,
-				"heapMb": 9.117294311523438
+				"ms": 542,
+				"recalcStyleMs": 62.587,
+				"layoutMs": 93.776,
+				"heapMb": 9.120193481445312
 			},
 			"kolibri-schlank": {
-				"ms": 395.0999999999767,
-				"recalcStyleMs": 33.5,
-				"layoutMs": 71.631,
-				"heapMb": 9.10791015625
+				"ms": 447.80000000004657,
+				"recalcStyleMs": 51.927,
+				"layoutMs": 82.144,
+				"heapMb": 8.503730773925781
 			}
 		},
 		"gemischt": {
 			"kolibri-4.5": {
-				"ms": 688,
-				"recalcStyleMs": 70.04800000000002,
-				"layoutMs": 94.96800000000002,
-				"heapMb": 73.19615173339844
+				"ms": 1242.7999999998137,
+				"recalcStyleMs": 140.371,
+				"layoutMs": 227.30399999999997,
+				"heapMb": 73.19610977172852
+			},
+			"kolibri-4.6": {
+				"ms": 1216.2999999998137,
+				"recalcStyleMs": 133.44799999999998,
+				"layoutMs": 179.258,
+				"heapMb": 14.560550689697266
 			},
 			"kolibri": {
-				"ms": 676,
-				"recalcStyleMs": 68.42999999999999,
-				"layoutMs": 96.72699999999999,
-				"heapMb": 14.586067199707031
-			},
-			"kolibri-4.7": {
-				"ms": 719.9000000000233,
-				"recalcStyleMs": 71.897,
-				"layoutMs": 98.113,
-				"heapMb": 13.91912841796875
+				"ms": 1065.8000000000466,
+				"recalcStyleMs": 117.90500000000002,
+				"layoutMs": 149.148,
+				"heapMb": 13.943115234375
 			},
 			"kolibri-schlank": {
-				"ms": 841.2999999999884,
-				"recalcStyleMs": 79.689,
-				"layoutMs": 105.251,
-				"heapMb": 13.952281951904297
+				"ms": 1024.3000000000466,
+				"recalcStyleMs": 108.341,
+				"layoutMs": 149.162,
+				"heapMb": 13.278209686279297
 			}
 		}
 	}

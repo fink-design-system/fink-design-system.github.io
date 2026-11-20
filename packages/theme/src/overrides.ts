@@ -29,13 +29,34 @@ const narrowTable = `
 	}
 }`;
 
+/*
+ * Host ohne eigenen Hintergrund: KoliBris Basis-Stil malt jeden Host in --kol-a11y-background-color.
+ * Die Fläche gehört dem umgebenden Container, nicht der Komponente. Die Regel liegt in
+ * kol-theme-component, damit sie auch Theme-Regeln auf :host schlägt. KOL-NAV bekommt sie zusätzlich,
+ * weil das Default-Theme dort den Host einfärbt und sein Komponentenstil nach GLOBAL greift.
+ */
+const transparentHost = `
+@layer kol-theme-component {
+	:host {
+		background: transparent;
+	}
+}`;
+
+/** Nur die Host-Regel, für das zum Vergleich registrierte KoliBri-Default-Theme. */
+export const hostOverrides: Record<string, string> = {
+	GLOBAL: transparentHost,
+	'KOL-NAV': transparentHost,
+};
+
 export const overrides: Record<string, string> = {
 	GLOBAL: `
 @layer kol-theme-global {
 	:host {
 		--fink-focus-ring: 0 0 0 3px color-mix(in srgb, var(--fink-color-primary) 35%, transparent);
 	}
-}`,
+}
+${transparentHost}`,
+	'KOL-NAV': transparentHost,
 	'KOL-BUTTON': `
 @layer kol-theme-component {
 	:host {

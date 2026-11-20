@@ -16,6 +16,6 @@ export default defineConfig({
 		{ command: 'pnpm exec vite preview --port 4317 --strictPort', url: 'http://localhost:4317', reuseExistingServer: true },
 		{ command: 'pnpm exec vite preview --port 4319 --strictPort --outDir dist-slim', url: 'http://localhost:4319/kolibri.html', reuseExistingServer: true },
 		{ command: 'pnpm exec vite preview --port 4323 --strictPort --outDir dist-4.5', url: 'http://localhost:4323/kolibri.html', reuseExistingServer: true },
-		{ command: 'pnpm exec vite preview --port 4329 --strictPort --outDir dist-4.7', url: 'http://localhost:4329/kolibri.html', reuseExistingServer: true },
+		{ command: 'pnpm exec vite preview --port 4329 --strictPort --outDir dist-4.6', url: 'http://localhost:4329/kolibri.html', reuseExistingServer: true },
 	],
 });

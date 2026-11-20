@@ -23,10 +23,10 @@ Zusammen nutzen sie sieben KoliBri-Bausteine: `kol-input-text`, `kol-badge` und 
 
 | Variante   | Basis                                                    | Was gezählt wird                                                                    |
 | ---------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| KoliBri 4.6.0 | `@public-ui/components` 4.6.0, Fink-Theme, wie Fink heute | Fink-Quellen beider Komponenten, `fink-chip`, Hilfsfunktionen, deutsche Texte |
-| KoliBri 4.5.0 | gleicher Fink-Code auf KoliBri 4.5.0 (`KOLIBRI_BUILD=4.5`) | wie KoliBri 4.6.0 |
-| KoliBri 4.7 (release/4) | gleicher Fink-Code auf KoliBri aus `release/4`, noch nicht veröffentlicht (`KOLIBRI_BUILD=4.7`) | wie KoliBri 4.6.0 |
-| KoliBri 4.6.0 schlank | wie KoliBri 4.6.0, Build mit `scripts/kolibri-icon-prune.mjs`: im Theme nur die genutzten Icons (`KOLIBRI_BUILD=slim`) | wie KoliBri 4.6.0 |
+| KoliBri 4.7.0-rc.0 | `@public-ui/components` 4.7.0-rc.0, Fink-Theme, wie Fink heute | Fink-Quellen beider Komponenten, `fink-chip`, Hilfsfunktionen, deutsche Texte |
+| KoliBri 4.5.0 | gleicher Fink-Code auf KoliBri 4.5.0 (`KOLIBRI_BUILD=4.5`) | wie KoliBri 4.7.0-rc.0 |
+| KoliBri 4.6.0 | gleicher Fink-Code auf KoliBri 4.6.0 (`KOLIBRI_BUILD=4.6`) | wie KoliBri 4.7.0-rc.0 |
+| KoliBri 4.7.0-rc.0 schlank | wie KoliBri 4.7.0-rc.0, Build mit `scripts/kolibri-icon-prune.mjs`: im Theme nur die genutzten Icons (`KOLIBRI_BUILD=slim`) | wie KoliBri 4.7.0-rc.0 |
 | React Aria | `react-aria-components` 1.22.1 (ComboBox, TagGroup, DropZone, FileTrigger) | `src/react-aria/*`, `src/shared/texts.ts`                         |
 | Lion       | `@lion/ui` 0.25.0 (lion-combobox, lion-input-file, lion-button) | `src/lion/*`, `src/shared/texts.ts`                                          |
 
@@ -47,27 +47,25 @@ Zusammen nutzen sie sieben KoliBri-Bausteine: `kol-input-text`, `kol-badge` und 
 pnpm install
 pnpm build                       # Fink-Pakete bauen, die KoliBri-Variante nutzt sie
 cd experiments/basis-vergleich
-pnpm kolibri:versions            # KoliBri 4.5.0 von npm und 4.7 aus einem gebauten release/4-Checkout nach .kolibri/
+pnpm kolibri:versions            # KoliBri 4.5.0 und 4.6.0 von npm nach .kolibri/
 pnpm spike                       # bauen, prüfen, messen; schreibt ERGEBNIS.md und results/ergebnis.json
 pnpm dev                         # Varianten im Browser ansehen
 ```
 
-Für 4.7 braucht `pnpm kolibri:versions` einen gebauten Checkout von public-ui/kolibri, Branch `release/4`
-(`KOLIBRI_SRC`, Standard `../../../kolibri`): dort `pnpm install`, `pnpm --filter @public-ui/icons build`, in
-`packages/components` `stencil build --prod` und in `packages/themes/default` `pnpm build`. Gemessen wurde Commit
-`794c476` vom 19.11.2026; das Paket trägt dort noch die Versionsnummer 4.6.0.
+Gemessen wurde zunächst mit 4.7 aus `release/4` (Commit `794c476` vom 19.11.2026), danach mit der veröffentlichten
+Vorabversion 4.7.0-rc.0. Die Werte stimmen bis auf 1 bis 2 KB überein.
 
 ## Ergebnis
 
 Die Zahlen stehen in [ERGEBNIS.md](ERGEBNIS.md). Kurzfassung:
 
-| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 | KoliBri 4.6.0 schlank | React Aria | Lion |
+| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7.0-rc.0 | KoliBri 4.7.0-rc.0 schlank | React Aria | Lion |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Prüfungen bestanden (von 17) | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 16, eine nicht simulierbar | 17 |
 | Eigener Code (Zeilen) | 592 | 592 | 592 | 592 | 455 | 472 |
 | davon Gestaltung (CSS) | 175 | 175 | 175 | 175 | 225 | 269 |
-| Geladen, Prüfseite (gzip) | 2.181 KB | 447 KB | 393 KB | 421 KB | 155 KB | 67 KB |
-| Geladen, Seite ohne Badge (gzip) | 2.159 KB | 432 KB | 378 KB | 405 KB | – | – |
+| Geladen, Prüfseite (gzip) | 2.182 KB | 448 KB | 395 KB | 368 KB | 155 KB | 67 KB |
+| Geladen, Seite ohne Badge (gzip) | 2.160 KB | 432 KB | 379 KB | 353 KB | – | – |
 
 ## Auswertung
 
@@ -87,7 +85,7 @@ keine CSS-Variablen annimmt, und 144 Zeilen CSS für die Drop-Zone um `kol-input
 selbst gestaltet werden. Der Unterschied ist kleiner als erwartet: 50 bis 94 Zeilen mehr. Der Hochkontrastmodus
 kostete 23 Zeilen bei React Aria und 36 bei Lion.
 
-**Ladegröße.** Fink lädt mit KoliBri 4.6.0 447 KB gzip, mit 4.5.0 waren es 2.181 KB, mit 4.7 werden es 393 KB
+**Ladegröße.** Fink lädt mit KoliBri 4.7.0-rc.0 395 KB gzip, mit 4.6.0 waren es 448 KB, mit 4.5.0 2.182 KB
 (siehe „KoliBri 4.5, 4.6 und 4.7 im Vergleich“).
 
 Die Prüfseiten sind untereinander nicht vergleichbar: Die KoliBri-Seite lädt zusätzlich Icon-Schriften (Codicons
@@ -95,7 +93,7 @@ Die Prüfseiten sind untereinander nicht vergleichbar: Die KoliBri-Seite lädt z
 gleichem Umfang, also Bibliothek, Laufzeit, Theme oder eigenes CSS und Code der beiden Komponenten (gzip, Anteile aus
 der Source Map):
 
-| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7 | React Aria | Lion |
+| | KoliBri 4.5.0 | KoliBri 4.6.0 | KoliBri 4.7.0-rc.0 | React Aria | Lion |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Bibliothek mit Abhängigkeiten | 137 KB | 126 KB | 73 KB | 91 KB | 56 KB |
 | Laufzeit der Komponenten | 22 KB (Stencil, Fink) | 21 KB | 22 KB | 59 KB (React) | 5 KB (Lit) |
@@ -109,8 +107,8 @@ geschätzte Zeile rechnet das Theme auf `GLOBAL` mit den genutzten Icons und die
 herunter. Das Default-Theme macht jetzt 952 KB minifiziert aus, 115 KB gzip: 187 KB `GLOBAL` mit
 Icon-CSS und die Stile aller 45 Komponenten.
 
-Die Variante „KoliBri schlank“ entfernt beim Build alle Icon-Regeln, die weder KoliBri intern noch Fink nutzt
-(`scripts/kolibri-icon-prune.mjs`, ein Vite-Plugin mit rund 30 Zeilen). Sie lädt 421 KB gzip, bei denselben
+Die Variante „KoliBri 4.7.0-rc.0 schlank“ entfernt beim Build alle Icon-Regeln, die weder KoliBri intern noch Fink nutzt
+(`scripts/kolibri-icon-prune.mjs`, ein Vite-Plugin mit rund 30 Zeilen). Sie lädt 368 KB gzip, bei denselben
 bestandenen Prüfungen. Davon entfallen rund 70 KB auf global geladene Icon-Schriften, darunter Font Awesome, das Fink
 gar nicht nutzt.
 
@@ -134,15 +132,15 @@ beiden Komponenten kleiner. Wie sich der Abstand bei vielen Komponenten entwicke
 ## Woher die Größe kommt
 
 `pnpm spike:sourcemap` baut alle Varianten mit Source Maps und ordnet jedes beim Seitenaufruf geladene Byte seiner
-Quelle zu. Die vollständige Aufstellung je Komponente steht in [SOURCEMAP.md](SOURCEMAP.md). Für „KoliBri 4.6.0 schlank“
+Quelle zu. Die vollständige Aufstellung je Komponente steht in [SOURCEMAP.md](SOURCEMAP.md). Für „KoliBri 4.7.0-rc.0 schlank“
 (Skripte, minifiziert):
 
 | Herkunft | minifiziert | Anmerkung |
 | --- | ---: | --- |
 | KoliBri theme | 780 KB | Stile aller 45 Komponenten, auch der nicht genutzten. Die drei genutzten brauchen rund 60 KB. |
-| KoliBri core | 366 KB | Darin 136 KB markdown-it mit `entities` und `linkify-it`, importiert über `SpanFC`, die gemeinsame Beschriftung fast aller Komponenten. Ab 4.7 entfällt markdown-it: 233 KB. |
+| KoliBri core | 233 KB | Bis 4.6 kamen 136 KB markdown-it mit `entities` und `linkify-it` dazu, importiert über `SpanFC`, die gemeinsame Beschriftung fast aller Komponenten. |
 | React | 188 KB | wie bei React Aria |
-| Fink components | 147 KB | alle 44, weil `@fink/react` jede Komponente registriert. Genutzt werden zwei. |
+| Fink components | 150 KB | alle 44, weil `@fink/react` jede Komponente registriert. Genutzt werden zwei. |
 | KoliBri components | 55 KB | genau die vier genutzten: `kol-input-file`, `kol-input-text`, `kol-badge`, `kol-icon` |
 | Fink core, theme, tokens | 87 KB | Stencil-Laufzeit von Fink, Texte, Overrides |
 
@@ -164,12 +162,12 @@ Daraus ergaben sich vier Hebel. Zwei davon hat KoliBri inzwischen umgesetzt:
 
 ## KoliBri 4.5, 4.6 und 4.7 im Vergleich
 
-Derselbe Fink-Code auf drei KoliBri-Versionen. 4.7 ist aus `release/4` gebaut und noch nicht veröffentlicht.
+Derselbe Fink-Code auf drei KoliBri-Versionen. 4.7 ist die Vorabversion 4.7.0-rc.0.
 
 | | 4.5.0 | 4.6.0 | 4.7 |
 | --- | ---: | ---: | ---: |
-| Prüfseite (gzip) | 2.181 KB | 447 KB | 393 KB |
-| Seite ohne Badge (gzip) | 2.159 KB | 432 KB | 378 KB |
+| Prüfseite (gzip) | 2.182 KB | 448 KB | 395 KB |
+| Seite ohne Badge (gzip) | 2.160 KB | 432 KB | 379 KB |
 | KoliBri theme (gzip) | 1.838 KB | 115 KB | 115 KB |
 | KoliBri core (gzip) | 112 KB | 111 KB | 57 KB |
 | KoliBri components, die vier genutzten (gzip) | 25 KB | 15 KB | 15 KB |

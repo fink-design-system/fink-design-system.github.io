@@ -8,13 +8,13 @@
     "icons:sync": "fink-sync-icons public/assets/icon-fonts",
     "dev": "pnpm icons:sync && vite",
     "kolibri:versions": "node scripts/kolibri-versions.mjs",
-    "spike:build": "pnpm icons:sync && vite build && KOLIBRI_BUILD=slim vite build && KOLIBRI_BUILD=4.5 vite build && KOLIBRI_BUILD=4.7 vite build",
+    "spike:build": "pnpm icons:sync && vite build && KOLIBRI_BUILD=slim vite build && KOLIBRI_BUILD=4.5 vite build && KOLIBRI_BUILD=4.6 vite build",
     "spike:test": "playwright test",
     "spike:measure": "node scripts/measure.mjs",
     "spike": "pnpm spike:build && pnpm spike:test && pnpm spike:measure",
-    "spike:treemap": "pnpm icons:sync && ANALYZE=kolibri vite build && ANALYZE=kolibri KOLIBRI_BUILD=slim vite build && ANALYZE=kolibri KOLIBRI_BUILD=4.5 vite build && ANALYZE=kolibri KOLIBRI_BUILD=4.7 vite build && ANALYZE=react-aria vite build && ANALYZE=lion vite build",
+    "spike:treemap": "pnpm icons:sync && ANALYZE=kolibri vite build && ANALYZE=kolibri KOLIBRI_BUILD=slim vite build && ANALYZE=kolibri KOLIBRI_BUILD=4.5 vite build && ANALYZE=kolibri KOLIBRI_BUILD=4.6 vite build && ANALYZE=react-aria vite build && ANALYZE=lion vite build",
     "spike:perf": "node scripts/perf.mjs",
-    "spike:sourcemap": "pnpm icons:sync && SOURCEMAP=1 vite build && SOURCEMAP=1 KOLIBRI_BUILD=slim vite build && SOURCEMAP=1 KOLIBRI_BUILD=4.5 vite build && SOURCEMAP=1 KOLIBRI_BUILD=4.7 vite build && node scripts/sourcemap.mjs"
+    "spike:sourcemap": "pnpm icons:sync && SOURCEMAP=1 vite build && SOURCEMAP=1 KOLIBRI_BUILD=slim vite build && SOURCEMAP=1 KOLIBRI_BUILD=4.5 vite build && SOURCEMAP=1 KOLIBRI_BUILD=4.6 vite build && node scripts/sourcemap.mjs"
   },
   "dependencies": {
     "@fink/components": "workspace:*",
@@ -22,8 +22,8 @@
     "@fink/theme": "workspace:*",
     "@fink/tokens": "workspace:*",
     "@lion/ui": "0.25.0",
-    "@public-ui/components": "4.6.0",
-    "@public-ui/theme-default": "4.6.0",
+    "@public-ui/components": "4.7.0-rc.0",
+    "@public-ui/theme-default": "4.7.0-rc.0",
     "lit": "3.3.3",
     "react": "19.2.0",
     "react-aria-components": "1.22.1",

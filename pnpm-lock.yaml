@@ -57,11 +57,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tokens
       '@public-ui/components':
-        specifier: 4.6.0
-        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.7.0-rc.0
+        version: 4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25)
       '@public-ui/theme-default':
-        specifier: 4.6.0
-        version: 4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))
+        specifier: 4.7.0-rc.0
+        version: 4.7.0-rc.0(@public-ui/components@4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25))
       i18next:
         specifier: 25.10.10
         version: 25.10.10(typescript@5.9.3)
@@ -109,11 +109,11 @@ importers:
         specifier: 0.25.0
         version: 0.25.0
       '@public-ui/components':
-        specifier: 4.6.0
-        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.7.0-rc.0
+        version: 4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25)
       '@public-ui/theme-default':
-        specifier: 4.6.0
-        version: 4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))
+        specifier: 4.7.0-rc.0
+        version: 4.7.0-rc.0(@public-ui/components@4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25))
       lit:
         specifier: 3.3.3
         version: 3.3.3
@@ -162,8 +162,8 @@ importers:
         version: 25.10.10(typescript@5.9.3)
     devDependencies:
       '@public-ui/components':
-        specifier: 4.6.0
-        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.7.0-rc.0
+        version: 4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25)
       '@stencil/core':
         specifier: 4.45.3
         version: 4.45.3
@@ -183,15 +183,15 @@ importers:
         specifier: workspace:*
         version: link:../tokens
       '@public-ui/react-v19':
-        specifier: 4.6.0
-        version: 4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 4.7.0-rc.0
+        version: 4.7.0-rc.0(@public-ui/components@4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@stencil/react-output-target':
         specifier: 1.8.1
         version: 1.8.1(@stencil/core@4.45.3)(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     devDependencies:
       '@public-ui/components':
-        specifier: 4.6.0
-        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.7.0-rc.0
+        version: 4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25)
       '@types/react':
         specifier: 19.2.2
         version: 19.2.2
@@ -215,11 +215,11 @@ importers:
         version: link:../tokens
     devDependencies:
       '@public-ui/components':
-        specifier: 4.6.0
-        version: 4.6.0(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.7.0-rc.0
+        version: 4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25)
       '@public-ui/theme-default':
-        specifier: 4.6.0
-        version: 4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))
+        specifier: 4.7.0-rc.0
+        version: 4.7.0-rc.0(@public-ui/components@4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25))
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -619,23 +619,23 @@ packages:
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
 
-  '@public-ui/components@4.6.0':
-    resolution: {integrity: sha512-YpmBQV6pO+1qMGSAQtLG/2GQLAYiTiJLJnZ9itOOIqrdjTR/0YjbfGCUpw7mC0RdDOJ0nAuGypRxsNeEJwPHzQ==}
+  '@public-ui/components@4.7.0-rc.0':
+    resolution: {integrity: sha512-VU+wLKbqtFdluWlwiuxGSl8zHiNPQ3USn9194a/I/ODjl8l5VlEV+A9AkuwWHzjj2icLzgoVWe9oilQXwzDC5A==}
     hasBin: true
     peerDependencies:
       adopted-style-sheets: 1.2.0-rc.3
 
-  '@public-ui/react-v19@4.6.0':
-    resolution: {integrity: sha512-r3pM3H6vZUZqG9C4a9zvqwPcDWKtSZuLuWS0vMg4UK9sQLAKyJuQ9AohoNDFViVa66iLEgoGBq0b37YuZ7WwFw==}
+  '@public-ui/react-v19@4.7.0-rc.0':
+    resolution: {integrity: sha512-mUK8a4xbEKOl8w0Qnf5pIN/4+A/jNL3e81TNDTAZUPHYumxlBe6s2EfkyLmKV4o+Id1dBVKgHY6Oy0Cv1tJgMQ==}
     peerDependencies:
-      '@public-ui/components': 4.6.0
+      '@public-ui/components': 4.7.0-rc.0
       react: 19.x
       react-dom: 19.x
 
-  '@public-ui/theme-default@4.6.0':
-    resolution: {integrity: sha512-1nm+bBAbo2WdX4i6tbpvR6yz2p8634YkVFEsnVca66kMZBt19lOz9jZr/5e5SsGcQzZ27Qnz3wMSG5yVEzvBoA==}
+  '@public-ui/theme-default@4.7.0-rc.0':
+    resolution: {integrity: sha512-R1I3YPfM3hTu7MzUh+Wo11BVNaXi6j9IxO3REUkzsNrD/qSgfBHunjOfnCS3VpOrdv9LifxCT6maEwCFL4Uqfg==}
     peerDependencies:
-      '@public-ui/components': 4.6.0
+      '@public-ui/components': 4.7.0-rc.0
 
   '@react-types/shared@3.37.0':
     resolution: {integrity: sha512-VNlZuifu4tHdxWPfHvoMfKsHA9kVTCGkduv5vKVTdinm8wHFJNhyVB5RzIMiRFj0q3RKoCbP68u2zaoBSiFueg==}
@@ -1657,9 +1657,6 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
-  linkify-it@5.0.2:
-    resolution: {integrity: sha512-ONTm2jCMAVZjgQa/Fy1kScXsuOoF5NPTsoFBdE1KVIZ2vAh/r9+Bqo+0jINCBYnavTPQZz38QzFTme79ENoN3Q==}
-
   lit-element@4.2.2:
     resolution: {integrity: sha512-aFKhNToWxoyhkNDmWZwEva2SlQia+jfG0fjIWV//YeTaWrVnOxD89dPKfigCUspXFmjzOEUQpOkejH5Ly6sG0w==}
 
@@ -1686,19 +1683,12 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  markdown-it@14.3.3:
-    resolution: {integrity: sha512-L//tDAkjTjJCU6pBUSBTgs3Kg4InVaZuUZog/b6V12UKhcDQ7S78877ibbCanRExwPuYP1CZD7Gd2dxSy1GXRg==}
-    hasBin: true
-
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
 
   mdn-data@2.37.2:
     resolution: {integrity: sha512-rz9YOBGItdSbe7HcSArUbhiAv4SB/4DKRYg96CSFS2CcIYMbUvBtZlzA1NCbk2AdgbmYwMqwNblLpR441lLeiQ==}
-
-  mdurl@2.1.0:
-    resolution: {integrity: sha512-1+HBaOx0zi/dQWht8rNv9MYf9qqpqL/kxI0hXImU6Y547zM6Sni8BQibt7ifgMcYtQg41ao3Ivd6cnSM86inpg==}
 
   minimatch@10.2.6:
     resolution: {integrity: sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==}
@@ -1809,10 +1799,6 @@ packages:
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
-
-  punycode.js@2.3.1:
-    resolution: {integrity: sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==}
-    engines: {node: '>=6'}
 
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
@@ -2094,9 +2080,6 @@ packages:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
-
-  uc.micro@2.1.0:
-    resolution: {integrity: sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==}
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
@@ -2592,27 +2575,26 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
-  '@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25)':
+  '@public-ui/components@4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25)':
     dependencies:
       '@floating-ui/dom': 1.8.0
       adopted-style-sheets: 1.1.9-rc.25
       color-convert: 3.1.3
       color-rgba: 2.4.0
       lodash-es: 4.18.1
-      markdown-it: 14.3.3
       rgba-convert: 0.3.0
       typed-bem: 1.0.2
       wcag-contrast: 3.0.0
 
-  '@public-ui/react-v19@4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@public-ui/react-v19@4.7.0-rc.0(@public-ui/components@4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@public-ui/components': 4.6.0(adopted-style-sheets@1.1.9-rc.25)
+      '@public-ui/components': 4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@public-ui/theme-default@4.6.0(@public-ui/components@4.6.0(adopted-style-sheets@1.1.9-rc.25))':
+  '@public-ui/theme-default@4.7.0-rc.0(@public-ui/components@4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25))':
     dependencies:
-      '@public-ui/components': 4.6.0(adopted-style-sheets@1.1.9-rc.25)
+      '@public-ui/components': 4.7.0-rc.0(adopted-style-sheets@1.1.9-rc.25)
 
   '@react-types/shared@3.37.0(react@19.2.0)':
     dependencies:
@@ -3753,10 +3735,6 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  linkify-it@5.0.2:
-    dependencies:
-      uc.micro: 2.1.0
-
   lit-element@4.2.2:
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.6.0
@@ -3787,20 +3765,9 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  markdown-it@14.3.3:
-    dependencies:
-      argparse: 2.0.1
-      entities: 4.5.0
-      linkify-it: 5.0.2
-      mdurl: 2.1.0
-      punycode.js: 2.3.1
-      uc.micro: 2.1.0
-
   math-intrinsics@1.1.0: {}
 
   mdn-data@2.37.2: {}
-
-  mdurl@2.1.0: {}
 
   minimatch@10.2.6:
     dependencies:
@@ -3909,8 +3876,6 @@ snapshots:
   powershell-utils@0.2.1: {}
 
   prelude-ls@1.2.1: {}
-
-  punycode.js@2.3.1: {}
 
   punycode@2.3.1: {}
 
@@ -4277,8 +4242,6 @@ snapshots:
       - supports-color
 
   typescript@5.9.3: {}
-
-  uc.micro@2.1.0: {}
 
   unbox-primitive@1.1.0:
     dependencies:

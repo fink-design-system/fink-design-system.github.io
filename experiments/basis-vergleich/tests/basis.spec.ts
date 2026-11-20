@@ -6,10 +6,10 @@ import { expect, test, type Locator, type Page } from '@playwright/test';
  * nur die Ablagestelle für Ziehen und Ablegen ist je Variante angegeben.
  */
 const VARIANTS = [
-	{ id: 'kolibri', name: 'KoliBri 4.6.0', dropTarget: 'fink-file-upload' },
-	{ id: 'kolibri', name: 'KoliBri 4.6.0 schlank', dropTarget: 'fink-file-upload', base: 'http://localhost:4319' },
+	{ id: 'kolibri', name: 'KoliBri 4.7.0-rc.0', dropTarget: 'fink-file-upload' },
+	{ id: 'kolibri', name: 'KoliBri 4.7.0-rc.0 schlank', dropTarget: 'fink-file-upload', base: 'http://localhost:4319' },
 	{ id: 'kolibri', name: 'KoliBri 4.5.0', dropTarget: 'fink-file-upload', base: 'http://localhost:4323' },
-	{ id: 'kolibri', name: 'KoliBri 4.7 (release/4)', dropTarget: 'fink-file-upload', base: 'http://localhost:4329' },
+	{ id: 'kolibri', name: 'KoliBri 4.6.0', dropTarget: 'fink-file-upload', base: 'http://localhost:4329' },
 	{ id: 'react-aria', name: 'React Aria', dropTarget: '.ra-zone' },
 	{ id: 'lion', name: 'Lion', dropTarget: 'fink-lion-file-upload .input-file__drop-zone' },
 ] as const;
