@@ -35,9 +35,10 @@ Amtliche Systeme, bei denen die Organisation selbst Consumer ist (eigene Webserv
 | System | Organisation (Consumer) | Land | Status/Quelle |
 |---|---|---|---|
 | [ECL — Europa Component Library](https://github.com/ec-europa/europa-component-library) | Europäische Kommission (eigene EU-Websites) | EU | aktiv, 164 ★, EUPL-1.1; KoliBri: `@public-ui/theme-ecl` |
-| [KERN UX](https://kernux.de) | Bund + Länder Schleswig-Holstein, Hamburg, NRW, Bayern, Berlin (FITKO) | DE | aktiv; KoliBri: `@public-ui/theme-kern` — bereits als Fink-Theme umgesetzt; Repo auch auf [openCode](https://gitlab.opencode.de/kern-designsystem) |
+| [KERN UX](https://kernux.de) | Bund + Länder SH, Hamburg, NRW, Bayern, Berlin (FITKO; seit 2026 Produkt des IT-Planungsrats — Thüringen u. a. beteiligt) | DE | aktiv; KoliBri: `@public-ui/theme-kern` — bereits als Fink-Theme umgesetzt; Repo auch auf [openCode](https://gitlab.opencode.de/kern-designsystem) |
 | [BW St — Design-Portal Baden-Württemberg](https://design-portal.baden-wuerttemberg.de) | Land Baden-Württemberg | DE | KoliBri: `@public-ui/theme-bwst` |
-| [DESYBRI](https://www.itzbund.de/DE/itloesungen/standardloesungen/desybri-design-system/desybri.html) | ITZBund (Bund) | DE | KoliBri: `@public-ui/theme-desy` |
+| [Desy — Design System Hamburg](https://www.npmjs.com/package/@public-ui/theme-desy) | Stadt Hamburg | DE | KoliBri: `@public-ui/theme-desy` |
+| [DESYBRI](https://www.itzbund.de/DE/itloesungen/standardloesungen/desybri-design-system/desybri.html) | ITZBund (Bund) | DE | dokumentiert; keine öffentliche Theme-Implementierung — mit Desy (Stadt Hamburg) nicht verwechseln |
 | [Amsterdam Design System](https://github.com/Amsterdam/design-system) | Stadt Amsterdam (eigene Dienste) | NL | aktiv, GitHub, am NL Design System ausgerichtet |
 | [Styleguide Stadt Gent](https://stijlgids.stad.gent) | Stadt Gent (eigene Websites) | BE | aktiv, technologieunabhängig |
 | [Helsingborg Styleguide v2](https://styleguide.helsingborg.se) | Stadt Helsingborg | SE | aktiv, BEM/Atomic Design |
