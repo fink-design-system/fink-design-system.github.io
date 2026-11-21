@@ -19,6 +19,8 @@ export default defineConfig<A11yOptions>({
 	workers: 4,
 	timeout: 90_000,
 	reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : [['list']],
+	/* Snapshot-Baselines der Visual-Tests (Original-Design-Systeme) liegen zentral unter e2e/visual-snapshots. */
+	snapshotPathTemplate: '{testDir}/visual-snapshots/{arg}{ext}',
 	use: {
 		baseURL: `http://localhost:${port}`,
 		trace: 'off',
@@ -47,6 +49,7 @@ export default defineConfig<A11yOptions>({
 			})),
 		),
 		{ name: 'text-spacing', testMatch: /text-spacing\.spec\.ts/, use: { ...desktop, variant: { language: 'de', scheme: 'light' } } },
+		{ name: 'visual', testMatch: /visual[/](originals|fink)\.spec\.ts/, use: { ...desktop, viewport: { width: 900, height: 1200 } } },
 		{ name: 'states-light', testMatch: /states\.spec\.ts/, use: { ...desktop, variant: { language: 'de', scheme: 'light' } } },
 		{ name: 'states-dark', testMatch: /states\.spec\.ts/, use: { ...desktop, variant: { language: 'de', scheme: 'dark' } } },
 	],

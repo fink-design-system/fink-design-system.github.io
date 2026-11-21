@@ -3,9 +3,16 @@ import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import { brandThemes, themeCss } from '@fink/tokens';
 import { hostOverrides, overrides } from './overrides.js';
+import { baloiseOverrides } from './brands/baloise.js';
 import { dbOverrides } from './brands/db.js';
+import { dyouOverrides } from './brands/dyou.js';
+import { infineonOverrides } from './brands/infineon.js';
+import { kernOverrides } from './brands/kern.js';
 import { porscheOverrides } from './brands/porsche.js';
+import { postOverrides } from './brands/post.js';
 import { siemensIxOverrides } from './brands/siemens-ix.js';
+import { sixOverrides } from './brands/six.js';
+import { tegelOverrides } from './brands/tegel.js';
 import { telekomOverrides } from './brands/telekom.js';
 import { kolibriLocales } from './kolibri-locales.js';
 
@@ -42,9 +49,16 @@ export const FINK: typeof DEFAULT = createTheme(FINK_THEME_NAME, overrides);
 export type FinkBrandThemeName = (typeof brandThemes)[number]['name'];
 
 const brandOverrides: Record<FinkBrandThemeName, Record<string, string>> = {
+	baloise: baloiseOverrides,
 	db: dbOverrides,
+	dyou: dyouOverrides,
+	infineon: infineonOverrides,
+	kern: kernOverrides,
 	porsche: porscheOverrides,
+	post: postOverrides,
 	'siemens-ix': siemensIxOverrides,
+	six: sixOverrides,
+	tegel: tegelOverrides,
 	telekom: telekomOverrides,
 };
 

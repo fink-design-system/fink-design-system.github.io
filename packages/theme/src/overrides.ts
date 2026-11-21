@@ -67,7 +67,7 @@ export const sharedOverrides: Record<string, string> = {
 	GLOBAL: `
 @layer kol-theme-global {
 	:host {
-		--fink-focus-ring: 0 0 0 3px color-mix(in srgb, var(--fink-color-primary) 35%, transparent);
+		--fink-focus-ring: 0 0 0 3px color-mix(in srgb, var(--fink-focus-color) 35%, transparent);
 	}
 }
 ${transparentHost}`,
@@ -103,6 +103,19 @@ ${transparentHost}`,
 		white-space: normal;
 		text-overflow: clip;
 		overflow-wrap: anywhere;
+	}
+}`,
+	/*
+	 * Drawer-Labels sind im Default-Theme translucent gefärbt (Schwarz mit ~45 % Alpha) und liegen
+	 * damit unterhalb der 4,5:1 des axe-Kontrastchecks. Volle Textfarbe stattdessen (WCAG 1.4.3).
+	 * Ausnahme von der Kein-!important-Regel: die Label-Regel des Default-Themes hat höhere
+	 * Spezifität und es gibt keinen Token-Angriffspunkt auf die Transparenz.
+	 */
+	'KOL-DRAWER': `
+@layer kol-theme-component {
+	.kol-drawer .kol-span__label {
+		color: var(--fink-color-text) !important;
+		opacity: 1 !important;
 	}
 }`,
 	'KOL-TABLE-STATELESS': narrowTable,

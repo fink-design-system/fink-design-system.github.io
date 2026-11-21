@@ -36,4 +36,5 @@ export const en: Record<string, string> = {
 	Doku: 'Docs',
 	LÖSCHEN: 'DELETE',
 	'Geben Sie zur Bestätigung LÖSCHEN ein.': 'Type DELETE to confirm.',
+	'Mehr erfahren': 'Learn more',
 };

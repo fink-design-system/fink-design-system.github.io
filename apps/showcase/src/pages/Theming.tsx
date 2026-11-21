@@ -48,10 +48,25 @@ const FONT_OPTIONS = [
 	{ label: t('Monospace'), value: 'ui-monospace, Menlo, monospace' },
 ];
 
-/** Primärfarbe eines Themes als Hex-Wert; kol-badge wertet Farben selbst aus und akzeptiert keine var(). */
-const primaryOf = (theme?: string): string => brandThemes.find((item) => item.name === theme)?.flat['color.primary'].light ?? tokens['color.primary'].light!;
+/**
+ * Primärfarbe eines Themes als Hex-Wert; kol-badge wertet Farben selbst aus und akzeptiert keine
+ * var(). Je Farbschema der passende Wert — sonst zeigt der Dunkelmodus die hellen Light-Werte.
+ */
+const primaryOf = (theme: string | undefined, scheme: 'light' | 'dark'): string => {
+	const info = brandThemes.find((item) => item.name === theme)?.flat['color.primary'] ?? tokens['color.primary'];
+	return scheme === 'dark' ? (info.dark ?? info.value!) : (info.light ?? info.value!);
+};
 
-function Sample({ theme }: { theme?: string }) {
+/** Textfarbe mit ≥4,5:1 auf dem gegebenen Hintergrund (kol-badge wählt selbst nur weiß/schwarz pauschal). */
+const foregroundOn = (bg: string): string => {
+	const lum = [1, 3, 5]
+		.map((i) => parseInt(bg.slice(i, i + 2), 16) / 255)
+		.map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4))
+		.reduce((acc, v, i) => acc + [0.2126, 0.7152, 0.0722][i] * v, 0);
+	return lum > 0.179 ? '#1d1d1e' : '#ffffff';
+};
+
+function Sample({ theme, scheme }: { theme?: string; scheme: 'light' | 'dark' }) {
 	return (
 		<FinkStack _gap="4">
 			<FinkStack _direction="row" _gap="2">
@@ -65,7 +80,10 @@ function Sample({ theme }: { theme?: string }) {
 				{t('Gleiche Komponenten, anderes Theme.')}
 			</KolAlert>
 			<FinkStack _direction="row" _gap="2" _align="center">
-				<KolBadge _label={t('Badge')} _color={primaryOf(theme)} />
+				<KolBadge
+					_label={t('Badge')}
+					_color={{ backgroundColor: primaryOf(theme, scheme), foregroundColor: foregroundOn(primaryOf(theme, scheme)) }}
+				/>
 				<FinkStatus _label={t('Fink-Status')} _tone="success" />
 			</FinkStack>
 		</FinkStack>
@@ -85,6 +103,7 @@ function ThemeScope({ theme, children }: { theme: string; children: ReactNode })
 }
 
 export function Theming() {
+	const { colorScheme } = useFink();
 	const [primary, setPrimary] = useState<string>(tokens['color.primary'].light!);
 	const [radius, setRadius] = useState(10);
 	const [font, setFont] = useState('var(--fink-font-family)');
@@ -126,7 +145,7 @@ export function Theming() {
 							<h3>
 								{theme.label} <code className="muted small">data-theme="{theme.name}"</code>
 							</h3>
-							<Sample theme={theme.name} />
+							<Sample scheme={colorScheme === 'dark' ? 'dark' : 'light'} theme={theme.name} />
 						</ThemeScope>
 					))}
 				</div>
@@ -175,7 +194,7 @@ export function Theming() {
 					</div>
 					<div className="compare-pane" style={scoped}>
 						<FinkStatCard _label={t('Vorschau')} _value={t('42 Anträge')} _trend={7} _trendLabel={t('diese Woche')} _icons="codicon codicon-paintcan" />
-						<Sample />
+						<Sample scheme={colorScheme === 'dark' ? 'dark' : 'light'} />
 					</div>
 				</div>
 			</section>

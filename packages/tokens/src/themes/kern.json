@@ -1,0 +1,125 @@
+{
+	"$description": "Stil-Nachbau von KERN UX (Design-System Schleswig-Holstein, Quelle: @kern-ux/native 2.3.0, dist/kern.css Fallback-Werte). Die Schrift Fira Sans ist frei verfügbar und bleibt erhalten. KoliBri liefert zudem das fertige Paket @public-ui/theme-kern.",
+	"$label": "KERN UX",
+	"$source": "https://www.npmjs.com/package/@kern-ux/native",
+	"color": {
+		"primary": {
+			"light": "#1A3DA5",
+			"dark": "#8593d6",
+			"$description": "kern-color-action-default; im Dunkel abgeleitet aufgehellt (#8593d6) für Text-Kontrast"
+		},
+		"primary-variant": {
+			"light": "#1A3DA5",
+			"dark": "#aab5ee",
+			"$description": "Hover im Dunkel abgeleitet heller statt dunkler"
+		},
+		"secondary": {
+			"light": "#E0F4FC",
+			"dark": "#171A2B",
+			"$description": "feedback-info-background / Textton als dunkle Fläche"
+		},
+		"success": {
+			"light": "#006B51",
+			"dark": "#35b28a",
+			"$description": "kern-color-feedback-success; im Dunkel abgeleitet aufgehellt (Tonfarbe als Text auf dunkler Fläche ≥4,5:1)"
+		},
+		"warning": {
+			"light": "#8A4F00",
+			"dark": "#d99a2b",
+			"$description": "kern-color-feedback-warning; im Dunkel abgeleitet aufgehellt (Tonfarbe als Text auf dunkler Fläche ≥4,5:1)"
+		},
+		"danger": {
+			"light": "#BD0F09",
+			"dark": "#ff6257",
+			"$description": "kern-color-feedback-danger; im Dunkel abgeleitet aufgehellt (Tonfarbe als Text auf dunkler Fläche ≥4,5:1)"
+		},
+		"info": {
+			"light": "#006490",
+			"dark": "#4db3d9",
+			"$description": "kern-color-feedback-info; im Dunkel abgeleitet aufgehellt (Tonfarbe als Text auf dunkler Fläche ≥4,5:1)"
+		},
+		"text": {
+			"light": "#171A2B",
+			"dark": "#FFFFFF",
+			"$description": "kern-color-layout-text-default"
+		},
+		"subtle": {
+			"light": "#404565",
+			"dark": "#A5AAC3",
+			"$description": "text-muted / Border-Ton als dunkle Sekundärstufe"
+		},
+		"ink": {
+			"light": "#000000",
+			"dark": "#FFFFFF"
+		},
+		"surface": {
+			"light": "#FFFFFF",
+			"dark": "#171A2B",
+			"$description": "layout-background-default; Dark-Modus bei KERN nicht dokumentiert"
+		},
+		"light": {
+			"light": "#FFFFFF",
+			"dark": "#171A2B",
+			"$description": "layout-background-default"
+		},
+		"overlay": {
+			"light": "#FFFFFF",
+			"dark": "#171A2B",
+			"$description": "layout-background-default"
+		},
+		"mute": {
+			"light": "#FFFFFF",
+			"dark": "#171A2B",
+			"$description": "KERN kennt nur default und hued als Flächen; hued ohne aufgelösten Wert"
+		},
+		"mute-variant": {
+			"light": "#A5AAC3",
+			"dark": "#404565",
+			"$description": "kern-color-layout-border"
+		},
+		"edge": {
+			"light": "transparent",
+			"dark": "#404565",
+			"$description": "Kante statt Schatten im Dark Mode"
+		},
+		"visited": {
+			"light": "#1A3DA5",
+			"dark": "#1A3DA5",
+			"$description": "Visited als eigenes Action-Token referenziert, ohne aufgelösten Wert"
+		},
+		"shadow": {
+			"light": "rgb(23 26 43 / 0.14)",
+			"dark": "transparent",
+			"$description": "neutraler Schatten im Textton"
+		},
+		"backdrop": {
+			"light": "rgb(23 26 43 / 0.35)",
+			"dark": "rgb(0 0 0 / 0.6)",
+			"$description": "aus dem Fink-Raster"
+		},
+		"focus": {
+			"value": "#1A3DA5",
+			"$description": "KERN setzt den Fokus als dreistufigen Box-Shadow auf Action-Tokens; Fink nutzt einen Fokusring"
+		}
+	},
+	"radius": {
+		"sm": {
+			"value": "2px",
+			"$description": "kern-metric-border-radius-small"
+		},
+		"md": {
+			"value": "4px",
+			"$description": "kern-metric-border-radius-default"
+		},
+		"lg": {
+			"value": "8px",
+			"$description": "kern-metric-border-radius-large"
+		}
+	},
+	"font": {
+		"family": {
+			"value": "\"Fira Sans\", Arial, sans-serif",
+			"$description": "frei verfügbar, im Original verankert; KoliBris theme-kern nutzt @fontsource/fira-sans"
+		}
+	}
+}

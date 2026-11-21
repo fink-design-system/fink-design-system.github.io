@@ -9,6 +9,7 @@
     "icons:check": "pnpm --filter @fink/showcase icons:check",
     "lint": "eslint . && tsc -p tsconfig.e2e.json",
     "test:a11y": "playwright test",
+    "test:visual": "FINK_VISUAL=1 playwright test --project=visual",
     "test:a11y:report": "playwright show-report",
     "check:a11y": "pnpm lint && pnpm test:a11y",
     "locales:check": "pnpm --filter @fink/theme locales:check"
