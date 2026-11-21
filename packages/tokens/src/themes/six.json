@@ -30,8 +30,8 @@
 		},
 		"danger": {
 			"light": "#DE3919",
-			"dark": "#DE3919",
-			"$description": "danger-800; Dark-Variante nicht definiert"
+			"dark": "#ff7a5c",
+			"$description": "danger-800; im Dunkel abgeleitet aufgehellt (#ff7a5c), da der Button-Text über --color-light dunkel bleibt"
 		},
 		"info": {
 			"light": "#2196F3",

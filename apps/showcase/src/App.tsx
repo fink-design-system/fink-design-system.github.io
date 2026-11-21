@@ -21,7 +21,6 @@ import { PatternsIndex } from './pages/PatternsIndex';
 import { PatternDetail } from './pages/PatternDetail';
 import { CompositionsIndex } from './pages/CompositionsIndex';
 import { Reuse } from './pages/Reuse';
-import { Nachbau, NachbauDetail } from './pages/Nachbau';
 import { Compare } from './pages/Compare';
 import { findComposition } from './compositions';
 import { t } from './i18n';
@@ -33,7 +32,6 @@ const pages = [
 	{ path: '/components', label: t('Komponenten'), icon: 'codicon codicon-symbol-misc' },
 	{ path: '/patterns', label: t('Patterns'), icon: 'codicon codicon-library' },
 	{ path: '/compositions', label: t('Kompositionen'), icon: 'codicon codicon-play' },
-	{ path: '/nachbau', label: t('Nachbau-Skins'), icon: 'codicon codicon-megaphone' },
 	{ path: '/compare', label: t('Vergleich'), icon: 'codicon codicon-graph' },
 	{ path: '/reuse', label: t('KoliBri-Nachnutzung'), icon: 'codicon codicon-references' },
 ];
@@ -46,8 +44,6 @@ function renderPage(route: string) {
 	if (route === '/patterns') return <PatternsIndex />;
 	if (route.startsWith('/patterns/')) return <PatternDetail id={decodeURIComponent(route.slice('/patterns/'.length))} />;
 	if (route === '/compositions') return <CompositionsIndex />;
-	if (route === '/nachbau') return <Nachbau />;
-	if (route.startsWith('/nachbau/')) return <NachbauDetail id={decodeURIComponent(route.slice('/nachbau/'.length))} />;
 	if (route === '/compare') return <Compare />;
 	if (route === '/reuse') return <Reuse />;
 	return <Home />;

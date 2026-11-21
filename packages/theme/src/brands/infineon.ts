@@ -1,6 +1,6 @@
 import { INPUT_COMPONENTS, focusColor, forComponents, mergeOverrides, neutralTableHeader, sharedOverrides, slimInputs, tintedAlert } from '../overrides.js';
 
-/** Buttons: Semibold (600) wie über das Vorbild definiert, Sekundär/Normal als getönte Fläche. */
+/** Buttons: Semibold (600) wie über das Vorbild definiert, Sekundär/Normal als Kontur in Primary. */
 const buttons = (b: '.kol-button' | '.kol-link') => `
 @layer kol-theme-component {
 	${b}__text {
@@ -9,9 +9,9 @@ const buttons = (b: '.kol-button' | '.kol-link') => `
 	}
 	${b}--secondary,
 	${b}--normal {
-		--text-background-color: var(--fink-color-mute);
-		--text-border-color: var(--fink-color-mute);
-		--text-color: var(--fink-color-text);
+		--text-background-color: transparent;
+		--text-border-color: var(--fink-color-primary);
+		--text-color: var(--fink-color-primary);
 	}
 }`;
 

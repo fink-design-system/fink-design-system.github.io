@@ -5,13 +5,13 @@
 	"color": {
 		"primary": {
 			"light": "#0A8276",
-			"dark": "#0A8276",
-			"$description": "Ocean500; eine Dark-Variante ist in dieser Quelle nicht definiert"
+			"dark": "#4fc0b3",
+			"$description": "Ocean500; im Dunkel abgeleitet aufgehellt (#4fc0b3), weil Ocean als Text auf Schwarz nur 4,0:1 erreicht"
 		},
 		"primary-variant": {
 			"light": "#08665C",
-			"dark": "#0A8276",
-			"$description": "Ocean600 als dunklere Stufe; im Dark bleibt Primary"
+			"dark": "#7ad4c9",
+			"$description": "Hover: light Ocean600, dark abgeleitet heller"
 		},
 		"secondary": {
 			"light": "#F7F7F7",
@@ -30,8 +30,8 @@
 		},
 		"danger": {
 			"light": "#CD002F",
-			"dark": "#CD002F",
-			"$description": "Red500; Dark-Variante nicht definiert"
+			"dark": "#ff92a0",
+			"$description": "Red500; im Dunkel abgeleitet aufgehellt (#ff92a0) für Text-Kontrast"
 		},
 		"info": {
 			"light": "#0A8276",

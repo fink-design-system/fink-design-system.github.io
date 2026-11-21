@@ -5,13 +5,13 @@
 	"color": {
 		"primary": {
 			"light": "#000D6E",
-			"dark": "#000D6E",
-			"$description": "primary-5 (blue-5); eine Dark-Variante ist in dieser Quelle nicht definiert"
+			"dark": "#B3B6D4",
+			"$description": "primary-5 (blue-5); im Dunkel auf blue-2 aufgehellt (Text- und Buttonrolle ≥4,5:1)"
 		},
 		"primary-variant": {
 			"light": "#000739",
-			"dark": "#293485",
-			"$description": "blue-6 (dunkler) / blue-4 (heller), gespiegelte Skalenpositionen"
+			"dark": "#E5E7F0",
+			"$description": "Hover: light blue-6, dark blue-1 (im Dunkel heller statt dunkler)"
 		},
 		"secondary": {
 			"light": "#E5E7F0",
@@ -30,8 +30,8 @@
 		},
 		"danger": {
 			"light": "#EA1800",
-			"dark": "#EA1800",
-			"$description": "danger-4; Dark-Variante nicht definiert"
+			"dark": "#ff596f",
+			"$description": "danger-4; im Dunkel auf red-4 (#ff596f) aufgehellt (weiß نیست 4,9:1 → dunkler Text 4,9:1)"
 		},
 		"info": {
 			"light": "#1C77D2",
@@ -60,8 +60,8 @@
 		},
 		"light": {
 			"light": "#FFFFFF",
-			"dark": "#000D6E",
-			"$description": "Weiß / blue-5 als Komponentenfläche"
+			"dark": "#313131",
+			"$description": "Komponentenfläche: Weiß / grey-6; --color-light ist zugleich Button-Text im Dunkel"
 		},
 		"overlay": {
 			"light": "#FFFFFF",

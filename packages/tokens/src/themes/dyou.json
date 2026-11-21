@@ -14,9 +14,9 @@
 			"$description": "keine separate Hover-Stufe im PR dokumentiert"
 		},
 		"secondary": {
-			"light": "#96F5AF",
-			"dark": "#068227",
-			"$description": "Mint Beam als primary-container, im Dark gespiegelt"
+			"light": "color-mix(in srgb, #96f5af 30%, #ffffff)",
+			"dark": "color-mix(in srgb, #068227 30%, #1d1d1e)",
+			"$description": "Mint als getönte Fläche (30 %) statt Vollfläche, damit Text in Markenfarbe ≥4,5:1 erreicht"
 		},
 		"success": {
 			"light": "#068227",
@@ -45,8 +45,8 @@
 		},
 		"subtle": {
 			"light": "#5A5959",
-			"dark": "#5A5959",
-			"$description": "Sekundärgrau aus der Palette"
+			"dark": "#a9a8a9",
+			"$description": "Sekundärgrau; im Dunkel aufgehellt (#a9a8a9), da #5a5959 auf dunkler Fläche nur 2,4:1 erreicht"
 		},
 		"ink": {
 			"light": "#1D1D1E",

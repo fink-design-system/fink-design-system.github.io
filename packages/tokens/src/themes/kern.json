@@ -5,13 +5,13 @@
 	"color": {
 		"primary": {
 			"light": "#1A3DA5",
-			"dark": "#1A3DA5",
-			"$description": "kern-color-action-default; eine Dark-Variante ist nicht dokumentiert"
+			"dark": "#8593d6",
+			"$description": "kern-color-action-default; im Dunkel abgeleitet aufgehellt (#8593d6) für Text-Kontrast"
 		},
 		"primary-variant": {
 			"light": "#1A3DA5",
-			"dark": "#1A3DA5",
-			"$description": "Hover/Active sind als shade-Tokens referenziert, ohne aufgelösten Wert in dieser Quelle"
+			"dark": "#aab5ee",
+			"$description": "Hover im Dunkel abgeleitet heller statt dunkler"
 		},
 		"secondary": {
 			"light": "#E0F4FC",
@@ -20,23 +20,23 @@
 		},
 		"success": {
 			"light": "#006B51",
-			"dark": "#006B51",
-			"$description": "kern-color-feedback-success; Dark-Variante nicht dokumentiert"
+			"dark": "#35b28a",
+			"$description": "kern-color-feedback-success; im Dunkel abgeleitet aufgehellt (Tonfarbe als Text auf dunkler Fläche ≥4,5:1)"
 		},
 		"warning": {
 			"light": "#8A4F00",
-			"dark": "#8A4F00",
-			"$description": "kern-color-feedback-warning"
+			"dark": "#d99a2b",
+			"$description": "kern-color-feedback-warning; im Dunkel abgeleitet aufgehellt (Tonfarbe als Text auf dunkler Fläche ≥4,5:1)"
 		},
 		"danger": {
 			"light": "#BD0F09",
-			"dark": "#BD0F09",
-			"$description": "kern-color-feedback-danger"
+			"dark": "#ff6257",
+			"$description": "kern-color-feedback-danger; im Dunkel abgeleitet aufgehellt (Tonfarbe als Text auf dunkler Fläche ≥4,5:1)"
 		},
 		"info": {
 			"light": "#006490",
-			"dark": "#006490",
-			"$description": "kern-color-feedback-info"
+			"dark": "#4db3d9",
+			"$description": "kern-color-feedback-info; im Dunkel abgeleitet aufgehellt (Tonfarbe als Text auf dunkler Fläche ≥4,5:1)"
 		},
 		"text": {
 			"light": "#171A2B",
