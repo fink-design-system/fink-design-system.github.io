@@ -1,0 +1,152 @@
+{
+	"$description": "Stil-Nachbau des Infineon Design Systems (Quelle: @infineon/design-system-tokens 7.1.0, dist/_tokens.scss). Infineon setzt auf die Ocean-Palette; die Schrift Source Sans 3 ist frei verfügbar und bleibt erhalten.",
+	"$label": "Infineon Design System",
+	"$source": "https://github.com/Infineon/infineon-design-system-stencil",
+	"color": {
+		"primary": {
+			"light": "#0A8276",
+			"dark": "#0A8276",
+			"$description": "Ocean500; eine Dark-Variante ist in dieser Quelle nicht definiert"
+		},
+		"primary-variant": {
+			"light": "#08665C",
+			"dark": "#0A8276",
+			"$description": "Ocean600 als dunklere Stufe; im Dark bleibt Primary"
+		},
+		"secondary": {
+			"light": "#F7F7F7",
+			"dark": "#3C3A39",
+			"$description": "Engineering100 / Engineering600"
+		},
+		"success": {
+			"light": "#4CA460",
+			"dark": "#4CA460",
+			"$description": "Green500; Dark-Variante nicht definiert"
+		},
+		"warning": {
+			"light": "#E16B25",
+			"dark": "#E16B25",
+			"$description": "Orange500; Dark-Variante nicht definiert"
+		},
+		"danger": {
+			"light": "#CD002F",
+			"dark": "#CD002F",
+			"$description": "Red500; Dark-Variante nicht definiert"
+		},
+		"info": {
+			"light": "#0A8276",
+			"dark": "#0A8276",
+			"$description": "keine Info-Stufe definiert; Ocean übernimmt"
+		},
+		"text": {
+			"light": "#1D1D1D",
+			"dark": "#FFFFFF",
+			"$description": "black/white"
+		},
+		"subtle": {
+			"light": "#8D8786",
+			"dark": "#BFBBBB",
+			"$description": "Engineering500 / Engineering400, gespiegelte Positionen"
+		},
+		"ink": {
+			"light": "#000000",
+			"dark": "#FFFFFF"
+		},
+		"surface": {
+			"light": "#FFFFFF",
+			"dark": "#3C3A39",
+			"$description": "white / Engineering600"
+		},
+		"light": {
+			"light": "#FFFFFF",
+			"dark": "#3C3A39",
+			"$description": "white / Engineering600; die Engineering-Skala trennt keine höheren Ebenen"
+		},
+		"overlay": {
+			"light": "#FFFFFF",
+			"dark": "#3C3A39",
+			"$description": "white / Engineering600"
+		},
+		"mute": {
+			"light": "#F7F7F7",
+			"dark": "#3C3A39",
+			"$description": "Engineering100 / Engineering600"
+		},
+		"mute-variant": {
+			"light": "#BFBBBB",
+			"dark": "#8D8786",
+			"$description": "Engineering300 / Engineering400"
+		},
+		"edge": {
+			"light": "transparent",
+			"dark": "#8D8786",
+			"$description": "Kante statt Schatten im Dark Mode"
+		},
+		"visited": {
+			"light": "#08665C",
+			"dark": "#0A8276",
+			"$description": "Infineon dokumentiert keine Visited-Stufe; Links folgen Ocean"
+		},
+		"shadow": {
+			"light": "rgb(29 29 29 / 0.12)",
+			"dark": "transparent",
+			"$description": "ifxShadow100-Farbe rgba(29,29,29,0.12)"
+		},
+		"backdrop": {
+			"light": "rgb(29 29 29 / 0.2)",
+			"dark": "rgb(0 0 0 / 0.6)",
+			"$description": "Overlay-Tokens light rgba(29,29,29,0.2)"
+		},
+		"focus": {
+			"value": "#0A8276",
+			"$description": "Fokus folgt Ocean"
+		}
+	},
+	"space": {
+		"base": {
+			"value": "0.5rem",
+			"$description": "$ifxBase = 8px, an KoliBri --kolibri-spacing übergeben"
+		}
+	},
+	"radius": {
+		"sm": {
+			"value": "4px",
+			"$description": "ifxRadius50"
+		},
+		"md": {
+			"value": "8px",
+			"$description": "ifxRadius100"
+		},
+		"pill": {
+			"value": "9999px",
+			"$description": "ifxRadiusRound"
+		}
+	},
+	"elevation": {
+		"1": {
+			"value": "0 1px 4px var(--fink-color-shadow)",
+			"$description": "abgeleitet aus ifxShadow100"
+		},
+		"2": {
+			"value": "0 4px 16px var(--fink-color-shadow)",
+			"$description": "$ifxShadow100: 0 4px 16px 0 rgba(29,29,29,0.12)"
+		},
+		"3": {
+			"value": "0 8px 24px var(--fink-color-shadow)",
+			"$description": "abgeleitet aus ifxShadow100"
+		}
+	},
+	"font": {
+		"family": {
+			"value": "\"Source Sans 3\", Arial, sans-serif",
+			"$description": "frei verfügbar, im Original verankert"
+		},
+		"weight-medium": {
+			"value": "600",
+			"$description": "Semibold, über @font-face definiert"
+		},
+		"weight-bold": {
+			"value": "600"
+		}
+	}
+}

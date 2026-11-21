@@ -20,6 +20,7 @@ import {
 import { t, locale } from '../../i18n';
 import { LanguageToggle } from '../../site/LanguageToggle';
 import { SchemeToggle } from '../../site/SchemeToggle';
+import { ThemeSwitcher } from '../../site/ThemeSwitcher';
 import { createStore } from '../createStore';
 import '../composition.css';
 
@@ -240,6 +241,7 @@ function ProfileTab() {
 			<KolInputCheckbox _variant="switch" _label={t('Terminerinnerung am Vortag')} _checked={state.reminder} _on={{ onChange: (_e, v) => set((s) => ({ ...s, reminder: Boolean(v) })) }} />
 			<FinkStack _direction="row" _gap="2">
 				<LanguageToggle />
+				<ThemeSwitcher hideOnCompact={false} />
 				<SchemeToggle />
 			</FinkStack>
 			<KolButton _label={t('Demo zurücksetzen')} _variant="tertiary" _icons="codicon codicon-discard" _on={{ onClick: () => store.reset() }} />

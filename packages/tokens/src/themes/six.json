@@ -1,0 +1,129 @@
+{
+	"$description": "Stil-Nachbau der SIX UI Library (Quelle: six-group/six-webcomponents, global/base/colors.css). SIX arbeitet mit rahmenlosen (Radius 0) Oberflächen; die Schrift Noto Sans ist frei verfügbar und bleibt erhalten.",
+	"$label": "SIX UI Library",
+	"$source": "https://github.com/six-group/six-webcomponents",
+	"color": {
+		"primary": {
+			"light": "#2196F3",
+			"dark": "#2196F3",
+			"$description": "action-500; eine Dark-Variante ist nicht definiert"
+		},
+		"primary-variant": {
+			"light": "#1F87E5",
+			"dark": "#1F87E5",
+			"$description": "action-600 als dunklere Stufe"
+		},
+		"secondary": {
+			"light": "#F6F6F6",
+			"dark": "#262626",
+			"$description": "web-rock-100 / web-rock-900"
+		},
+		"success": {
+			"light": "#58D200",
+			"dark": "#58D200",
+			"$description": "success-600; Dark-Variante nicht definiert"
+		},
+		"warning": {
+			"light": "#F2B72C",
+			"dark": "#F2B72C",
+			"$description": "warning-700; Dark-Variante nicht definiert"
+		},
+		"danger": {
+			"light": "#DE3919",
+			"dark": "#DE3919",
+			"$description": "danger-800; Dark-Variante nicht definiert"
+		},
+		"info": {
+			"light": "#2196F3",
+			"dark": "#2196F3",
+			"$description": "keine Info-Stufe definiert; Action übernimmt"
+		},
+		"text": {
+			"light": "#262626",
+			"dark": "#FFFFFF",
+			"$description": "web-rock-900 / Weiß"
+		},
+		"subtle": {
+			"light": "#7B7B7B",
+			"dark": "#C3C3C3",
+			"$description": "web-rock-600 / web-rock-400, gespiegelte Positionen"
+		},
+		"ink": {
+			"light": "#000000",
+			"dark": "#FFFFFF"
+		},
+		"surface": {
+			"light": "#FFFFFF",
+			"dark": "#262626",
+			"$description": "Weiß / web-rock-900; ein Dark-Theme ist bei SIX nicht dokumentiert"
+		},
+		"light": {
+			"light": "#FFFFFF",
+			"dark": "#262626",
+			"$description": "Weiß / web-rock-900"
+		},
+		"overlay": {
+			"light": "#FFFFFF",
+			"dark": "#262626",
+			"$description": "Panels/Overlays nutzen web-rock-900 als dunkle Fläche"
+		},
+		"mute": {
+			"light": "#EBE8E7",
+			"dark": "#262626",
+			"$description": "clay-50 / web-rock-900"
+		},
+		"mute-variant": {
+			"light": "#C3C3C3",
+			"dark": "#7B7B7B",
+			"$description": "Input-Border web-rock-400 / web-rock-600"
+		},
+		"edge": {
+			"light": "transparent",
+			"dark": "#7B7B7B",
+			"$description": "Kante statt Schatten im Dark Mode"
+		},
+		"visited": {
+			"light": "#1F87E5",
+			"dark": "#1F87E5",
+			"$description": "SIX dokumentiert keine Visited-Stufe; Links folgen Action"
+		},
+		"shadow": {
+			"light": "rgb(0 0 0 / 0.14)",
+			"dark": "transparent",
+			"$description": "neutraler Schatten; SIX definiert Schatten nicht in dieser Quelle"
+		},
+		"backdrop": {
+			"light": "rgb(38 38 38 / 0.35)",
+			"dark": "rgb(0 0 0 / 0.6)",
+			"$description": "aus dem Fink-Raster"
+		},
+		"focus": {
+			"value": "#1F87E5",
+			"$description": "--six-focus-ring-color: var(--six-color-action-600)"
+		}
+	},
+	"radius": {
+		"sm": {
+			"value": "0rem",
+			"$description": "small/medium sind 0 – SIX arbeitet rahmenlos"
+		},
+		"md": {
+			"value": "0rem",
+			"$description": "small/medium sind 0"
+		},
+		"lg": {
+			"value": "0.5rem",
+			"$description": "large"
+		},
+		"pill": {
+			"value": "9999px",
+			"$description": "pill"
+		}
+	},
+	"font": {
+		"family": {
+			"value": "'Noto Sans', sans-serif",
+			"$description": "frei verfügbar, im Original verankert (--six-font-family)"
+		}
+	}
+}

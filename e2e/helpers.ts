@@ -14,17 +14,23 @@ export type Language = 'de' | 'en';
 export interface Variant {
 	language: Language;
 	scheme: Scheme;
+	/** Theme der Seite (gespeicherte Wahl des FinkProvider); ohne Angabe Fink. */
+	theme?: string;
 }
 
-/** Setzt Sprache (über die gespeicherte Wahl) vor dem Laden der Seite. */
-export async function prepare(page: Page, { language }: Variant) {
-	await page.addInitScript((lng) => {
-		try {
-			localStorage.setItem('fink-language', lng);
-		} catch {
-			// ignorieren
-		}
-	}, language);
+/** Setzt Sprache und Theme (über die gespeicherte Wahl) vor dem Laden der Seite. */
+export async function prepare(page: Page, { language, theme = 'fink' }: Variant) {
+	await page.addInitScript(
+		([lng, th]) => {
+			try {
+				localStorage.setItem('fink-language', lng);
+				localStorage.setItem('fink-theme', th);
+			} catch {
+				// ignorieren
+			}
+		},
+		[language, theme] as const,
+	);
 }
 
 /** Wartet, bis die Showcase gerendert ist und alle Web Components definiert und hydriert sind. */

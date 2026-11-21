@@ -139,7 +139,7 @@
 	width: 100%;
 	height: min(70vh, 40rem);
 	border-radius: var(--fink-radius-md);
-	background: var(--fink-color-mute);
+	background: transparent;
 	overflow: clip;
 }
 

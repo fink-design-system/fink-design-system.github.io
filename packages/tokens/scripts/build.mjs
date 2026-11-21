@@ -3,7 +3,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const src = join(root, 'src');
+const source = JSON.parse(readFileSync(join(root, 'src/tokens.json'), 'utf8'));
 const out = join(root, 'dist');
 mkdirSync(out, { recursive: true });
 
@@ -20,14 +20,11 @@ const kolibriHooks = {
 	),
 };
 
-/**
- * Flacht eine Token-Datei auf CSS-Deklarationen (--fink-*) und Token-Infos. Farbtokens mit
- * light/dark werden zu light-dark() aufgelöst; die Anwendung steuert das Schema über color-scheme.
- */
-const flatten = (source) => {
+/** Liefert die CSS-Deklarationen und die flache Token-Tabelle eines Token-Satzes. */
+const compile = (set) => {
 	const entries = [];
 	const flat = {};
-	for (const [group, tokens] of Object.entries(source)) {
+	for (const [group, tokens] of Object.entries(set)) {
 		if (group.startsWith('$')) continue;
 		for (const [name, token] of Object.entries(tokens)) {
 			const cssName = `--fink-${group}-${name}`;
@@ -39,26 +36,70 @@ const flatten = (source) => {
 	return { entries, flat };
 };
 
-const cssBlock = (selector, entries, hooks) => {
-	const declarations = [...entries, ...Object.entries(hooks)].map(([k, v]) => `\t${k}: ${v};`).join('\n');
-	return `${selector} {\n${declarations}\n}\n`;
+/**
+ * Marken-Themes: src/themes/<name>.json enthält nur abweichende Tokens. Sie werden auf den Basissatz
+ * gelegt; unbekannte Schlüssel sind ein Fehler, damit alle Themes dieselbe Token-Struktur haben.
+ */
+const merge = (name, theme) => {
+	const merged = structuredClone(source);
+	for (const [group, tokens] of Object.entries(theme)) {
+		if (group.startsWith('$')) continue;
+		for (const [key, token] of Object.entries(tokens)) {
+			if (!merged[group]?.[key]) throw new Error(`Theme ${name}: unbekanntes Token ${group}.${key}`);
+			merged[group][key] = { ...token, $description: token.$description ?? merged[group][key].$description };
+		}
+	}
+	return merged;
 };
 
-const writeJsModule = (target, flat, declarations) => {
-	const js = `/* Generiert aus src – nicht bearbeiten. */
+const declare = (entries) => [...entries, ...Object.entries(kolibriHooks)].map(([k, v]) => `\t${k}: ${v};`).join('\n');
+
+const { entries, flat } = compile(source);
+const declarations = declare(entries);
+
+const themeDir = join(root, 'src/themes');
+const brandThemes = readdirSync(themeDir)
+	.filter((file) => file.endsWith('.json'))
+	.sort()
+	.map((file) => {
+		const name = file.replace(/\.json$/, '');
+		const theme = JSON.parse(readFileSync(join(themeDir, file), 'utf8'));
+		const compiled = compile(merge(name, theme));
+		return { name, label: theme.$label ?? name, description: theme.$description ?? '', source: theme.$source ?? '', declarations: declare(compiled.entries), flat: compiled.flat };
+	});
+
+/*
+ * Jeder Theme-Block wiederholt auch die --kolibri-*-Hooks: var() in Custom Properties wird an der
+ * deklarierenden Stelle aufgelöst. Würde ein Theme nur --fink-* überschreiben, behielten die auf
+ * :root berechneten Hooks die Fink-Werte. Fink und Default stehen zusätzlich als Selektor da, damit
+ * ein verschachteltes data-theme="fink" innerhalb einer Marke wieder die Basis-Tokens bekommt.
+ */
+const themeCss = [
+	`:root,\n[data-theme='fink'],\n[data-theme='default'] {\n${declarations}\n}`,
+	...brandThemes.map((theme) => `[data-theme='${theme.name}'] {\n${theme.declarations}\n}`),
+].join('\n\n');
+
+const css = `/* Generiert aus src/tokens.json und src/themes/*.json – nicht bearbeiten. */
+${themeCss}
+`;
+writeFileSync(join(out, 'tokens.css'), css);
+
+const js = `/* Generiert aus src/tokens.json – nicht bearbeiten. */
 export const tokens = ${JSON.stringify(flat, null, '\t')};
 /** Token-Deklarationen ohne Selektor, z. B. für :host im Theme. */
 export const tokenDeclarations = ${JSON.stringify(declarations)};
+/** Vollständiges Stylesheet: Basis auf :root und je Marken-Theme ein Block [data-theme='…']. */
+export const themeCss = ${JSON.stringify(themeCss)};
+/** Marken-Themes aus src/themes (Name, Bezeichnung, Herkunft, Token-Tabelle). */
+export const brandThemes = ${JSON.stringify(brandThemes.map(({ declarations: _d, ...rest }) => rest), null, '\t')};
 export const cssVar = (path) => \`var(\${tokens[path].cssVar})\`;
 `;
-	writeFileSync(target, js);
-};
+writeFileSync(join(out, 'index.js'), js);
 
-const writeDts = (target, flat) => {
-	const keys = Object.keys(flat)
-		.map((k) => JSON.stringify(k))
-		.join(' | ');
-	const dts = `/* Generiert aus src – nicht bearbeiten. */
+const keys = Object.keys(flat)
+	.map((k) => JSON.stringify(k))
+	.join(' | ');
+const dts = `/* Generiert aus src/tokens.json – nicht bearbeiten. */
 export type TokenPath = ${keys};
 export interface TokenInfo {
 	cssVar: string;
@@ -69,58 +110,16 @@ export interface TokenInfo {
 }
 export declare const tokens: Record<TokenPath, TokenInfo>;
 export declare const tokenDeclarations: string;
+export declare const themeCss: string;
+export interface BrandTheme {
+	name: ${brandThemes.map((t) => JSON.stringify(t.name)).join(' | ')};
+	label: string;
+	description: string;
+	source: string;
+	flat: Record<TokenPath, TokenInfo>;
+}
+export declare const brandThemes: BrandTheme[];
 export declare const cssVar: (path: TokenPath) => string;
 `;
-	writeFileSync(target, dts);
-};
-
-const jsonFiles = readdirSync(src).filter((file) => file.endsWith('.json')).sort();
-
-/* Fink-Grundtokens (tokens.json → dist-Wurzel, :root) – unverändertes Verhalten. */
-const finkSource = JSON.parse(readFileSync(join(src, 'tokens.json'), 'utf8'));
-const { entries, flat } = flatten(finkSource);
-const finkDeclarations = [...entries, ...Object.entries(kolibriHooks)].map(([k, v]) => `\t${k}: ${v};`).join('\n');
-writeFileSync(join(out, 'tokens.css'), `/* Generiert aus src/tokens.json – nicht bearbeiten. */\n:root {\n${finkDeclarations}\n}\n`);
-writeJsModule(join(out, 'index.js'), flat, finkDeclarations);
-writeDts(join(out, 'index.d.ts'), flat);
-
-/* Nachbau-Skins: ein Token-Set je System, skoped über [data-theme="<system>"]. Die Skins
- * überschreiben die gleichen --fink-*-Namen, sodass alle Fink- und KoliBri-Komponenten im
- * Look des jeweiligen Originals rendern, ohne dass Komponenten oder Themes angefasst werden. */
-const systemFiles = jsonFiles.filter((file) => file !== 'tokens.json');
-const systemDeclarations = {};
-const systemBlocks = [];
-let tokenCount = 0;
-
-for (const file of systemFiles) {
-	const name = file.replace(/\.json$/, '');
-	const source = JSON.parse(readFileSync(join(src, file), 'utf8'));
-	const { entries: systemEntries, flat: systemFlat } = flatten(source);
-	const declarations = [...systemEntries, ...Object.entries(kolibriHooks)].map(([k, v]) => `\t${k}: ${v};`).join('\n');
-	tokenCount += systemEntries.length;
-
-	const dir = join(out, name);
-	mkdirSync(dir, { recursive: true });
-	const block = cssBlock(`[data-theme="${name}"]`, systemEntries, kolibriHooks);
-	systemBlocks.push(`/* ${name} – ${source.$description ?? 'Nachbau-Skin'} */\n${block}`);
-	writeFileSync(join(dir, 'tokens.css'), `/* Generiert aus src/${file} – nicht bearbeiten. */\n${block}`);
-	writeJsModule(join(dir, 'index.js'), systemFlat, declarations);
-	systemDeclarations[name] = declarations;
-}
-
-writeFileSync(join(out, 'systems.css'), `/* Generiert aus src/*.json – nicht bearbeiten. Nachbau-Skins, skoped über data-theme. */\n${systemBlocks.join('\n')}`);
-
-const systemsJs = `/* Generiert aus src/*.json – nicht bearbeiten. */
-export const systemNames = ${JSON.stringify(Object.keys(systemDeclarations))};
-/** Token-Deklarationen je Nachbau-Skin (ohne Selektor), z. B. für dynamische Injektion. */
-export const systemDeclarations = ${JSON.stringify(systemDeclarations)};
-`;
-writeFileSync(join(out, 'systems.js'), systemsJs);
-
-const systemDts = `/* Generiert aus src/*.json – nicht bearbeiten. */
-export declare const systemNames: ${Object.keys(systemDeclarations).map((n) => JSON.stringify(n)).join(' | ')};
-export declare const systemDeclarations: Record<string, string>;
-`;
-writeFileSync(join(out, 'systems.d.ts'), systemDts);
-
-console.log(`@fink/tokens: Fink (${entries.length} Tokens) + ${systemFiles.length} Nachbau-Skins (${tokenCount} Tokens), ${Object.keys(kolibriHooks).length} KoliBri-Hooks je Skin`);
+writeFileSync(join(out, 'index.d.ts'), dts);
+console.log(`@fink/tokens: ${entries.length} Tokens, ${Object.keys(kolibriHooks).length} KoliBri-Hooks, Marken-Themes: ${brandThemes.map((t) => t.name).join(', ')}`);

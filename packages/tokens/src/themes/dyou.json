@@ -1,0 +1,119 @@
+{
+	"$description": "Stil-Nachbau des d-you Design Systems für die EUDI Wallet DE (Quelle: PR public-ui/kolibri#10970, packages/themes/d-you). Mint-Beam-Grün auf neutraler Grauskala, 4-px-Raster, pillenförmige Buttons. Der Dark Mode ist im Original offen („Dark Mode (TBD)“); die Dark-Werte hier sind aus den dokumentierten Palettenwerten abgeleitet.",
+	"$label": "d-you (EUDI Wallet DE)",
+	"$source": "https://github.com/public-ui/kolibri/pull/10970",
+	"color": {
+		"primary": {
+			"light": "#068227",
+			"dark": "#96F5AF",
+			"$description": "primary-40 als text-sicheres Grün / Mint Beam als dunkle Akzentstufe"
+		},
+		"primary-variant": {
+			"light": "#068227",
+			"dark": "#96F5AF",
+			"$description": "keine separate Hover-Stufe im PR dokumentiert"
+		},
+		"secondary": {
+			"light": "#96F5AF",
+			"dark": "#068227",
+			"$description": "Mint Beam als primary-container, im Dark gespiegelt"
+		},
+		"success": {
+			"light": "#068227",
+			"dark": "#96F5AF",
+			"$description": "Feedback folgt der Mint-Palette"
+		},
+		"warning": {
+			"light": "#5A5959",
+			"dark": "#5A5959",
+			"$description": "keine Warning-Stufe im PR dokumentiert; Sekundärgrau übernimmt"
+		},
+		"danger": {
+			"light": "#5A5959",
+			"dark": "#5A5959",
+			"$description": "keine Danger-Stufe im PR dokumentiert; Sekundärgrau übernimmt"
+		},
+		"info": {
+			"light": "#5A5959",
+			"dark": "#5A5959",
+			"$description": "keine Info-Stufe im PR dokumentiert; Sekundärgrau übernimmt"
+		},
+		"text": {
+			"light": "#1D1D1E",
+			"dark": "#F4F4F4",
+			"$description": "color-scheme.css: light-dark(#1d1d1e, #f4f4f4)"
+		},
+		"subtle": {
+			"light": "#5A5959",
+			"dark": "#5A5959",
+			"$description": "Sekundärgrau aus der Palette"
+		},
+		"ink": {
+			"light": "#1D1D1E",
+			"dark": "#F4F4F4"
+		},
+		"surface": {
+			"light": "#FFFFFF",
+			"dark": "#1D1D1E",
+			"$description": "color-scheme.css: light-dark(#ffffff, #1d1d1e)"
+		},
+		"light": {
+			"light": "#F4F4F4",
+			"dark": "#1D1D1E",
+			"$description": "SURFACE_CONTAINER #f4f4f4; Dark entspricht der Textfläche"
+		},
+		"overlay": {
+			"light": "#FFFFFF",
+			"dark": "#1D1D1E",
+			"$description": "Fläche der Modals"
+		},
+		"mute": {
+			"light": "#F4F4F4",
+			"dark": "#1D1D1E",
+			"$description": "SURFACE_CONTAINER"
+		},
+		"mute-variant": {
+			"light": "#5A5959",
+			"dark": "#5A5959",
+			"$description": "Sekundärgrau als Linienfarbe"
+		},
+		"edge": {
+			"light": "transparent",
+			"dark": "#5A5959",
+			"$description": "Kante statt Schatten im Dark Mode"
+		},
+		"visited": {
+			"light": "#068227",
+			"dark": "#96F5AF",
+			"$description": "Links folgen Primary"
+		},
+		"shadow": {
+			"light": "rgb(29 29 30 / 0.2)",
+			"dark": "transparent",
+			"$description": "kol-shadow-Basis rgb(29 29 30 / 0.2) aus elevation.scss"
+		},
+		"backdrop": {
+			"light": "rgb(29 29 30 / 0.35)",
+			"dark": "rgb(0 0 0 / 0.6)",
+			"$description": "aus dem Fink-Raster"
+		},
+		"focus": {
+			"value": "#068227",
+			"$description": "Fokus folgt Primary"
+		}
+	},
+	"radius": {
+		"sm": {
+			"value": "8px",
+			"$description": "halbe Kartenstufe, abgeleitet; im PR nur 16/24 dokumentiert"
+		},
+		"md": {
+			"value": "16px",
+			"$description": "Karten-Radius aus dem PR (--kolibri-border-radius-card)"
+		},
+		"lg": {
+			"value": "24px",
+			"$description": "Modal-Radius aus dem PR"
+		}
+	}
+}

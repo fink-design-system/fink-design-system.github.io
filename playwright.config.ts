@@ -4,6 +4,9 @@ import type { A11yOptions } from './e2e/fixtures';
 const port = Number(process.env.PORT ?? 4173);
 const desktop = { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' as const };
 
+/** Marken-Themes aus @fink/tokens (src/themes); je Theme hell und dunkel über alle Routen. */
+const brandThemes = ['db', 'porsche', 'siemens-ix', 'telekom'];
+
 /**
  * Barrierefreiheitstests der Showcase mit Playwright und axe-core.
  * Vorher bauen: `pnpm build`. Starten: `pnpm test:a11y`.
@@ -36,6 +39,13 @@ export default defineConfig<A11yOptions>({
 			testMatch: /(a11y|states)\.spec\.ts/,
 			use: { ...devices['Desktop Chrome'], viewport: { width: 320, height: 640 }, reducedMotion: 'reduce', variant: { language: 'de', scheme: 'light' }, checkReflow: true },
 		},
+		...brandThemes.flatMap((theme) =>
+			(['light', 'dark'] as const).map((scheme) => ({
+				name: `${theme}-${scheme}`,
+				testMatch: /a11y\.spec\.ts/,
+				use: { ...desktop, variant: { language: 'de' as const, scheme, theme } },
+			})),
+		),
 		{ name: 'text-spacing', testMatch: /text-spacing\.spec\.ts/, use: { ...desktop, variant: { language: 'de', scheme: 'light' } } },
 		{ name: 'states-light', testMatch: /states\.spec\.ts/, use: { ...desktop, variant: { language: 'de', scheme: 'light' } } },
 		{ name: 'states-dark', testMatch: /states\.spec\.ts/, use: { ...desktop, variant: { language: 'de', scheme: 'dark' } } },

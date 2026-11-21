@@ -2,6 +2,7 @@ import { site } from './en/site';
 import { site2 } from './en/site2';
 import { site3 } from './en/site3';
 import { a11y } from './en/a11y';
+import { themes } from './en/themes';
 
 /** Englische Übersetzungen, Schlüssel sind die deutschen Ausgangstexte. */
 export const en: Record<string, string> = {
@@ -9,6 +10,7 @@ export const en: Record<string, string> = {
 	...site2,
 	...site3,
 	...a11y,
+	...themes,
 	Katalog: 'Catalogue',
 	Absenden: 'Submit',
 	'„War diese Seite hilfreich?“ mit Kommentar bei „Nein“ – kurzes Seitenfeedback ohne Kontaktformular.': '“Was this page helpful?” with a comment on “No” – short page feedback without a contact form.',

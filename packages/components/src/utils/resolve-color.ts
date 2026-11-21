@@ -35,6 +35,30 @@ export const mixHex = (a: string, b: string, percentA: number): string => {
 	return toHex(`rgb(${ca.map((v, i) => v * p + cb[i] * (1 - p)).join(',')})`);
 };
 
+const luminance = (hex: string): number => {
+	const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+	return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+
+/** Kontrastverhältnis zweier Hex-Farben nach WCAG. */
+export const contrastRatio = (a: string, b: string): number => {
+	const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+	return (hi + 0.05) / (lo + 0.05);
+};
+
+/**
+ * Getönte Fläche für Text in der Tonfarbe: mischt bis zu `percent` Prozent der Tonfarbe in die Fläche,
+ * senkt den Anteil aber, bis der Text mindestens `minContrast` erreicht (WCAG 1.4.3). So bleiben auch
+ * helle Markenfarben (z. B. Magenta) als Textfarbe auf ihrer eigenen Tönung lesbar.
+ */
+export const tintFor = (foreground: string, surface: string, percent: number, minContrast = 4.5): string => {
+	for (let p = percent; p > 0; p -= 1) {
+		const tint = mixHex(foreground, surface, p);
+		if (contrastRatio(foreground, tint) >= minContrast) return tint;
+	}
+	return surface;
+};
+
 /**
  * Beobachtet Änderungen, die aufgelöste Farben verändern können (Farbschema, Theme, Tokens am Dokument).
  * Liefert eine Abmeldefunktion.

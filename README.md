@@ -4,12 +4,32 @@ Ein Design System im Stil von MUI oder Vuetify auf Basis von [Public UI – Koli
 KoliBri liefert die barrierefreien Atome (`kol-*`), Fink ergänzt Tokens, ein eigenes Theme, zusammengesetzte
 Komponenten (`fink-*`) und eine React-Schicht. KoliBri wird nur konsumiert, nie geforkt.
 
+## Warum Fink auf KoliBri baut
+
+36 der 46 Fink-Komponenten setzen sich aus 19 KoliBri-Bausteinen zusammen, mit 79 Einbettungen. Was das bringt, ist im
+Experiment `experiments/basis-vergleich` gemessen:
+
+- **Update-Dividende.** Gleicher Fink-Code, nur die KoliBri-Version geändert: Die Prüfseite lädt mit 4.5.0 2.182 KB
+  gzip, mit 4.6.0 448 KB und mit 4.7.0-rc.0 395 KB. Der JS-Speicher nach 900 Komponenten sinkt von 73 auf 14 MB.
+  Verbesserungen in KoliBri kommen jeder Anwendung auf Fink ohne eigenen Aufwand zugute.
+- **Barrierefreiheit geerbt.** Tastatur, Fokus, ARIA, Fehlermeldungen und Hochkontrastmodus stecken in jeder
+  KoliBri-Komponente. Fink prüft sie mit 1.067 automatischen Tests, alle bestanden.
+- **Gestaltung entkoppelt.** Finks Erscheinungsbild sind Tokens und 146 Zeilen Overrides. Transparente
+  Komponenten-Hosts sind eine einzige Regel im Theme und wirken in allen 50 KoliBri-Komponenten.
+- **Ein Code, alle Frameworks.** Als Web Components ist Fink in React, Angular, Vue und reinem HTML nutzbar.
+- **Öffentlich und mitgestaltbar.** EUPL-Lizenz, ITZBund als Träger. Zwei Größenbefunde aus Fink hat das KoliBri-Team
+  in rund vier bzw. unter 24 Stunden umgesetzt (public-ui/kolibri#11623, #11627).
+
+Ehrlich bleibt: Für einzelne Komponenten laden Headless-Bibliotheken wie Lion oder React Aria weniger. Den Abstand macht
+das Theme, das alle KoliBri-Komponenten gestaltet. Details in
+[experiments/basis-vergleich/README.md](experiments/basis-vergleich/README.md).
+
 ## Pakete
 
 | Paket              | Inhalt                                                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------------------------------- |
-| `@fink/tokens`     | Design Tokens in `src/tokens.json` → `tokens.css` (CSS-Variablen, `light-dark()`), JS-Objekt, TS-Typen. Speist die `--kolibri-*`-Hooks von KoliBri. |
-| `@fink/theme`      | KoliBri-Theme `FINK` (erweitert `@public-ui/theme-default`), `registerFink()`, CLI `fink-sync-icons`.        |
+| `@fink/tokens`     | Design Tokens in `src/tokens.json` → `tokens.css` (CSS-Variablen, `light-dark()`), JS-Objekt, TS-Typen. Speist die `--kolibri-*`-Hooks von KoliBri. Marken-Themes in `src/themes/*.json`. |
+| `@fink/theme`      | KoliBri-Theme `FINK` (erweitert `@public-ui/theme-default`), Marken-Themes, `registerFink()`, CLI `fink-sync-icons`. |
 | `@fink/components` | 46 Stencil-Komponenten (App Shell, Page Header, Stat Card, Stepper, Chip, List, Menu, Tag Input, Calendar, Range Slider, Carousel, FAB, Transfer List, OTP Input, Image List, Tour, Virtual List, Bar Chart, Splitter …), intern aus KoliBri gebaut; eigene i18next-Instanz (de/en). |
 | `@fink/react`      | Generierte React-Wrapper (`@stencil/react-output-target`), Re-Export von `@public-ui/react-v19`, `FinkProvider`, `useFink`, `useToast`. |
 | `@fink/showcase`   | Doku-Website: Grundlagen, Theming, Katalog aller Fink- und KoliBri-Komponenten, 30 Patterns, sechs interaktive Kompositionen, Vergleich mit MUI/Vuetify/Material 3/Carbon/Ant, KoliBri-Nachnutzung. |
@@ -103,8 +123,33 @@ pnpm icons:check   # bricht ab, wenn die Fonts nicht zur installierten KoliBri-V
   (Layer `kol-theme-component`, nur Token-Referenzen).
 - Dark Mode: Die Anwendung setzt `color-scheme`; `FinkProvider` übernimmt das über `defaultColorScheme` bzw. `useFink().setColorScheme`.
 - Theme-Wahl: `registerFink()` nutzt `detect: 'auto'`, KoliBri liest beim Mounten das nächste `data-theme`-Attribut.
-  Registriert sind `fink` und `default`.
+  Registriert sind `fink`, `default` und die Stil-Adaptionen `db`, `porsche`, `telekom` und `siemens-ix`. `FinkProvider` speichert
+  die Wahl (`useFink().setTheme`, `localStorage` „fink-theme“); die Showcase bietet sie über das Farbeimer-Symbol im Kopf an.
 - Container mit eigener Fläche melden sie über `--kol-surface`, damit KoliBri-Hosts dieselbe Fläche malen.
+
+### Stil-Adaptionen: DB, Porsche, Telekom, Siemens iX
+
+Die Stil-Adaptionen zeigen, dass dieselben KoliBri- und Fink-Komponenten andere Design-Systeme tragen können, nur über
+Tokens und wenige Overrides:
+
+| Theme        | Vorbild                                     | Token-Quelle                                          |
+| ------------ | ------------------------------------------- | ----------------------------------------------------- |
+| `db`         | DB UX Design System, Generation 3           | `@db-ux/db-theme` 7.3.1, `@db-ux/core-foundations` 6.4.1 (`build/styles`) |
+| `porsche`    | Porsche Design System v4                    | `@porsche-design-system/components-js` 4.10, `stylesheets/variables.css` |
+| `telekom`    | Telekom Scale / One Experience              | `@telekom/design-tokens` 1.0.0-beta.12                 |
+| `siemens-ix` | Siemens iX, Classic-Theme                   | `@siemens/ix` 5.3, `theme/classic-light.css` und `classic-dark.css` |
+
+- **Tokens:** `packages/tokens/src/themes/<name>.json` enthält nur abweichende Werte (gleiche Schlüssel wie `tokens.json`,
+  unbekannte Schlüssel brechen den Build ab). Der Build erzeugt je Theme einen Block `[data-theme='<name>']` mit allen
+  `--fink-*`-Tokens **und** den `--kolibri-*`-Hooks: `var()` in Custom Properties wird dort aufgelöst, wo sie
+  deklariert sind. So funktionieren auch verschachtelte Bereiche mit eigenem `data-theme` (Seite „Theming“).
+- **KoliBri-Theme:** `packages/theme/src/brands/<name>.ts` ergänzt die gemeinsamen Overrides (`sharedOverrides`) um
+  Markenoptik, z. B. Button-Varianten, Radien und bei Siemens iX 32 px hohe Bedienelemente (`--a11y-min-size`; WCAG 2.2 AA
+  verlangt 24 px).
+- **Nur der Stil:** keine Schriften, Logos oder Icons der Vorbilder. Die Schriftangabe ist ein System-Stack mit
+  ähnlichem Charakter; es werden keine Webfonts geladen. Keine Verbindung zu den Unternehmen.
+- **Kontrast:** Abweichungen vom Original sind im Token per `$description` dokumentiert.
+- Ob die öffentliche Showcase die Stil-Adaptionen zeigen darf, ist rechtlich zu prüfen.
 
 ## Barrierefreiheit prüfen (BITV 2.0 / WCAG 2.2)
 
@@ -130,6 +175,12 @@ pnpm test:a11y     # Playwright + axe-core über alle Seiten, Kompositionen und 
 
 ## Bekannte Punkte
 
+- **KoliBri 4.7.0-rc.0:** Fink nutzt die Vorabversion von 4.7, weil sie markdown-it entfernt (rund 54 KB gzip
+  weniger je Seite). Vor dem Release auf 4.7.0 stabil wechseln.
+- **Transparente Hosts:** KoliBris Basis-Stil malt jeden Komponenten-Host in `--kol-a11y-background-color`.
+  `@fink/theme` setzt `:host { background: transparent }` (in `GLOBAL` und für `KOL-NAV`, auch im zum Vergleich
+  registrierten Default-Theme), damit die Fläche dem umgebenden Container gehört. Finks eigene Hosts haben ebenfalls
+  keinen Hintergrund.
 - **KoliBri 4.6.0:** Ab dieser Version hat der Aufklapp-Button von `kol-combobox` einen zugänglichen Namen (axe
   `button-name`, WCAG 4.1.2). `kol-skeleton` entfällt dort.
 - **KoliBri-Texte mit „...“:** `filename-text` und `action-running` enden auf Auslassungszeichen. `@fink/theme` erzeugt

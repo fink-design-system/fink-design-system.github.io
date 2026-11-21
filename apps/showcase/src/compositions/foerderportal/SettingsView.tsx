@@ -1,4 +1,4 @@
-import { FinkPageHeader, FinkPanel, FinkStack, KolButton, KolInputRadio, useFink, useToast, type FinkColorScheme, type FinkThemeName } from '@fink/react';
+import { FINK_THEMES, FinkPageHeader, FinkPanel, FinkStack, KolButton, KolInputRadio, useFink, useToast, type FinkColorScheme, type FinkThemeName } from '@fink/react';
 import { applicationsStore } from './store';
 import { t } from '../../i18n';
 
@@ -8,10 +8,7 @@ const SCHEME_OPTIONS = [
 	{ label: t('System'), value: 'system' },
 ];
 
-const THEME_OPTIONS = [
-	{ label: t('Fink'), value: 'fink' },
-	{ label: t('KoliBri Default'), value: 'default' },
-];
+const THEME_OPTIONS = FINK_THEMES.map((theme) => ({ label: theme.label, value: theme.name }));
 
 /** Einstellungen: Farbschema, Theme und Demo-Daten. */
 export function SettingsView() {

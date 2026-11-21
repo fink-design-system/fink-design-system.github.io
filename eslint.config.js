@@ -12,7 +12,7 @@ import finkA11y from './eslint-rules/fink-a11y.js';
  */
 export default tseslint.config(
 	{
-		ignores: ['packages/components/src/components.d.ts', '**/node_modules/**', '**/dist/**', '**/www/**', '**/loader/**', '**/.stencil/**', 'packages/react/src/generated/**', 'apps/showcase/public/**', 'experiments/*/public/**', '**/playwright-report/**', '**/test-results/**', 'experiments/*/results/**', 'experiments/*/dist-*/**', 'experiments/*/analyse/**'],
+		ignores: ['packages/components/src/components.d.ts', '**/node_modules/**', '**/dist/**', '**/www/**', '**/loader/**', '**/.stencil/**', 'packages/react/src/generated/**', 'apps/showcase/public/**', 'experiments/*/public/**', '**/playwright-report/**', '**/test-results/**', 'experiments/*/results/**', 'experiments/*/dist-*/**', 'experiments/*/analyse/**', 'experiments/*/.kolibri/**'],
 	},
 	{
 		files: ['**/*.{ts,tsx}'],

@@ -11,7 +11,12 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolSingleSelect,
+	KolLink,
+	FINK_THEMES,
+	brandThemes,
 	tokens,
+	useFink,
+	type FinkThemeName,
 } from '@fink/react';
 import { CodeBlock } from '../site/CodeBlock';
 import { t } from '../i18n';
@@ -21,13 +26,32 @@ const PROGRAM_OPTIONS = [
 	{ label: t('Klimaschutz'), value: 'klima' },
 ];
 
+const THEME_OPTIONS = FINK_THEMES.map((theme) => ({ label: theme.label, value: theme.name }));
+
+/** Theme der ganzen Seite; auf Smartphones der einzige Umschalter, weil der Kopf dafür keinen Platz hat. */
+function PageThemeSelect() {
+	const { theme, setTheme } = useFink();
+	return (
+		<KolSingleSelect
+			_label={t('Theme dieser Seite')}
+			_hint={t('Gilt für die ganze Showcase und wird gespeichert.')}
+			_options={THEME_OPTIONS}
+			_value={theme}
+			_on={{ onChange: (_e, value) => setTheme(String(value) as FinkThemeName) }}
+		/>
+	);
+}
+
 const FONT_OPTIONS = [
 	{ label: t('Fink (Inter/System)'), value: 'var(--fink-font-family)' },
 	{ label: t('Serif'), value: 'Georgia, "Times New Roman", serif' },
 	{ label: t('Monospace'), value: 'ui-monospace, Menlo, monospace' },
 ];
 
-function Sample() {
+/** Primärfarbe eines Themes als Hex-Wert; kol-badge wertet Farben selbst aus und akzeptiert keine var(). */
+const primaryOf = (theme?: string): string => brandThemes.find((item) => item.name === theme)?.flat['color.primary'].light ?? tokens['color.primary'].light!;
+
+function Sample({ theme }: { theme?: string }) {
 	return (
 		<FinkStack _gap="4">
 			<FinkStack _direction="row" _gap="2">
@@ -41,16 +65,23 @@ function Sample() {
 				{t('Gleiche Komponenten, anderes Theme.')}
 			</KolAlert>
 			<FinkStack _direction="row" _gap="2" _align="center">
-				<KolBadge _label={t('Badge')} _color={tokens['color.primary'].light!} />
+				<KolBadge _label={t('Badge')} _color={primaryOf(theme)} />
 				<FinkStatus _label={t('Fink-Status')} _tone="success" />
 			</FinkStack>
 		</FinkStack>
 	);
 }
 
-/** Rendert die Kinder unter einem anderen KoliBri-Theme. KoliBri liest data-theme beim Mounten. */
+/**
+ * Rendert die Kinder unter einem anderen Theme. KoliBri liest data-theme beim Mounten, die Tokens
+ * des Themes gelten über den Selektor [data-theme='…'] aus @fink/tokens für den ganzen Teilbaum.
+ */
 function ThemeScope({ theme, children }: { theme: string; children: ReactNode }) {
-	return <div data-theme={theme}>{children}</div>;
+	return (
+		<div className="compare-pane" data-theme={theme}>
+			{children}
+		</div>
+	);
 }
 
 export function Theming() {
@@ -81,28 +112,38 @@ export function Theming() {
 			/>
 
 			<section className="section" aria-labelledby="compare">
-				<h2 id="compare">{t('Fink und KoliBri-Default im Vergleich')}</h2>
+				<h2 id="compare">{t('Ein Komponentensatz, sechs Design-Systeme')}</h2>
 				<p className="section-intro">
-					{t('Beide Themes sind registriert. KoliBri sucht beim Mounten das nächste')} <code>{t('data-theme')}</code>{t('-Attribut – so lassen sich Themes sogar auf einer Seite mischen.')}
+					{t('Alle Themes sind registriert. KoliBri sucht beim Mounten das nächste')} <code>{t('data-theme')}</code>{t('-Attribut – so lassen sich Themes sogar auf einer Seite mischen.')}{' '}
+					{t('Neben Fink und dem KoliBri-Default stehen Stil-Adaptionen von DB UX Design System, Porsche Design System, Telekom Scale und Siemens iX: dieselben KoliBri- und Fink-Komponenten, nur andere Tokens und wenige Overrides. Für die ganze Seite wählt man das Theme über das Farbeimer-Symbol im Kopf.')}
 				</p>
-				<div className="compare">
-					<div className="compare-pane">
-						<h3>
-							<code>data-theme="fink"</code>
-						</h3>
-						<ThemeScope theme="fink">
-							<Sample />
-						</ThemeScope>
-					</div>
-					<div className="compare-pane">
-						<h3>
-							<code>data-theme="default"</code>
-						</h3>
-						<ThemeScope theme="default">
-							<Sample />
-						</ThemeScope>
-					</div>
+				<div className="theme-select">
+					<PageThemeSelect />
 				</div>
+				<div className="compare">
+					{FINK_THEMES.map((theme) => (
+						<ThemeScope key={theme.name} theme={theme.name}>
+							<h3>
+								{theme.label} <code className="muted small">data-theme="{theme.name}"</code>
+							</h3>
+							<Sample theme={theme.name} />
+						</ThemeScope>
+					))}
+				</div>
+			</section>
+
+			<section className="section" aria-labelledby="brands">
+				<h2 id="brands">{t('Stil-Adaptionen')}</h2>
+				<p className="section-intro">
+					{t('Stil-Nachbildungen auf Basis veröffentlichter Design-Tokens: Farben, Radien, Schatten und Abstände. Keine Schriften, Logos oder Icons der Vorbilder; keine Verbindung zu den Unternehmen.')}
+				</p>
+				<ul className="section-intro brand-notes">
+					{FINK_THEMES.filter((theme) => theme.brand).map((theme) => (
+						<li key={theme.name}>
+							<KolLink _href={theme.source} _label={theme.label} _target="_blank" />: <code>packages/tokens/src/themes/{theme.name}.json</code>
+						</li>
+					))}
+				</ul>
 			</section>
 
 			<section className="section" aria-labelledby="live">

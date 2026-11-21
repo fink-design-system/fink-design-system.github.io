@@ -1,12 +1,12 @@
-import type { FinkSystemName } from '@fink/theme';
+import type { FinkBrandThemeName } from '@fink/theme';
 
 /**
- * Die Nachbau-Skins europäischer Design-Systeme, geordnet nach GitHub-Sternen (Stand 20.11.2026).
- * Token-Quellen und Regeln stehen in packages/tokens/src/<system>.json und
+ * Die Nachbau-Themes europäischer Design-Systeme, geordnet nach GitHub-Sternen (Stand 20.11.2026).
+ * Token-Quellen und Regeln stehen in packages/tokens/src/themes/*.json und
  * docs/design-system-landschaft.md; lizenzierte Markenschriften sind ersetzt.
  */
 export interface ReplicaSystem {
-	id: FinkSystemName;
+	id: FinkBrandThemeName;
 	label: string;
 	company: string;
 	tech: string;
@@ -21,11 +21,11 @@ export interface ReplicaSystem {
 }
 
 export const replicaSystems: ReplicaSystem[] = [
-	{ id: 'porsche', label: 'Porsche Design System', company: 'Porsche (DE)', tech: 'Stencil', license: 'eigene Lizenzdatei', stars: 684, sourceUrl: 'https://github.com/porsche-design-system/porsche-design-system', docsUrl: 'https://designsystem.porsche.com', fontNote: 'Porsche Next → Inter' },
-	{ id: 'scale', label: 'Telekom Scale', company: 'Deutsche Telekom (DE)', tech: 'Stencil', license: 'eigene Lizenzdatei', stars: 431, sourceUrl: 'https://github.com/telekom/scale', fontNote: 'TeleNeo → Inter', caveat: 'Die Doku-Domain scale.telekom.com ist nicht mehr erreichbar.' },
-	{ id: 'ix', label: 'Siemens Industrial Experience', company: 'Siemens (DE)', tech: 'Stencil', license: 'MIT', stars: 393, sourceUrl: 'https://github.com/siemens/ix', docsUrl: 'https://ix.siemens.io', fontNote: 'Siemens Sans → Inter' },
+	{ id: 'porsche', label: 'Porsche Design System', company: 'Porsche (DE)', tech: 'Stencil', license: 'eigene Lizenzdatei', stars: 684, sourceUrl: 'https://github.com/porsche-design-system/porsche-design-system', docsUrl: 'https://designsystem.porsche.com', fontNote: 'Porsche Next → schmale Systemschrift' },
+	{ id: 'telekom', label: 'Telekom Scale', company: 'Deutsche Telekom (DE)', tech: 'Stencil', license: 'eigene Lizenzdatei', stars: 431, sourceUrl: 'https://github.com/telekom/scale', fontNote: 'TeleNeo → Systemstack', caveat: 'Die Doku-Domain scale.telekom.com ist nicht mehr erreichbar.' },
+	{ id: 'siemens-ix', label: 'Siemens Industrial Experience', company: 'Siemens (DE)', tech: 'Stencil', license: 'MIT', stars: 393, sourceUrl: 'https://github.com/siemens/ix', docsUrl: 'https://ix.siemens.io', fontNote: 'Siemens Sans → Systemstack (Classic)' },
 	{ id: 'post', label: 'Swiss Post Design System', company: 'Die Schweizerische Post (CH)', tech: 'Stencil', license: 'Apache-2.0', stars: 182, sourceUrl: 'https://github.com/swisspost/design-system', fontNote: 'Swiss Post Sans → Inter' },
-	{ id: 'db', label: 'DB UX Design System v3', company: 'Deutsche Bahn (DE)', tech: 'Stencil', license: 'eigene Lizenzdatei', stars: 137, sourceUrl: 'https://github.com/db-ux-design-system/core-web', docsUrl: 'https://db-ux-design-system.github.io', fontNote: 'DB Screen → Inter', caveat: 'Die Foundations-Default-Palette nutzt ein markenneutrales Violett; das DB-Rot der Produkte ist nicht gesetzt.' },
+	{ id: 'db', label: 'DB UX Design System v3', company: 'Deutsche Bahn (DE)', tech: 'Stencil', license: 'eigene Lizenzdatei', stars: 137, sourceUrl: 'https://github.com/db-ux-design-system/core-web', docsUrl: 'https://design-system.deutschebahn.com', fontNote: 'DB Screen → Helvetica-Systemstack', caveat: 'Primärfarbe DB-Rot wie in den Produkten; Kontrast-Anpassungen aus @db-ux/db-theme.' },
 	{ id: 'baloise', label: 'Baloise Design System', company: 'Baloise (CH)', tech: 'Stencil', license: 'Apache-2.0', stars: 114, sourceUrl: 'https://github.com/baloise/design-system', fontNote: 'BaloiseCreate → Inter' },
 	{ id: 'tegel', label: 'Tegel', company: 'Scania (SE)', tech: 'Stencil', license: 'MIT', stars: 40, sourceUrl: 'https://github.com/scania-digital-design-system/tegel', fontNote: 'Scania Sans → Inter' },
 	{ id: 'infineon', label: 'Infineon Design System', company: 'Infineon (DE)', tech: 'Stencil', license: 'MIT', stars: 37, sourceUrl: 'https://github.com/Infineon/infineon-design-system-stencil', fontNote: 'Source Sans 3 bleibt (frei verfügbar)' },

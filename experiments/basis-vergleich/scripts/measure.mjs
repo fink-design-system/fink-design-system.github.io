@@ -18,8 +18,24 @@ const own = (p) => resolve(root, 'src', p);
 
 /** Was jede Variante selbst schreiben musste. Bei KoliBri sind das die Fink-Quellen beider Komponenten. */
 const VARIANTS = {
+	'kolibri-4.5': {
+		name: 'KoliBri 4.5.0',
+		note: 'gleicher Fink-Code, KoliBri 4.5.0 (KOLIBRI_BUILD=4.5)',
+		page: 'kolibri',
+		dist: 'dist-4.5',
+		files: [],
+		locales: [],
+	},
+	'kolibri-4.6': {
+		name: 'KoliBri 4.6.0',
+		note: 'gleicher Fink-Code, KoliBri 4.6.0 (KOLIBRI_BUILD=4.6)',
+		page: 'kolibri',
+		dist: 'dist-4.6',
+		files: [],
+		locales: [],
+	},
 	kolibri: {
-		name: 'KoliBri',
+		name: 'KoliBri 4.7.0-rc.0',
 		files: [
 			fink('components/tag-input/tag-input.tsx'),
 			fink('components/tag-input/tag-input.css'),
@@ -33,26 +49,10 @@ const VARIANTS = {
 		locales: ['tagInput', 'fileUpload', 'chip'],
 	},
 	'kolibri-schlank': {
-		name: 'KoliBri schlank',
-		note: 'wie KoliBri, Build mit scripts/kolibri-icon-prune.mjs: im Theme nur die genutzten Icons',
+		name: 'KoliBri 4.7.0-rc.0 schlank',
+		note: 'wie KoliBri 4.7.0-rc.0, Build mit scripts/kolibri-icon-prune.mjs: im Theme nur die genutzten Icons',
 		page: 'kolibri',
 		dist: 'dist-slim',
-		files: [],
-		locales: [],
-	},
-	'kolibri-lazy': {
-		name: 'KoliBri schlank + lazy markdown',
-		note: 'wie KoliBri schlank, zusätzlich scripts/kolibri-lazy-markdown.mjs: markdown-it nur bei Bedarf',
-		page: 'kolibri',
-		dist: 'dist-lazy',
-		files: [],
-		locales: [],
-	},
-	'kolibri-next': {
-		name: 'KoliBri next (#11637)',
-		note: 'wie KoliBri, Build mit scripts/kolibri-next-markdown.mjs: markdown-it durch den Renderer aus public-ui/kolibri#11637 ersetzt',
-		page: 'kolibri',
-		dist: 'dist-next',
 		files: [],
 		locales: [],
 	},
@@ -127,14 +127,12 @@ function code() {
 		}
 		out[id] = { name: v.name, ...totals, total: totals.logic + totals.style };
 	}
-	// Die schlanke Variante nutzt denselben Fink-Code, nur der Build unterscheidet sich.
-	out['kolibri-schlank'] = { ...out.kolibri, name: VARIANTS['kolibri-schlank'].name };
-	out['kolibri-lazy'] = { ...out.kolibri, name: VARIANTS['kolibri-lazy'].name };
-	out['kolibri-next'] = { ...out.kolibri, name: VARIANTS['kolibri-next'].name };
+	// Die übrigen KoliBri-Fassungen nutzen denselben Fink-Code, nur KoliBri-Version oder Build unterscheiden sich.
+	for (const id of ['kolibri-4.5', 'kolibri-4.6', 'kolibri-schlank']) out[id] = { ...out.kolibri, name: VARIANTS[id].name };
 	return out;
 }
 
-const PORTS = { dist: 4318, 'dist-slim': 4320, 'dist-lazy': 4324, 'dist-next': 4330 };
+const PORTS = { dist: 4318, 'dist-slim': 4320, 'dist-4.5': 4324, 'dist-4.6': 4330 };
 
 /** Lädt eine Seite und summiert Skripte, Stylesheets und Schriften. */
 async function measurePage(browser, url) {
@@ -242,7 +240,7 @@ const md = [
 	'',
 	'## KoliBri auf einer Seite ohne Badge',
 	'',
-	'Nur `fink-file-upload`, kein `kol-badge`. Hier zeigt sich, was das Nachladen von markdown-it spart.',
+	'Nur `fink-file-upload`, kein `kol-badge`. Zeigt, was eine Seite ohne Badge lädt.',
 	'',
 	`| | ${kolibriIds.map((id) => VARIANTS[id].name).join(' | ')} |`,
 	`| --- | ${kolibriIds.map(() => '---:').join(' | ')} |`,

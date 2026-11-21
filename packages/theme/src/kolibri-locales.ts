@@ -1,8 +1,8 @@
 /*
- * Automatisch erzeugt von scripts/kolibri-locales.mjs aus @public-ui/components 4.6.0. Nicht von Hand bearbeiten.
+ * Automatisch erzeugt von scripts/kolibri-locales.mjs aus @public-ui/components 4.7.0-rc.0. Nicht von Hand bearbeiten.
  * Angepasst (Auslassungszeichen entfernt): action-running, filename-text.
  */
-export const KOLIBRI_VERSION = '4.6.0';
+export const KOLIBRI_VERSION = '4.7.0-rc.0';
 
 export const kolibriLocales: Record<'de' | 'en', Record<string, string>> = {
 	"de": {
