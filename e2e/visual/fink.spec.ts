@@ -15,6 +15,7 @@ for (const lib of VISUAL_LIBS) {
 			if (process.env.FINK_VISUAL === undefined) test.skip(true, 'Visual-Vergleich nur über `pnpm test:visual`');
 			if (lib.todo) test.skip(true, `${lib.theme}: ${lib.todo}`);
 			await page.goto('/');
+		const isKern = lib.theme === 'kern';
 		await page.evaluate((theme) => {
 			const section = document.createElement('section');
 			section.setAttribute('data-theme', theme);
@@ -49,10 +50,46 @@ for (const lib of VISUAL_LIBS) {
 		await page.waitForTimeout(600);
 
 		for (const element of ['button-primary', 'button-secondary']) {
-			await expect(section_locator(page, lib.theme, element)).toHaveScreenshot(`${lib.theme}-${element}.png`, {
+			const cell = section_locator(page, lib.theme, element);
+			await expect(cell).toHaveScreenshot(`${lib.theme}-${element}.png`, {
 				maxDiffPixelRatio: MAX_DIFF,
 			});
 		}
+	});
+}
+
+/** Fokus-Zelle nur für Kern (CSS-only-Original): dreistufiger KERN-Ring gegen den Fink-Ring. */
+for (const lib of VISUAL_LIBS.filter((item) => item.theme === 'kern')) {
+	test(`fink kern focus`, async ({ page }) => {
+		if (process.env.FINK_VISUAL === undefined) test.skip(true, 'Visual-Vergleich nur über `pnpm test:visual`');
+		await page.goto('/');
+		await page.evaluate(() => {
+			const section = document.createElement('section');
+			section.setAttribute('data-theme', 'kern');
+			section.style.position = 'absolute';
+			section.style.inset = '0';
+			section.style.zIndex = '99999';
+			section.style.background = '#fff';
+			section.style.padding = '24px';
+			section.innerHTML =
+				'<span class="cell" data-element="button-focus" style="box-sizing:border-box;width:230px;height:84px;display:flex;align-items:center;justify-content:center;background:#fff"><kol-button _label="Primary" _variant="primary"></kol-button></span>';
+			document.body.appendChild(section);
+		});
+		await page.waitForFunction(
+			() => {
+				const btn = document.querySelector('section[data-theme="kern"] kol-button');
+				return !!btn && btn.classList.contains('hydrated');
+			},
+			undefined,
+			{ timeout: 15_000 },
+		);
+		await page.keyboard.press('Tab');
+		await page.locator('section[data-theme="kern"] kol-button').getByRole('button').first().focus();
+		await page.waitForTimeout(400);
+		await expect(page.locator('section[data-theme="kern"] .cell[data-element="button-focus"]')).toHaveScreenshot(
+			'kern-button-focus.png',
+			{ maxDiffPixelRatio: MAX_DIFF },
+		);
 	});
 }
 

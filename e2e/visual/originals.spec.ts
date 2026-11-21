@@ -27,8 +27,10 @@ for (const lib of VISUAL_LIBS) {
 			}
 			const harness = document.createElement('div');
 			harness.id = 'original-harness';
-			harness.innerHTML = Object.entries(lib.cells)
-				.map(([element, markup]) => `<span class="cell" data-element="${element}">${markup}</span>`)
+			const cells = { ...lib.cells };
+			if (lib.theme === 'kern') cells['button-focus'] = lib.cells['button-primary']; // CSS-only: verlässlicher Fokus-Bootstrap
+			harness.innerHTML = Object.entries(cells)
+				.map(([element, markup]) => `<span class="cell${element.endsWith('focus') ? ' cell--focus' : ''}" data-element="${element}">${markup}</span>`)
 				.join('\n');
 			document.body.appendChild(harness);
 		}, { lib, harnessCss: HARNESS_CSS });
@@ -81,10 +83,15 @@ for (const lib of VISUAL_LIBS) {
 			}
 		}
 		test.skip(!styled, `${lib.theme}: Original per CDN nicht gestylt ladbar — Bootstrap prüfen (TODO)`);
-		for (const element of Object.keys(lib.cells)) {
-			await expect(page.locator(`#original-harness .cell[data-element="${element}"]`)).toHaveScreenshot(
-				`${lib.theme}-${element}.png`,
-			);
+		const elements = Object.keys({ ...lib.cells, ...(lib.theme === 'kern' ? { 'button-focus': null } : {}) });
+		for (const element of elements) {
+			const cell = page.locator(`#original-harness .cell[data-element="${element}"]`);
+			if (element.endsWith('focus')) {
+				await page.keyboard.press('Tab');
+				await cell.getByRole('button').first().focus();
+				await page.waitForTimeout(300);
+			}
+			await expect(cell).toHaveScreenshot(`${lib.theme}-${element}.png`);
 		}
 	});
 }
