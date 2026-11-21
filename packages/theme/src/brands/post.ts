@@ -1,6 +1,6 @@
 import { INPUT_COMPONENTS, focusColor, forComponents, mergeOverrides, neutralTableHeader, sharedOverrides, slimInputs, tintedAlert } from '../overrides.js';
 
-/** Buttons: fettes Textgewicht (Post kennt 400/700/900), Sekundär/Normal als getönte Fläche. */
+/** Buttons: fettes Textgewicht, Sekundär/Normal als getönte Fläche, Primär dunkel auf Postgelb. */
 const buttons = (b: '.kol-button' | '.kol-link') => `
 @layer kol-theme-component {
 	${b}__text {
@@ -12,6 +12,11 @@ const buttons = (b: '.kol-button' | '.kol-link') => `
 		--text-background-color: var(--fink-color-mute);
 		--text-border-color: var(--fink-color-mute);
 		--text-color: var(--fink-color-text);
+	}
+	/* Postgelb trägt weder hellen noch dunklen Text in beiden Schemata: hell → Tinte, dunkel →
+	   der dunkle Light-Token (Sandgrau). light-dark() macht den Button-Text schemaabhängig. */
+	${b}--primary {
+		--text-color: light-dark(var(--fink-color-ink), var(--fink-color-light));
 	}
 }`;
 

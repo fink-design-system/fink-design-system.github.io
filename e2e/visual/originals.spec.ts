@@ -33,7 +33,8 @@ for (const lib of VISUAL_LIBS) {
 			document.body.appendChild(harness);
 		}, { lib, harnessCss: HARNESS_CSS });
 
-		if (lib.todo) test.skip(true, `${lib.theme}: ${lib.todo}`);
+		if (process.env.FINK_VISUAL === undefined) test.skip(true, 'Visual-Vergleich nur über `pnpm test:visual`');
+			if (lib.todo) test.skip(true, `${lib.theme}: ${lib.todo}`);
 		// Bis zu drei Versuche: die Stencil-CDNs liefern ihre Style-Chunks gelegentlich verzögert,
 		// eine unstyled Baseline wäre für den Vergleich wertlos. Erkennbar an transparentem
 		// Hintergrund des ersten Elements.

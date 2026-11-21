@@ -1,5 +1,3 @@
-import type { FinkBrandThemeName } from '@fink/theme';
-
 /**
  * Je Nachbau-Theme das zugehörige Original-Design-System: CDN-Bootstrap, Ready-Bedingung und die
  * Markup-Schnipsel der verglichenen Elemente. Die Schnipsel heißen gleich wie die Fink-Seite und
@@ -8,15 +6,17 @@ import type { FinkBrandThemeName } from '@fink/theme';
  * Nicht every Theme hat ein per CDN ladbares Original: d-you existiert nur als KoliBri-PR,
  * Swiss Post bietet kein Web-Component-Paket — dafür stehen die Tests aus (TODO).
  */
+export type VisualTheme = 'porsche' | 'telekom' | 'siemens-ix' | 'db' | 'post' | 'baloise' | 'tegel' | 'infineon' | 'six' | 'kern' | 'dyou';
+
 export interface VisualLib {
-	theme: FinkBrandThemeName;
+	theme: VisualTheme;
 	/** CSS-Ressourcen des Originals (als HTML-Zeichenkette). */
 	head: string;
 	/**
 	 * Scripts des Originals; über createElement eingehängt, weil insertAdjacentHTML erzeugte
 	 * Script-Tags vom Browser nicht ausgeführt werden.
 	 */
-	scripts: Array<{ type?: 'module'; src?: string; code?: string }>;
+	scripts?: Array<{ type?: 'module'; src?: string; code?: string }>;
 	/** Ausdruck, der wahr wird, sobald das Original-Element registriert ist (CSS-only: true). */
 	ready: string;
 	/** Init-Code (nach Scripts, vor Screenshots), z. B. Stencil-Loader-Aufrufe. */

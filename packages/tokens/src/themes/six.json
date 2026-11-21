@@ -29,9 +29,9 @@
 			"$description": "warning-700; Dark-Variante nicht definiert"
 		},
 		"danger": {
-			"light": "#DE3919",
-			"dark": "#ff7a5c",
-			"$description": "danger-800; im Dunkel abgeleitet aufgehellt (#ff7a5c), da der Button-Text über --color-light dunkel bleibt"
+			"light": "#C52C0F",
+			"dark": "#ffb3a8",
+			"$description": "danger-800; im Dunkel abgeleitet aufgehellt (#ffb3a8) — Button-Text ist der dunkle light-Token"
 		},
 		"info": {
 			"light": "#2196F3",
@@ -44,9 +44,9 @@
 			"$description": "web-rock-900 / Weiß"
 		},
 		"subtle": {
-			"light": "#7B7B7B",
+			"light": "#4d4d4d",
 			"dark": "#C3C3C3",
-			"$description": "web-rock-600 / web-rock-400, gespiegelte Positionen"
+			"$description": "web-rock-600 abgedunkelt (abgeleitet #4d4d4d), damit Sekundärtext auf clay-50 ≥4,5:1 erreicht"
 		},
 		"ink": {
 			"light": "#000000",

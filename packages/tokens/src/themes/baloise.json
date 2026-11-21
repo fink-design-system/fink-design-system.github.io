@@ -30,8 +30,8 @@
 		},
 		"danger": {
 			"light": "#EA1800",
-			"dark": "#ff596f",
-			"$description": "danger-4; im Dunkel auf red-4 (#ff596f) aufgehellt (weiß نیست 4,9:1 → dunkler Text 4,9:1)"
+			"dark": "#ff8a96",
+			"$description": "danger-4; im Dunkel auf abgeleitet #ff8a96 aufgehellt (dunkler Button-Text ≥4,5:1)"
 		},
 		"info": {
 			"light": "#1C77D2",
@@ -44,9 +44,9 @@
 			"$description": "text-primary (primary-5) / Weiß"
 		},
 		"subtle": {
-			"light": "#747474",
+			"light": "#595959",
 			"dark": "#B6B6B6",
-			"$description": "text-grey / text-grey-light"
+			"$description": "text-grey (#747474) abgedunkelt (abgeleitet #595959) für ≥4,5:1 auf grey-1"
 		},
 		"ink": {
 			"light": "#000000",

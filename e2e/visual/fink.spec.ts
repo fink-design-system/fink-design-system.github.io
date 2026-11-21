@@ -12,6 +12,7 @@ const MAX_DIFF = 0.35;
 
 for (const lib of VISUAL_LIBS) {
 		test(`fink ${lib.theme}`, async ({ page }) => {
+			if (process.env.FINK_VISUAL === undefined) test.skip(true, 'Visual-Vergleich nur über `pnpm test:visual`');
 			if (lib.todo) test.skip(true, `${lib.theme}: ${lib.todo}`);
 			await page.goto('/');
 		await page.evaluate((theme) => {

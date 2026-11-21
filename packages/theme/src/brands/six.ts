@@ -13,6 +13,10 @@ const buttons = (b: '.kol-button' | '.kol-link') => `
 		--text-border-color: var(--fink-color-mute-variant);
 		--text-color: var(--fink-color-text);
 	}
+	/* #2196f3 trägt weißen Text nur mit 3,1:1 — Primär-Button schemaabhängig dunkel. */
+	${b}--primary {
+		--text-color: light-dark(var(--fink-color-ink), var(--fink-color-light));
+	}
 }`;
 
 /**

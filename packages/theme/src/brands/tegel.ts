@@ -1,6 +1,6 @@
 import { INPUT_COMPONENTS, focusColor, forComponents, mergeOverrides, neutralTableHeader, sharedOverrides, slimInputs, tintedAlert } from '../overrides.js';
 
-/** Buttons: normales Schriftgewicht, Sekundär/Normal als Kontur in Linienfarbe. */
+/** Buttons: normales Schriftgewicht, Sekundär/Normal als Kontur, Danger dunkel auf Negative. */
 const buttons = (b: '.kol-button' | '.kol-link') => `
 @layer kol-theme-component {
 	${b}__text {
@@ -12,6 +12,10 @@ const buttons = (b: '.kol-button' | '.kol-link') => `
 		--text-background-color: transparent;
 		--text-border-color: var(--fink-color-mute-variant);
 		--text-color: var(--fink-color-text);
+	}
+	/* Tegel-Negative #ff2340 trägt hellen Text nur mit 3,3:1 — Danger-Button schemaabhängig dunkel. */
+	${b}--danger {
+		--text-color: light-dark(var(--fink-color-ink), var(--fink-color-light));
 	}
 }`;
 

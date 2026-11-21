@@ -25,18 +25,18 @@
 		},
 		"warning": {
 			"light": "#5A5959",
-			"dark": "#5A5959",
-			"$description": "keine Warning-Stufe im PR dokumentiert; Sekundärgrau übernimmt"
+			"dark": "#ffe08a",
+			"$description": "im Original nicht definiert; abgeleitete helle Tönung"
 		},
 		"danger": {
 			"light": "#5A5959",
-			"dark": "#5A5959",
-			"$description": "keine Danger-Stufe im PR dokumentiert; Sekundärgrau übernimmt"
+			"dark": "#ffb3ab",
+			"$description": "im Original nicht definiert; abgeleitete helle Tönung für den Dunkelmodus"
 		},
 		"info": {
 			"light": "#5A5959",
-			"dark": "#5A5959",
-			"$description": "keine Info-Stufe im PR dokumentiert; Sekundärgrau übernimmt"
+			"dark": "#b3d9ff",
+			"$description": "im Original nicht definiert; abgeleitete helle Tönung"
 		},
 		"text": {
 			"light": "#1D1D1E",

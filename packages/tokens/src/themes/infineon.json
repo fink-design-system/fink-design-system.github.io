@@ -44,9 +44,9 @@
 			"$description": "black/white"
 		},
 		"subtle": {
-			"light": "#8D8786",
+			"light": "#6e6a68",
 			"dark": "#BFBBBB",
-			"$description": "Engineering500 / Engineering400, gespiegelte Positionen"
+			"$description": "Engineering500 (#8d8786) abgedunkelt (abgeleitet #6e6a68) für ≥4,5:1 auf Engineering100"
 		},
 		"ink": {
 			"light": "#000000",

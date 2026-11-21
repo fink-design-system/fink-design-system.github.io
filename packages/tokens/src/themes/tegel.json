@@ -44,9 +44,9 @@
 			"$description": "grey-950 / Weiß"
 		},
 		"subtle": {
-			"light": "rgb(0 0 0 / 0.48)",
+			"light": "rgb(0 0 0 / 0.58)",
 			"dark": "rgb(255 255 255 / 0.48)",
-			"$description": "black-48 / white-48"
+			"$description": "black-Alpha 0.48 → 0.58 (abgeleitet), Sekundärtext auf grey-50 ≥4,5:1"
 		},
 		"ink": {
 			"light": "#000000",
