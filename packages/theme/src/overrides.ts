@@ -11,6 +11,8 @@
  * Kopfzellen einzeilig. Die Mindestbreite der Tabelle setzt die Anwendung über _minWidth
  * (KoliBri schreibt sie inline); den Rest übernimmt der Scroll-Container von KoliBri.
  */
+import { ICON_FONT_CSS } from './icon-fonts.generated.js';
+
 const narrowTable = `
 @layer kol-theme-component {
 	:host {

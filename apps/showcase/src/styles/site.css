@@ -1080,9 +1080,17 @@ pre {
 	margin-top: 0;
 }
 
-/* Smartphone-Viewport: kompaktere Abstände, Kopfzeile ohne Versionsangabe, Karten ohne große Vorschaufläche. */
+/* Smartphone-Viewport: kompaktere Abstände, Kopfzeile ohne Versionsangabe und Avatar, Karten ohne große Vorschaufläche. */
 @media (max-width: 599px) {
 	.header-version {
+		display: none;
+	}
+
+	.header-tools {
+		gap: 4px;
+	}
+
+	.header-tools kol-avatar {
 		display: none;
 	}
 

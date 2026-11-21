@@ -16,8 +16,9 @@
 		"bin"
 	],
 	"scripts": {
-		"build": "node scripts/kolibri-locales.mjs && tsc -p tsconfig.json",
-		"locales:check": "node scripts/kolibri-locales.mjs --check"
+		"build": "node scripts/kolibri-locales.mjs && node scripts/icon-fonts.mjs && tsc -p tsconfig.json",
+		"locales:check": "node scripts/kolibri-locales.mjs --check",
+		"icon-fonts": "node scripts/icon-fonts.mjs"
 	},
 	"dependencies": {
 		"@fink/tokens": "workspace:*",
