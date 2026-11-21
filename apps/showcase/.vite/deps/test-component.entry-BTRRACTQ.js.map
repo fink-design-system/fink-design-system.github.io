@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/test-component.entry.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { r as registerInstance } from './index-8-BSSKQL.js';\nimport './common-BdSzSIXg.js';\n\nconst TestComponent = class {\n    constructor(hostRef) {\n        if (new.target === TestComponent)\n            registerInstance(this, hostRef);\n    }\n};\n\nexport { TestComponent as test_component };\n"],
+  "mappings": ";;;;;;;AAMA,IAAM,gBAAgB,MAAM;AAAA,EACxB,YAAY,SAAS;AACjB,QAAI,eAAe;AACf,uBAAiB,MAAM,OAAO;AAAA,EACtC;AACJ;",
+  "names": []
+}

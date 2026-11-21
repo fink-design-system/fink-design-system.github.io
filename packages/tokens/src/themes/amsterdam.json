@@ -1,0 +1,206 @@
+{
+	"$description": "Stil-Adaption des Amsterdam Design Systems (Quelle: @amsterdam/design-system-tokens 4.4.0, dist/index.json). Eckige Formen (Radius 0), Amsterdam-Blau als Interaktionsfarbe, 2-px-Konturen. 'Amsterdam Sans' wird durch eine System-Schrift ersetzt; ein Dunkelschema ist im Original nicht definiert — Dark-Werte sind abgeleitet.",
+	"$label": "Amsterdam Design System",
+	"$source": "https://github.com/Amsterdam/design-system",
+	"color": {
+		"primary": {
+			"light": "#004699",
+			"dark": "#004699",
+			"$description": "interactive.default — Button-/Linkfarbe; Dark-Variante im Original nicht definiert"
+		},
+		"primary-variant": {
+			"light": "#003677",
+			"dark": "#003677",
+			"$description": "interactive.hover"
+		},
+		"secondary": {
+			"light": "color-mix(in srgb, #004699 10%, #ffffff)",
+			"dark": "color-mix(in srgb, #004699 30%, #202020)",
+			"$description": "getönte Fläche aus interactive.default (abgeleitet)"
+		},
+		"success": {
+			"light": "#00893c",
+			"dark": "#00893c",
+			"$description": "feedback.success"
+		},
+		"warning": {
+			"light": "#ff9100",
+			"dark": "#ff9100",
+			"$description": "feedback.warning"
+		},
+		"danger": {
+			"light": "#ec0000",
+			"dark": "#ec0000",
+			"$description": "feedback.error — das Amsterdam-Rot"
+		},
+		"info": {
+			"light": "#009de6",
+			"dark": "#009de6",
+			"$description": "feedback.info"
+		},
+		"text": {
+			"light": "#202020",
+			"dark": "#ffffff",
+			"$description": "text.default / text.inverse"
+		},
+		"subtle": {
+			"light": "#696969",
+			"dark": "#a7a7a7",
+			"$description": "text.secondary (#767676) abgedunkelt (abgeleitet #696969) — Sekundärtext auf getönten Flächen ≥4,5:1"
+		},
+		"ink": {
+			"light": "#000000",
+			"dark": "#ffffff"
+		},
+		"surface": {
+			"light": "#ffffff",
+			"dark": "#202020",
+			"$description": "background.body; dunkle Fläche abgeleitet"
+		},
+		"light": {
+			"light": "#ffffff",
+			"dark": "#2a2a2a",
+			"$description": "Komponentenfläche; dunkler Wert abgeleitet"
+		},
+		"overlay": {
+			"light": "#ffffff",
+			"dark": "#2a2a2a",
+			"$description": "dunkler Wert abgeleitet"
+		},
+		"mute": {
+			"light": "#f0f0f0",
+			"dark": "#2e2e2e",
+			"$description": "abgeleitete neutrale getönte Fläche"
+		},
+		"mute-variant": {
+			"light": "#d1d1d1",
+			"dark": "#4d4d4d",
+			"$description": "color.separator"
+		},
+		"edge": {
+			"light": "transparent",
+			"dark": "#4d4d4d",
+			"$description": "Kante statt Schatten im Dunkelmodus"
+		},
+		"visited": {
+			"light": "#004699",
+			"dark": "#004699",
+			"$description": "Amsterdam dokumentiert keine Visited-Farbe; Links folgen interactive"
+		},
+		"shadow": {
+			"light": "rgb(0 0 0 / 0.14)",
+			"dark": "transparent"
+		},
+		"backdrop": {
+			"light": "rgb(0 0 0 / 0.35)",
+			"dark": "rgb(0 0 0 / 0.6)"
+		}
+	},
+	"focus": {
+		"color": {
+			"value": "#004699",
+			"$description": "interactive.default; Amsterdam dokumentiert nur outline-offset 0.25rem"
+		}
+	},
+	"font": {
+		"family": {
+			"value": "'Amsterdam Sans', Arial, sans-serif",
+			"$description": "Original-Schrift; lokal wird der Fallback-Stack benutzt"
+		},
+		"weight-regular": {
+			"value": "400"
+		},
+		"weight-medium": {
+			"value": "400",
+			"$description": "Amsterdam nutzt 400 als Button-/Standardgewicht"
+		},
+		"weight-bold": {
+			"value": "700"
+		}
+	},
+	"type-scale": {
+		"xs": {
+			"value": "0.75rem"
+		},
+		"sm": {
+			"value": "0.875rem"
+		},
+		"md": {
+			"value": "clamp(1.125rem, 1.0893rem + 0.1786vw, 1.25rem)",
+			"$description": "body-text font-size (fluid)"
+		},
+		"lg": {
+			"value": "1.5rem"
+		},
+		"xl": {
+			"value": "2rem"
+		},
+		"2xl": {
+			"value": "2.5rem"
+		},
+		"3xl": {
+			"value": "3rem"
+		}
+	},
+	"space": {
+		"base": {
+			"value": "0.25rem",
+			"$description": "kleinste Space-Stufe (xs-Minimum)"
+		},
+		"1": {
+			"value": "0.25rem",
+			"$description": "space.xs"
+		},
+		"2": {
+			"value": "0.5rem",
+			"$description": "space.s"
+		},
+		"3": {
+			"value": "1rem",
+			"$description": "space.m (Minimum)"
+		},
+		"4": {
+			"value": "1rem",
+			"$description": "space.m"
+		},
+		"5": {
+			"value": "1.5rem",
+			"$description": "space.m (Maximum) / l (Minimum)"
+		},
+		"6": {
+			"value": "2rem",
+			"$description": "space.l"
+		},
+		"7": {
+			"value": "3rem",
+			"$description": "space.xl"
+		},
+		"8": {
+			"value": "4.5rem",
+			"$description": "space.2xl (Minimum)"
+		}
+	},
+	"radius": {
+		"sm": {
+			"value": "0",
+			"$description": "border.radius = 0 — Amsterdam arbeitet eckig"
+		},
+		"md": {
+			"value": "0",
+			"$description": "button.border-radius = 0"
+		},
+		"lg": {
+			"value": "0",
+			"$description": "modal/alert border-radius = 0"
+		},
+		"pill": {
+			"value": "999px"
+		}
+	},
+	"border": {
+		"width": {
+			"value": "0.125rem",
+			"$description": "button.border-width = 2 px"
+		}
+	}
+}

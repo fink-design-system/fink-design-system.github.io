@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/links-Dy9WkOJ-.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { B as uiUxHintMillerscheZahl } from './common-BdSzSIXg.js';\nimport { c as createPropDefinition, f as normalizeArray } from './props-from-config-LBgEHmcL.js';\n\nfunction createLinksPropDefinition(componentName) {\n    return createPropDefinition('links', [], (value) => normalizeArray(value), (items) => items.every((item) => typeof item === 'object' && item !== null && (typeof item._href === 'string' || typeof item._label === 'string')), {\n        hints: (_propName, items) => uiUxHintMillerscheZahl(componentName, items.length),\n    });\n}\n\nexport { createLinksPropDefinition as c };\n"],
+  "mappings": ";;;;;;;;;AAMA,SAAS,0BAA0B,eAAe;AAC9C,SAAO,qBAAqB,SAAS,CAAC,GAAG,CAAC,UAAU,eAAe,KAAK,GAAG,CAAC,UAAU,MAAM,MAAM,CAAC,SAAS,OAAO,SAAS,YAAY,SAAS,SAAS,OAAO,KAAK,UAAU,YAAY,OAAO,KAAK,WAAW,SAAS,GAAG;AAAA,IAC3N,OAAO,CAAC,WAAW,UAAU,uBAAuB,eAAe,MAAM,MAAM;AAAA,EACnF,CAAC;AACL;",
+  "names": []
+}

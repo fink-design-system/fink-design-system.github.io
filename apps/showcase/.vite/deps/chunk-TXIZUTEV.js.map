@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/access-and-short-key-ijzCZfHm.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nconst validateAccessAndShortKey = (accessKey, shortKey) => {\n    if (accessKey && shortKey) {\n        throw new Error('AccessKey and ShortKey are used. Only one is allowed.');\n    }\n};\n\nexport { validateAccessAndShortKey as v };\n"],
+  "mappings": ";AAGA,IAAM,4BAA4B,CAAC,WAAW,aAAa;AACvD,MAAI,aAAa,UAAU;AACvB,UAAM,IAAI,MAAM,uDAAuD;AAAA,EAC3E;AACJ;",
+  "names": []
+}

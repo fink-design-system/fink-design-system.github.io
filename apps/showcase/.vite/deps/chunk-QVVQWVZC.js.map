@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/label-lang-segment-B13iL7iy.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { c as createPropDefinition, j as isValidLabelSegments, m as normalizeLabelSegments } from './props-from-config-LBgEHmcL.js';\nimport { l as labelHints } from './label-hints-BUADjqKF.js';\n\nconst labelLangSegmentsProp = createPropDefinition('label', undefined, normalizeLabelSegments, isValidLabelSegments, {\n    hints: labelHints,\n});\n\nexport { labelLangSegmentsProp as l };\n"],
+  "mappings": ";;;;;;;;;;AAMA,IAAM,wBAAwB,qBAAqB,SAAS,QAAW,wBAAwB,sBAAsB;AAAA,EACjH,OAAO;AACX,CAAC;",
+  "names": []
+}

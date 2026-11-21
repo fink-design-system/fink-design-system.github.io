@@ -80,10 +80,12 @@ function Sample({ theme, scheme }: { theme?: string; scheme: 'light' | 'dark' })
 				{t('Gleiche Komponenten, anderes Theme.')}
 			</KolAlert>
 			<FinkStack _direction="row" _gap="2" _align="center">
-				<KolBadge
-					_label={t('Badge')}
-					_color={{ backgroundColor: primaryOf(theme, scheme), foregroundColor: foregroundOn(primaryOf(theme, scheme)) }}
-				/>
+				{brandThemes.some((item) => item.name === theme) && (
+					<KolBadge
+						_label={t('Badge')}
+						_color={{ backgroundColor: primaryOf(theme, scheme), foregroundColor: foregroundOn(primaryOf(theme, scheme)) }}
+					/>
+				)}
 				<FinkStatus _label={t('Fink-Status')} _tone="success" />
 			</FinkStack>
 		</FinkStack>

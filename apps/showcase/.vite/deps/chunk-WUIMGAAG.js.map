@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/unique-nav-labels-CZIyOzqJ.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { L as Log } from './common-BdSzSIXg.js';\nimport { t as trimLabel } from './props-from-config-LBgEHmcL.js';\n\nconst UNIQUE_LABELS = new Set();\nfunction addNavLabel(ariaLabel) {\n    const trimmedLabel = trimLabel(ariaLabel);\n    if (UNIQUE_LABELS.has(trimmedLabel)) {\n        Log.warn(`There already is a nav element with the label \"${trimmedLabel}\"`);\n    }\n    else {\n        UNIQUE_LABELS.add(trimmedLabel);\n    }\n}\nfunction removeNavLabel(ariaLabel) {\n    const trimmedLabel = trimLabel(ariaLabel);\n    UNIQUE_LABELS.delete(trimmedLabel);\n}\n\nexport { addNavLabel as a, removeNavLabel as r };\n"],
+  "mappings": ";;;;;;;;AAMA,IAAM,gBAAgB,oBAAI,IAAI;AAC9B,SAAS,YAAY,WAAW;AAC5B,QAAM,eAAe,UAAU,SAAS;AACxC,MAAI,cAAc,IAAI,YAAY,GAAG;AACjC,QAAI,KAAK,kDAAkD,YAAY,GAAG;AAAA,EAC9E,OACK;AACD,kBAAc,IAAI,YAAY;AAAA,EAClC;AACJ;AACA,SAAS,eAAe,WAAW;AAC/B,QAAM,eAAe,UAAU,SAAS;AACxC,gBAAc,OAAO,YAAY;AACrC;",
+  "names": []
+}

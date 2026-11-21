@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/suggestions-fWMdnACm.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { c as createPropDefinition, b as normalizeString } from './props-from-config-LBgEHmcL.js';\nimport { a as __rest } from './tslib.es6-QNbPBOk5.js';\nimport { h } from './index-8-BSSKQL.js';\nimport { a as createRelatedUniqueId } from './dev.utils-DM7Qhcet.js';\n\nconst autoCompleteProp = createPropDefinition('autoComplete', 'off', normalizeString, (value) => value.length > 0);\n\nconst SuggestionsFC = (_a) => {\n    var { id, suggestions } = _a, other = __rest(_a, [\"id\", \"suggestions\"]);\n    if (!suggestions) {\n        return null;\n    }\n    return (h(\"datalist\", Object.assign({ id: createRelatedUniqueId(id, 'list') }, other), suggestions.map((option) => (h(\"option\", { value: option })))));\n};\n\nexport { SuggestionsFC as S, autoCompleteProp as a };\n"],
+  "mappings": ";;;;;;;;;;;;;;;AAQA,IAAM,mBAAmB,qBAAqB,gBAAgB,OAAO,iBAAiB,CAAC,UAAU,MAAM,SAAS,CAAC;AAEjH,IAAM,gBAAgB,CAAC,OAAO;AAC1B,MAAI,EAAE,IAAI,YAAY,IAAI,IAAI,QAAQ,OAAO,IAAI,CAAC,MAAM,aAAa,CAAC;AACtE,MAAI,CAAC,aAAa;AACd,WAAO;AAAA,EACX;AACA,SAAQ,EAAE,YAAY,OAAO,OAAO,EAAE,IAAI,sBAAsB,IAAI,MAAM,EAAE,GAAG,KAAK,GAAG,YAAY,IAAI,CAAC,WAAY,EAAE,UAAU,EAAE,OAAO,OAAO,CAAC,CAAE,CAAC;AACxJ;",
+  "names": []
+}

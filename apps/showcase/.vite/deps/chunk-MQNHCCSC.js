@@ -1,0 +1,597 @@
+import {
+  getDefaultExportFromCjs
+} from "./chunk-37FUF44C.js";
+
+// ../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/bem-registry-SKACeCny.js
+var easyBem;
+var hasRequiredEasyBem;
+function requireEasyBem() {
+  if (hasRequiredEasyBem) return easyBem;
+  hasRequiredEasyBem = 1;
+  easyBem = function bem2(componentName) {
+    return function(elementOrMods, mods) {
+      if (!elementOrMods) {
+        return componentName;
+      }
+      var element;
+      if (typeof elementOrMods === "string") {
+        element = elementOrMods;
+      } else {
+        mods = elementOrMods;
+      }
+      var base = componentName;
+      if (element) {
+        base += "__" + element;
+      }
+      return base + (mods ? Object.keys(mods).reduce(function(result, name) {
+        var value = mods[name];
+        if (value) {
+          result += " " + (typeof value === "boolean" ? base + "--" + name : base + "--" + name + "_" + value);
+        }
+        return result;
+      }, "") : "");
+    };
+  };
+  return easyBem;
+}
+var easyBemExports = requireEasyBem();
+var a = getDefaultExportFromCjs(easyBemExports);
+function c() {
+  const e = /* @__PURE__ */ new Map(), n = (t, o, r) => {
+    try {
+      return e.get(t)(o, r);
+    } catch {
+      return e.set(t, a(t)).get(t)(o, r);
+    }
+  };
+  return n.forBlock = (t) => {
+    const o = (r, s) => n(t, r, s);
+    return o.forElement = (r) => (s) => n(t, r, s), o;
+  }, n;
+}
+var bem = c();
+var BEM = {
+  "kol-abbr": {
+    modifiers: null
+  },
+  "kol-alert": {
+    elements: {
+      closer: { modifiers: null },
+      heading: { modifiers: /* @__PURE__ */ new Set(["h0", "h1", "h2", "h3", "h4", "h5", "h6"]) },
+      icon: { modifiers: null },
+      content: { modifiers: null },
+      container: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["hasCloser", "type-default", "type-error", "type-info", "type-success", "type-warning", "variant-card", "variant-msg"])
+  },
+  "kol-badge": {
+    elements: {
+      label: { modifiers: null },
+      "smart-button": { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["has-smart-button"])
+  },
+  "kol-version": {
+    modifiers: null
+  },
+  "kol-accordion": {
+    elements: {
+      content: { modifiers: null },
+      heading: { modifiers: null },
+      wrapper: { modifiers: null },
+      "wrapper-animation": { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["disabled", "open"])
+  },
+  "kol-avatar": {
+    elements: {
+      image: { modifiers: null },
+      initials: { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-card": {
+    elements: {
+      "close-button": { modifiers: null },
+      content: { modifiers: null },
+      header: { modifiers: null },
+      link: { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-dialog": {
+    elements: {
+      blank: { modifiers: null },
+      card: { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-modal": {
+    elements: {
+      blank: { modifiers: null },
+      card: { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-button": {
+    elements: {
+      "interactive-element": { modifiers: null },
+      text: { modifiers: null },
+      tooltip: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["disabled", "hide-label", "inline", "standalone"])
+  },
+  "kol-breadcrumb": {
+    elements: {
+      icon: { modifiers: null },
+      link: { modifiers: null },
+      list: { modifiers: null },
+      "list-element": { modifiers: null },
+      "list-element-span": { modifiers: null },
+      separator: { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-nav": {
+    elements: {
+      compact: { modifiers: null },
+      entry: { modifiers: /* @__PURE__ */ new Set(["button", "collapsible", "link"]) },
+      "entry-wrapper": { modifiers: null },
+      list: { modifiers: /* @__PURE__ */ new Set(["nested", "vertical"]) },
+      "list-item": { modifiers: /* @__PURE__ */ new Set(["active", "expanded", "has-children"]) },
+      navigation: { modifiers: null },
+      "toggle-button": { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["is-compact"])
+  },
+  "kol-kolibri": {
+    elements: {
+      text: { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-popover-button": {
+    elements: {
+      popover: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["inline", "open"])
+  },
+  "kol-details": {
+    elements: {
+      content: { modifiers: null },
+      heading: { modifiers: null },
+      wrapper: { modifiers: null },
+      "wrapper-animation": { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["disabled", "open"])
+  },
+  "kol-drawer": {
+    elements: {
+      content: { modifiers: null },
+      dialog: { modifiers: null },
+      wrapper: { modifiers: /* @__PURE__ */ new Set(["bottom", "is-closing", "left", "open", "right", "top"]) }
+    },
+    modifiers: null
+  },
+  "kol-heading": {
+    modifiers: /* @__PURE__ */ new Set(["group"])
+  },
+  "kol-headline": {
+    modifiers: /* @__PURE__ */ new Set(["group", "h1", "h2", "h3", "h4", "h5", "h6", "primary", "secondary", "single", "strong"])
+  },
+  "kol-icon": {
+    elements: {
+      icon: { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-meter": {
+    elements: {
+      bar: { modifiers: null },
+      "bar-background": { modifiers: null },
+      "bar-border": { modifiers: null },
+      "bar-fill": { modifiers: /* @__PURE__ */ new Set(["critical", "optimum", "suboptimal"]) },
+      "bar-label": { modifiers: null },
+      "bar-state": { modifiers: /* @__PURE__ */ new Set(["critical", "optimum", "suboptimal"]) },
+      "bar-track": { modifiers: null },
+      unit: { modifiers: null },
+      value: { modifiers: null },
+      "value-unit": { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["vertical"])
+  },
+  "kol-quote": {
+    elements: {
+      blockquote: { modifiers: null },
+      cite: { modifiers: null },
+      figcaption: { modifiers: null },
+      quote: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["block", "inline"])
+  },
+  "kol-skip-nav": {
+    elements: {
+      list: { modifiers: null },
+      "list-item": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-close-button": {
+    modifiers: null
+  },
+  "kol-span": {
+    elements: {
+      container: { modifiers: null },
+      icon: { modifiers: /* @__PURE__ */ new Set(["bottom", "left", "right", "top"]) },
+      label: { modifiers: null },
+      slot: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["has-badge", "hide-label"])
+  },
+  "kol-link": {
+    elements: {
+      "interactive-element": { modifiers: null },
+      icon: { modifiers: null },
+      text: { modifiers: null },
+      tooltip: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["disabled", "external-link", "hide-label", "inline", "standalone"])
+  },
+  "kol-form": {
+    elements: {
+      alert: { modifiers: null },
+      form: { modifiers: null },
+      link: { modifiers: null },
+      "mandatory-fields-hint": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-form-field": {
+    elements: {
+      counter: { modifiers: null },
+      hint: { modifiers: null },
+      input: { modifiers: /* @__PURE__ */ new Set(["orientation-horizontal", "orientation-vertical"]) },
+      label: { modifiers: /* @__PURE__ */ new Set(["legend"]) },
+      "label-text": { modifiers: null },
+      msg: { modifiers: null },
+      tooltip: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set([
+      "default",
+      "disabled",
+      "error",
+      "hidden-msg",
+      "hide-label",
+      "info",
+      "msg-type-default",
+      "msg-type-error",
+      "msg-type-info",
+      "msg-type-success",
+      "msg-type-warning",
+      "radio",
+      "read-only",
+      "required",
+      "success",
+      "touched",
+      "warning"
+    ])
+  },
+  "kol-input": {
+    modifiers: /* @__PURE__ */ new Set(["default", "disabled", "error", "info", "readonly", "required", "success", "touched", "warning"])
+  },
+  "kol-input-container": {
+    elements: {
+      adornment: { modifiers: /* @__PURE__ */ new Set(["end", "start"]) },
+      button: { modifiers: null },
+      container: { modifiers: null },
+      filename: { modifiers: /* @__PURE__ */ new Set(["has-file"]) },
+      icon: { modifiers: null },
+      "smart-button": { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["default", "disabled", "error", "info", "is-dragover", "success", "warning"])
+  },
+  "kol-field-control": {
+    elements: {
+      hint: { modifiers: null },
+      input: { modifiers: null },
+      label: { modifiers: /* @__PURE__ */ new Set(["visually-hidden"]) },
+      "label-text": { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set([
+      "default",
+      "disabled",
+      "error",
+      "hide-label",
+      "info",
+      "label-align-left",
+      "label-align-right",
+      "read-only",
+      "required",
+      "success",
+      "touched",
+      "warning"
+    ])
+  },
+  "kol-checkbox": {
+    elements: {
+      icon: { modifiers: null },
+      input: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set([
+      "checked",
+      "default",
+      "disabled",
+      "error",
+      "indeterminate",
+      "info",
+      "required",
+      "success",
+      "touched",
+      "variant-button",
+      "variant-default",
+      "variant-switch",
+      "warning"
+    ])
+  },
+  "kol-input-checkbox": {
+    elements: {
+      "field-control": { modifiers: /* @__PURE__ */ new Set(["checked", "indeterminate", "variant-button", "variant-default", "variant-switch"]) }
+    },
+    modifiers: /* @__PURE__ */ new Set(["checked", "indeterminate", "label-align-left", "label-align-right", "variant-button", "variant-default", "variant-switch"])
+  },
+  "kol-input-color": {
+    elements: {
+      input: { modifiers: /* @__PURE__ */ new Set(["color"]) }
+    },
+    modifiers: null
+  },
+  "kol-input-date": {
+    modifiers: null
+  },
+  "kol-input-email": {
+    modifiers: null
+  },
+  "kol-input-file": {
+    modifiers: null
+  },
+  "kol-input-number": {
+    elements: {
+      "step-button": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-input-password": {
+    elements: {
+      "password-toggle-button": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-input-radio": {
+    elements: {
+      input: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["checked", "default", "disabled", "error", "info", "required", "success", "touched", "warning"])
+  },
+  "kol-select": {
+    elements: {
+      optgroup: { modifiers: /* @__PURE__ */ new Set(["disabled"]) },
+      option: { modifiers: /* @__PURE__ */ new Set(["disabled", "selected"]) }
+    },
+    modifiers: /* @__PURE__ */ new Set(["default", "disabled", "error", "info", "required", "success", "touched", "warning"])
+  },
+  "kol-pagination": {
+    elements: {
+      button: { modifiers: /* @__PURE__ */ new Set(["first", "last", "next", "numbers", "previous", "selected"]) },
+      entries: { modifiers: null },
+      navigation: { modifiers: null },
+      "navigation-list": { modifiers: null },
+      "page-size-select": { modifiers: null },
+      separator: { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-custom-suggestions-option": {
+    modifiers: /* @__PURE__ */ new Set(["disabled"])
+  },
+  "kol-custom-suggestions-options-group": {
+    modifiers: /* @__PURE__ */ new Set(["cursor-hidden", "open"])
+  },
+  "kol-custom-suggestions-toggle": {
+    modifiers: /* @__PURE__ */ new Set(["disabled"])
+  },
+  "kol-combobox": {
+    elements: {
+      delete: { modifiers: null },
+      group: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["open"])
+  },
+  "kol-combobox-toggle": {
+    modifiers: null
+  },
+  "kol-single-select": {
+    elements: {
+      delete: { modifiers: null },
+      group: { modifiers: null },
+      "no-results-message": { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["open"])
+  },
+  "kol-input-range": {
+    elements: {
+      input: { modifiers: /* @__PURE__ */ new Set(["number", "range"]) },
+      "inputs-wrapper": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-input-text": {
+    elements: {
+      "clear-button": { modifiers: /* @__PURE__ */ new Set(["hidden"]) }
+    },
+    modifiers: null
+  },
+  "kol-split-button": {
+    elements: {
+      button: { modifiers: null },
+      "horizontal-line": { modifiers: null },
+      root: { modifiers: null },
+      "secondary-button": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-spin": {
+    elements: {
+      loader: { modifiers: null },
+      spinner: { modifiers: /* @__PURE__ */ new Set(["cycle", "dot", "none"]) },
+      "spinner-element": { modifiers: /* @__PURE__ */ new Set(["1", "2", "3", "neutral"]) }
+    },
+    modifiers: null
+  },
+  "kol-table": {
+    elements: {
+      body: { modifiers: null },
+      caption: { modifiers: null },
+      cell: {
+        modifiers: /* @__PURE__ */ new Set([
+          "actions",
+          "align-center",
+          "align-justify",
+          "align-left",
+          "align-right",
+          "ascending",
+          "body",
+          "descending",
+          "header",
+          "none",
+          "other",
+          "selection",
+          "states",
+          "sticky-left",
+          "sticky-right"
+        ])
+      },
+      "cell-actions": { modifiers: null },
+      "cell-states": { modifiers: null },
+      "focus-element": { modifiers: null },
+      footer: { modifiers: null },
+      head: { modifiers: null },
+      "head-row": { modifiers: null },
+      loader: { modifiers: /* @__PURE__ */ new Set(["shown"]) },
+      row: { modifiers: /* @__PURE__ */ new Set(["body", "footer"]) },
+      "scroll-container": { modifiers: null },
+      selection: { modifiers: /* @__PURE__ */ new Set(["checked", "indeterminate"]) },
+      "selection-icon": { modifiers: null },
+      "selection-input": { modifiers: /* @__PURE__ */ new Set(["checkbox", "radio"]) },
+      "selection-input-tooltip": { modifiers: null },
+      "selection-label": { modifiers: /* @__PURE__ */ new Set(["disabled"]) },
+      settings: { modifiers: null },
+      sort: { modifiers: null },
+      "sort-button": { modifiers: null },
+      "sort-order": { modifiers: null },
+      spacer: { modifiers: /* @__PURE__ */ new Set(["foot", "head"]) },
+      "spacer-line": { modifiers: /* @__PURE__ */ new Set(["foot", "head"]) },
+      table: { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-table-settings": {
+    elements: {
+      actions: { modifiers: null },
+      column: { modifiers: null },
+      "column-label": { modifiers: null },
+      columns: { modifiers: null },
+      content: { modifiers: null },
+      "error-message": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-table-stateful": {
+    elements: {
+      pagination: { modifiers: /* @__PURE__ */ new Set(["both", "bottom", "top"]) },
+      "pagination-wrapper": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-tabs": {
+    elements: {
+      "button-create": { modifiers: null },
+      "button-group": { modifiers: null },
+      content: { modifiers: null },
+      tab: { modifiers: null },
+      tablist: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["align-bottom", "align-left", "align-right", "align-top"])
+  },
+  "kol-textarea": {
+    modifiers: /* @__PURE__ */ new Set(["default", "disabled", "error", "info", "readonly", "required", "success", "touched", "warning"])
+  },
+  "kol-toolbar": {
+    elements: {
+      item: { modifiers: null }
+    },
+    modifiers: /* @__PURE__ */ new Set(["orientation-horizontal", "orientation-vertical"])
+  },
+  "kol-tree": {
+    elements: {
+      "treeview-navigation": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-tree-item": {
+    elements: {
+      children: { modifiers: null },
+      link: { modifiers: /* @__PURE__ */ new Set(["active", "first-level"]) },
+      "link-inner": { modifiers: null },
+      text: { modifiers: null },
+      "toggle-button": { modifiers: null },
+      "toggle-button-icon": { modifiers: null },
+      "toggle-button-placeholder": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-image": {
+    modifiers: null
+  },
+  "kol-popover": {
+    elements: {
+      arrow: {
+        modifiers: /* @__PURE__ */ new Set(["top", "right", "bottom", "left"])
+      }
+    },
+    modifiers: null
+  },
+  "kol-progress": {
+    elements: {
+      bar: { modifiers: null },
+      "bar-background": { modifiers: null },
+      "bar-border": { modifiers: null },
+      "bar-label": { modifiers: null },
+      "bar-progress": { modifiers: null },
+      "bar-unit": { modifiers: null },
+      "bar-value": { modifiers: null },
+      cycle: { modifiers: null },
+      "cycle-background": { modifiers: null },
+      "cycle-border": { modifiers: null },
+      "cycle-label": { modifiers: null },
+      "cycle-progress": { modifiers: null },
+      "cycle-text": { modifiers: null },
+      "cycle-value": { modifiers: null },
+      "cycle-whitespace": { modifiers: null }
+    },
+    modifiers: null
+  },
+  "kol-tooltip": {
+    elements: {
+      arrow: { modifiers: null },
+      content: { modifiers: null },
+      floating: { modifiers: null }
+    },
+    modifiers: null
+  }
+};
+
+export {
+  bem,
+  BEM
+};
+//# sourceMappingURL=chunk-MQNHCCSC.js.map

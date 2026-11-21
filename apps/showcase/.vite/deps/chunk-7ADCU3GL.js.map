@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/unit-YqluIXsF.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { c as createPropDefinition, D as normalizeNumber, b as normalizeString } from './props-from-config-LBgEHmcL.js';\n\nconst maxProp = createPropDefinition('max', 100, normalizeNumber, (v) => v > 0);\n\nconst unitProp = createPropDefinition('unit', '%', normalizeString, (v) => v.length > 0);\n\nexport { maxProp as m, unitProp as u };\n"],
+  "mappings": ";;;;;;;AAKA,IAAM,UAAU,qBAAqB,OAAO,KAAK,iBAAiB,CAAC,MAAM,IAAI,CAAC;AAE9E,IAAM,WAAW,qBAAqB,QAAQ,KAAK,iBAAiB,CAAC,MAAM,EAAE,SAAS,CAAC;",
+  "names": []
+}

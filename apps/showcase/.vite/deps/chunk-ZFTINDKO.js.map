@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/i18n-BLkzMf6D.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { g as getI18nInstance, i as initializeI18n } from './i18n-BRgvVqCf.js';\nimport { y as isTestMode } from './common-BdSzSIXg.js';\n\nlet translate = (key, options) => {\n    var _a;\n    const i18n = (_a = getI18nInstance()) !== null && _a !== void 0 ? _a : initializeI18n('de');\n    return i18n.translate(key, options);\n};\nif (isTestMode()) {\n    translate = (key) => key;\n}\n\nexport { translate as t };\n"],
+  "mappings": ";;;;;;;;;AAMA,IAAI,YAAY,CAAC,KAAK,YAAY;AAC9B,MAAI;AACJ,QAAM,QAAQ,KAAK,gBAAgB,OAAO,QAAQ,OAAO,SAAS,KAAK,eAAe,IAAI;AAC1F,SAAO,KAAK,UAAU,KAAK,OAAO;AACtC;AACA,IAAI,WAAW,GAAG;AACd,cAAY,CAAC,QAAQ;AACzB;",
+  "names": []
+}

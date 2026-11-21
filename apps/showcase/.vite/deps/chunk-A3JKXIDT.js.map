@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/suggestions-BsWy2U2z.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { n as a11yHint, p as parseJson } from './common-BdSzSIXg.js';\nimport { c as createPropDefinition } from './props-from-config-LBgEHmcL.js';\n\nfunction normalizeSuggestions(value) {\n    const parsed = typeof value === 'string' ? parseJson(value) : value;\n    if (Array.isArray(parsed)) {\n        return parsed;\n    }\n    throw new Error(`Invalid suggestions: ${typeof value}`);\n}\nconst suggestionsProp = createPropDefinition('suggestions', [], normalizeSuggestions, (value) => value.every((item) => typeof item === 'string' || typeof item === 'number'), {\n    hints: (_, value) => {\n        if (value.length > 0) {\n            a11yHint('Property suggestions: Options have accessibility issues in how browsers implemented them and should not be used for now.');\n        }\n    },\n});\n\nexport { suggestionsProp as s };\n"],
+  "mappings": ";;;;;;;;;AAMA,SAAS,qBAAqB,OAAO;AACjC,QAAM,SAAS,OAAO,UAAU,WAAW,UAAU,KAAK,IAAI;AAC9D,MAAI,MAAM,QAAQ,MAAM,GAAG;AACvB,WAAO;AAAA,EACX;AACA,QAAM,IAAI,MAAM,wBAAwB,OAAO,KAAK,EAAE;AAC1D;AACA,IAAM,kBAAkB,qBAAqB,eAAe,CAAC,GAAG,sBAAsB,CAAC,UAAU,MAAM,MAAM,CAAC,SAAS,OAAO,SAAS,YAAY,OAAO,SAAS,QAAQ,GAAG;AAAA,EAC1K,OAAO,CAAC,GAAG,UAAU;AACjB,QAAI,MAAM,SAAS,GAAG;AAClB,eAAS,0HAA0H;AAAA,IACvI;AAAA,EACJ;AACJ,CAAC;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/multiple-F8uOX8RD.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { c as createPropDefinition, n as normalizeBoolean } from './props-from-config-LBgEHmcL.js';\n\nconst multipleProp = createPropDefinition('multiple', false, normalizeBoolean);\n\nexport { multipleProp as m };\n"],
+  "mappings": ";;;;;;AAKA,IAAM,eAAe,qBAAqB,YAAY,OAAO,gBAAgB;",
+  "names": []
+}

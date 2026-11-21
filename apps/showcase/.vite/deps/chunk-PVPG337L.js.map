@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/label-mr5joqaQ.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { c as createPropDefinition, b as normalizeString } from './props-from-config-LBgEHmcL.js';\nimport { c as isValidLabel } from './validators-ByUMEUYD.js';\nimport { l as labelHints } from './label-hints-BUADjqKF.js';\n\nconst labelProp = createPropDefinition('label', undefined, normalizeString, isValidLabel, {\n    hints: labelHints,\n});\n\nexport { labelProp as l };\n"],
+  "mappings": ";;;;;;;;;;;;AAOA,IAAM,YAAY,qBAAqB,SAAS,QAAW,iBAAiB,cAAc;AAAA,EACtF,OAAO;AACX,CAAC;",
+  "names": []
+}

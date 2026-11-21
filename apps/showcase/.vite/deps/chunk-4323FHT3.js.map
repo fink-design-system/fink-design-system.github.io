@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/validators-ByUMEUYD.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { j as isValidLabelSegments, z as isValidLabelString } from './props-from-config-LBgEHmcL.js';\n\nconst SAFE_CLASS_NAME_RE = /^[a-zA-Z][a-zA-Z0-9_-]{0,60}$/;\nconst isSafeClassName = (value) => typeof value === 'string' && SAFE_CLASS_NAME_RE.test(value);\nconst isValidLabel = isValidLabelString;\nconst isValidLabelWithExpertSlot = (value) => value === '' || isValidLabelSegments(value);\nconst isValidLabelDecorative = (value) => value === '' || isValidLabel(value);\n\nexport { isSafeClassName as a, isValidLabelWithExpertSlot as b, isValidLabel as c, isValidLabelDecorative as i };\n"],
+  "mappings": ";;;;;;AAKA,IAAM,qBAAqB;AAC3B,IAAM,kBAAkB,CAAC,UAAU,OAAO,UAAU,YAAY,mBAAmB,KAAK,KAAK;AAC7F,IAAM,eAAe;AACrB,IAAM,6BAA6B,CAAC,UAAU,UAAU,MAAM,qBAAqB,KAAK;AACxF,IAAM,yBAAyB,CAAC,UAAU,UAAU,MAAM,aAAa,KAAK;",
+  "names": []
+}
