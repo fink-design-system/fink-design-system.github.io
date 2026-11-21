@@ -1,0 +1,1 @@
+import{D as o}from"./index-DwrvwC1P.js";import{a as i,f as t}from"./props-from-config-LBgEHmcL-BgnAAcUz.js";function l(n){return i("links",[],e=>t(e),e=>e.every(r=>typeof r=="object"&&r!==null&&(typeof r._href=="string"||typeof r._label=="string")),{hints:(e,r)=>o(n,r.length)})}export{l as c};

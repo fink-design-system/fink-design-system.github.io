@@ -1,0 +1,1 @@
+import{a,b as i}from"./props-from-config-LBgEHmcL-BgnAAcUz.js";import{c as o}from"./validators-ByUMEUYD-BKG2fBBY.js";import{l as r}from"./label-hints-BUADjqKF-mssHt8i9.js";const n=a("label",void 0,i,o,{hints:r});export{n as l};

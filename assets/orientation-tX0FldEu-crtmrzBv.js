@@ -1,0 +1,1 @@
+import{a as t,b as i}from"./props-from-config-LBgEHmcL-BgnAAcUz.js";const r=["horizontal","vertical"];function a(n){const o=i(n);if(r.includes(o))return o;throw new Error(`Invalid orientation: ${o}`)}const s=t("orientation","horizontal",a);export{a as n,s as o};

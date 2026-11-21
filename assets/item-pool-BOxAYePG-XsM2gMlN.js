@@ -1,0 +1,1 @@
+const a=(s,c,o)=>{const n=new Map,r=new Set;return{beginRender:()=>{r.clear()},get:e=>{r.add(e);let t=n.get(e);return t===void 0&&(t=s(),n.set(e,t)),t},endRender:()=>{for(const[e,t]of n)r.has(e)?c(t):(o(t),n.delete(e))},destroy:()=>{for(const e of n.values())o(e);n.clear(),r.clear()}}};export{a as c};
