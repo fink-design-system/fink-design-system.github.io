@@ -28,14 +28,25 @@
 | 20 | SIX Web Components | SIX Group (CH) | Stencil | Apache-2.0 | aktiv | 30 | [GitHub](https://github.com/six-group/six-webcomponents) |
 | 21 | Scania Corporate UI | Scania (SE) | Stencil | keine Lizenzdatei | eingestellt (2021, Nachfolger Tegel) | 25 | [GitHub](https://github.com/scania/corporate-ui) |
 
-## Öffentliche Hand
+## EU, Länder, Städte und Kommunen
 
-Für den amtlichen Kontext von Fink (KoliBri) sind zusätzlich relevant:
+Amtliche Systeme, bei denen die Organisation selbst Consumer ist (eigene Webservices) und die Library out of the box liefert — keine Framework-Vendor-Systeme. Mehrere sind als offizielle KoliBri-Themes verfügbar und damit fertige Skin-Quellen für Fink:
 
-- [GOV.UK Design System](https://design-system.service.gov.uk) (UK)
-- [Système de Design de l'État (DSFR)](https://www.systeme-de-design.gouv.fr) (FR)
-- [Bootstrap Italia](https://italia.github.io/bootstrap-italia/) (IT)
-- [NL Design System](https://nldesignsystem.nl) (NL)
+| System | Organisation (Consumer) | Land | Status/Quelle |
+|---|---|---|---|
+| [ECL — Europa Component Library](https://github.com/ec-europa/europa-component-library) | Europäische Kommission (eigene EU-Websites) | EU | aktiv, 164 ★, EUPL-1.1; KoliBri: `@public-ui/theme-ecl` |
+| [KERN UX](https://kernux.de) | Länder Hamburg + Schleswig-Holstein (FITKO, gov.de) | DE | aktiv; KoliBri: `@public-ui/theme-kern` — bereits als Fink-Theme umgesetzt |
+| [BW St — Design-Portal Baden-Württemberg](https://design-portal.baden-wuerttemberg.de) | Land Baden-Württemberg | DE | KoliBri: `@public-ui/theme-bwst` |
+| [DESYBRI](https://www.itzbund.de/DE/itloesungen/standardloesungen/desybri-design-system/desybri.html) | ITZBund (Bund) | DE | KoliBri: `@public-ui/theme-desy` |
+| [Amsterdam Design System](https://github.com/Amsterdam/design-system) | Stadt Amsterdam (eigene Dienste) | NL | aktiv, GitHub, am NL Design System ausgerichtet |
+| [Styleguide Stadt Gent](https://stijlgids.stad.gent) | Stadt Gent (eigene Websites) | BE | aktiv, technologieunabhängig |
+| [Helsingborg Styleguide v2](https://styleguide.helsingborg.se) | Stadt Helsingborg | SE | aktiv, BEM/Atomic Design |
+| [Kanton Zürich Frontend-Designsystem](https://github.com/Kanton-Zurich/frontend-designsystem) | Kanton Zürich (+ [leu](https://github.com/statistikZH/leu) des Statistikamts) | CH | aktiv, GitHub |
+| [Webguidelines Bund](https://github.com/swiss/designsystem) | Schweizerische Eidgenossenschaft | CH | aktiv, Storybook/CSS/Figma |
+
+Europaweit etablierte Nachbarsysteme (gleiche Consumer-Logik): [GOV.UK Design System](https://design-system.service.gov.uk) (UK), [DSFR](https://www.systeme-de-design.gouv.fr) (FR), [Bootstrap Italia](https://italia.github.io/bootstrap-italia/) (IT), [NL Design System](https://nldesignsystem.nl) (NL — auch die Architektur hinter Amsterdam).
+
+Bewusst ausgeschlossen: Framework-Vendor-Systeme (Material, Fluent, Carbon, Ant, Arco, TDesign, PatternFly u. a.) — die Organisation steht dort nicht selbst als Consumer dahinter.
 
 Das „Design System des Bundes" (DigitalService GmbH des Bundes) ist dokumentiert, hat aber kein öffentliches Quellcode-Repository.
 
