@@ -54,6 +54,24 @@ export async function waitForApp(page: Page) {
 		{ timeout: 30_000 },
 	);
 	await page.evaluate(() => document.fonts.ready);
+	// Auf die Stencil-Hydration warten: die Kolibri-Komponenten rendern asynchron NACH der
+	// Registrierung — ohne diesen Wait läuft axe mitten im Rendern und meldet rotierende
+	// Einzelfehler (fehlende H1, zugeklappte Code-Blöcke).
+	await page.waitForFunction(
+		() => {
+			let pending = 0;
+			const walk = (scope: Document | ShadowRoot) => {
+				scope.querySelectorAll('*').forEach((el) => {
+					if (el.localName.startsWith('kol-') && customElements.get(el.localName) && !el.classList.contains('hydrated')) pending += 1;
+					if (el.shadowRoot) walk(el.shadowRoot);
+				});
+			};
+			walk(document);
+			return pending === 0;
+		},
+		undefined,
+		{ timeout: 30_000 },
+	);
 	// Stencil rendert asynchron nach; zwei Frames plus kurze Ruhe für Watcher und Theme-Styles.
 	await page.waitForTimeout(400);
 }
