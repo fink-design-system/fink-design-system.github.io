@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/smart-button-p4avK7MS.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { p as parseJson } from './common-BdSzSIXg.js';\nimport { c as createPropDefinition } from './props-from-config-LBgEHmcL.js';\n\nfunction normalizeSmartButton(value) {\n    const parsed = typeof value === 'string' ? parseJson(value) : value;\n    if (typeof parsed === 'object' && parsed !== null) {\n        return parsed;\n    }\n    throw new Error(`Invalid smart button: ${typeof value}`);\n}\nconst smartButtonProp = createPropDefinition('smartButton', { _label: '' }, normalizeSmartButton);\n\nexport { smartButtonProp as s };\n"],
+  "mappings": ";;;;;;;;AAMA,SAAS,qBAAqB,OAAO;AACjC,QAAM,SAAS,OAAO,UAAU,WAAW,UAAU,KAAK,IAAI;AAC9D,MAAI,OAAO,WAAW,YAAY,WAAW,MAAM;AAC/C,WAAO;AAAA,EACX;AACA,QAAM,IAAI,MAAM,yBAAyB,OAAO,KAAK,EAAE;AAC3D;AACA,IAAM,kBAAkB,qBAAqB,eAAe,EAAE,QAAQ,GAAG,GAAG,oBAAoB;",
+  "names": []
+}

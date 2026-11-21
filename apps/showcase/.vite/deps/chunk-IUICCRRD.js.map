@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/step-oCposIuI.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { c as createPropDefinition, C as normalizeInputNumber } from './props-from-config-LBgEHmcL.js';\n\nconst stepProp = createPropDefinition('step', undefined, normalizeInputNumber);\n\nexport { stepProp as s };\n"],
+  "mappings": ";;;;;;AAKA,IAAM,WAAW,qBAAqB,QAAQ,QAAW,oBAAoB;",
+  "names": []
+}

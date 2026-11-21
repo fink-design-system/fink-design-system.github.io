@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/tooltip-open-tracking-D3tCiiGP.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nlet openTooltips = 0;\nconst tooltipOpened = () => {\n    openTooltips++;\n};\nconst tooltipClosed = () => {\n    openTooltips = Math.max(0, openTooltips - 1);\n};\nconst handleCancelOverlay = (event) => {\n    if (openTooltips > 0) {\n        event.preventDefault();\n    }\n};\nconst isTooltipOpen = () => openTooltips > 0;\n\nexport { tooltipOpened as a, handleCancelOverlay as h, isTooltipOpen as i, tooltipClosed as t };\n"],
+  "mappings": ";AAGA,IAAI,eAAe;AACnB,IAAM,gBAAgB,MAAM;AACxB;AACJ;AACA,IAAM,gBAAgB,MAAM;AACxB,iBAAe,KAAK,IAAI,GAAG,eAAe,CAAC;AAC/C;AACA,IAAM,sBAAsB,CAAC,UAAU;AACnC,MAAI,eAAe,GAAG;AAClB,UAAM,eAAe;AAAA,EACzB;AACJ;AACA,IAAM,gBAAgB,MAAM,eAAe;",
+  "names": []
+}

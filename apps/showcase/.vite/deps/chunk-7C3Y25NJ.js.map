@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/label-with-expert-slot-BVqi0_Fb.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { c as createPropDefinition, m as normalizeLabelSegments } from './props-from-config-LBgEHmcL.js';\nimport { b as isValidLabelWithExpertSlot } from './validators-ByUMEUYD.js';\nimport { l as labelHints } from './label-hints-BUADjqKF.js';\n\nconst labelWithExpertSlotProp = createPropDefinition('label', '', normalizeLabelSegments, isValidLabelWithExpertSlot, {\n    hints: labelHints,\n});\n\nexport { labelWithExpertSlotProp as l };\n"],
+  "mappings": ";;;;;;;;;;;;AAOA,IAAM,0BAA0B,qBAAqB,SAAS,IAAI,wBAAwB,4BAA4B;AAAA,EAClH,OAAO;AACX,CAAC;",
+  "names": []
+}

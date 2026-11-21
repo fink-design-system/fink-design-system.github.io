@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/ariaCurrentService-YoLNpD5S.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nlet currentLocation;\nconst subscribers = [];\nconst setCurrentLocation = (location) => {\n    currentLocation = location;\n    subscribers.forEach((subscriber) => {\n        subscriber(location);\n    });\n};\nconst onLocationChange = (callback, eager = true) => {\n    if (eager && typeof currentLocation === 'string') {\n        callback(currentLocation);\n    }\n    subscribers.push(callback);\n    return () => {\n        const index = subscribers.indexOf(callback);\n        if (index >= 0) {\n            subscribers.splice(index, 1);\n        }\n    };\n};\n\nexport { onLocationChange as o, setCurrentLocation as s };\n"],
+  "mappings": ";AAGA,IAAI;AACJ,IAAM,cAAc,CAAC;AACrB,IAAM,qBAAqB,CAAC,aAAa;AACrC,oBAAkB;AAClB,cAAY,QAAQ,CAAC,eAAe;AAChC,eAAW,QAAQ;AAAA,EACvB,CAAC;AACL;AACA,IAAM,mBAAmB,CAAC,UAAU,QAAQ,SAAS;AACjD,MAAI,SAAS,OAAO,oBAAoB,UAAU;AAC9C,aAAS,eAAe;AAAA,EAC5B;AACA,cAAY,KAAK,QAAQ;AACzB,SAAO,MAAM;AACT,UAAM,QAAQ,YAAY,QAAQ,QAAQ;AAC1C,QAAI,SAAS,GAAG;AACZ,kBAAY,OAAO,OAAO,CAAC;AAAA,IAC/B;AAAA,EACJ;AACJ;",
+  "names": []
+}

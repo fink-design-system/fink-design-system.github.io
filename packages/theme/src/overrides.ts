@@ -174,6 +174,7 @@ export const tintedAlert = `
 	.kol-alert--variant-card .kol-alert__content {
 		--kol-surface: transparent;
 		background-color: transparent;
+		color: var(--fink-color-text);
 	}
 }`;
 
@@ -212,6 +213,7 @@ const finkLook: Record<string, string> = {
 		--border-radius: var(--fink-radius-pill);
 	}
 	.kol-button {
+		height: var(--fink-control-height-md);
 		font-weight: var(--fink-font-weight-medium);
 		transition: background-color var(--fink-motion-duration-fast) var(--fink-motion-easing), box-shadow var(--fink-motion-duration-fast) var(--fink-motion-easing);
 	}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/orientation-tX0FldEu.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { b as normalizeString, c as createPropDefinition } from './props-from-config-LBgEHmcL.js';\n\nconst orientationOptions = ['horizontal', 'vertical'];\nfunction normalizeOrientation(value) {\n    const str = normalizeString(value);\n    if (orientationOptions.includes(str)) {\n        return str;\n    }\n    throw new Error(`Invalid orientation: ${str}`);\n}\nconst orientationProp = createPropDefinition('orientation', 'horizontal', normalizeOrientation);\n\nexport { normalizeOrientation as n, orientationProp as o };\n"],
+  "mappings": ";;;;;;AAKA,IAAM,qBAAqB,CAAC,cAAc,UAAU;AACpD,SAAS,qBAAqB,OAAO;AACjC,QAAM,MAAM,gBAAgB,KAAK;AACjC,MAAI,mBAAmB,SAAS,GAAG,GAAG;AAClC,WAAO;AAAA,EACX;AACA,QAAM,IAAI,MAAM,wBAAwB,GAAG,EAAE;AACjD;AACA,IAAM,kBAAkB,qBAAqB,eAAe,cAAc,oBAAoB;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/level-eGeMFn0b.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { c as createPropDefinition, q as normalizeInteger } from './props-from-config-LBgEHmcL.js';\n\nconst headingLevelOptions = [0, 1, 2, 3, 4, 5, 6];\nconst levelProp = createPropDefinition('level', 0, (value) => normalizeInteger(value), (v) => headingLevelOptions.includes(v));\n\nexport { levelProp as l };\n"],
+  "mappings": ";;;;;;AAKA,IAAM,sBAAsB,CAAC,GAAG,GAAG,GAAG,GAAG,GAAG,GAAG,CAAC;AAChD,IAAM,YAAY,qBAAqB,SAAS,GAAG,CAAC,UAAU,iBAAiB,KAAK,GAAG,CAAC,MAAM,oBAAoB,SAAS,CAAC,CAAC;",
+  "names": []
+}

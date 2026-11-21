@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/label-hints-BUADjqKF.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { t as trimLabel, o as hasEnoughReadableChars, p as containsOnlyNumbers } from './props-from-config-LBgEHmcL.js';\nimport { n as a11yHint, u as uiUxHint } from './common-BdSzSIXg.js';\n\nfunction labelHints(_propName, value) {\n    const text = typeof value === 'string' ? value : Array.isArray(value) ? trimLabel(value) : '';\n    if (text === '') {\n        return;\n    }\n    if (hasEnoughReadableChars(text, 3) === false && containsOnlyNumbers(text) === false) {\n        a11yHint(`The heading or label (\"${text}\") is inaccessible. A label should consist of at least three readable characters.`);\n    }\n    if (text.length > 80) {\n        uiUxHint(`A heading or label should not be longer than 80 characters.`);\n    }\n}\n\nexport { labelHints as l };\n"],
+  "mappings": ";;;;;;;;;;;AAMA,SAAS,WAAW,WAAW,OAAO;AAClC,QAAM,OAAO,OAAO,UAAU,WAAW,QAAQ,MAAM,QAAQ,KAAK,IAAI,UAAU,KAAK,IAAI;AAC3F,MAAI,SAAS,IAAI;AACb;AAAA,EACJ;AACA,MAAI,uBAAuB,MAAM,CAAC,MAAM,SAAS,oBAAoB,IAAI,MAAM,OAAO;AAClF,aAAS,0BAA0B,IAAI,mFAAmF;AAAA,EAC9H;AACA,MAAI,KAAK,SAAS,IAAI;AAClB,aAAS,6DAA6D;AAAA,EAC1E;AACJ;",
+  "names": []
+}

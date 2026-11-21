@@ -1,0 +1,309 @@
+import {
+  PopoverBehavior,
+  PopoverButtonFC,
+  popoverAlignProp
+} from "./chunk-T3QCMHNQ.js";
+import {
+  BaseButtonWebComponent
+} from "./chunk-K6R2Z5HA.js";
+import "./chunk-XV6TVAFR.js";
+import "./chunk-SR6CIZZ2.js";
+import "./chunk-TXIZUTEV.js";
+import "./chunk-AEQ2DHFL.js";
+import "./chunk-6OHARAC5.js";
+import "./chunk-4KQM2UAA.js";
+import "./chunk-IGUFDWYR.js";
+import "./chunk-3C6UB25G.js";
+import "./chunk-JIRF5MWS.js";
+import "./chunk-FGYUAXNO.js";
+import "./chunk-7Q2QTJQF.js";
+import "./chunk-7C3Y25NJ.js";
+import "./chunk-MIXJLZBB.js";
+import {
+  delegateClick,
+  delegateFocus
+} from "./chunk-VFFG6S5V.js";
+import {
+  createUniqueId,
+  nonce
+} from "./chunk-FQ2Y4FDM.js";
+import "./chunk-SESBZTFK.js";
+import "./chunk-ZVS5ACKA.js";
+import "./chunk-AVJUB7OE.js";
+import "./chunk-NQNQ4CHG.js";
+import {
+  __decorate
+} from "./chunk-7UI7W6EF.js";
+import "./chunk-TR6JQWDR.js";
+import "./chunk-QVVQWVZC.js";
+import "./chunk-4323FHT3.js";
+import "./chunk-KDS3LTFQ.js";
+import {
+  BaseWebComponent
+} from "./chunk-MS3MLDFB.js";
+import "./chunk-KPGE6Z2R.js";
+import "./chunk-MQNHCCSC.js";
+import {
+  Host,
+  getElement,
+  h,
+  registerInstance
+} from "./chunk-VUP4WNL7.js";
+import "./chunk-37FUF44C.js";
+import "./chunk-WGJZ2PPP.js";
+
+// ../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/kol-popover-button.entry.js
+var BasePopoverButtonWebComponent = class extends BaseButtonWebComponent {
+  constructor() {
+    super(...arguments);
+    this.popoverBehavior = new PopoverBehavior(BaseWebComponent.stateLess);
+    this.popoverId = createUniqueId("popover");
+    this.togglePopover = () => {
+      this.popoverBehavior.setShow(!this.getPopoverOpen());
+    };
+    this.handleToggle = (event) => {
+      this.setPopoverOpen(event.newState === "open");
+    };
+    this.setButtonElementRef = (element) => {
+      this.ctaRef(element);
+      this.popoverBehavior.setTriggerElement(element);
+    };
+    this.setPopoverElementRef = (element) => {
+      this.popoverElement = element;
+      this.popoverBehavior.setPopoverElementRef(element);
+    };
+  }
+  getPopoverOpen() {
+    return this.popoverOpen === true;
+  }
+  setPopoverOpen(open) {
+    this.popoverOpen = open;
+  }
+  initPopoverToggle() {
+    this.unsetButtonTabIndex();
+    this.applyOn({ onClick: this.togglePopover });
+    this.popoverBehavior.componentWillLoad({ align: popoverAlignProp.getDefaultValue() });
+  }
+  syncPopoverToggleListener() {
+    if (this.popoverElement) {
+      this.popoverElement.addEventListener("toggle", this.handleToggle);
+    }
+  }
+  destroyPopover() {
+    if (this.popoverElement) {
+      this.popoverElement.removeEventListener("toggle", this.handleToggle);
+      this.popoverElement = void 0;
+    }
+    this.popoverBehavior.destroy();
+  }
+  openPopover() {
+    if (this.getRenderProp("disabled") === true) {
+      return;
+    }
+    this.popoverBehavior.setShow(true);
+  }
+  closePopover() {
+    this.popoverBehavior.setShow(false);
+  }
+  applyPopoverAlign(value) {
+    popoverAlignProp.apply(value, (v) => this.popoverBehavior.watchAlign(v));
+  }
+  renderPopoverButtonFC() {
+    return h(PopoverButtonFC, { accessKey: this.getRenderProp("accessKey"), ariaDescription: this.getRenderProp("ariaDescription"), ariaDescriptionId: this.getState("ariaDescriptionId"), ariaHasPopup: this.getRenderProp("ariaHasPopup"), ariaSelected: this.getRenderProp("ariaSelected"), customClass: this.getRenderProp("customClass"), disabled: this.getRenderProp("disabled"), handleBlur: this.handleBlur, handleClick: this.handleClick, handleFocus: this.handleFocus, handleMouseDown: this.handleMouseDown, hideLabel: this.getRenderProp("hideLabel"), icons: this.getRenderProp("icons"), id: this.getRenderProp("id"), inline: this.getRenderProp("inline"), label: this.getRenderProp("label"), name: this.getRenderProp("name"), on: this.getRenderProp("on"), popoverAlign: this.popoverBehavior.getRenderProp("align"), popoverOpen: this.getPopoverOpen(), popoverId: this.popoverId, refButton: this.setButtonElementRef, refPopover: this.setPopoverElementRef, refTooltip: this.tooltipBehavior.setTooltipElementRef, role: this.getRenderProp("role"), shortKey: this.getRenderProp("shortKey"), tabIndex: this.getRenderProp("tabIndex"), tooltipAlign: this.getRenderProp("tooltipAlign"), type: this.getRenderProp("type"), variant: this.getRenderProp("variant") });
+  }
+};
+var defaultStyleCss = () => `@charset "UTF-8";  @layer kol-a11y, kol-global, kol-component, kol-theme-global, kol-theme-component, kol-forced-colors, kol-theme-forced-colors;     @layer kol-a11y {   :host {          --a11y-min-size: max(calc(44 * 1rem / var(--kolibri-root-font-size, 16)), 44px);          --kol-a11y-font-color: black;     --kol-a11y-background-color: white;     color: var(--kol-a11y-font-color);     background-color: var(--kol-a11y-background-color);          --kol-a11y-font-family: Verdana;     font-family: var(--kol-a11y-font-family);          letter-spacing: inherit;          word-spacing: inherit;          text-align: left;   }   * {          hyphens: auto;          word-break: break-word;   }                  button,   .kol-input .input {     min-width: var(--a11y-min-size);     min-height: var(--a11y-min-size);   }      a,   button,   h1,   h2,   h3,   h4,   h5,   h6,   input,   option,   select,   textarea {          color: inherit;          font-family: inherit;          font-size: inherit;          letter-spacing: inherit;          word-spacing: inherit;   }      .visually-hidden {          position: fixed !important;     top: 0;     left: 0;     width: 1px;     height: 1px;     margin: 0 !important;     padding: 0 !important;     overflow: hidden;     white-space: nowrap;     border: 0;     clip-path: inset(50%);   } }  @layer kol-forced-colors {   @media (forced-colors: active) {     .kol-button__text {       color: ButtonText;       background-color: ButtonFace;       border: 2px solid ButtonBorder;     }     .kol-button--disabled .kol-button__text {       color: GrayText;       border-color: GrayText;     }          .kol-link__interactive-element[aria-disabled=true],     .kol-accordion__heading[aria-disabled=true],     .kol-details__heading[aria-disabled=true] {       color: GrayText;     }     .kol-link__interactive-element[aria-disabled=true] .kol-icon,     .kol-link__interactive-element[aria-disabled=true] .kol-span__label,     .kol-accordion__heading[aria-disabled=true] .kol-icon,     .kol-accordion__heading[aria-disabled=true] .kol-span__label,     .kol-details__heading[aria-disabled=true] .kol-icon,     .kol-details__heading[aria-disabled=true] .kol-span__label {       color: GrayText;     }     input:disabled,     select:disabled,     textarea:disabled {       color: GrayText;       border-color: GrayText;     }     .kol-card,     .kol-dialog,     .kol-modal {       color: CanvasText;       background-color: Canvas;       border: 1px solid ButtonBorder;     }          .kol-meter meter {       background-color: Canvas;       border-color: CanvasText;     }     .kol-meter meter::-webkit-meter-bar {       background-color: Canvas;       border-color: CanvasText;     }     .kol-meter meter::-webkit-meter-optimum-value,     .kol-meter meter::-webkit-meter-suboptimum-value,     .kol-meter meter::-webkit-meter-even-less-good-value {       background-color: CanvasText;     }     .kol-meter meter::-moz-meter-bar {       background-color: CanvasText;     }     .kol-pagination__button--selected .kol-button {       opacity: 1;     }     .kol-pagination__button--selected .kol-button__text {       color: SelectedItemText;       background-color: SelectedItem;     }          .kol-button__interactive-element:focus-visible,     .kol-link__interactive-element:focus-visible {       outline: 2px solid Highlight;       outline-offset: 2px;     }   } } @layer kol-global {      :is(a, button) {     background-color: transparent;     width: 100%;     margin: 0;     padding: 0;     border: none;        }      [hidden] {     display: none !important;   }   .badge-text-hint {     color: black;     background-color: white;   } } @layer kol-global {   :host {          max-width: 100%;     font-size: calc(16 * 1rem / var(--kolibri-root-font-size, 16));   }   * {          box-sizing: border-box;   }   .kol-span {          display: flex;     flex-flow: column;     align-items: center;     justify-content: center;        }   .kol-span__container {     display: flex;     align-items: center;   }   a,   button {     cursor: pointer;   }      button:disabled {     color: unset;   }      .disabled label,   .disabled:focus-within label,   [aria-disabled=true],   [aria-disabled=true]:focus,   [disabled]:where(:not(fieldset)),   [disabled]:where(:not(fieldset)):focus {     outline: none;     cursor: not-allowed;   }   [aria-disabled=true]:focus .kol-span,   [disabled]:focus .kol-span {     outline: none !important;   }   .hastooltip {     z-index: 900 !important;   } } @font-face {   font-family: "kolicons";   src: url("kolicons.eot?t=1795160658049");    src: url("kolicons.eot?t=1795160658049#iefix") format("embedded-opentype"), url("kolicons.woff2?t=1795160658049") format("woff2"), url("kolicons.woff?t=1795160658049") format("woff"), url("kolicons.ttf?t=1795160658049") format("truetype"), url("kolicons.svg?t=1795160658049#kolicons") format("svg");  } @layer kol-component {   [class^=kolicon-], [class*=" kolicon-"] {     font-family: "kolicons";     font-style: normal;     font-weight: 400;     line-height: 1em;     -webkit-font-smoothing: antialiased;     -moz-osx-font-smoothing: grayscale;   }   .kolicon-alert-error::before {     content: "\\ea01";   }   .kolicon-alert-info::before {     content: "\\ea02";   }   .kolicon-alert-success::before {     content: "\\ea03";   }   .kolicon-alert-warning::before {     content: "\\ea04";   }   .kolicon-check::before {     content: "\\ea05";   }   .kolicon-chevron-double-left::before {     content: "\\ea06";   }   .kolicon-chevron-double-right::before {     content: "\\ea07";   }   .kolicon-chevron-down::before {     content: "\\ea08";   }   .kolicon-chevron-left::before {     content: "\\ea09";   }   .kolicon-chevron-right::before {     content: "\\ea0a";   }   .kolicon-chevron-up::before {     content: "\\ea0b";   }   .kolicon-cogwheel::before {     content: "\\ea0c";   }   .kolicon-cross::before {     content: "\\ea0d";   }   .kolicon-eye-closed::before {     content: "\\ea0e";   }   .kolicon-eye::before {     content: "\\ea0f";   }   .kolicon-house::before {     content: "\\ea10";   }   .kolicon-kolibri::before {     content: "\\ea11";   }   .kolicon-link-external::before {     content: "\\ea12";   }   .kolicon-link::before {     content: "\\ea13";   }   .kolicon-minus::before {     content: "\\ea14";   }   .kolicon-pin-pinned::before {     content: "\\ea15";   }   .kolicon-pin-unpinned::before {     content: "\\ea16";   }   .kolicon-plus::before {     content: "\\ea17";   }   .kolicon-settings::before {     content: "\\ea18";   }   .kolicon-sort-asc::before {     content: "\\ea19";   }   .kolicon-sort-desc::before {     content: "\\ea1a";   }   .kolicon-sort-neutral::before {     content: "\\ea1b";   }   .kolicon-up::before {     content: "\\ea1c";   }   .kolicon-version::before {     content: "\\ea1d";   } } @layer kol-component {   .kol-icon {     color: inherit;     display: inline-block;     font-size: inherit;     font-weight: inherit;     line-height: inherit;   }   .kol-tooltip {     display: contents;   }   .kol-tooltip__floating {     opacity: 0;     display: none;     position: fixed;          top: 0;     left: 0;          width: var(--kol-tooltip-width, max-content);     min-width: calc(8 * 1rem / var(--kolibri-root-font-size, 16));     max-width: 90vw;     max-height: 90vh;     animation-direction: normal;          animation-duration: var(--kolibri-tooltip-animation-duration, 250ms);     animation-fill-mode: forwards;     animation-iteration-count: 1;     animation-timing-function: ease-in;   }   .kol-tooltip__floating.hide {     animation-name: hideTooltip;   }   .kol-tooltip__floating.show {     animation-name: showTooltip;   }   .kol-tooltip__arrow {     transform: rotate(45deg);     color: black;     background-color: white;     position: absolute;     z-index: 999;     width: calc(10 * 1rem / var(--kolibri-root-font-size, 16));     height: calc(10 * 1rem / var(--kolibri-root-font-size, 16));   }   .kol-tooltip__content {     color: black;     background-color: white;     position: relative;     z-index: 1000;   }   @keyframes hideTooltip {     0% {       opacity: 1;     }     100% {       opacity: 0;       display: none;     }   }   @keyframes showTooltip {     0% {       opacity: 0;     }     100% {       opacity: 1;     }   } }   @layer kol-component {   .kol-icon {     color: inherit;     display: inline-block;     font-size: inherit;     font-weight: inherit;     line-height: inherit;   }   :host {     display: inline-block;   }   .kol-button {     display: flex;     height: 100%;     min-height: var(--a11y-min-size);     text-decoration-line: none;        }   .kol-button__interactive-element {     display: flex;     flex: 1;     text-align: left;     text-decoration-line: none;        }   .kol-button__interactive-element::before {     content: "​";   }   .kol-button__text {     flex: 1 0 100%;   }   .kol-button {        }   .kol-button__tooltip {     height: 0;   }   .kol-button--external-link > .kolicon-link-external::before {     content: none;   }   .kol-button--external-link .kol-button__interactive-element > .kolicon-link-external::before {     content: none;   }   .kol-popover-button {          display: inline;   }   .kol-popover-button__popover {     margin: 0;     padding: 0;     border: 0;   }   .kol-popover-button--open .kol-button__tooltip {     display: none;   }   .kol-popover-button--inline {     display: inline-block;        }   .kol-popover-button--inline .kol-button,   .kol-popover-button--inline .kol-button .kol-button__interactive-element {     min-width: 0;     min-height: 1em;   }   .kol-popover {     opacity: 0;     transition: 0.2s ease-out opacity;   }   .kol-popover-button--open .kol-popover-button__popover {     opacity: 1;   } }`;
+var KolPopoverButton = class extends BasePopoverButtonWebComponent {
+  constructor(hostRef) {
+    super();
+    if (new.target === KolPopoverButton)
+      registerInstance(this, hostRef);
+    this.ariaDescriptionId = nonce();
+    this.popoverOpen = false;
+    this._accessKey = void 0;
+    this._ariaDescription = void 0;
+    this._customClass = void 0;
+    this._disabled = false;
+    this._hideLabel = false;
+    this._icons = void 0;
+    this._inline = false;
+    this._name = void 0;
+    this._popoverAlign = "bottom";
+    this._shortKey = void 0;
+    this._syncValueBySelector = void 0;
+    this._tabIndex = void 0;
+    this._tooltipAlign = "top";
+    this._type = "button";
+    this._value = void 0;
+    this._variant = void 0;
+    this.initFormAssociation();
+  }
+  watchAccessKey(value) {
+    this.applyAccessKey(value, this._shortKey);
+  }
+  watchAriaDescription(value) {
+    this.applyAriaDescription(value);
+  }
+  watchCustomClass(value) {
+    this.applyCustomClass(value);
+  }
+  watchDisabled(value) {
+    this.applyDisabled(value);
+  }
+  watchHideLabel(value) {
+    this.applyHideLabel(value);
+  }
+  watchIcons(value) {
+    this.applyIcons(value);
+  }
+  watchInline(value) {
+    this.applyInline(value);
+  }
+  watchLabel(value) {
+    this.applyLabel(value);
+  }
+  watchName(value) {
+    this.applyName(value);
+  }
+  watchPopoverAlign(value) {
+    this.applyPopoverAlign(value);
+  }
+  watchShortKey(value) {
+    this.applyShortKey(value, this._accessKey);
+  }
+  watchSyncValueBySelector(value) {
+    this.applySyncValueBySelector(value);
+  }
+  watchTabIndex(value) {
+    this.applyTabIndex(value);
+  }
+  watchTooltipAlign(value) {
+    this.applyTooltipAlign(value);
+  }
+  watchType(value) {
+    this.applyType(value);
+  }
+  watchValue(value) {
+    this.applyValue(value);
+  }
+  watchVariant(value) {
+    this.applyVariant(value);
+  }
+  hidePopover() {
+    this.closePopover();
+    return Promise.resolve();
+  }
+  showPopover() {
+    this.openPopover();
+    return Promise.resolve();
+  }
+  click() {
+    return Promise.resolve();
+  }
+  focus(options) {
+    return Promise.resolve();
+  }
+  componentWillLoad() {
+    this.initPopoverToggle();
+    this.watchAccessKey(this._accessKey);
+    this.watchAriaDescription(this._ariaDescription);
+    this.watchCustomClass(this._customClass);
+    this.watchDisabled(this._disabled);
+    this.watchHideLabel(this._hideLabel);
+    this.watchIcons(this._icons);
+    this.watchInline(this._inline);
+    this.watchLabel(this._label);
+    this.watchName(this._name);
+    this.watchPopoverAlign(this._popoverAlign);
+    this.watchShortKey(this._shortKey);
+    this.watchSyncValueBySelector(this._syncValueBySelector);
+    this.watchTabIndex(this._tabIndex);
+    this.watchTooltipAlign(this._tooltipAlign);
+    this.watchType(this._type);
+    this.watchValue(this._value);
+    this.watchVariant(this._variant);
+    this.initTooltipBehavior();
+  }
+  componentDidRender() {
+    this.syncTooltipListeners();
+    this.syncPopoverToggleListener();
+  }
+  disconnectedCallback() {
+    this.destroyTooltipBehavior();
+    this.destroyPopover();
+  }
+  render() {
+    return h(Host, { key: "291c2254c1443a9d058b89019a13dc3a7cf0deb0" }, this.renderPopoverButtonFC());
+  }
+  get host() {
+    return getElement(this);
+  }
+  static get watchers() {
+    return {
+      "_accessKey": [{
+        "watchAccessKey": 0
+      }],
+      "_ariaDescription": [{
+        "watchAriaDescription": 0
+      }],
+      "_customClass": [{
+        "watchCustomClass": 0
+      }],
+      "_disabled": [{
+        "watchDisabled": 0
+      }],
+      "_hideLabel": [{
+        "watchHideLabel": 0
+      }],
+      "_icons": [{
+        "watchIcons": 0
+      }],
+      "_inline": [{
+        "watchInline": 0
+      }],
+      "_label": [{
+        "watchLabel": 0
+      }],
+      "_name": [{
+        "watchName": 0
+      }],
+      "_popoverAlign": [{
+        "watchPopoverAlign": 0
+      }],
+      "_shortKey": [{
+        "watchShortKey": 0
+      }],
+      "_syncValueBySelector": [{
+        "watchSyncValueBySelector": 0
+      }],
+      "_tabIndex": [{
+        "watchTabIndex": 0
+      }],
+      "_tooltipAlign": [{
+        "watchTooltipAlign": 0
+      }],
+      "_type": [{
+        "watchType": 0
+      }],
+      "_value": [{
+        "watchValue": 0
+      }],
+      "_variant": [{
+        "watchVariant": 0
+      }]
+    };
+  }
+};
+__decorate([
+  delegateClick("ctaRef")
+], KolPopoverButton.prototype, "click", null);
+__decorate([
+  delegateFocus("ctaRef")
+], KolPopoverButton.prototype, "focus", null);
+KolPopoverButton.style = {
+  default: defaultStyleCss()
+};
+export {
+  KolPopoverButton as kol_popover_button
+};
+//# sourceMappingURL=kol-popover-button.entry-Z24CR3SE.js.map

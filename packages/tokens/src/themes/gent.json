@@ -1,0 +1,161 @@
+{
+	"$description": "Stil-Adaption des Styleguides der Stadt Gent (Quelle: kompiliertes CSS aus gent_styleguide 7.2.6 — .button-primary #001823, Links #005ba9, Fira Sans, Danger #d30c2e). Gent arbeitet mit Farbwelt-Varianten (.cs--blue/.cs--green); hier die blaue Basisvariante.",
+	"$label": "Styleguide Stadt Gent",
+	"$source": "https://stijlgids.stad.gent",
+	"color": {
+		"primary": {
+			"light": "#005ba9",
+			"dark": "#005ba9",
+			"$description": "Gent-Blau (Link- und Aktionsfarbe aus dem kompilierten CSS)"
+		},
+		"primary-variant": {
+			"light": "#004685",
+			"dark": "#004685",
+			"$description": "abgeleitet: Gent-Blau abgedunkelt (Hover)"
+		},
+		"secondary": {
+			"light": "#f0f0f0",
+			"dark": "color-mix(in srgb, #001823 40%, #1d1d1e)",
+			"$description": "getönte Fläche (abgeleitet)"
+		},
+		"success": {
+			"light": "#246420",
+			"dark": "#67c85e",
+			"$description": "Gent-Grün (#246420 / #67c85e aus dem CSS)"
+		},
+		"warning": {
+			"light": "#8a6b00",
+			"dark": "#ffdb5a",
+			"$description": "Gelb #ffdb5a als Text auf hellen Flächen 1,7:1 — light abgeleitet (#8a6b00), dark das dokumentierte Gelb"
+		},
+		"danger": {
+			"light": "#d30c2e",
+			"dark": "#d30c2e",
+			"$description": "button-alert #d30c2e"
+		},
+		"info": {
+			"light": "#005ba9",
+			"dark": "#7ed9ff",
+			"$description": "Gent-Blau / hellblau #7ed9ff aus dem CSS"
+		},
+		"text": {
+			"light": "#001823",
+			"dark": "#ffffff",
+			"$description": "Gent-Dunkelblau #001823"
+		},
+		"subtle": {
+			"light": "#5d666c",
+			"dark": "#a5adb2",
+			"$description": "Gent-Grau #687278 abgedunkelt (abgeleitet #5d666c) — Sekundärtext auf getönten Flächen ≥4,5:1"
+		},
+		"ink": {
+			"light": "#000000",
+			"dark": "#ffffff"
+		},
+		"surface": {
+			"light": "#ffffff",
+			"dark": "#001823",
+			"$description": "dunkle Fläche im Gent-Dunkelblau (abgeleitet)"
+		},
+		"light": {
+			"light": "#ffffff",
+			"dark": "#0d2233",
+			"$description": "Komponentenfläche (dunkel abgeleitet)"
+		},
+		"overlay": {
+			"light": "#ffffff",
+			"dark": "#0d2233",
+			"$description": "dunkel abgeleitet"
+		},
+		"mute": {
+			"light": "#f0f0f0",
+			"dark": "#0d2233",
+			"$description": "abgeleitet"
+		},
+		"mute-variant": {
+			"light": "#cfcfcf",
+			"dark": "#3d5568",
+			"$description": "abgeleitet aus der Grau-/Blauwelt"
+		},
+		"edge": {
+			"light": "transparent",
+			"dark": "#3d5568",
+			"$description": "Kante statt Schatten im Dunkelmodus"
+		},
+		"visited": {
+			"light": "#005ba9",
+			"dark": "#7ed9ff",
+			"$description": "Gent dokumentiert keine Visited-Farbe; Links folgen Blau"
+		},
+		"shadow": {
+			"light": "rgb(0 24 35 / 0.14)",
+			"dark": "transparent"
+		},
+		"backdrop": {
+			"light": "rgb(0 24 35 / 0.35)",
+			"dark": "rgb(0 0 0 / 0.6)"
+		}
+	},
+	"focus": {
+		"color": {
+			"value": "#005ba9",
+			"$description": "Fokus folgt Gent-Blau"
+		}
+	},
+	"font": {
+		"family": {
+			"value": "'Fira Sans', Arial, sans-serif",
+			"$description": "Fira Sans — im kompilierten CSS des Originals verankert, frei verfügbar"
+		},
+		"weight-regular": {
+			"value": "400"
+		},
+		"weight-medium": {
+			"value": "400"
+		},
+		"weight-bold": {
+			"value": "700"
+		}
+	},
+	"type-scale": {
+		"xs": {
+			"value": "0.75rem"
+		},
+		"sm": {
+			"value": "0.875rem"
+		},
+		"md": {
+			"value": "1.125rem",
+			"$description": "Gent-Fließtext (18 px auf 20 px Wurzel)"
+		},
+		"lg": {
+			"value": "1.375rem"
+		},
+		"xl": {
+			"value": "1.75rem"
+		},
+		"2xl": {
+			"value": "2.25rem"
+		},
+		"3xl": {
+			"value": "3rem"
+		}
+	},
+	"radius": {
+		"sm": {
+			"value": "0",
+			"$description": "Buttons im kompilierten CSS ohne border-radius (eckig)"
+		},
+		"md": {
+			"value": "0",
+			"$description": "eckig"
+		},
+		"lg": {
+			"value": "0",
+			"$description": "eckig"
+		},
+		"pill": {
+			"value": "999px"
+		}
+	}
+}

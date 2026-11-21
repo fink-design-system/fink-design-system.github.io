@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/open-items-cache-D-kml1h6.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nconst invalidators = new WeakMap();\nconst registerOpenItemsCache = (tree, invalidate) => {\n    invalidators.set(tree, invalidate);\n};\nconst unregisterOpenItemsCache = (tree) => {\n    invalidators.delete(tree);\n};\nconst invalidateOpenItemsCache = (tree) => {\n    var _a;\n    if (tree) {\n        (_a = invalidators.get(tree)) === null || _a === void 0 ? void 0 : _a();\n    }\n};\n\nexport { invalidateOpenItemsCache as i, registerOpenItemsCache as r, unregisterOpenItemsCache as u };\n"],
+  "mappings": ";AAGA,IAAM,eAAe,oBAAI,QAAQ;AACjC,IAAM,yBAAyB,CAAC,MAAM,eAAe;AACjD,eAAa,IAAI,MAAM,UAAU;AACrC;AACA,IAAM,2BAA2B,CAAC,SAAS;AACvC,eAAa,OAAO,IAAI;AAC5B;AACA,IAAM,2BAA2B,CAAC,SAAS;AACvC,MAAI;AACJ,MAAI,MAAM;AACN,KAAC,KAAK,aAAa,IAAI,IAAI,OAAO,QAAQ,OAAO,SAAS,SAAS,GAAG;AAAA,EAC1E;AACJ;",
+  "names": []
+}

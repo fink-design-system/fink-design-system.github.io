@@ -1,17 +1,27 @@
-import { KolButton, useFink } from '@fink/react';
+import { KolButton, useFink, type FinkColorScheme } from '@fink/react';
 import { t } from '../i18n';
 
-/** Schaltet zwischen hellem und dunklem Farbschema um. */
+const OPTIONS: Array<{ scheme: FinkColorScheme; icon: string; label: string }> = [
+	{ scheme: 'system', icon: 'codicon codicon-desktop-monitor', label: t('Farbschema System') },
+	{ scheme: 'light', icon: 'codicon codicon-sun', label: t('Helles Farbschema') },
+	{ scheme: 'dark', icon: 'codicon codicon-moon', label: t('Dunkles Farbschema') },
+];
+
+/** Wählt das Farbschema (System, hell, dunkel) — je Zustand ein eigenes Icon. */
 export function SchemeToggle() {
 	const { colorScheme, setColorScheme } = useFink();
-	const dark = colorScheme === 'dark' || (colorScheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 	return (
-		<KolButton
-			_label={dark ? t('Helles Farbschema') : t('Dunkles Farbschema')}
-			_hideLabel
-			_icons={dark ? 'codicon codicon-color-mode' : 'codicon codicon-color-mode'}
-			_variant="ghost"
-			_on={{ onClick: () => setColorScheme(dark ? 'light' : 'dark') }}
-		/>
+		<span role="group" aria-label={t('Farbschema wählen')} className="scheme-toggle">
+			{OPTIONS.map(({ scheme, icon, label }) => (
+				<KolButton
+					key={scheme}
+					_label={label}
+					_hideLabel
+					_icons={icon}
+					_variant={colorScheme === scheme ? 'primary' : 'ghost'}
+					_on={{ onClick: () => setColorScheme(scheme) }}
+				/>
+			))}
+		</span>
 	);
 }

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@public-ui+components@4.7.0-rc.0_adopted-style-sheets@1.2.0-rc.3/node_modules/@public-ui/components/dist/esm/rows-DuYJeJT7.js"],
+  "sourcesContent": ["/*!\n * KoliBri - The accessible HTML-Standard\n */\nimport { c as createPropDefinition, D as normalizeNumber } from './props-from-config-LBgEHmcL.js';\n\nconst rowsProp = createPropDefinition('rows', undefined, normalizeNumber, (value) => value >= 1);\n\nexport { rowsProp as r };\n"],
+  "mappings": ";;;;;;AAKA,IAAM,WAAW,qBAAqB,QAAQ,QAAW,iBAAiB,CAAC,UAAU,SAAS,CAAC;",
+  "names": []
+}

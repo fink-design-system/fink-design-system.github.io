@@ -2,8 +2,10 @@ import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import { brandThemes, themeCss } from '@fink/tokens';
-import { hostOverrides, overrides } from './overrides.js';
+import { forComponents, INPUT_COMPONENTS, mergeOverrides, hostOverrides, overrides } from './overrides.js';
+import { amsterdamOverrides } from './brands/amsterdam.js';
 import { baloiseOverrides } from './brands/baloise.js';
+import { gentOverrides } from './brands/gent.js';
 import { dbOverrides } from './brands/db.js';
 import { dyouOverrides } from './brands/dyou.js';
 import { infineonOverrides } from './brands/infineon.js';
@@ -14,6 +16,8 @@ import { siemensIxOverrides } from './brands/siemens-ix.js';
 import { sixOverrides } from './brands/six.js';
 import { tegelOverrides } from './brands/tegel.js';
 import { telekomOverrides } from './brands/telekom.js';
+import { BWSt } from '@public-ui/theme-bwst';
+import { DesyV11 } from '@public-ui/theme-desy';
 import { kolibriLocales } from './kolibri-locales.js';
 
 type ThemePatch = Parameters<typeof DEFAULT>[0];
@@ -49,9 +53,11 @@ export const FINK: typeof DEFAULT = createTheme(FINK_THEME_NAME, overrides);
 export type FinkBrandThemeName = (typeof brandThemes)[number]['name'];
 
 const brandOverrides: Record<FinkBrandThemeName, Record<string, string>> = {
+	amsterdam: amsterdamOverrides,
 	baloise: baloiseOverrides,
 	db: dbOverrides,
 	dyou: dyouOverrides,
+	gent: gentOverrides,
 	infineon: infineonOverrides,
 	kern: kernOverrides,
 	porsche: porscheOverrides,
@@ -67,8 +73,35 @@ export const BRAND_THEMES: Record<FinkBrandThemeName, typeof DEFAULT> = Object.f
 	brandThemes.map((theme) => [theme.name, createTheme(theme.name, brandOverrides[theme.name])]),
 ) as Record<FinkBrandThemeName, typeof DEFAULT>;
 
+/**
+ * Externe offizielle KoliBri-Themes amtlicher Organisationen: das Styling kommt 1:1 aus dem
+ * Original-Paket (maximale Genauigkeit per KoliBri-Theming-Technologie), nicht aus Fink-Tokens.
+ */
+export const EXTERNAL_THEME_NAMES = ['bwst', 'desy'] as const;
+export type ExternalThemeName = (typeof EXTERNAL_THEME_NAMES)[number];
+
+/**
+ * Korrektur-Overrides für die externen Themes: deren Dunkelschema färben Teile des Textes schwarz
+ * auf dunkler Fläche (axe color-contrast). Unsere Textfarbe stellt das ohne Eingriff in deren
+ * Pakete wieder her.
+ */
+const externalThemeFixes: Record<string, string> = mergeOverrides(
+	forComponents(INPUT_COMPONENTS, 'input { background-color: var(--fink-color-light); color: var(--fink-color-text) !important; }'),
+	{
+		'KOL-ALERT': '.kol-alert__content { background-color: var(--fink-color-light); color: var(--fink-color-text) !important; }',
+	},
+);
+
+const externalTheme = (name: ExternalThemeName, theme: typeof DEFAULT): typeof DEFAULT => (patch) =>
+	theme((n, map, options, features) => patch(name, withOverrides(map, externalThemeFixes), options, features));
+
+const externalThemes: Record<ExternalThemeName, typeof DEFAULT> = {
+	bwst: externalTheme('bwst', BWSt),
+	desy: externalTheme('desy', DesyV11),
+};
+
 /** Alle wählbaren Themes. */
-export type FinkThemeName = typeof FINK_THEME_NAME | 'default' | FinkBrandThemeName;
+export type FinkThemeName = typeof FINK_THEME_NAME | 'default' | FinkBrandThemeName | ExternalThemeName;
 
 export interface FinkThemeInfo {
 	name: FinkThemeName;
@@ -86,6 +119,8 @@ export const FINK_THEMES: FinkThemeInfo[] = [
 	{ name: FINK_THEME_NAME, label: 'Fink', description: '', source: '', brand: false },
 	{ name: 'default', label: 'KoliBri Default', description: '', source: 'https://public-ui.github.io', brand: false },
 	...brandThemes.map(({ name, label, description, source }) => ({ name, label, description, source, brand: true })),
+	{ name: 'bwst', label: 'BW St (Baden-Württemberg)', description: 'Offizielles KoliBri-Theme des Landes Baden-Württemberg (Styling 1:1 aus @public-ui/theme-bwst).', source: 'https://design-portal.baden-wuerttemberg.de', brand: true },
+	{ name: 'desy', label: 'Desy (Hamburg)', description: 'Offizielles KoliBri-Theme von Desy, dem Design System der Stadt Hamburg (Styling 1:1 aus @public-ui/theme-desy).', source: 'https://www.npmjs.com/package/@public-ui/theme-desy', brand: true },
 ];
 
 export const isFinkThemeName = (value: unknown): value is FinkThemeName => FINK_THEMES.some((theme) => theme.name === value);
@@ -118,7 +153,7 @@ export interface RegisterFinkOptions {
 	injectTokens?: boolean;
 	/** Das unveränderte KoliBri-Default-Theme zusätzlich registrieren (Standard: true). */
 	includeKolibriDefault?: boolean;
-	/** Die Stil-Adaptionen (Porsche, Telekom, Siemens iX, DB) zusätzlich registrieren (Standard: true). */
+	/** Die Stil-Adaptionen und externen amtlichen Themes (Porsche, Telekom, Siemens iX, DB, BW St, Desy) zusätzlich registrieren (Standard: true). */
 	includeBrandThemes?: boolean;
 	/**
 	 * Theme-Erkennung: „auto“ liest das Attribut data-theme am nächsten Vorfahren (auch über
@@ -157,7 +192,9 @@ export const registerFink = (options: RegisterFinkOptions = {}): Promise<unknown
 	const themes = [
 		FINK,
 		...(options.includeKolibriDefault === false ? [] : [KOLIBRI_DEFAULT]),
-		...(options.includeBrandThemes === false ? [] : Object.values(BRAND_THEMES)),
+		...(options.includeBrandThemes === false
+			? []
+			: [...Object.values(BRAND_THEMES), ...EXTERNAL_THEME_NAMES.map((name) => externalThemes[name])]),
 	];
 	registration = register(themes, [defineCustomElements, ...(options.loaders ?? [])], {
 		environment: 'production',
