@@ -89,7 +89,7 @@ jobs:
         with:
           script: |
             const marker = '<!-- fink-preview -->';
-            const state = context.event.payload.pull_request.merged ? 'gemergt' : 'geschlossen';
+            const state = context.payload.pull_request?.merged ? 'gemergt' : 'geschlossen';
             const body = [
               marker,
               `🧹 Die Preview für diesen PR wurde entfernt — der PR wurde ${state} und der Vorschau-Branch gelöscht.`,
