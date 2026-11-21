@@ -35,7 +35,7 @@ Amtliche Systeme, bei denen die Organisation selbst Consumer ist (eigene Webserv
 | System | Organisation (Consumer) | Land | Status/Quelle |
 |---|---|---|---|
 | [ECL — Europa Component Library](https://github.com/ec-europa/europa-component-library) | Europäische Kommission (eigene EU-Websites) | EU | aktiv, 164 ★, EUPL-1.1; KoliBri: `@public-ui/theme-ecl` |
-| [KERN UX](https://kernux.de) | Länder Hamburg + Schleswig-Holstein (FITKO, gov.de) | DE | aktiv; KoliBri: `@public-ui/theme-kern` — bereits als Fink-Theme umgesetzt |
+| [KERN UX](https://kernux.de) | Bund + Länder Schleswig-Holstein, Hamburg, NRW, Bayern, Berlin (FITKO) | DE | aktiv; KoliBri: `@public-ui/theme-kern` — bereits als Fink-Theme umgesetzt; Repo auch auf [openCode](https://gitlab.opencode.de/kern-designsystem) |
 | [BW St — Design-Portal Baden-Württemberg](https://design-portal.baden-wuerttemberg.de) | Land Baden-Württemberg | DE | KoliBri: `@public-ui/theme-bwst` |
 | [DESYBRI](https://www.itzbund.de/DE/itloesungen/standardloesungen/desybri-design-system/desybri.html) | ITZBund (Bund) | DE | KoliBri: `@public-ui/theme-desy` |
 | [Amsterdam Design System](https://github.com/Amsterdam/design-system) | Stadt Amsterdam (eigene Dienste) | NL | aktiv, GitHub, am NL Design System ausgerichtet |
@@ -45,6 +45,12 @@ Amtliche Systeme, bei denen die Organisation selbst Consumer ist (eigene Webserv
 | [Webguidelines Bund](https://github.com/swiss/designsystem) | Schweizerische Eidgenossenschaft | CH | aktiv, Storybook/CSS/Figma |
 
 Europaweit etablierte Nachbarsysteme (gleiche Consumer-Logik): [GOV.UK Design System](https://design-system.service.gov.uk) (UK), [DSFR](https://www.systeme-de-design.gouv.fr) (FR), [Bootstrap Italia](https://italia.github.io/bootstrap-italia/) (IT), [NL Design System](https://nldesignsystem.nl) (NL — auch die Architektur hinter Amsterdam).
+
+Weitere deutsche Verwaltungsquellen (Kommunal- und Länder-Ebene, meist auf [openCode](https://opencode.de) statt GitHub):
+
+- [deGov](https://www.drupal.org/project/degov) — Open-Source-CMS-Distribution (Drupal) für deutsche Kommunen, u. a. Stadt Kiel; Design-/Theme-Komponenten auf GitHub (Org [deGov](https://github.com/deGov))
+- Berlin: im Zuge des berlin.de-Neubaus werden einheitliche Design-Standards entwickelt ([Berlin Open Source](https://.opensource.berlin)), noch kein eigenes Repo
+- Kuratierliste: [awesome-egov-de](https://github.com/codedust/awesome-egov-de) — deutsche E-Government- und Open-Source-Ressourcen
 
 Bewusst ausgeschlossen: Framework-Vendor-Systeme (Material, Fluent, Carbon, Ant, Arco, TDesign, PatternFly u. a.) — die Organisation steht dort nicht selbst als Consumer dahinter.
 
