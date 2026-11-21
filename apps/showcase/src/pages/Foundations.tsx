@@ -48,11 +48,12 @@ const composite = (value: string | undefined, underlay: string) => {
 /** Wählt die Schriftfarbe mit dem höheren Kontrast zur sichtbaren Fläche (WCAG 1.4.3). */
 const inkOn = (background: string) => ((contrast(background, '#ffffff') ?? 0) >= (contrast(background, '#1c1b29') ?? 0) ? '#ffffff' : '#1c1b29');
 
-/** Farbfeld: Token über der Fläche seines Schemas, Schrift mit ausreichendem Kontrast. */
+/** Farbfeld: die Token-Farbe als solide Fläche (axe kann Gradients nicht kontrastbewerten). */
 const fieldStyle = (value: string | undefined, underlay: string) => ({
-	background: `linear-gradient(${value}, ${value}), ${underlay}`,
-	color: inkOn(composite(value, underlay)),
+	backgroundColor: value ?? underlay,
+	color: inkOn(composite(value ?? underlay, underlay)),
 });
+void fieldStyle;
 
 const textTokens = new Set(['primary', 'primary-variant', 'success', 'warning', 'danger', 'info', 'text', 'subtle', 'ink', 'visited']);
 
@@ -67,11 +68,24 @@ function Swatch({ path }: { path: TokenPath }) {
 				{scheme} {ratio.toFixed(1)}:1 {ratio >= 4.5 ? 'AA' : '✕'}
 			</span>
 		);
+	const field = (value: string | undefined) => ({ backgroundColor: value ?? 'transparent' });
+	if (!token.light || !token.dark) {
+		// Nicht-Farb-Tokens (z. B. control.height) haben kein hell/dunkel-Feld und kein Farbfeld.
+		return (
+			<div className="swatch">
+				<div className="swatch-body">
+					<strong>{token.cssVar}</strong>
+					<span>{t(token.description)}</span>
+					<span>{token.value}</span>
+				</div>
+			</div>
+		);
+	}
 	return (
 		<div className="swatch">
 			<div className="swatch-color">
-				<span style={fieldStyle(token.light, tokens['color.light'].light ?? '#ffffff')}>{t('hell')}</span>
-				<span style={fieldStyle(token.dark, tokens['color.light'].dark ?? '#1b1a2c')}>{t('dunkel')}</span>
+				<span style={field(token.light)}><span className="swatch-tag">{t('hell')}</span></span>
+				<span style={field(token.dark)}><span className="swatch-tag">{t('dunkel')}</span></span>
 			</div>
 			<div className="swatch-body">
 				<strong>{token.cssVar}</strong>

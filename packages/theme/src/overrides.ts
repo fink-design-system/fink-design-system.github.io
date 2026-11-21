@@ -11,6 +11,8 @@
  * Kopfzellen einzeilig. Die Mindestbreite der Tabelle setzt die Anwendung über _minWidth
  * (KoliBri schreibt sie inline); den Rest übernimmt der Scroll-Container von KoliBri.
  */
+import { ICON_FONT_CSS } from './icon-fonts.generated.js';
+
 const narrowTable = `
 @layer kol-theme-component {
 	:host {
@@ -113,7 +115,8 @@ ${transparentHost}`,
 	 */
 	'KOL-DRAWER': `
 @layer kol-theme-component {
-	.kol-drawer .kol-span__label {
+	.kol-span,
+	.kol-span__label {
 		color: var(--fink-color-text) !important;
 		opacity: 1 !important;
 	}
@@ -213,7 +216,6 @@ const finkLook: Record<string, string> = {
 		--border-radius: var(--fink-radius-pill);
 	}
 	.kol-button {
-		height: var(--fink-control-height-md);
 		font-weight: var(--fink-font-weight-medium);
 		transition: background-color var(--fink-motion-duration-fast) var(--fink-motion-easing), box-shadow var(--fink-motion-duration-fast) var(--fink-motion-easing);
 	}

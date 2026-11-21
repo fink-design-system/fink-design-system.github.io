@@ -1,27 +1,30 @@
 import { KolButton, useFink, type FinkColorScheme } from '@fink/react';
 import { t } from '../i18n';
 
-const OPTIONS: Array<{ scheme: FinkColorScheme; icon: string; label: string }> = [
-	{ scheme: 'system', icon: 'codicon codicon-desktop-monitor', label: t('Farbschema System') },
-	{ scheme: 'light', icon: 'codicon codicon-sun', label: t('Helles Farbschema') },
-	{ scheme: 'dark', icon: 'codicon codicon-moon', label: t('Dunkles Farbschema') },
-];
+const ORDER: FinkColorScheme[] = ['system', 'light', 'dark'];
+const ICON: Record<FinkColorScheme, string> = {
+	system: 'fa-solid fa-display',
+	light: 'fa-solid fa-sun',
+	dark: 'fa-solid fa-moon',
+};
+const NEXT_LABEL: Record<FinkColorScheme, string> = {
+	system: t('Helles Farbschema'),
+	light: t('Dunkles Farbschema'),
+	dark: t('Farbschema System'),
+};
 
-/** Wählt das Farbschema (System, hell, dunkel) — je Zustand ein eigenes Icon. */
+/** Ein Button, drei Zustände: Monitor (System) → Sonne (hell) → Mond (dunkel) → Monitor. */
 export function SchemeToggle() {
 	const { colorScheme, setColorScheme } = useFink();
+	const current = ORDER.includes(colorScheme) ? colorScheme : 'system';
+	const next = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length];
 	return (
-		<span role="group" aria-label={t('Farbschema wählen')} className="scheme-toggle">
-			{OPTIONS.map(({ scheme, icon, label }) => (
-				<KolButton
-					key={scheme}
-					_label={label}
-					_hideLabel
-					_icons={icon}
-					_variant={colorScheme === scheme ? 'primary' : 'ghost'}
-					_on={{ onClick: () => setColorScheme(scheme) }}
-				/>
-			))}
-		</span>
+		<KolButton
+			_label={t('Farbschema wechseln ({{ziel}})', { ziel: NEXT_LABEL[next] })}
+			_hideLabel
+			_icons={ICON[current]}
+			_variant="ghost"
+			_on={{ onClick: () => setColorScheme(next) }}
+		/>
 	);
 }

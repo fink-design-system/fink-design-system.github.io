@@ -18,6 +18,7 @@ import { tegelOverrides } from './brands/tegel.js';
 import { telekomOverrides } from './brands/telekom.js';
 import { BWSt } from '@public-ui/theme-bwst';
 import { DesyV11 } from '@public-ui/theme-desy';
+import { ICON_FONT_CSS } from './icon-fonts.generated.js';
 import { kolibriLocales } from './kolibri-locales.js';
 
 type ThemePatch = Parameters<typeof DEFAULT>[0];
@@ -88,6 +89,7 @@ export type ExternalThemeName = (typeof EXTERNAL_THEME_NAMES)[number];
 const externalThemeFixes: Record<string, string> = mergeOverrides(
 	forComponents(INPUT_COMPONENTS, 'input { background-color: var(--fink-color-light); color: var(--fink-color-text) !important; }'),
 	{
+		GLOBAL: ICON_FONT_CSS,
 		'KOL-ALERT': '.kol-alert__content { background-color: var(--fink-color-light); color: var(--fink-color-text) !important; }',
 	},
 );
@@ -119,8 +121,8 @@ export const FINK_THEMES: FinkThemeInfo[] = [
 	{ name: FINK_THEME_NAME, label: 'Fink', description: '', source: '', brand: false },
 	{ name: 'default', label: 'KoliBri Default', description: '', source: 'https://public-ui.github.io', brand: false },
 	...brandThemes.map(({ name, label, description, source }) => ({ name, label, description, source, brand: true })),
-	{ name: 'bwst', label: 'BW St (Baden-Württemberg)', description: 'Offizielles KoliBri-Theme des Landes Baden-Württemberg (Styling 1:1 aus @public-ui/theme-bwst).', source: 'https://design-portal.baden-wuerttemberg.de', brand: true },
-	{ name: 'desy', label: 'Desy (Hamburg)', description: 'Offizielles KoliBri-Theme von Desy, dem Design System der Stadt Hamburg (Styling 1:1 aus @public-ui/theme-desy).', source: 'https://www.npmjs.com/package/@public-ui/theme-desy', brand: true },
+	{ name: 'bwst', label: 'Straßen Wasser Amt (bwst)', description: 'Offizielles KoliBri-Theme für das Straßen Wasser Amt (Styling 1:1 aus @public-ui/theme-bwst).', source: 'https://www.npmjs.com/package/@public-ui/theme-bwst', brand: true },
+	{ name: 'desy', label: 'Zoll Design System', description: 'Offizielles KoliBri-Theme für das Design System der Deutschen Zollverwaltung (Styling 1:1 aus @public-ui/theme-desy).', source: 'https://www.npmjs.com/package/@public-ui/theme-desy', brand: true },
 ];
 
 export const isFinkThemeName = (value: unknown): value is FinkThemeName => FINK_THEMES.some((theme) => theme.name === value);

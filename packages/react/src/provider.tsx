@@ -19,6 +19,7 @@ const FinkContext = createContext<FinkContextValue | null>(null);
 
 const LANGUAGE_KEY = 'fink-language';
 const THEME_KEY = 'fink-theme';
+const COLOR_SCHEME_KEY = 'fink-color-scheme';
 
 const readStorage = (key: string): string | null => {
 	try {
@@ -98,7 +99,13 @@ export function FinkProvider({
 	registerOptions,
 }: FinkProviderProps) {
 	const [ready, setReady] = useState(false);
-	const [colorScheme, setColorScheme] = useState<FinkColorScheme>(defaultColorScheme);
+	const [colorScheme, setColorScheme] = useState<FinkColorScheme>(() => {
+		try {
+			const stored = localStorage.getItem(COLOR_SCHEME_KEY) as FinkColorScheme | null;
+			if (stored === 'light' || stored === 'dark' || stored === 'system') return stored;
+		} catch {}
+		return defaultColorScheme;
+	});
 	const [theme, setThemeState] = useState<FinkThemeName>(() => detectFinkTheme(defaultTheme));
 	const [language, setLanguageState] = useState<FinkLanguage>(() => defaultLanguage ?? detectFinkLanguage());
 
@@ -128,6 +135,9 @@ export function FinkProvider({
 
 	useEffect(() => {
 		document.documentElement.style.colorScheme = colorScheme === 'system' ? 'light dark' : colorScheme;
+		try {
+			localStorage.setItem(COLOR_SCHEME_KEY, colorScheme);
+		} catch {}
 	}, [colorScheme]);
 
 	const setTheme = useCallback((next: FinkThemeName) => {

@@ -426,6 +426,9 @@ pre {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	height: 5rem;
+	/* Konstant weiß: die Samples zeigen ihre eigenen Farben, die Beschriftung bleibt in beiden
+	   Schemata lesbar (die dunklen Token-Beispiele liegen sonst auf dunkler Brand-Fläche). */
+	background: #ffffff;
 }
 
 .swatch-color > span {
@@ -1080,9 +1083,17 @@ pre {
 	margin-top: 0;
 }
 
-/* Smartphone-Viewport: kompaktere Abstände, Kopfzeile ohne Versionsangabe, Karten ohne große Vorschaufläche. */
+/* Smartphone-Viewport: kompaktere Abstände, Kopfzeile ohne Versionsangabe und Avatar, Karten ohne große Vorschaufläche. */
 @media (max-width: 599px) {
 	.header-version {
+		display: none;
+	}
+
+	.header-tools {
+		gap: 4px;
+	}
+
+	.header-tools kol-avatar {
 		display: none;
 	}
 
@@ -1198,3 +1209,6 @@ pre {
 
 /* Farbschema-Umschalter: drei Icon-Buttons (System/Sonne/Mond). */
 .scheme-toggle { display: inline-flex; gap: 2px; }
+
+/* Swatch-Beschriftung: kontrastgesicherte Markierung auf JEDER Token-Farbe (auch transparent). */
+.swatch-tag { background: color-mix(in srgb, #ffffff 92%, transparent); color: #1c1b29; padding: 1px 5px; border-radius: var(--fink-radius-sm); }

@@ -37,6 +37,12 @@ jobs:
     needs: changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.changes.outputs.app == 'true' }}
     runs-on: ubuntu-latest
+    # Je Theme-Gruppe ein Shard: vier Runner parallel statt einer (Laufzeit ~39 min → ~10 min).
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    name: a11y (Shard ${{ matrix.shard }}/4)
     steps:
       - uses: actions/checkout@v4
 
@@ -62,12 +68,12 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium
 
       # axe-core (WCAG 2.2 AA, EN 301 549 / BITV 2.0, Best Practices) über alle Routen, Sprachen, Farbschemata,
-      # 320 px und interaktive Zustände der Kompositionen.
-      - run: pnpm test:a11y
+      # 320 px und interaktive Zustände der Kompositionen — als Shard eines vierfachen Matrix-Laufs.
+      - run: pnpm test:a11y --shard=${{ matrix.shard }}/4
 
       - if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-report-shard-${{ matrix.shard }}
           path: playwright-report
           retention-days: 14
