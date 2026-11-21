@@ -3,9 +3,9 @@ import { t } from '../i18n';
 
 const ORDER: FinkColorScheme[] = ['system', 'light', 'dark'];
 const ICON: Record<FinkColorScheme, string> = {
-	system: 'codicon codicon-desktop-monitor',
-	light: 'codicon codicon-sun',
-	dark: 'codicon codicon-moon',
+	system: 'fa-solid fa-display',
+	light: 'fa-solid fa-sun',
+	dark: 'fa-solid fa-moon',
 };
 const NEXT_LABEL: Record<FinkColorScheme, string> = {
 	system: t('Helles Farbschema'),
