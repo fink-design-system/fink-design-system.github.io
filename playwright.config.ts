@@ -16,7 +16,7 @@ export default defineConfig<A11yOptions>({
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
 	retries: 0,
-	workers: 4,
+	workers: process.env.CI ? 10 : 4,
 	timeout: 90_000,
 	reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : [['list']],
 	/* Snapshot-Baselines der Visual-Tests (Original-Design-Systeme) liegen zentral unter e2e/visual-snapshots. */
