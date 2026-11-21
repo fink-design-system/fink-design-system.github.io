@@ -426,6 +426,9 @@ pre {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	height: 5rem;
+	/* Konstant weiß: die Samples zeigen ihre eigenen Farben, die Beschriftung bleibt in beiden
+	   Schemata lesbar (die dunklen Token-Beispiele liegen sonst auf dunkler Brand-Fläche). */
+	background: #ffffff;
 }
 
 .swatch-color > span {
