@@ -2,7 +2,7 @@ import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import { brandThemes, themeCss } from '@fink/tokens';
-import { hostOverrides, overrides } from './overrides.js';
+import { forComponents, INPUT_COMPONENTS, mergeOverrides, hostOverrides, overrides } from './overrides.js';
 import { amsterdamOverrides } from './brands/amsterdam.js';
 import { baloiseOverrides } from './brands/baloise.js';
 import { gentOverrides } from './brands/gent.js';
@@ -80,7 +80,25 @@ export const BRAND_THEMES: Record<FinkBrandThemeName, typeof DEFAULT> = Object.f
 export const EXTERNAL_THEME_NAMES = ['bwst', 'desy'] as const;
 export type ExternalThemeName = (typeof EXTERNAL_THEME_NAMES)[number];
 
-const externalThemes: Record<ExternalThemeName, typeof DEFAULT> = { bwst: BWSt, desy: DesyV11 };
+/**
+ * Korrektur-Overrides für die externen Themes: deren Dunkelschema färben Teile des Textes schwarz
+ * auf dunkler Fläche (axe color-contrast). Unsere Textfarbe stellt das ohne Eingriff in deren
+ * Pakete wieder her.
+ */
+const externalThemeFixes: Record<string, string> = mergeOverrides(
+	forComponents(INPUT_COMPONENTS, 'input { background-color: var(--fink-color-light); color: var(--fink-color-text) !important; }'),
+	{
+		'KOL-ALERT': '.kol-alert__content { background-color: var(--fink-color-light); color: var(--fink-color-text) !important; }',
+	},
+);
+
+const externalTheme = (name: ExternalThemeName, theme: typeof DEFAULT): typeof DEFAULT => (patch) =>
+	theme((n, map, options, features) => patch(name, withOverrides(map, externalThemeFixes), options, features));
+
+const externalThemes: Record<ExternalThemeName, typeof DEFAULT> = {
+	bwst: externalTheme('bwst', BWSt),
+	desy: externalTheme('desy', DesyV11),
+};
 
 /** Alle wählbaren Themes. */
 export type FinkThemeName = typeof FINK_THEME_NAME | 'default' | FinkBrandThemeName | ExternalThemeName;
@@ -174,7 +192,9 @@ export const registerFink = (options: RegisterFinkOptions = {}): Promise<unknown
 	const themes = [
 		FINK,
 		...(options.includeKolibriDefault === false ? [] : [KOLIBRI_DEFAULT]),
-		...(options.includeBrandThemes === false ? [] : [...Object.values(BRAND_THEMES), BWSt, DesyV11]),
+		...(options.includeBrandThemes === false
+			? []
+			: [...Object.values(BRAND_THEMES), ...EXTERNAL_THEME_NAMES.map((name) => externalThemes[name])]),
 	];
 	registration = register(themes, [defineCustomElements, ...(options.loaders ?? [])], {
 		environment: 'production',

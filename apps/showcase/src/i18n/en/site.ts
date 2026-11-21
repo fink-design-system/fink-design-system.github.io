@@ -367,6 +367,8 @@ export const site: Record<string, string> = {
 	"dunkel": "dark",
 	"Dunkel": "Dark",
 	"Dunkles Farbschema": "Dark colour scheme",
+	"Farbschema System": "System colour scheme",
+	"Farbschema wählen": "Choose colour scheme",
 	"Dünne Hülle um kol-badge: ordnet semantische Töne Farbtokens und Icons zu (Farbe nie allein).": "Thin wrapper around kol-badge: maps semantic tones to colour tokens and icons (never colour alone).",
 	"Duplizieren": "Duplicate",
 	"durch Jonas Weber": "by Jonas Weber",

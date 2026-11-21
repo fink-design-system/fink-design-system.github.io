@@ -1195,3 +1195,6 @@ pre {
 	background: var(--fink-color-surface);
 	color: var(--fink-color-text);
 }
+
+/* Farbschema-Umschalter: drei Icon-Buttons (System/Sonne/Mond). */
+.scheme-toggle { display: inline-flex; gap: 2px; }
