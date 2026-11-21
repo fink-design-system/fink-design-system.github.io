@@ -1,9 +1,9 @@
 import { createContext, Fragment, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { FINK_THEME_NAME, registerFink, type RegisterFinkOptions } from '@fink/theme';
+import { FINK_THEME_NAME, registerFink, type FinkSystemName, type RegisterFinkOptions } from '@fink/theme';
 import { setFinkLanguage, type FinkLanguage } from '@fink/components/i18n';
 
 export type FinkColorScheme = 'light' | 'dark' | 'system';
-export type FinkThemeName = typeof FINK_THEME_NAME | 'default';
+export type FinkThemeName = typeof FINK_THEME_NAME | 'default' | FinkSystemName;
 export type { FinkLanguage };
 
 export interface FinkContextValue {

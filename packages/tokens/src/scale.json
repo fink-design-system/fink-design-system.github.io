@@ -1,0 +1,38 @@
+{
+  "$description": "Stil-Nachbau von Telekom Scale (Quellen: github.com/telekom/design-tokens, core/semantic-Tokens). Die Schrift TeleNeo ist lizenziert und wird durch Inter ersetzt.",
+  "color": {
+    "primary": { "light": "#E20074", "dark": "#F61488", "$description": "brand.standard / brand.standard_dark – Telekom Magenta" },
+    "primary-variant": { "light": "#C00063", "dark": "#C00063", "$description": "primary.hovered/pressed → brand.dark; dark-Hover ebenfalls brand.dark" },
+    "secondary": { "light": "#FFF0F8", "dark": "#33001A", "$description": "brand.tint / brand.shade" },
+    "success": { "light": "#008653", "dark": "#00B367", "$description": "functional.success → green.800 / green.500" },
+    "warning": { "light": "#B63D00", "dark": "#F97012", "$description": "functional.warning → orange.900 / orange.500" },
+    "danger": { "light": "#D91308", "dark": "#F84934", "$description": "functional.danger → red.600 / red.300" },
+    "info": { "light": "#2238DF", "dark": "#7D94F9", "$description": "functional.informational → blue.500 / blue.200" },
+    "text": { "light": "#000000", "dark": "#FFFFFF", "$description": "text-&-icon.standard → black / white" },
+    "subtle": { "light": "rgb(0 0 0 / 0.65)", "dark": "rgb(255 255 255 / 0.65)", "$description": "text-&-icon.additional" },
+    "ink": { "light": "#000000", "dark": "#FFFFFF" },
+    "surface": { "light": "#FFFFFF", "dark": "#000000", "$description": "background.canvas → grey.0 / grey.2200" },
+    "light": { "light": "#FFFFFF", "dark": "#151517", "$description": "background.surface → grey.0 / grey.2000" },
+    "overlay": { "light": "#FFFFFF", "dark": "#151517", "$description": "background.surface" },
+    "mute": { "light": "#EFEFF0", "dark": "#242426", "$description": "ui.subtle → grey.300 / grey.1800" },
+    "mute-variant": { "light": "rgb(0 0 0 / 0.44)", "dark": "rgb(255 255 255 / 0.4)", "$description": "ui.border.standard" },
+    "edge": { "light": "transparent", "dark": "rgb(255 255 255 / 0.4)", "$description": "Kante statt Schatten im Dark Mode" },
+    "visited": { "light": "#6C3BDB", "dark": "#9A75F8", "$description": "text-&-icon.link.visited → violet.600 / violet.300" },
+    "shadow": { "light": "rgb(0 0 0 / 0.14)", "dark": "transparent", "$description": "neutraler Schatten; Scale definiert Schatten über core.shadow-Tokens ohne Alpha-Angabe in dieser Quelle" },
+    "backdrop": { "light": "rgb(0 0 0 / 0.5)", "dark": "rgb(0 0 0 / 0.65)", "$description": "background.backdrop" }
+  },
+  "focus": {
+    "color": { "light": "#2238DF", "dark": "#7D94F9", "$description": "functional.focus.standard → blue.500 / blue.200" }
+  },
+  "radius": {
+    "sm": { "value": "4px", "$description": "core.radius.20 (small)" },
+    "md": { "value": "8px", "$description": "core.radius.40 (standard)" },
+    "lg": { "value": "12px", "$description": "core.radius.60 (large)" },
+    "pill": { "value": "999px", "$description": "core.radius.900 (pill)" }
+  },
+  "motion": {
+    "duration-fast": { "value": "200ms", "$description": "core.motion fast" },
+    "duration-base": { "value": "200ms", "$description": "interaktive Übergänge nutzen in Scale die 200-ms-Stufe" },
+    "easing": { "value": "cubic-bezier(0.4, 0, 0.6, 1)", "$description": "core.motion easeInOut" }
+  }
+}

@@ -9,7 +9,7 @@ import { App } from './App';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<FinkProvider defaultColorScheme="light" defaultLanguage={language} onLanguageChange={(lng) => void i18n.changeLanguage(lng)} fallback={<div className="boot">{t('Fink Design System wird geladen')}</div>}>
+		<FinkProvider defaultColorScheme="light" defaultLanguage={language} onLanguageChange={(lng) => void i18n.changeLanguage(lng)} registerOptions={{ includeSystems: true }} fallback={<div className="boot">{t('Fink Design System wird geladen')}</div>}>
 			<App />
 		</FinkProvider>
 	</StrictMode>,

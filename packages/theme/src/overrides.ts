@@ -33,7 +33,7 @@ export const overrides: Record<string, string> = {
 	GLOBAL: `
 @layer kol-theme-global {
 	:host {
-		--fink-focus-ring: 0 0 0 3px color-mix(in srgb, var(--fink-color-primary) 35%, transparent);
+		--fink-focus-ring: 0 0 0 3px color-mix(in srgb, var(--fink-focus-color) 35%, transparent);
 	}
 }`,
 	'KOL-BUTTON': `

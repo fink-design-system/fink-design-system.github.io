@@ -1,0 +1,27 @@
+{
+  "$description": "Stil-Nachbau der DB UX Design System v3 (Quelle: @db-ui/foundations 0.7.4, Default-Palette). Die Foundations nutzen als Default ein markenneutrales Violett (#514EC7); das DB-Rot der Produkte (#EC0016) ist hier nicht gesetzt. Die Schrift DB Screen ist lizenziert und wird durch Inter ersetzt.",
+  "color": {
+    "primary": { "light": "#514EC7", "dark": "#514EC7", "$description": "db-brand-origin-default; Dark-Mode nutzt dieselbe Stufe" },
+    "primary-variant": { "light": "#3834AC", "dark": "#6D6BD4", "$description": "brand-origin hovered: light -5, dark +2 auf der Skala" },
+    "secondary": { "light": "#ECEEF3", "dark": "#171C26", "$description": "neutral-12 / neutral-3 als getönte Fläche" },
+    "success": { "light": "#131F06", "dark": "#CDFCA0", "$description": "successful on-bg-emphasis-100: light -3, dark -12 auf der Skala" },
+    "warning": { "light": "#2D1602", "dark": "#FEEAE1", "$description": "warning on-bg-emphasis-100: light -3, dark -12" },
+    "danger": { "light": "#3D0509", "dark": "#FDE9EA", "$description": "critical on-bg-emphasis-100: light -3, dark -12" },
+    "info": { "light": "#0D1E20", "dark": "#D3F4F9", "$description": "informational on-bg-emphasis-100: light -3, dark -12" },
+    "text": { "light": "#171C26", "dark": "#ECEEF3", "$description": "neutral on-bg-emphasis-100: light -3, dark -12" },
+    "subtle": { "light": "#525E78", "dark": "#9FABC7", "$description": "neutral -6 / -9 als Sekundärtext" },
+    "ink": { "light": "#000000", "dark": "#FFFFFF" },
+    "surface": { "light": "#FFFFFF", "dark": "#171C26", "$description": "neutral bg-basic-level-1: light -14, dark -3" },
+    "light": { "light": "#FFFFFF", "dark": "#171C26", "$description": "bg-basic-level-1" },
+    "overlay": { "light": "#FFFFFF", "dark": "#171C26", "$description": "bg-basic-level-1" },
+    "mute": { "light": "#ECEEF3", "dark": "#525E78", "$description": "getönte Fläche: light neutral-12, dark neutral-6" },
+    "mute-variant": { "light": "#9FABC7", "dark": "#525E78", "$description": "Linien: neutral -9 / -6" },
+    "edge": { "light": "transparent", "dark": "#525E78", "$description": "Kante statt Schatten im Dark Mode" },
+    "visited": { "light": "#38656B", "dark": "#6AB7C1", "$description": "informational -6 / -9; DB dokumentiert keine eigene Visited-Stufe" },
+    "shadow": { "light": "rgb(23 28 38 / 0.14)", "dark": "transparent", "$description": "neutraler Schatten auf Neutralton; DB definiert Schatten über elevation-Tokens ohne Alpha-Angabe in dieser Quelle" },
+    "backdrop": { "light": "rgb(23 28 38 / 0.35)", "dark": "rgb(0 0 0 / 0.6)", "$description": "aus dem Fink-Raster; DB-Backdrop-Token ohne Alpha-Angabe in dieser Quelle" }
+  },
+  "focus": {
+    "color": { "value": "#514EC7", "$description": "DB-Fokus folgt der Primary-Farbe" }
+  }
+}

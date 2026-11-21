@@ -1,0 +1,41 @@
+{
+  "$description": "Stil-Nachbau des Swiss Post Design Systems (Quelle: swisspost/design-system, packages/tokens Tokens-Studio-Export). Die Schweizerische Post arbeitet mit Postgelb als Markenkern. Die Schrift Swiss Post Sans ist lizenziert und wird durch Inter ersetzt.",
+  "color": {
+    "primary": { "light": "#FFCC00", "dark": "#FFCC00", "$description": "postyellow; eine Dark-Variante ist im Token-Export nicht definiert" },
+    "primary-variant": { "light": "#FFCC00", "dark": "#FFCC00", "$description": "keine dokumentierte Hover-Stufe; KoliBri-Hover bleibt auf der Markenfarbe" },
+    "secondary": { "light": "#F0EFED", "dark": "#373632", "$description": "sandgrey.006 / sandgrey.080" },
+    "success": { "light": "#107800", "dark": "#55E543", "$description": "notification green / night" },
+    "warning": { "light": "#D93D00", "dark": "#FF8D13", "$description": "notification orange / night" },
+    "danger": { "light": "#B20000", "dark": "#FF7575", "$description": "notification red / night" },
+    "info": { "light": "#0050A1", "dark": "#D6EDFF", "$description": "notification blue / night" },
+    "text": { "light": "#050400", "dark": "#FFFFFF", "$description": "body fg: sandgrey.100 / brand.white" },
+    "subtle": { "light": "#373632", "dark": "#CDCCC8", "$description": "sandgrey.080 / sandgrey.020, gespiegelte Skalenpositionen" },
+    "ink": { "light": "#000000", "dark": "#FFFFFF" },
+    "surface": { "light": "#FAFAFA", "dark": "#373632", "$description": "body bg: sandgrey.002 / sandgrey.080" },
+    "light": { "light": "#FFFFFF", "dark": "#1E1D19", "$description": "Komponentenfläche: white / sandgrey.090" },
+    "overlay": { "light": "#FFFFFF", "dark": "#1E1D19", "$description": "white / sandgrey.090" },
+    "mute": { "light": "#F0EFED", "dark": "#1E1D19", "$description": "sandgrey.006 / sandgrey.090" },
+    "mute-variant": { "light": "#CDCCC8", "dark": "#373632", "$description": "sandgrey.020 / sandgrey.080 als Linienfarbe" },
+    "edge": { "light": "transparent", "dark": "#373632", "$description": "Kante statt Schatten im Dark Mode" },
+    "visited": { "light": "#0050A1", "dark": "#D6EDFF", "$description": "Post dokumentiert keine Visited-Stufe; Links folgen Info" },
+    "shadow": { "light": "rgb(0 0 0 / 0.2)", "dark": "transparent", "$description": "Elevation-Tokens der Post liegen zwischen rgba(0,0,0,0.16) und 0.24" },
+    "backdrop": { "light": "rgb(5 4 0 / 0.5)", "dark": "rgb(5 4 0 / 0.6)", "$description": "darksand-Alpha-Skala" }
+  },
+  "focus": {
+    "color": { "value": "#FFCC00", "$description": "Fokus folgt Postgelb" }
+  },
+  "type-scale": {
+    "xs": { "value": "0.75rem", "$description": "Typo-Stufe 12" },
+    "sm": { "value": "0.875rem", "$description": "Typo-Stufe 14" },
+    "md": { "value": "1rem", "$description": "Typo-Stufe 16" },
+    "lg": { "value": "1.125rem", "$description": "Typo-Stufe 18" },
+    "xl": { "value": "1.5rem", "$description": "Typo-Stufe 24" },
+    "2xl": { "value": "2rem", "$description": "Typo-Stufe 32" },
+    "3xl": { "value": "2.5rem", "$description": "Typo-Stufe 40" }
+  },
+  "font": {
+    "weight-regular": { "value": "400" },
+    "weight-medium": { "value": "700", "$description": "Post kennt 400/700/900; die mittlere Rolle ist 700" },
+    "weight-bold": { "value": "900" }
+  }
+}

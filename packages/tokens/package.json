@@ -1,7 +1,7 @@
 {
   "name": "@fink/tokens",
   "version": "0.1.0",
-  "description": "Design Tokens des Fink Design Systems (Single Source of Truth).",
+  "description": "Design Tokens des Fink Design Systems (Single Source of Truth) inkl. Nachbau-Skins europäischer Design-Systeme.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,9 +11,50 @@
       "default": "./dist/index.js"
     },
     "./tokens.css": "./dist/tokens.css",
-    "./tokens.json": "./src/tokens.json"
+    "./tokens.json": "./src/tokens.json",
+    "./systems": {
+      "types": "./dist/systems.d.ts",
+      "default": "./dist/systems.js"
+    },
+    "./systems.css": "./dist/systems.css",
+    "./porsche": "./dist/porsche/index.js",
+    "./porsche/tokens.css": "./dist/porsche/tokens.css",
+    "./scale": "./dist/scale/index.js",
+    "./scale/tokens.css": "./dist/scale/tokens.css",
+    "./ix": "./dist/ix/index.js",
+    "./ix/tokens.css": "./dist/ix/tokens.css",
+    "./db": "./dist/db/index.js",
+    "./db/tokens.css": "./dist/db/tokens.css",
+    "./post": "./dist/post/index.js",
+    "./post/tokens.css": "./dist/post/tokens.css",
+    "./baloise": "./dist/baloise/index.js",
+    "./baloise/tokens.css": "./dist/baloise/tokens.css",
+    "./tegel": "./dist/tegel/index.js",
+    "./tegel/tokens.css": "./dist/tegel/tokens.css",
+    "./infineon": "./dist/infineon/index.js",
+    "./infineon/tokens.css": "./dist/infineon/tokens.css",
+    "./six": "./dist/six/index.js",
+    "./six/tokens.css": "./dist/six/tokens.css",
+    "./kern": "./dist/kern/index.js",
+    "./kern/tokens.css": "./dist/kern/tokens.css",
+    "./dyou": "./dist/dyou/index.js",
+    "./dyou/tokens.css": "./dist/dyou/tokens.css"
   },
-  "files": ["dist", "src/tokens.json"],
+  "files": [
+    "dist",
+    "src/tokens.json",
+    "src/porsche.json",
+    "src/scale.json",
+    "src/ix.json",
+    "src/db.json",
+    "src/post.json",
+    "src/baloise.json",
+    "src/tegel.json",
+    "src/infineon.json",
+    "src/six.json",
+    "src/kern.json",
+    "src/dyou.json"
+  ],
   "scripts": {
     "build": "node scripts/build.mjs"
   }

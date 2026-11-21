@@ -4,6 +4,10 @@ import { DEFAULT } from '@public-ui/theme-default';
 import { tokenDeclarations } from '@fink/tokens';
 import { overrides } from './overrides.js';
 import { kolibriLocales } from './kolibri-locales.js';
+import { FINK_SYSTEM_NAMES, SYSTEM_THEMES, injectSystemTokens, type FinkSystemName } from './systems.js';
+
+export { FINK_SYSTEM_NAMES, SYSTEM_THEMES, injectSystemTokens };
+export type { FinkSystemName };
 
 type ThemePatch = Parameters<typeof DEFAULT>[0];
 type ThemeMap = Parameters<ThemePatch>[1];
@@ -49,6 +53,12 @@ export interface RegisterFinkOptions {
 	/** Das unveränderte KoliBri-Default-Theme zusätzlich registrieren (Standard: true). */
 	includeKolibriDefault?: boolean;
 	/**
+	 * Nachbau-Skins europäischer Design-Systeme mitregistrieren (porsche, scale, ix, db, post,
+	 * baloise, tegel, infineon, six, kern, dyou). true nimmt alle, ein Array eine Auswahl; ihre
+	 * Token-Declarations werden automatisch als data-theme-scoped Stylesheet eingefügt.
+	 */
+	includeSystems?: boolean | readonly FinkSystemName[];
+	/**
 	 * Theme-Erkennung: „auto“ liest das Attribut data-theme am nächsten Vorfahren (auch über
 	 * Shadow-Grenzen), „fixed“ nutzt immer das Fink-Theme (Standard: „auto“).
 	 */
@@ -83,6 +93,11 @@ export const registerFink = (options: RegisterFinkOptions = {}): Promise<unknown
 		document.documentElement.dataset.theme = FINK_THEME_NAME;
 	}
 	const themes = options.includeKolibriDefault === false ? [FINK] : [FINK, DEFAULT];
+	if (options.includeSystems) {
+		if (typeof document !== 'undefined') injectSystemTokens();
+		const selected = options.includeSystems === true ? FINK_SYSTEM_NAMES : options.includeSystems;
+		themes.push(...selected.map((name) => SYSTEM_THEMES[name]));
+	}
 	registration = register(themes, [defineCustomElements, ...(options.loaders ?? [])], {
 		environment: 'production',
 		theme: { detect, name: FINK_THEME_NAME },
