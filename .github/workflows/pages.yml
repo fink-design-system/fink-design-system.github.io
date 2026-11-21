@@ -33,6 +33,10 @@ jobs:
 
       - id: pages
         uses: actions/configure-pages@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Aktiviert die Pages-Site bei Bedarf; ohne diesen Schritt bleibt die Domain bei 404.
+          enabled: true
 
       # Baut Tokens, Theme, Komponenten, React-Paket und die Showcase (inkl. Icon-Font-Sync).
       - run: pnpm build
