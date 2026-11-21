@@ -1206,3 +1206,6 @@ pre {
 
 /* Farbschema-Umschalter: drei Icon-Buttons (System/Sonne/Mond). */
 .scheme-toggle { display: inline-flex; gap: 2px; }
+
+/* Swatch-Beschriftung: kontrastgesicherte Markierung auf JEDER Token-Farbe (auch transparent). */
+.swatch-tag { background: color-mix(in srgb, #ffffff 92%, transparent); color: #1c1b29; padding: 1px 5px; border-radius: var(--fink-radius-sm); }
