@@ -102,13 +102,6 @@ export function App() {
 
 	return (
 		<>
-			<div className="site-banner">
-				<p className="site-banner-text">
-					{t(
-						'Fink basiert wie KoliBri vollständig auf dem Web-Components-Standard. In jedem webbasierten Ansatz sind alle Komponenten robust wiederverwendbar: semantisch, im Verhalten und im Corporate Design.',
-					)}
-				</p>
-			</div>
 			<FinkAppShell
 				_label={t('Fink Design System')}
 				_navLabel={t('Dokumentation')}
@@ -126,6 +119,14 @@ export function App() {
 					<GitHubLink />
 				</div>
 				<FinkNav slot="nav" _label={t('Dokumentation')} _links={links} _hasIconsWhenExpanded />
+				{/* Erster Inhalt im Hauptbereich: liegt so in der main-Landmark und verschiebt die Kopfzeile der App Shell nicht. */}
+				<div className="site-banner">
+					<p className="site-banner-text">
+						{t(
+							'Fink basiert wie KoliBri vollständig auf dem Web-Components-Standard. In jedem webbasierten Ansatz sind alle Komponenten robust wiederverwendbar: semantisch, im Verhalten und im Corporate Design.',
+						)}
+					</p>
+				</div>
 				<div key={route}>{renderPage(route)}</div>
 				<FinkBackToTop />
 				<span slot="footer" className="site-footer">

@@ -11,8 +11,6 @@ export default defineNuxtConfig({
 	alias: { assets: join(components, 'dist/collection/assets') },
 	// One document stylesheet with fonts, icons and the page font of the Fink theme.
 	css: ['@fink-ui/vue/fink.css'],
-	// fink.css nutzt light-dark(); ein älteres CSS-Ziel ersetzt es durch eine Form, die das Fink-Theme bricht.
-	vite: { build: { cssTarget: ['chrome123', 'edge123', 'firefox120', 'safari17.5'] } },
 	app: {
 		head: { title: 'Nuxt sample | Fink Design System', htmlAttrs: { lang: 'en' } },
 	},

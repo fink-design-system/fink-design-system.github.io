@@ -16,7 +16,7 @@ for (const name of samples) {
 		const header = page.locator('fink-page-header').first();
 		await expect.poll(() => header.evaluate((el) => (el.shadowRoot?.childElementCount ?? 0) > 0), { timeout: 20_000 }).toBe(true);
 		await expect(page.locator('fink-task-list')).toHaveCount(1);
-		// Ein Bundler mit älterem CSS-Ziel schreibt light-dark() in fink.css um; dann fallen die Farben des Themes aus.
+		// Die Tokens hängt die Registrierung an; ein Bundler darf light-dark() nicht umgeschrieben haben.
 		const primary = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--fink-color-primary').replace(/\s/g, ''));
 		expect(primary).toBe('light-dark(#3b2fc9,#b7b0ff)');
 		const findings = await runAxe(page);

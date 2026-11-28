@@ -14,8 +14,8 @@
 		"test:a11y:report": "playwright show-report"
 	},
 	"dependencies": {
-		"@fink-ui/components": "0.1.1",
-		"@fink-ui/react": "0.1.1",
+		"@fink-ui/components": "0.1.2",
+		"@fink-ui/react": "0.1.2",
 		"i18next": "26.3.4",
 		"react": "19.3.1",
 		"react-dom": "19.3.1",

@@ -11,7 +11,7 @@
 		"start": "vite"
 	},
 	"dependencies": {
-		"@fink-ui/vue": "0.1.1",
+		"@fink-ui/vue": "0.1.2",
 		"vue": "3.5.46"
 	},
 	"devDependencies": {
