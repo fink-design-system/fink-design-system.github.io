@@ -1,0 +1,24 @@
+{
+	"name": "fink-design-system-website",
+	"private": true,
+	"license": "EUPL-1.2",
+	"scripts": {
+		"build": "pnpm -r build",
+		"build:pages": "pnpm --filter @fink-ui/website build && node website/scripts/build-samples.mjs",
+		"clean": "git clean -f -d -X",
+		"format": "pnpm -r format",
+		"lint": "pnpm -r lint"
+	},
+	"engines": {
+		"node": ">=22",
+		"pnpm": "^10"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@parcel/watcher",
+			"esbuild",
+			"sharp",
+			"unrs-resolver"
+		]
+	}
+}

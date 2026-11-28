@@ -1,0 +1,32 @@
+{
+	"name": "@fink-ui/sample-nextjs",
+	"version": "0.1.0",
+	"private": true,
+	"license": "EUPL-1.2",
+	"type": "module",
+	"scripts": {
+		"build": "next build",
+		"format": "prettier --check app",
+		"lint": "tsc --noEmit",
+		"start": "next dev --port 3000"
+	},
+	"dependencies": {
+		"@fink-ui/react": "0.1.1",
+		"next": "16.4.6",
+		"react": "19.3.1",
+		"react-dom": "19.3.1"
+	},
+	"devDependencies": {
+		"@types/node": "26.6.10",
+		"@types/react": "19.3.3",
+		"@types/react-dom": "19.3.0",
+		"prettier": "3.10.1",
+		"typescript": "6.0.3"
+	},
+	"browserslist": [
+		"chrome >= 123",
+		"edge >= 123",
+		"firefox >= 120",
+		"safari >= 17.5"
+	]
+}

@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"skipLibCheck": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"lib": ["ES2022", "DOM"],
+		"types": ["vite/client"],
+		"jsx": "react-jsx",
+		"rootDirs": [".", "./.react-router/types"]
+	},
+	"include": ["app", "vite.config.ts", "react-router.config.ts", ".react-router/types/**/*"]
+}

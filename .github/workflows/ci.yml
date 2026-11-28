@@ -1,0 +1,32 @@
+name: CI
+
+# Branch-Modell: develop ist der Standard-Branch, release/* veröffentlicht nach npm (publish.yml),
+# alle anderen Branches sind Feature-Branches und kommen per Pull Request nach develop.
+on:
+  pull_request:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm audit --audit-level high
+      - run: pnpm build
+      - run: pnpm format
+      - run: pnpm lint

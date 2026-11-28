@@ -1,0 +1,43 @@
+{
+	"name": "@fink-ui/website",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"start": "vite",
+		"build": "tsc --noEmit && vite build",
+		"preview": "vite preview",
+		"format": "prettier --check src e2e",
+		"lint": "tsc --noEmit && tsc --noEmit -p tsconfig.e2e.json && eslint src e2e",
+		"test:a11y": "playwright test",
+		"test:visual": "FINK_VISUAL=1 playwright test --project=visual",
+		"test:a11y:report": "playwright show-report"
+	},
+	"dependencies": {
+		"@fink-ui/components": "0.1.1",
+		"@fink-ui/react": "0.1.1",
+		"i18next": "26.3.4",
+		"react": "19.3.1",
+		"react-dom": "19.3.1",
+		"react-i18next": "15.7.4"
+	},
+	"devDependencies": {
+		"@axe-core/playwright": "4.14.0",
+		"@eslint/css": "2.0.1",
+		"@playwright/test": "1.63.0",
+		"@types/node": "26.6.10",
+		"@types/react": "19.3.3",
+		"@types/react-dom": "19.3.0",
+		"@vitejs/plugin-react": "5.2.0",
+		"axe-core": "4.14.0",
+		"eslint": "9.39.5",
+		"eslint-plugin-jsx-a11y": "6.10.2",
+		"eslint-plugin-react-hooks": "7.1.1",
+		"globals": "17.14.0",
+		"prettier": "3.10.1",
+		"typescript": "5.9.3",
+		"typescript-eslint": "8.74.0",
+		"vite": "7.3.8"
+	},
+	"license": "EUPL-1.2"
+}

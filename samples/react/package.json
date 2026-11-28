@@ -1,0 +1,26 @@
+{
+	"name": "@fink-ui/sample-react",
+	"version": "0.1.0",
+	"private": true,
+	"license": "EUPL-1.2",
+	"type": "module",
+	"scripts": {
+		"build": "tsc --noEmit && vite build",
+		"format": "prettier --check src",
+		"lint": "tsc --noEmit",
+		"start": "vite"
+	},
+	"dependencies": {
+		"@fink-ui/react": "0.1.1",
+		"react": "19.3.1",
+		"react-dom": "19.3.1"
+	},
+	"devDependencies": {
+		"@types/react": "19.3.3",
+		"@types/react-dom": "19.3.0",
+		"@vitejs/plugin-react": "6.3.0",
+		"prettier": "3.10.1",
+		"typescript": "6.0.3",
+		"vite": "8.3.8"
+	}
+}

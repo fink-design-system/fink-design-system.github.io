@@ -1,0 +1,42 @@
+---
+// Ein Dokument-Stylesheet mit Icon-Fonts, Tokens und Seitenschrift des Fink-Themes.
+import '@fink-ui/components/dist/collection/fink.css';
+
+const tasks = [
+	{ id: 'angaben', label: 'Angaben machen', status: 'done' },
+	{ id: 'nachweise', label: 'Nachweise hochladen', status: 'in-progress' },
+	{ id: 'senden', label: 'Antrag senden', status: 'todo' },
+];
+---
+
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Astro sample | Fink Design System</title>
+	</head>
+	<body>
+		<!-- Astro rendert die fink-*-Tags als statisches HTML; der Browser rüstet sie auf, sobald die Bibliothek registriert ist. -->
+		<main>
+			<fink-page-header _heading="Fink mit Astro" _description="Einstieg: src/pages/index.astro"></fink-page-header>
+			<fink-task-list _show-progress _tasks={JSON.stringify(tasks)}></fink-task-list>
+		</main>
+
+		<script>
+			import { defineCustomElements } from '@fink-ui/components/dist/loader/index.js';
+
+			// Registriert die eigenen Komponenten und KoliBri als fink-* mit dem Fink-Theme.
+			await defineCustomElements();
+
+			document.querySelector('fink-task-list')?.addEventListener('finkTaskSelect', (event) => {
+				const alert = document.createElement('fink-alert') as HTMLElement & Record<string, unknown>;
+				alert._label = 'Astro hat das Event finkTaskSelect empfangen';
+				alert._type = 'info';
+				alert._variant = 'card';
+				alert._level = 2;
+				alert.textContent = (event as CustomEvent<string>).detail;
+				document.querySelector('main')?.append(alert);
+			});
+		</script>
+	</body>
+</html>

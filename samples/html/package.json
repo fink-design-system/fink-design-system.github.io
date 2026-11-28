@@ -1,0 +1,17 @@
+{
+	"name": "@fink-ui/sample-html",
+	"version": "0.1.0",
+	"private": true,
+	"license": "EUPL-1.2",
+	"scripts": {
+		"format": "prettier --check index.html main.js",
+		"start": "http-server . -p 8080 -c-1"
+	},
+	"dependencies": {
+		"@fink-ui/components": "0.1.1"
+	},
+	"devDependencies": {
+		"http-server": "14.1.1",
+		"prettier": "3.10.1"
+	}
+}

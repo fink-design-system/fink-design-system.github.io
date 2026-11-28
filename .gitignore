@@ -1,0 +1,31 @@
+node_modules
+dist
+.DS_Store
+.env
+.eslintcache
+*.log
+*.tgz
+
+# Angular CLI cache
+.angular
+
+# Next.js, React Router, Nuxt and Astro build output (AGENTS.md is written by next dev)
+.next
+next-env.d.ts
+*.tsbuildinfo
+samples/nextjs/AGENTS.md
+.react-router
+samples/react-router/build
+samples/nextjs/out
+.nuxt
+.output
+.astro
+
+# Lokale Werkzeuge
+.vite
+.zcode
+.claude/settings.local.json
+
+# Testberichte der Website
+website/test-results
+website/playwright-report

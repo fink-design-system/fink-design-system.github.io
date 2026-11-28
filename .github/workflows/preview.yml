@@ -1,0 +1,107 @@
+name: PR-Preview
+
+# Baut die Showcase je Pull Request und stellt sie als eigene Vorschau bereit. Der Link steht
+# als Kommentar am PR; der Branch (und damit die Vorschau) wird beim Schließen oder Mergen gelöscht.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.34.5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Nur die Website (Fink kommt von npm). Relative Basis, damit die Vorschau unter jedem Pfad läuft; Routing läuft
+      # über Hashes. Die Starter-Galerie braucht absolute Pfade und erscheint erst auf GitHub Pages.
+      - run: pnpm --filter @fink-ui/website build
+        env:
+          FINK_BASE: ./
+
+      - name: Preview-Branch aktualisieren
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: preview-pr-${{ github.event.pull_request.number }}
+          publish_dir: website/dist
+          force_orphan: true
+          commit_message: 'Preview: PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}'
+
+      - name: Kommentar mit Preview-Link setzen (Upsert)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const marker = '<!-- fink-preview -->';
+            const url = `https://raw.githack.com/${context.repo.owner}/${context.repo.repo}/preview-pr-${context.issue.number}/index.html`;
+            const body = [
+              marker,
+              `🔍 **Preview** für diesen PR ist unter ${url} erreichbar.`,
+              '',
+              'Die Vorschau wird bei jedem Push neu gebaut und beim Schließen oder Mergen des PRs samt Branch gelöscht.',
+            ].join('\n');
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.data.find((c) => c.user.type === 'Bot' && c.body.startsWith(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner: context.repo.owner, repo: context.repo.repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, body });
+            }
+
+  cleanup:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Preview-Branch löschen
+        run: |
+          gh api --method DELETE "repos/${{ github.repository }}/git/refs/heads/preview-pr-${{ github.event.pull_request.number }}" || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Kommentar über gelöschte Vorschau aktualisieren
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const marker = '<!-- fink-preview -->';
+            const state = context.payload.pull_request?.merged ? 'gemergt' : 'geschlossen';
+            const body = [
+              marker,
+              `🧹 Die Preview für diesen PR wurde entfernt — der PR wurde ${state} und der Vorschau-Branch gelöscht.`,
+            ].join('\n');
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.data.find((c) => c.user.type === 'Bot' && c.body.startsWith(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner: context.repo.owner, repo: context.repo.repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, body });
+            }

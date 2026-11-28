@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>HTML sample | Fink Design System</title>
+		<link rel="icon" type="image/x-icon" href="node_modules/@fink-ui/components/dist/fink/assets/kolibri.ico" />
+		<link rel="stylesheet" href="node_modules/@fink-ui/components/dist/fink/fink.css" />
+		<!-- Der selbstständige ESM-Build registriert die eigenen Komponenten und KoliBri als fink-* mit dem Fink-Theme. -->
+		<script type="module" src="node_modules/@fink-ui/components/dist/fink/fink.esm.js"></script>
+		<script type="module" src="main.js"></script>
+	</head>
+	<body>
+		<main>
+			<fink-page-header _heading="Fink mit HTML" _description="Einstieg: index.html"></fink-page-header>
+			<fink-task-list
+				_show-progress
+				_tasks='[{"id":"angaben","label":"Angaben machen","status":"done"},{"id":"nachweise","label":"Nachweise hochladen","status":"in-progress"},{"id":"senden","label":"Antrag senden","status":"todo"}]'
+			></fink-task-list>
+		</main>
+	</body>
+</html>

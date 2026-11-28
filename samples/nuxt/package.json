@@ -1,0 +1,23 @@
+{
+	"name": "@fink-ui/sample-nuxt",
+	"version": "0.1.0",
+	"private": true,
+	"license": "EUPL-1.2",
+	"type": "module",
+	"scripts": {
+		"build": "nuxt build",
+		"format": "prettier --check app nuxt.config.ts",
+		"lint": "nuxt typecheck",
+		"start": "nuxt dev --port 3001"
+	},
+	"dependencies": {
+		"@fink-ui/vue": "0.1.1",
+		"nuxt": "4.7.0",
+		"vue": "3.5.46"
+	},
+	"devDependencies": {
+		"prettier": "3.10.1",
+		"typescript": "6.0.3",
+		"vue-tsc": "3.3.14"
+	}
+}

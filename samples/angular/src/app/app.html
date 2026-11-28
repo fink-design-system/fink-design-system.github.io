@@ -1,0 +1,7 @@
+<main>
+	<fink-page-header _heading="Fink mit Angular" _description="Einstieg: src/app/app.html"></fink-page-header>
+	<fink-task-list [_tasks]="tasks" [_showProgress]="true" (finkTaskSelect)="onSelect($event)"></fink-task-list>
+	@if (task(); as id) {
+	<fink-alert _label="Angular hat das Event finkTaskSelect empfangen" _type="info" _variant="card" [_level]="2">{{ id }}</fink-alert>
+	}
+</main>
