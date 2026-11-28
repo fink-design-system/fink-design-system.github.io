@@ -1,16 +1,13 @@
 name: Barrierefreiheit (ESLint + Playwright/axe-core)
 
-# Pflichtprüfung für jeden Pull Request. Auf main läuft sie nicht erneut: Dorthin gelangt nur,
+# Pflichtprüfung für jeden Pull Request. Auf develop läuft sie nicht erneut: Dorthin gelangt nur,
 # was im PR bereits geprüft wurde. Manuell startbar über workflow_dispatch.
 #
 # Betrifft ein PR keinen Anwendungscode (z. B. nur Doku), wird der Job „a11y“ übersprungen. Bewusst kein
 # paths-Filter am Trigger: Ein nicht gestarteter Pflicht-Check bliebe „ausstehend“ und blockierte den Merge,
 # ein übersprungener Job zählt dagegen als bestanden.
-#
-# VORÜBERGEHEND deaktiviert (Stand 28.11.2026): der pull_request-Trigger ist ausgesetzt. Reaktivieren,
-# indem die auskommentierte Zeile unten wieder aktiviert wird. Manuell startbar über workflow_dispatch.
 on:
-  # pull_request:
+  pull_request:
   workflow_dispatch:
 
 permissions:

@@ -23,8 +23,8 @@ importers:
         specifier: 22.3.0
         version: 22.3.0(@angular/common@22.3.0(@angular/core@22.3.0(@angular/compiler@22.3.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.3.0(@angular/compiler@22.3.0)(rxjs@7.8.2))
       '@fink-ui/angular':
-        specifier: 0.1.1
-        version: 0.1.1(@angular/core@22.3.0(@angular/compiler@22.3.0)(rxjs@7.8.2))(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
+        specifier: 0.1.2
+        version: 0.1.2(@angular/core@22.3.0(@angular/compiler@22.3.0)(rxjs@7.8.2))(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -51,8 +51,8 @@ importers:
   samples/astro:
     dependencies:
       '@fink-ui/components':
-        specifier: 0.1.1
-        version: 0.1.1(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
+        specifier: 0.1.2
+        version: 0.1.2(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
       astro:
         specifier: 7.4.13
         version: 7.4.13(@types/node@26.6.10)(db0@0.3.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1)
@@ -70,8 +70,8 @@ importers:
   samples/html:
     dependencies:
       '@fink-ui/components':
-        specifier: 0.1.1
-        version: 0.1.1(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
+        specifier: 0.1.2
+        version: 0.1.2(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
     devDependencies:
       http-server:
         specifier: 14.1.1
@@ -83,8 +83,8 @@ importers:
   samples/nextjs:
     dependencies:
       '@fink-ui/react':
-        specifier: 0.1.1
-        version: 0.1.1(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@6.0.3)
+        specifier: 0.1.2
+        version: 0.1.2(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@6.0.3)
       next:
         specifier: 16.4.6
         version: 16.4.6(@playwright/test@1.63.0)(@types/node@26.6.10)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.108.2)
@@ -114,8 +114,8 @@ importers:
   samples/nuxt:
     dependencies:
       '@fink-ui/vue':
-        specifier: 0.1.1
-        version: 0.1.1(@stencil/core@4.45.5)(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)(vue-router@5.5.3(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.4)(rollup@4.68.8)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)))(vue@3.5.46(typescript@6.0.3))
+        specifier: 0.1.2
+        version: 0.1.2(@stencil/core@4.45.5)(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)(vue-router@5.5.3(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.4)(rollup@4.68.8)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)))(vue@3.5.46(typescript@6.0.3))
       nuxt:
         specifier: 4.7.0
         version: 4.7.0(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.13))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.13))(@oxc-project/types@0.160.0)(@parcel/watcher@2.6.0)(@types/node@26.6.10)(@vue/compiler-sfc@3.5.46)(acorn@8.19.0)(bare-buffer@3.7.3)(confbox@0.3.2)(db0@0.3.4)(dotenv@17.4.2)(esbuild@0.28.2)(eslint@9.39.5(jiti@2.7.0))(giget@3.3.1)(lightningcss@1.33.0)(mlly@1.8.2)(optionator@0.9.4)(oxc-parser@0.158.0)(rolldown@1.3.4)(rollup-plugin-visualizer@7.3.0(rolldown@1.3.4)(rollup@4.68.8))(rollup@4.68.8)(sass-embedded@1.108.2)(sass@1.108.2)(srvx@1.0.8)(terser@5.51.4)(typescript@6.0.3)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(vue-tsc@3.3.14(typescript@6.0.3))(yaml@2.9.1)
@@ -136,8 +136,8 @@ importers:
   samples/react:
     dependencies:
       '@fink-ui/react':
-        specifier: 0.1.1
-        version: 0.1.1(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@6.0.3)
+        specifier: 0.1.2
+        version: 0.1.2(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@6.0.3)
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -167,8 +167,8 @@ importers:
   samples/react-router:
     dependencies:
       '@fink-ui/react':
-        specifier: 0.1.1
-        version: 0.1.1(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@6.0.3)
+        specifier: 0.1.2
+        version: 0.1.2(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@6.0.3)
       '@react-router/node':
         specifier: 8.5.3
         version: 8.5.3(react-router@8.5.3(@types/react-dom@19.3.0(@types/react@19.3.3))(@types/react@19.3.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(typescript@6.0.3)
@@ -207,8 +207,8 @@ importers:
   samples/vue:
     dependencies:
       '@fink-ui/vue':
-        specifier: 0.1.1
-        version: 0.1.1(@stencil/core@4.45.5)(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)(vue-router@5.5.3(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.4)(rollup@4.68.8)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)))(vue@3.5.46(typescript@6.0.3))
+        specifier: 0.1.2
+        version: 0.1.2(@stencil/core@4.45.5)(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)(vue-router@5.5.3(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.4)(rollup@4.68.8)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)))(vue@3.5.46(typescript@6.0.3))
       vue:
         specifier: 3.5.46
         version: 3.5.46(typescript@6.0.3)
@@ -232,11 +232,11 @@ importers:
   website:
     dependencies:
       '@fink-ui/components':
-        specifier: 0.1.1
-        version: 0.1.1(adopted-style-sheets@1.2.0-rc.3)(typescript@5.9.3)
+        specifier: 0.1.2
+        version: 0.1.2(adopted-style-sheets@1.2.0-rc.3)(typescript@5.9.3)
       '@fink-ui/react':
-        specifier: 0.1.1
-        version: 0.1.1(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@5.9.3)
+        specifier: 0.1.2
+        version: 0.1.2(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@5.9.3)
       i18next:
         specifier: 26.3.4
         version: 26.3.4(typescript@5.9.3)
@@ -1123,22 +1123,22 @@ packages:
     resolution: {integrity: sha512-IkO+/KEUvwbVpiURZg+P7zF74z5Jxe0UgJxVni+RtoHQ6IZieXaO02kmadomap/q+l6bc/jdPGGqTjhuZnuz1Q==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
-  '@fink-ui/angular@0.1.1':
-    resolution: {integrity: sha512-dAH/udaFCMFUZnpF+S0G0kkXhCavh+1tF0bXkUFb0Dob95/6lsEdxrOMQ5hjEQVhQZgZkinTuZosYlQkUedssQ==}
+  '@fink-ui/angular@0.1.2':
+    resolution: {integrity: sha512-0nawVkKj8llkmmgL14w+xNQBCW7jyqaIHP+Ve6kGdEw88XMtFGhBZ0rAakr/gCM69d0XY0IDUMY/GCHsn0XImA==}
     peerDependencies:
       '@angular/core': ^22.0.0
 
-  '@fink-ui/components@0.1.1':
-    resolution: {integrity: sha512-pLzJ//DaQ7wy5epFeAXyr7XVB8EDU0CEx436qz4PQPVn1Ew/5xFbm5bzX9b8kZ9h0jfKM54q+N4CXayc1v1gMQ==}
+  '@fink-ui/components@0.1.2':
+    resolution: {integrity: sha512-YgLia2J1jVcC+13V1j5cQth7BLjXPVvoM46awt6lXpk5KS2dPNigI/bkSAi/+stC19ivC/GqoUtsgz1FbDhhOA==}
 
-  '@fink-ui/react@0.1.1':
-    resolution: {integrity: sha512-jY6uSPcBoBM0eMNe2pUO7keZmPzVbAy/KaSRoY1zGad1qn57+QOca0WsVnMQ+LDQ7H2eLUky3UskhW+Z2T5UOA==}
+  '@fink-ui/react@0.1.2':
+    resolution: {integrity: sha512-Set94OkVcjA/gUjxyTuEtYsrXcnkK2kZcFenlfONkquhg9tDPNyPE6r1uE5mKwF6iS6ogZXmqwzWgtKVcZ3cEw==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@fink-ui/vue@0.1.1':
-    resolution: {integrity: sha512-BcONBRXWDfUNkqay4aFit+e8Mgx2IRXaoM1AJf/hyAr8xX1kKSGfz0qLAE3QtLm3QE1jR5TYlU+XRCQvzepwsQ==}
+  '@fink-ui/vue@0.1.2':
+    resolution: {integrity: sha512-5wDUC+6dUAhSNg5VDMOYa5eos2wA/JWhB0scO4Zshp6TAs4N/2Re/IXJYw+ISqbup0lgGT0biWA4k2LOy8oiCA==}
     peerDependencies:
       vue: ^3.4.38
 
@@ -7896,16 +7896,16 @@ snapshots:
       '@eslint/core': 1.2.1
       levn: 0.4.1
 
-  '@fink-ui/angular@0.1.1(@angular/core@22.3.0(@angular/compiler@22.3.0)(rxjs@7.8.2))(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)':
+  '@fink-ui/angular@0.1.2(@angular/core@22.3.0(@angular/compiler@22.3.0)(rxjs@7.8.2))(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)':
     dependencies:
       '@angular/core': 22.3.0(@angular/compiler@22.3.0)(rxjs@7.8.2)
-      '@fink-ui/components': 0.1.1(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
+      '@fink-ui/components': 0.1.2(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
       '@public-ui/components': 5.0.0-beta.3(adopted-style-sheets@1.2.0-rc.3)
     transitivePeerDependencies:
       - adopted-style-sheets
       - typescript
 
-  '@fink-ui/components@0.1.1(adopted-style-sheets@1.2.0-rc.3)(typescript@5.9.3)':
+  '@fink-ui/components@0.1.2(adopted-style-sheets@1.2.0-rc.3)(typescript@5.9.3)':
     dependencies:
       '@public-ui/components': 5.0.0-beta.3(adopted-style-sheets@1.2.0-rc.3)
       i18next: 26.3.4(typescript@5.9.3)
@@ -7913,7 +7913,7 @@ snapshots:
       - adopted-style-sheets
       - typescript
 
-  '@fink-ui/components@0.1.1(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)':
+  '@fink-ui/components@0.1.2(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)':
     dependencies:
       '@public-ui/components': 5.0.0-beta.3(adopted-style-sheets@1.2.0-rc.3)
       i18next: 26.3.4(typescript@6.0.3)
@@ -7921,9 +7921,9 @@ snapshots:
       - adopted-style-sheets
       - typescript
 
-  '@fink-ui/react@0.1.1(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@5.9.3)':
+  '@fink-ui/react@0.1.2(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@5.9.3)':
     dependencies:
-      '@fink-ui/components': 0.1.1(adopted-style-sheets@1.2.0-rc.3)(typescript@5.9.3)
+      '@fink-ui/components': 0.1.2(adopted-style-sheets@1.2.0-rc.3)(typescript@5.9.3)
       '@public-ui/components': 5.0.0-beta.3(adopted-style-sheets@1.2.0-rc.3)
       '@public-ui/react-v19': 5.0.0-beta.3(@public-ui/components@5.0.0-beta.3(adopted-style-sheets@1.2.0-rc.3))(@stencil/core@4.45.5)(@types/react@19.3.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@stencil/react-output-target': 1.8.1(@stencil/core@4.45.5)(@types/react@19.3.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -7935,9 +7935,9 @@ snapshots:
       - adopted-style-sheets
       - typescript
 
-  '@fink-ui/react@0.1.1(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@6.0.3)':
+  '@fink-ui/react@0.1.2(@stencil/core@4.45.5)(@types/react@19.3.3)(adopted-style-sheets@1.2.0-rc.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@6.0.3)':
     dependencies:
-      '@fink-ui/components': 0.1.1(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
+      '@fink-ui/components': 0.1.2(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
       '@public-ui/components': 5.0.0-beta.3(adopted-style-sheets@1.2.0-rc.3)
       '@public-ui/react-v19': 5.0.0-beta.3(@public-ui/components@5.0.0-beta.3(adopted-style-sheets@1.2.0-rc.3))(@stencil/core@4.45.5)(@types/react@19.3.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@stencil/react-output-target': 1.8.1(@stencil/core@4.45.5)(@types/react@19.3.3)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -7949,9 +7949,9 @@ snapshots:
       - adopted-style-sheets
       - typescript
 
-  '@fink-ui/vue@0.1.1(@stencil/core@4.45.5)(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)(vue-router@5.5.3(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.4)(rollup@4.68.8)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)))(vue@3.5.46(typescript@6.0.3))':
+  '@fink-ui/vue@0.1.2(@stencil/core@4.45.5)(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)(vue-router@5.5.3(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.4)(rollup@4.68.8)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)))(vue@3.5.46(typescript@6.0.3))':
     dependencies:
-      '@fink-ui/components': 0.1.1(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
+      '@fink-ui/components': 0.1.2(adopted-style-sheets@1.2.0-rc.3)(typescript@6.0.3)
       '@public-ui/components': 5.0.0-beta.3(adopted-style-sheets@1.2.0-rc.3)
       '@public-ui/vue': 5.0.0-beta.3(@public-ui/components@5.0.0-beta.3(adopted-style-sheets@1.2.0-rc.3))(@stencil/core@4.45.5)(vue-router@5.5.3(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.4)(rollup@4.68.8)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)))(vue@3.5.46(typescript@6.0.3))
       '@stencil/vue-output-target': 0.15.0(@stencil/core@4.45.5)(vue-router@5.5.3(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.4)(rollup@4.68.8)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)))(vue@3.5.46(typescript@6.0.3))

@@ -11,7 +11,7 @@
 		"start": "react-router dev --port 5175"
 	},
 	"dependencies": {
-		"@fink-ui/react": "0.1.1",
+		"@fink-ui/react": "0.1.2",
 		"@react-router/node": "8.5.3",
 		"isbot": "5.2.4",
 		"react": "19.3.1",

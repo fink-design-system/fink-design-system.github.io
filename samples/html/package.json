@@ -8,7 +8,7 @@
 		"start": "http-server . -p 8080 -c-1"
 	},
 	"dependencies": {
-		"@fink-ui/components": "0.1.1"
+		"@fink-ui/components": "0.1.2"
 	},
 	"devDependencies": {
 		"http-server": "14.1.1",

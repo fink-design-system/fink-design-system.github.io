@@ -39,8 +39,10 @@ pre {
 	color: var(--fink-color-subtle);
 }
 
-/* Banner über der App Shell: flach, ohne Schatten, in Primärfarbe. */
+/* Banner oben im Inhaltsbereich: flach, ohne Schatten, in Primärfarbe. */
 .site-banner {
+	margin-bottom: var(--fink-space-5);
+	border-radius: var(--fink-radius-md);
 	background: var(--fink-color-primary);
 	color: var(--fink-color-light);
 }

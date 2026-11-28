@@ -11,7 +11,7 @@
 		"start": "astro dev --port 4321"
 	},
 	"dependencies": {
-		"@fink-ui/components": "0.1.1",
+		"@fink-ui/components": "0.1.2",
 		"astro": "7.4.13"
 	},
 	"devDependencies": {
